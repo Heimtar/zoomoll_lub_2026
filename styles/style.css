@@ -249,17 +249,6 @@ h1, h2, h3, button, a, input, textarea {
   text-align: left;            /* ИЗМЕНЕНО: текст аккуратно прижат влево */
 }
 
-/* --- Умное затемнение слайдов --- */
-.slider-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0.25) 40%, rgba(15, 23, 42, 0) 70%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-
 /* --- Идеальное расположение плашек  --- */
 
 /* 1. Плашка Мопса: Слева вверху на сером фоне */
