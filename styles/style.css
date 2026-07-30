@@ -586,44 +586,51 @@ h1, h2, h3, button, a, input, textarea {
 .promo-btn.next-promo { 
   transform: translateX(-20px); 
 }
-/* Профессиональная стилизация кнопки телефона с градиентом */
+/* Профессиональная RGB-кнопка на чистом CSS */
 .header-phone .phone-link {
-    /* Красивый перелив: от глубокого индиго до благородного сине-зеленого */
-    background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
+    /* Задаем базовый яркий градиент из трех сочных цветов */
+    background: linear-gradient(135deg, #00dfd8, #7928ca, #ff007f);
     color: #ffffff;
     border: none;
-    
-    /* Форма капсулы */
     border-radius: 100px;
     padding: 10px 22px;
     
+    /* inline-flex делает ссылку блочной, чтобы к ней правильно применялись все эффекты */
     display: inline-flex;
     align-items: center;
     text-decoration: none;
     
-    /* Делаем тень более мягкой и полупрозрачной */
-    box-shadow: 0 4px 15px rgba(3, 105, 161, 0.2);
+    /* Включаем бесконечное круговое изменение цвета за 4 секунды */
+    animation: rgb-rainbow 4s linear infinite;
     
-    /* Анимация: теперь плавно меняется и сам градиентный фон */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    /* Аккуратное, легкое неоновое свечение в тон кнопки */
+    box-shadow: 0 4px 15px rgba(121, 40, 202, 0.3);
+    
+    /* Настройка плавности для наведения мышки */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Эффект при наведении курсора */
 .header-phone .phone-link:hover {
     color: #ffffff;
-    
-    /* Слегка приподнимаем кнопку */
     transform: translateY(-2px);
     
-    /* Тень становится объемнее */
-    box-shadow: 0 6px 20px rgba(3, 105, 161, 0.3);
-    
-    /* Хитрость для градиентов без !important: делаем цвета чуть насыщеннее при наведении */
-    filter: brightness(1.1);
+    /* Усиливаем неоновый контур, когда пользователь наводит мышку */
+    box-shadow: 0 6px 20px rgba(255, 0, 127, 0.5);
 }
 
-/* Настройка иконки трубки */
+/* Выравнивание иконки трубки внутри кнопки */
 .header-phone .phone-icon-img {
     margin-right: 8px;
     display: block;
+}
+
+/* ТЕХНИЧЕСКАЯ МАГИЯ: Вращение цветового спектра на 360 градусов */
+@keyframes rgb-rainbow {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
 }
