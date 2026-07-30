@@ -94,7 +94,36 @@ h1, h2, h3, button, a, input, textarea {
   padding: 6px 14px;
   border-radius: 10px;
   transition: all 0.3s ease;
+} /* <-- Поставьте курсор сразу после этой закрывающей фигурной скобки */
+/* Настройки для блока телефона */
+.header-phone .phone-link {
+  display: inline-flex;       /* Выстраиваем трубку и номер в одну ровную линию */
+  align-items: center;        /* Центрируем их строго по высоте */
+  color: var(--text-color);   /* Берем ваш фирменный темный цвет текста */
+  font-weight: 600;           /* Слегка жирный шрифт */
+  font-size: 16px;
+  transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
 }
+
+/* Настройки для значка трубочки */
+.header-phone .phone-icon {
+  width: 22px;                /* Хороший, заметный размер значка */
+  height: 22px;               
+  margin-right: 8px;          /* Отступ между трубочкой и цифрами */
+  color: var(--primary-color);/* Красим трубку в ваш небесно-голубой цвет */
+  flex-shrink: 0;             /* Не дает значку сжиматься */
+  transition: transform 0.3s ease; /* Плавное увеличение значка */
+}
+
+/* Что происходит при наведении мышки на телефон */
+.header-phone .phone-link:hover {
+  color: var(--primary-hover); /* Номер плавно меняет цвет на темно-голубой */
+}
+
+.header-phone .phone-link:hover .phone-icon {
+  transform: scale(1.1);      /* Значок трубочки станет чуть-чуть крупнее */
+}
+
 
 .menu-link::after {
   content: '';
