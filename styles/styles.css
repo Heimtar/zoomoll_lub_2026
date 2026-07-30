@@ -1,414 +1,242 @@
-/* 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ */
-/* 1. Настройки цветов */
+/* --- Global Settings & Variables --- */
 :root {
-  --bg-color: #f4f9fc;      /* Мягкий воздушно-голубой оттенок для фона (вместо #ffff) */
-  --primary-color: #5baadc; /* Красивый акцентный небесно-голубой цвет */
-  --primary-hover: #4392c4; /* Чуть более темный голубой для эффекта наведения */
-  --text-color: #2b3d4a;    /* Глубокий темно-синий для отличной читаемости */
-  --white: #ffffff;         /* Чистый белый для контрастных карточек и блоков */
+  --bg-color: #f4f9fc;      
+  --primary-color: #5baadc; 
+  --primary-hover: #4392c4; 
+  --text-color: #2b3d4a;    
+  --white: #ffffff;         
 }
 
-/* 2. Базовый сброс отступов */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; 
-  scroll-behavior: smooth; /* Плавная прокрутка */
+  scroll-behavior: smooth; 
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
-  /* Системные шрифты — сайт будет открываться мгновенно */
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased; /* Делает текст на экранах Mac более гладким */
+  -webkit-font-smoothing: antialiased; 
 }
 
-/* Принудительно передаем этот шрифт всем текстовым элементам */
 h1, h2, h3, button, a, input, textarea {
-  font-family: inherit; /* Означает "взять шрифт у родителя (body)" — так код чище */
-  color: inherit;       /* Сбрасывает стандартный синий цвет у ссылок */
-  text-decoration: none; /* Убирает подчеркивание у ссылок по умолчанию */
+  font-family: inherit; 
+  color: inherit;       
+  text-decoration: none; 
+}
+/* --- Header & Navigation --- */
+@keyframes fadeInHeader {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* 3. Готовая заготовка для интерактивных кнопок сайта */
-.btn-primary {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px; /* Красивое современное скругление */
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease; /* Плавность для будущих addEventListener и ховеров */
-}
-
-.btn-primary:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px); /* Кнопка интерактивно приподнимается */
-  box-shadow: 0 5px 15px rgba(91, 170, 220, 0.3); /* Мягкое голубое свечение */
-}
-
-.btn-primary:active {
-  transform: translateY(0); /* Эффект нажатия кнопки */
-}
-
-
-/* 3. Готовая заготовка для интерактивных кнопок сайта */
-.btn-primary {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px; /* Красивое современное скругление */
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease; /* Плавность для будущих addEventListener и ховеров */
-}
-
-.btn-primary:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px); /* Кнопка интерактивно приподнимается */
-  box-shadow: 0 5px 15px rgba(91, 170, 220, 0.3); /* Мягкое голубое свечение */
-}
-
-.btn-primary:active {
-  transform: translateY(0); /* Эффект нажатия кнопки */
-}
-
-
-/* 3. Готовая заготовка для интерактивных кнопок сайта */
-.btn-primary {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px; /* Красивое современное скругление */
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease; /* Плавность для будущих addEventListener и ховеров */
-}
-
-.btn-primary:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px); /* Кнопка интерактивно приподнимается */
-  box-shadow: 0 5px 15px rgba(91, 170, 220, 0.3); /* Мягкое голубое свечение */
-}
-
-.btn-primary:active {
-  transform: translateY(0); /* Эффект нажатия кнопки */
-}
-
-
-header {
-  display: flex; /* Усиливаем команду для браузера */
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%;
-  background-color: var(--white);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
-
-  position: sticky; /* Включаем режим «прилипания» */
-  top: 0; /* Говорим шапке прилипнуть строго к верхнему краю экрана (0 пикселей сверху) */
-  z-index: 100; /* Поднимаем слой шапки повыше, чтобы карточки и картинки сайта плавно уходили ПОД неё, а не перекрывали сверху */
-
-  /* 1. Делаем белый фон полупрозрачным (85% видимости), чтобы сквозь него просвечивал сайт */
-  background-color: rgba(255, 255, 255, 0.85);
-
-  /* 2. Сама магия размытия заднего плана */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(
-    12px
-  ); /* Страховка для корректной работы в браузерах Safari на iPhone/Mac */
-
-  /* Делаем тень под шапкой еще более мягкой и незаметной */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-
-  /* Тонкая, едва заметная полупрозрачная граница снизу для усиления эффекта стекла */
+.site-header {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.35);  
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04); 
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: fadeInHeader 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: padding 0.3s ease, background-color 0.3s ease;
+}
+
+.header-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .brand-group {
-  display: flex !important;
+  display: flex;
   align-items: center;
-  text-decoration: none;
-  gap: 12px;
+  gap: 14px;
 }
 
 .logo-img {
-  height: 45px;
-  width: auto !important;
-  display: block;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
 
 .brand-name {
-  font-size: 22px;
-  font-weight: bold;
-  color: var(--text-color);
+  font-size: 26px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+  transition: color 0.3s ease;
 }
 
-.header .nav {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
+.brand-group:hover .logo-img { transform: rotate(10deg) scale(1.05); }
+.brand-group:hover .brand-name { color: #2b78e4; }
+
+.site-header .nav {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
 }
 
-.header-phone {
-  display: flex !important;
-  align-items: center;
+.menu-link {
+  color: #555555;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  padding: 6px 14px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.menu-link::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border: 2px solid #2b78e4;
+  border-radius: 10px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.menu-link:hover {
+  color: #2b78e4;
+  background-color: rgba(43, 120, 228, 0.04);
+}
+
+.menu-link:hover::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .phone-link {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: bold;
-  font-size: 16px;
-  padding: 8px 14px;
-  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 8px; /* Расстояние между картинкой-трубкой и цифрами телефона */
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease;
+  gap: 10px;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid #eef2f7;
+  padding: 10px 18px;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.phone-icon-img {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
 }
 
 .phone-link:hover {
-  color: var(--primary-color);
-  background-color: var(--bg-color);
-}
-.phone-icon-img {
-  width: 18px; /* Задаем аккуратный размер под стать шрифту */
-  height: 18px; /* Высота точно такая же, так как иконка квадратная */
-  object-fit: contain; /* Защищает иконку от искажений и сплющивания */
-  display: block;
-}
-.menu-link {
-  text-decoration: none;
-  color: var(--text-color);
-  margin: 0 10px;
-  font-weight: 500;
-  display: inline-block;
-
-  /* Делаем увеличенные внутренние отступы, чтобы область клика 
-       и будущий фон при наведении смотрелись пропорционально */
-  padding: 8px 16px;
-  border-radius: 8px; /* Оставляем скругление для фоновой подложки */
-
-  /* Полностью убираем рамки и тени, которые настраивали ранее */
-  border: none;
-  box-shadow: none;
-  transform: none;
-
-  /* Плавный переход для цвета текста и фоновой подложки */
-  transition:
-    color 0.25s ease,
-    background-color 0.25s ease;
+  color: #ffffff;
+  background-color: #2b78e4;
+  border-color: #2b78e4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(43, 120, 228, 0.2);
 }
 
-/* Эффект при наведении курсора (Hover) */
-.menu-link:hover {
-  /* Текст плавно меняет цвет на пудровый/акцентный */
-  color: var(--primary-color);
+.phone-link:hover .phone-icon-img { transform: scale(1.1); }
 
-  /* Вместо рамки плавно закрашиваем фон кнопки.
-       Используем цвет var(--bg-color) — он кремовый, как раз на полтона светлее белой шапки */
-  background-color: var(--bg-color);
-
-  /* При желании можно оставить легкий интерактивный сдвиг вверх на 1 пиксель, 
-       либо полностью убрать строчку ниже, если хотите, чтобы кнопка не двигалась */
-  transform: translateY(-1px);
-}
-
-/* ========================================== */
-/* БЛОК РЕКЛАМНЫХ БАННЕРОВ (КАРУСЕЛЬ)          */
-/* ========================================== */
-
-.promo-carousel-section {
-  padding: 0 5%; /* Оставляем такие же поля по бокам, как у шапки */
-  margin-bottom: 30px;
-}
+.site-header.shrunk .header-wrap { padding-top: 8px; padding-bottom: 8px; }
+.site-header.shrunk .logo-img { width: 36px; height: 36px; }
+.site-header.shrunk .brand-name { font-size: 22px; }
+/* --- Promo Carousel --- */
+.promo-carousel-section { padding: 0 5%; margin-bottom: 30px; }
 
 .promo-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  overflow: hidden; /* Прячем неактивные слайды */
-  border-radius: 16px; /* Красивые скругленные углы всего блока */
+  overflow: hidden;
+  border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
 }
 
-.promo-track {
-  display: flex;
-  transition: transform 0.6s ease-in-out; /* Плавное перелистывание */
-}
-
-.promo-slide {
-  min-width: 100%; /* Каждый баннер занимает ровно 100% ширины блока */
-  position: relative; /* Нужно, чтобы наложить текст поверх картинки */
-}
-
-/* ========================================== */
-/* УМНЫЕ НАПРАВЛЕННЫЕ ГРАДИЕНТЫ               */
-/* ========================================== */
-
-/* 1. ЕСЛИ ТЕКСТ СЛЕВА: делаем затемнение у левого края */
-.promo-slide:has(.promo-badge-left)::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  /* to right — затемнение идет слева направо и растворяется к середине */
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.25) 50%,
-    transparent 75%
-  );
-  pointer-events: none;
-  z-index: 1; /* Под текстом, но над картинкой */
-}
-
-/* 2. ЕСЛИ ТЕКСТ СПРАВА: делаем затемнение у правого края */
-.promo-slide:has(.promo-badge-right)::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  /* to left — затемнение идет справа налево и растворяется к середине */
-  background: linear-gradient(
-    to left,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.25) 50%,
-    transparent 75%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-/* Принудительно поднимаем плашку с текстом выше слоя градиента, 
-   чтобы она не темнела и оставалась яркой */
+.promo-track { display: flex; transition: transform 0.6s ease-in-out; }
+.promo-slide { min-width: 100%; position: relative; flex-shrink: 0; }
 
 .promo-slide img {
   width: 100%;
-  height: 350px; /* Удобная фиксированная высота для рекламного баннера */
-  object-fit: cover; /* Картинка заполнит блок без искажений */
-  /* РЕШЕНИЕ: Смещаем картинку вниз */
-  /* Первое значение (center) — центрирование по горизонтали. 
-       Второе значение (top) — прижимает верхнюю часть картинки к верху рамки, 
-       за счет чего сам кадр визуально опускается вниз. */
-  object-position: center -55px;
+  height: 500px; 
+  object-fit: cover; 
   display: block;
 }
 
-/* Полупрозрачная плашка с текстом поверх картинки */
-.promo-text-badge {
+.promo-btn {
+  position: absolute;       
+  top: 50%;                 
+  transform: translateY(-50%); 
+  width: 50px;              
+  height: 50px;             
+  background-color: rgba(255, 255, 255, 0.7); 
+  border: none;             
+  border-radius: 50%;       
+  color: #333;              
+  font-size: 24px;          
+  display: flex;            
+  align-items: center;      
+  justify-content: center;  
+  cursor: pointer;          
+  z-index: 10;              
+  transition: all 0.3s ease; 
+}
+
+.prev-promo { left: 20px; }
+.next-promo { right: 20px; }
+.promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
+
+.new-clean-banner-box {
   position: absolute;
-  /* 1. ФОРМУЛА ЦЕНТРИРОВАНИЯ ПО ВЕРТИКАЛИ: */
-  top: 50%;
-  /* Сдвигаем плашку вверх на половину её высоты для идеального центра */
-  transform: translateY(-50%);
-  z-index: 2; /* z-index: 2 выше, чем z-index: 1 у градиента */
+  top: 35%;           
+  left: 100px;         
+  z-index: 5;
+  max-width: 550px; 
 }
 
-/* НОВЫЙ КЛАСС-МОДИФИКАТОР ДЛЯ ЛЕВОЙ СТОРОНЫ */
-.promo-badge-left {
-  left: 30px;
-  right: auto; /* Сбрасываем правый край на всякий случай */
-}
-
-/* НОВЫЙ КЛАСС-МОДИФИКАТОР ДЛЯ ПРАВОЙ СТОРОНЫ */
-.promo-badge-right {
-  right: 30px;
-  left: auto; /* Сбрасываем левый край, чтобы плашка улетела вправо */
-}
-
-.promo-text-badge h3 {
-  font-size: 40px;
+.new-clean-banner-box h3 {
   color: #ffffff;
-  margin-bottom: 5px;
+  font-size: 38px;          
+  font-weight: 800;          
+  line-height: 1.25;         
+  letter-spacing: -0.5px;    
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
-.promo-text-badge p {
-  font-size: 14px;
-  color: #555;
-}
-
-/* УЛЬТРАСОВРЕМЕННЫЙ ДИЗАЙНЕРСКИЙ БЛОК */
-
+/* --- Hero Section --- */
 .hero {
-  /* 1. Современный глубокий градиент на фоне — выглядит очень дорого */
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
-  
   width: 100%;
-  margin-top: 60px;
-  
-  /* 2. Огромные отступы сверху и снизу для эффекта премиальной свободы */
+  margin-top: 30px;
   padding: 120px 0; 
   position: relative;
   overflow: hidden;
   margin-bottom: 80px;
 }
 
-/* Добавляем мягкое футуристичное свечение на задний план */
 .hero::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -20%;
-  width: 600px;
-  height: 600px;
+  top: -50%; left: -20%; width: 600px; height: 600px;
   background: radial-gradient(circle, rgba(0, 198, 255, 0.15) 0%, rgba(255,255,255,0) 70%);
-  /* Размытие для создания эффекта мягкого облака света */
   filter: blur(80px); 
   pointer-events: none;
 }
 
-.hero-content {
-  max-width: 900px; /* Идеальная ширина для чтения крупных заголовков */
-  margin: 0 auto;
-  padding: 0 40px;
-  text-align: center;
-  position: relative;
-  z-index: 2; /* Поднимаем текст над световым облаком */
-}
+.hero-content { max-width: 900px; margin: 0 auto; padding: 0 40px; text-align: center; position: relative; z-index: 2; }
+.hero-content h1 { font-size: 56px; font-weight: 800; color: var(--white); margin-bottom: 24px; line-height: 1.15; letter-spacing: -1px; }
+.hero-content p { font-size: 22px; color: #cbd5e1; margin-bottom: 55px; line-height: 1.6; }
 
-/* Огромный неоновый заголовок в стиле современных интерфейсов */
-.hero-content h1 {
-  font-size: 56px;
-  font-weight: 800;
-  /* Красивый контрастный белый цвет на темном фоне */
-  color: var(--white); 
-  margin-bottom: 24px;
-  line-height: 1.15;
-  letter-spacing: -1px; /* Слегка сближаем буквы для стильного вида */
-}
-
-/* Контрастный, воздушный подзаголовок */
-.hero-content p {
-  font-size: 22px;
-  /* Мягкий светлый оттенок, чтобы текст не резал глаза на темном фоне */
-  color: #cbd5e1; 
-  margin-bottom: 55px;
-  line-height: 1.6;
-}
-
-
-/* СОЧНАЯ КНОПКА С ЭФФЕКТОМ ГЛЯНЦЕВОГО БЛИКА */
-/* УЛЬТРА-ОБЪЕМНАЯ 3D КНОПКА */
-/* СОВРЕМЕННЫЙ СОЧНЫЙ ГЛЯНЕЦ (APPLE / GLASS STYLE) */
-/* ИДЕАЛЬНАЯ ГЛЯНЦЕВАЯ КНОПКА БЕЗ ПЕРЕСВЕТОВ */
-/* КНОПКА С АНИМАЦИЕЙ ДЫХАНИЯ ПРИ ЗАМИРАНИИ МЫШКИ */
 #cta-btn {
   background: linear-gradient(180deg, #25a3ff 0%, #0066ff 100%);
   color: var(--white);
@@ -420,18 +248,10 @@ header {
   cursor: pointer;
   display: inline-block;
   position: relative;
-  overflow: visible; /* ИСПРАВЛЕНИЕ: поменяли на visible, чтобы волны анимации могли выходить ЗА пределы кнопки */
-  
-  /* Спокойные тени в обычном состоянии */
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),  
-    0 4px 12px rgba(0, 102, 255, 0.2);       
-    
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 102, 255, 0.2);       
   transition: all 0.4s cubic-bezier(0.15, 0.85, 0.35, 1);
 }
 
-/* ЭФФЕКТ ПРИ НАВЕДЕНИИ МЫШКИ */
-/* ВАРИАНТ 1: ЖИДКИЙ ГРАДИЕНТ */
 #cta-btn:hover {
   transform: translateY(-3px) scale(1.02);
   background: linear-gradient(270deg, #25a3ff, #0066ff, #00d2ff);
@@ -446,251 +266,75 @@ header {
   100% { background-position: 0% 50%; }
 }
 
+#cta-btn:active { transform: translateY(-1px) scale(0.98); animation: none; box-shadow: 0 4px 10px rgba(0, 102, 255, 0.2); }
 
-/* ЭФФЕКТ ПРИ КЛИКЕ (Пружина) */
-#cta-btn:active {
-  transform: translateY(-1px) scale(0.98);
-  /* Отключаем анимацию при самом клике, чтобы кнопка вела себя послушно */
-  animation: none; 
-  box-shadow: 0 4px 10px rgba(0, 102, 255, 0.2);
-}
+.hero-paws-track { position: absolute; width: 35px; height: 35px; z-index: 1; opacity: 0; }
 
-/* ИНСТРУКЦИЯ ДЛЯ АНИМАЦИИ (Пульсация тени) */
-@keyframes pulse-glow {
-  0% {
-    /* В начале волны тень близко к кнопке и чуть ярче */
-    box-shadow: 
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      0 0 0 0 rgba(0, 119, 255, 0.6);
-  }
-  70% {
-    /* В середине волна мягко расширяется во все стороны, превращаясь в туман */
-    box-shadow: 
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      0 0 0 18px rgba(0, 119, 255, 0); /* 18px — ширина расхождения волны, 0 — она стала прозрачной */
-  }
-  100% {
-    /* В конце волна полностью растворяется, и круг начинается заново */
-    box-shadow: 
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      0 0 0 0 rgba(0, 119, 255, 0);
-  }
-}
-
-
-
-
-
-/* ========================================== */
-/* СТИЛИ И АНИМАЦИЯ ДЛЯ СЛЕДОВ ЛАПОК          */
-/* ========================================== */
-
-/* Общий класс для каждого следа на базе PNG */
-.hero-paws-track {
-  position: absolute;
-  width: 35px; /* Ширина одного следа */
-  height: 35px; /* Высота одного следа */
-
-  /* НАСТРОЙКИ КАРТИНКИ: */
-  background: url("/img/cat_paw.png") no-repeat center/contain;
-
-  /* Делаем картинку полупрозрачной (35% видимости), 
-       чтобы она мягко смотрелась на фоне баннера */
-  opacity: 0;
-  z-index: 1;
-}
-
-/* Анимация проявления и таяния (оставляем без изменений) */
 @keyframes pawStep {
-  0% {
-    opacity: 0;
-    transform: scale(0.7) rotate(var(--paw-rotate, 0deg));
-  }
-  20% {
-    opacity: 0.35; /* Максимальная прозрачность при проявлении */
-    transform: scale(1) rotate(var(--paw-rotate, 0deg));
-  }
-  75% {
-    opacity: 0.35;
-    transform: scale(1) rotate(var(--paw-rotate, 0deg));
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.8) rotate(var(--paw-rotate, 0deg));
-  }
+  0% { opacity: 0; transform: scale(0.8) rotate(var(--paw-rotate, 0deg)); }
+  20% { opacity: 0.35; transform: scale(1) rotate(var(--paw-rotate, 0deg)); }
+  70% { opacity: 0.35; }
+  100% { opacity: 0; transform: scale(0.9) rotate(var(--paw-rotate, 0deg)); }
 }
+/* --- Services & Portfolio Blocks --- */
+.services { padding: 60px 5%; text-align: center; }
+.services h2 { margin-bottom: 40px; font-size: 32px; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.services .card { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); }
+.services .card h3 { margin-bottom: 15px; color: var(--primary-color); }
+.services .card p { font-size: 15px; margin-bottom: 20px; }
+.services .card .price { font-weight: bold; font-size: 18px; display: block; }
 
-/* Сама анимация шага: след плавно проявляется, держится секунду и полностью исчезает */
-@keyframes pawStep {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  20% {
-    opacity: 1; /* Проявился */
-    transform: scale(1);
-  }
-  70% {
-    opacity: 1; /* Держится на экране */
-  }
-  100% {
-    opacity: 0; /* Полностью растаял */
-    transform: scale(0.9);
-  }
-}
+.portfolio { padding: 60px 5%; text-align: center; background-color: var(--white); }
+.portfolio h2 { font-size: 32px; margin-bottom: 10px; }
+.portfolio .section-subtitle { color: #777; margin-bottom: 40px; font-size: 16px; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.portfolio-item { background: var(--bg-color); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+.portfolio-item img { width: 100%; height: 250px; object-fit: cover; display: block; }
+.portfolio-info { padding: 20px; text-align: left; }
+.portfolio-info h3 { font-size: 18px; margin-bottom: 5px; }
+.portfolio-info p { color: #777; font-size: 14px; }
+/* --- Reviews Slider --- */
+.reviews-section { padding: 60px 5%; text-align: center; background-color: var(--bg-color); }
+.carousel-container { display: flex; align-items: center; justify-content: center; max-width: 1100px; margin: 0 auto; position: relative; gap: 15px; }
+.carousel-track-wrapper { overflow: hidden; width: 100%; padding: 10px 0; }
+.carousel-track { display: flex; gap: 20px; transition: transform 0.4s ease-in-out; will-change: transform; }
 
-/* 5. Сетка карточек услуг */
-.services {
-  padding: 60px 5%;
-  text-align: center;
-}
-.services h2 {
-  margin-bottom: 40px;
-  font-size: 32px;
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-.services .card {
-  background: var(--white);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-}
-.services .card h3 {
-  margin-bottom: 15px;
-  color: var(--primary-color);
-}
-.services .card p {
-  font-size: 15px;
-  margin-bottom: 20px;
-}
-.services .card .price {
-  font-weight: bold;
-  font-size: 18px;
-  display: block;
-}
-
-/* 6. Подвал (Footer) */
-.footer {
-  background-color: var(--text-color);
-  color: var(--white);
-  text-align: center;
-  padding: 30px;
-  font-size: 14px;
-}
-/* ========================================== */
-/* БЛОК «НАШИ РАБОТЫ»                         */
-/* ========================================== */
-
-.portfolio {
-  padding: 60px 5%;
-  text-align: center;
-  background-color: var(
-    --white
-  ); /* Делаем белый фон, чтобы отделить от кремового */
-}
-
-.portfolio h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.portfolio .section-subtitle {
-  color: #777;
-  margin-bottom: 40px;
-  font-size: 16px;
-}
-
-/* ИСПРАВЛЕННЫЕ СТИЛИ ДЛЯ КАРУСЕЛИ (ПОРТФОЛИО) */
-
-/* Главный контейнер, который держит стрелки и слайды */
-.carousel-container {
-  position: relative;
-  overflow: hidden; /* Прячет котика, пока показывается мопс */
-  max-width: 1200px;
-  margin: 40px auto;
-  border-radius: 20px;
-}
-
-/* Лента, которую двигает наш JavaScript */
-#carousel-track {
-  display: flex; /* ВОТ ЭТА СТРОЧКА — САМАЯ ГЛАВНАЯ! Она выстроит мопса и кота в линию */
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-}
-
-
-/* Контейнер для одной фотографии (твоя бывшая карточка) */
-.carousel-slide {
-  min-width: 100%; /* Каждый слайд занимает ровно весь экран карусели */
-  flex-shrink: 0;
+.review-card {
   background-color: var(--white);
-  overflow: hidden;
-}
-
-/* Настраиваем сами изображения (твоя магия сохранена!) */
-.carousel-slide img {
-  width: 100%;
-  height: 450px; /* Сделали карусель повыше (450px вместо 250px), чтобы мопс и кот выглядели крупно и сочно */
-  object-fit: cover; /* Картинки из Шедеврума идеально впишутся без искажений */
-  display: block;
-}
-
-/* КРАСИВЫЕ КРУГЛЫЕ СТРЕЛОЧКИ ПОВЕРХ КАРТИНОК */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.7); /* Полупрозрачный белый фон */
-  color: #2b3d4a;
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%; /* Круглые кнопки */
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 10; /* Поднимаем стрелки НАД картинками */
-  transition: all 0.3s ease;
-}
-
-.carousel-btn:hover {
-  background-color: #ffffff;
-  transform: translateY(-50%) scale(1.1); /* Слегка увеличиваются при наведении */
-}
-
-.prev-btn { left: 20px; } /* Левая стрелка */
-.next-btn { right: 20px; } /* Правая стрелка */
-
-/* ========================================== */
-/* БЛОК «ЧАСТЫЕ ВОПРОСЫ» (FAQ)                */
-/* ========================================== */
-
-.faq-section {
-  padding: 60px 5%;
-  text-align: center;
-  background-color: var(
-    --white
-  ); /* Белый фон для контраста с кремово-голубым */
-}
-
-.faq-container {
-  max-width: 800px;
-  margin: 0 auto;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  min-width: calc(33.333% - 14px); 
+  box-sizing: border-box;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.faq-item {
-  background-color: var(--bg-color); /* Нежно-голубой фон плашек */
-  margin-bottom: 15px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-}
+.review-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
+.review-author { font-weight: bold; color: var(--text-color); }
+.review-stars { color: #ffb703; }
+.review-text { font-size: 15px; color: #555; line-height: 1.5; margin-bottom: 20px; font-style: italic; }
+.yandex-link { font-size: 13px; color: var(--primary-color); text-decoration: none; font-weight: 500; }
+.yandex-link:hover { text-decoration: underline; }
 
-/* Кнопка с вопросом */
+.carousel-btn {
+  background-color: var(--white);
+  border: none;
+  width: 40px; height: 40px; border-radius: 50%;
+  font-size: 18px; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex; justify-content: center; align-items: center;
+  transition: all 0.2s ease; z-index: 10;
+}
+.carousel-btn:hover { background-color: var(--primary-color); color: var(--white); }
+/* --- FAQ Accordion --- */
+.faq-section { padding: 60px 5%; text-align: center; background-color: var(--white); }
+.faq-container { max-width: 800px; margin: 0 auto; text-align: left; }
+.faq-item { background-color: var(--bg-color); margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02); }
+
 .faq-question {
   width: 100%;
   background: none;
@@ -707,95 +351,44 @@ header {
   transition: background-color 0.2s ease;
 }
 
-.faq-question:hover {
-  background-color: rgba(
-    91,
-    170,
-    220,
-    0.1
-  ); /* Легкая голубая подсветка при наведении */
-}
+.faq-question:hover { background-color: rgba(91, 170, 220, 0.1); }
+.faq-icon { font-size: 22px; color: var(--primary-color); transition: transform 0.3s ease; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: var(--white); }
+.faq-answer p { padding: 0 20px 20px 20px; color: #555; font-size: 15px; line-height: 1.6; }
 
-/* Плюс / Минус иконка */
-.faq-icon {
-  font-size: 22px;
-  color: var(--primary-color);
-  transition: transform 0.3s ease;
-}
-
-/* Блок с ответом (изначально скрыт) */
-.faq-answer {
-  max-height: 0; /* Магия анимации: схлопываем высоту до нуля */
-  overflow: hidden;
-  transition: max-height 0.3s ease-out; /* Плавное раскрытие */
-  background-color: var(--white);
-}
-
-.faq-answer p {
-  padding: 0 20px 20px 20px; /* Отступы для текста внутри */
-  color: #555;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* Класс-активатор, который мы будем давать через JS при клике */
-.faq-item.active .faq-answer {
-  max-height: 200px; /* Даем достаточную высоту, чтобы текст поместился */
-}
-
-.faq-item.active .faq-icon {
-  transform: rotate(
-    45deg
-  ); /* Поворачиваем плюс на 45 градусов, превращая в крестик */
-  color: var(--text-color);
-}
-
-/* ========================================== */
-/* СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА                  */
-/* ========================================== */
-
-/* 1. Темный полупрозрачный фон на весь экран */
+.faq-item.active .faq-answer { max-height: 200px; }
+.faq-item.active .faq-icon { transform: rotate(45deg); color: var(--text-color); }
+/* --- Modals & Footer --- */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Черный цвет с прозрачностью 50% */
-  display: flex;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: none;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Чтобы окно было поверх всех элементов сайта */
-
-  /* Изначально скрываем окно от пользователя */
-  display: none;
+  z-index: 1000; 
 }
 
-/* 2. Само белое окошко по центру */
 .modal-content {
   background-color: var(--white);
   padding: 40px;
   border-radius: 15px;
   max-width: 450px;
-  width: 90%; /* Чтобы красиво смотрелось на телефонах */
+  width: 90%; 
   text-align: center;
-  position: relative; /* Нужно для позиционирования крестика */
+  position: relative; 
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease; /* Плавное появление */
+  animation: fadeIn 0.3s ease; 
 }
 
-.modal-content h2 {
-  color: var(--primary-color);
-  margin-bottom: 15px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.modal-content p {
-  font-size: 16px;
-  margin-bottom: 25px;
-  color: var(--text-color);
-}
+.modal-content h2 { color: var(--primary-color); margin-bottom: 15px; }
+.modal-content p { font-size: 16px; margin-bottom: 25px; color: var(--text-color); }
 
-/* 3. Кнопка «Отлично, жду!» */
 .ok-btn {
   background-color: var(--primary-color);
   color: var(--white);
@@ -806,626 +399,26 @@ header {
   cursor: pointer;
   transition: background-color 0.2s;
 }
+.ok-btn:hover { background-color: #4392c4; }
 
-.ok-btn:hover {
-  background-color: #c98a5d; /* Делаем цвет чуть темнее при наведении */
-}
-
-/* 4. Кнопка-крестик в углу */
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: #999;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.close-btn:hover {
-  color: var(--text-color);
-}
-
-/* Эффект плавного проявления окошка */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Стили для картинки внутри модального окна */
-.modal-img {
-  width: 120px; /* Ширина картинки */
-  height: 120px; /* Высота точно такая же, так как формат 1 к 1 */
-  display: block; /* Включаем блочный режим для центрирования */
-  margin: 0 auto 20px; /* Центрируем и делаем отступ 20px снизу до текста */
-
-  border-radius: 50%; /* Идеально скругляет углы квадрата, превращая его в круг */
-  object-fit: cover; /* Защищает картинку от растягивания, если пропорции чуть нарушаться */
-
-  /* Необязательно: добавим очень тонкую и мягкую границу, 
-       чтобы белый фон картинки красиво отделялся от белого фона окна */
-  border: 3px solid var(--bg-color);
-}
-/* ========================================== */
-/* КНОПКА «НАВЕРХ»                            */
-/* ========================================== */
+.close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 28px; color: #999; cursor: pointer; transition: color 0.2s; }
+.close-btn:hover { color: var(--text-color); }
+.modal-img { width: 120px; height: 120px; display: block; margin: 0 auto 20px; border-radius: 50%; object-fit: cover; border: 3px solid var(--bg-color); }
 
 .to-top-button {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
+  position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
   background-color: var(--primary-color);
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; justify-content: center; align-items: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   z-index: 99;
-  /* ИЗМЕНЕНИЯ ТУТ: Изначально полностью прячем кнопку */
-  opacity: 0; /* Делаем её невидимой */
-  visibility: hidden; /* Отключаем возможность кликнуть по ней, пока она скрыта */
-  transform: translateY(
-    20px
-  ); /* Слегка опускаем вниз, чтобы при появлении она красиво выплывала */
-
-  /* Добавляем плавность для анимации появления */
+  opacity: 0; visibility: hidden; transform: translateY(20px);
   transition: all 0.4s ease;
 }
 
-/* НОВЫЙ КЛАСС: Этот класс мы будем добавлять через JavaScript, когда пользователь прокрутит страницу */
-.to-top-button.show {
-  opacity: 1; /* Делаем кнопку видимой */
-  visibility: visible; /* Возвращаем кликабельность */
-  transform: translateY(0); /* Возвращаем кнопку на её законное место */
-}
+.to-top-button.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.to-top-button svg { width: 24px; height: 24px; color: var(--white); transition: transform 0.3s ease; }
+.to-top-button:hover { background-color: var(--text-color); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); }
+.to-top-button:hover svg { transform: translateY(-3px); }
 
-/* Настраиваем размер и цвет векторной стрелочки внутри круга */
-.to-top-button svg {
-  width: 24px; /* Оптимальный размер стрелки */
-  height: 24px;
-  color: var(--white); /* Цвет стрелки станет белым */
-  transition: transform 0.3s ease; /* Добавим плавность для самой стрелочки */
-}
-
-/* Эффект при наведении курсора на кнопку */
-.to-top-button:hover {
-  background-color: var(--text-color);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-}
-
-/* Маленький дизайнерский трюк: при наведении вся кнопка стоит на месте, 
-   а стрелочка внутри неё слегка смещается вверх, подсказывая действие */
-.to-top-button:hover svg {
-  transform: translateY(-3px);
-}
-
-/* ========================================== */
-/* БЛОК ОТЗЫВОВ (КАРУСЕЛЬ ПЛИТОК)             */
-/* ========================================== */
-
-.reviews-section {
-  padding: 60px 5%;
-  text-align: center;
-  background-color: var(--bg-color); /* Нежный кремовый фон */
-}
-
-/* Главный оберточный контейнер карусели со стрелками */
-.carousel-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  position: relative;
-  gap: 15px;
-}
-
-/* Окно, сквозь которое видно только часть плиток (остальное скрыто) */
-.carousel-track-wrapper {
-  overflow: hidden;
-  width: 100%;
-  padding: 10px 0;
-}
-
-/* Длинная лента-рельс, на которой стоят плитки */
-.carousel-track {
-  display: flex;
-  gap: 20px;
-  transition: transform 0.4s ease-in-out; /* Плавная анимация прокрутки */
-  will-change: transform;
-}
-
-/* Сама плитка отзыва */
-.review-card {
-  background-color: var(--white);
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-  min-width: calc(
-    33.333% - 14px
-  ); /* Показываем ровно 3 плитки на экране компьютера */
-  box-sizing: border-box;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Стили заголовка плитки */
-.review-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.review-author {
-  font-weight: bold;
-  color: var(--text-color);
-}
-
-.review-stars {
-  color: #ffb703; /* Золотой цвет для звездочек */
-}
-
-.review-text {
-  font-size: 15px;
-  color: #555;
-  line-height: 1.5;
-  margin-bottom: 20px;
-  font-style: italic;
-}
-
-/* Ссылка на Яндекс */
-.yandex-link {
-  font-size: 13px;
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.yandex-link:hover {
-  text-decoration: underline;
-}
-
-/* Кнопки стрелочек */
-.carousel-btn {
-  background-color: var(--white);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease;
-  z-index: 10;
-}
-
-.carousel-btn:hover {
-  background-color: var(--primary-color);
-  color: var(--white);
-}
-/* 1. Настраиваем внешний вид обеих кнопок */
-.promo-btn {
-  position: absolute;       /* Позволяет кнопкам летать поверх картинок */
-  top: 50%;                 /* Опускает кнопки ровно на середину высоты баннера */
-  transform: translateY(-50%); /* Выравнивает их идеально по центру по вертикали */
-  
-  width: 50px;              /* Ширина круга */
-  height: 50px;             /* Высота круга */
-  background-color: rgba(255, 255, 255, 0.7); /* Белый цвет с легкой прозрачностью */
-  border: none;             /* Убираем стандартную черную рамку кнопки */
-  border-radius: 50%;       /* Делает кнопку идеально круглой */
-  
-  color: #333;              /* Цвет самой стрелочки внутри круга */
-  font-size: 24px;          /* Размер стрелочки */
-  display: flex;            /* Включаем режим гибкой раскладки... */
-  align-items: center;      /* ...чтобы выровнять стрелочку по центру круга по вертикали */
-  justify-content: center;  /* ...и по горизонтали */
-  
-  cursor: pointer;          /* Меняет курсор мышки на палец при наведении */
-  z-index: 10;              /* Выносит кнопки на самый верхний слой, чтобы они не спрятались под картинку */
-  transition: all 0.3s ease; /* Делает анимацию наведения плавной */
-}
-
-/* 2. Левую кнопку двигаем к левому краю */
-.prev-promo {
-  left: 20px;               /* Отступ 20 пикселей от левого края */
-}
-
-/* 3. Правую кнопку двигаем к правому краю */
-.next-promo {
-  right: 20px;              /* Отступ 20 пикселей от правого края */
-}
-
-/* 4. Что происходит, когда мы наводим мышку на кнопку */
-.promo-btn:hover {
-  background-color: rgba(255, 255, 255, 1); /* Кнопка теряет прозрачность и становится ярко-белой */
-  transform: translateY(-50%) scale(1.1);   /* Кнопка приятно увеличивается в размере */
-}
-/* --- ФИНАЛЬНЫЙ СТИЛЬНЫЙ ТЕКСТ ПО РАЗМЕРУ --- */
-
-.promo-text-badge {
-  position: absolute;
-  bottom: 35px;
-  
-  /* Эффект стекла */
-  background: rgba(255, 255, 255, 0.15); 
-  backdrop-filter: blur(16px); 
-  -webkit-backdrop-filter: blur(16px); 
-  border: 1px solid rgba(255, 255, 255, 0.25); 
-  border-radius: 16px;      
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); 
-  z-index: 5;
-
-  /* Внутренние отступы: 18px сверху/снизу и 30px слева/справа */
-  padding: 18px 30px;       
-
-  /* ИСПРАВЛЕНИЕ: Плашка сжимается точно под размер текста по ширине и высоте */
-  width: max-content; 
-  height: auto;             /* Убираем лишнюю пустую высоту снизу */
-  max-width: 65%;           
-}
-
-.promo-text-badge h3 {
-  color: #ffffff;
-  margin: 0;
-  
-  /* ИСПРАВЛЕНИЕ: Делаем шрифт крупным и читаемым */
-  font-size: 28px;          
-  font-weight: 600;         
-  letter-spacing: -0.5px;   
-  line-height: 1.2;
-}
-
-/* Отступ слева от стрелочки */
-.promo-badge-left {
-  left: 90px;
-  right: auto;              
-}
-
-/* Отступ справа (для других слайдов) */
-.promo-badge-right {
-  right: 90px;
-  left: auto;               
-}
-/* --- ПЕРЕНОСИМ КАРТОЧКУ ВЫШЕ В КРАСНУЮ РАМКУ --- */
-
-.modern-glass-badge {
-  position: absolute !important;
-  
-  /* ИСПРАВЛЕНИЕ: Отключаем старый центр по вертикали и поднимаем в рамку */
-  top: auto !important;           
-  bottom: 220px !important;       /* Подняли высоко, ровно в твою рамку */
-  transform: none !important;     /* Сбрасываем старый перекос! */
-  left: 95px !important;         
-  
-  background: rgba(255, 255, 255, 0.12) !important; 
-  backdrop-filter: blur(20px) !important;        
-  -webkit-backdrop-filter: blur(20px) !important; 
-  
-  border: 1px solid rgba(255, 255, 255, 0.2) !important; 
-  border-radius: 20px !important; 
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12) !important; 
-  z-index: 5 !important;
-  
-  padding: 24px 32px !important;       
-  width: 320px !important; 
-  height: auto !important;             
-}
-
-.modern-glass-badge h3 {
-  color: #ffffff !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 26px !important;          
-  font-weight: 600 !important;         
-  line-height: 1.3 !important;   
-}
-/* ========================================================
-   ПОЛНАЯ ПЕРЕСБОРКА ШАПКИ (ЖЕСТКИЙ СБРОС СТАРЫХ СТИЛЕЙ)
-======================================================== */
-
-/* Белая полоса на весь экран от края до края */
-.site-header {
-  width: 100% !important;
-  max-width: none !important;
-  background-color: #ffffff !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important; /* Мягкая тень снизу */
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 100 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Ограничитель контента по центру карусели */
-.header-wrap {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 16px 20px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Логотип и текст слева */
-.brand-group {
-  display: flex !important;
-  align-items: center !important;
-  gap: 14px !important;
-  text-decoration: none !important;
-}
-.logo-img {
-  width: 44px !important;
-  height: 44px !important;
-  object-fit: contain !important;
-}
-.brand-name {
-  font-size: 26px !important;
-  font-weight: 800 !important;
-  color: #1a1a1a !important;
-  letter-spacing: -0.5px !important;
-}
-
-/* Меню навигации в центре */
-.nav {
-  display: flex !important;
-  flex-direction: row !important; /* Выстраиваем ссылки строго в ряд, а не в столбик! */
-  gap: 40px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.menu-link {
-  text-decoration: none !important;
-  color: #555555 !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  transition: all 0.2s ease !important;
-}
-.menu-link:hover {
-  color: #2b78e4 !important;
-}
-
-/* Кнопка телефона справа */
-.phone-link {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  text-decoration: none !important;
-  color: #1a1a1a !important;
-  font-weight: 700 !important;
-  font-size: 16px !important;
-  border: 2px solid #eef2f7 !important;
-  padding: 10px 18px !important;
-  border-radius: 50px !important;
-  transition: all 0.2s ease !important;
-}
-.phone-icon-img {
-  width: 20px !important;
-  height: 20px !important;
-}
-.phone-link:hover {
-  color: #2b78e4 !important;
-  border-color: #2b78e4 !important;
-  background-color: #f4f8ff !important;
-}
-/* ========================================================
-   ИДЕАЛЬНАЯ УЛЬТРА-СТЕКЛЯННАЯ ШАПКА САЙТА (ИСПРАВЛЕННАЯ)
-======================================================== */
-
-/* 1. Анимация плавного проявления шапки при загрузке */
-@keyframes fadeInHeader {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 2. Сама шапка — НАСТОЯЩЕЕ МАТОВОЕ СТЕКЛО (ГЛАССМОРФИЗМ) */
-.site-header {
-  width: 100% !important;
-  max-width: none !important;
-  
-  /* Эффект глубокого стекла: фон очень прозрачный, но задний план мощно размыт */
-  background-color: rgba(255, 255, 255, 0.35) !important;  
-  backdrop-filter: blur(30px) !important;
-  -webkit-backdrop-filter: blur(30px) !important;
-  
-  /* Тонкий глянцевый контур снизу и мягкая парящая тень */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04) !important; 
-  
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 100 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  
-  transition: all 0.3s ease !important;
-  animation: fadeInHeader 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
-}
-
-/* 3. Ограничитель содержимого шапки по центру карусели (1200px) */
-.header-wrap {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 16px 20px !important; /* Стартовые пышные отступы */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  transition: all 0.3s ease !important;
-}
-
-/* 4. ЛОГОТИП И БРЕНД (Левая часть) */
-.brand-group {
-  display: flex !important;
-  align-items: center !important;
-  gap: 14px !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease !important;
-}
-.logo-img {
-  width: 44px !important;
-  height: 44px !important;
-  object-fit: contain !important;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Упругий поворот лапки */
-}
-.brand-name {
-  font-size: 26px !important;
-  font-weight: 800 !important;
-  color: #1a1a1a !important;
-  letter-spacing: -0.5px !important;
-  transition: color 0.3s ease !important;
-}
-
-/* Эффект лапки при наведении мышки */
-.brand-group:hover .logo-img {
-  transform: rotate(10deg) scale(1.05) !important; /* Лапка игриво косится */
-}
-.brand-group:hover .brand-name {
-  color: #2b78e4 !important; /* Текст синеет */
-}
-
-/* 5. МЕНЮ НАВИГАЦИИ (Центральная часть) */
-.nav {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 40px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.menu-link {
-  text-decoration: none !important;
-  color: #555555 !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  position: relative !important;
-  padding: 6px 14px !important;
-  border-radius: 10px !important;
-  transition: all 0.3s ease !important;
-}
-
-/* Умная синяя рамочка вокруг пунктов меню */
-.menu-link::after {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  border: 2px solid #2b78e4 !important;
-  border-radius: 10px !important;
-  box-sizing: border-box !important;
-  opacity: 0 !important;
-  transform: scale(1.1) !important;
-  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1) !important;
-}
-
-/* Эффект меню при наведении мышки */
-.menu-link:hover {
-  color: #2b78e4 !important;
-  background-color: rgba(43, 120, 228, 0.04) !important;
-}
-.menu-link:hover::after {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-}
-
-/* 6. КНОПКА ТЕЛЕФОНА (Правая часть) */
-.phone-link {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  text-decoration: none !important;
-  color: #1a1a1a !important;
-  font-weight: 700 !important;
-  font-size: 16px !important;
-  border: 2px solid #eef2f7 !important;
-  padding: 10px 18px !important;
-  border-radius: 50px !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-.phone-icon-img {
-  width: 20px !important;
-  height: 20px !important;
-  transition: all 0.3s ease !important;
-}
-
-/* Эффект телефона при наведении мышки */
-.phone-link:hover {
-  color: #ffffff !important;
-  background-color: #2b78e4 !important;
-  border-color: #2b78e4 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(43, 120, 228, 0.2) !important;
-}
-
-/* ИСПРАВЛЕНО: Значок телефона теперь просто плавно увеличивается и не исчезает! */
-.phone-link:hover .phone-icon-img {
-  transform: scale(1.1) !important;
-}
-
-/* 7. УМЕНЬШЕНИЕ ШАПКИ ПРИ СКРОЛЛЕ (Сработает вместе с JS-кодом) */
-.site-header.shrunk .header-wrap {
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
-}
-.site-header.shrunk .logo-img {
-  width: 36px !important;
-  height: 36px !important;
-}
-.site-header.shrunk .brand-name {
-  font-size: 22px !important;
-}
-/* Современный и аккуратный контейнер для текста */
-.new-clean-banner-box {
-  position: absolute;
-  
-  /* Размещаем текст на пустой стене слева, чтобы он не налезал на мопса */
-  top: 35%;           
-  left: 100px;         
-  z-index: 5;
-  
-  max-width: 550px; 
-}
-
-/* Красивый, дорогой и читаемый шрифт */
-.new-clean-banner-box h3 {
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
-  
-  /* Делаем шрифт современным (без засечек) */
-  font-family: 'Inter', 'Montserrat', sans-serif;
-  
-  font-size: 38px;          /* Крупный размер */
-  font-weight: 800;          /* Плотные, солидные буквы */
-  line-height: 1.25;         /* Комфортный отступ между строками */
-  letter-spacing: -0.5px;    /* Слегка сближаем буквы, так выглядит премиальнее */
-  
-  /* Твоя отличная идея с мягкой тенью, чтобы текст читался на светлой плитке */
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 
-               0 2px 4px rgba(0, 0, 0, 0.2);
-}
-/* тестовая строка для коммита и проверки расширения gitdoc */
+.footer { background-color: var(--text-color); color: var(--white); text-align: center; padding: 30px; font-size: 14px; }
