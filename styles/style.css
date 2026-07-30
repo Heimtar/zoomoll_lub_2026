@@ -208,17 +208,21 @@ h1, h2, h3, button, a, input, textarea {
 .next-promo { right: 20px; }
 .promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
 
-/* --- Универсальная глянцевая синяя плашка (Оригинальные размеры) --- */
+/* --- Универсальная глянцевая синяя плашка (Финальный чистый вариант) --- */
 .new-clean-banner-box {
   position: absolute;
   z-index: 5;
   max-width: 520px;         
-  padding: 26px 32px;       /* Размеры строго как в вашем первом варианте */
+  padding: 26px 32px;       
   border-radius: 24px;      
   box-sizing: border-box;
   
-  /* Плотный благородный синий цвет под цвет вашего нижнего блока */
-  background: rgba(15, 23, 42, 0.88);       
+  /* ПРАВИЛЬНАЯ ВЫСОТА: плашка сама растягивается под текст, синьор одобрит */
+  height: auto;
+  min-height: max-content;
+  
+  /* ТОЧНЫЙ ЦВЕТ ИЗ БЛОКА .HERO (с легким эффектом стекла) */
+  background: rgba(30, 41, 59, 0.9);       
   
   /* Эффект матового стекла по краям */
   backdrop-filter: blur(15px);   
@@ -235,26 +239,27 @@ h1, h2, h3, button, a, input, textarea {
 
 /* Общие стили заголовков внутри стеклянных плашек */
 .new-clean-banner-box h3 {
-  color: #ffffff;           /* Изменено на белый для максимального контраста */
-  font-size: 25px;          /* Оригинальный размер */
+  color: #ffffff;           
+  font-size: 25px;          
   font-weight: 800;          
-  line-height: 1.3;         /* Оригинальный интервал */
-  letter-spacing: -0.5px;   /* Оригинальный трекинг */
-  margin: 0 0 10px 0;       /* Оригинальный отступ */
+  line-height: 1.3;         
+  letter-spacing: -0.5px;   
+  margin: 0 0 10px 0;       
   padding: 0;    
   text-shadow: none;        
 }
 
 /* Общие стили списков услуг внутри стеклянных плашек */
 .new-clean-banner-box p {
-  color: rgba(255, 255, 255, 0.85); /* Изменено на матовый белый */
-  font-size: 14px;          /* Оригинальный размер */
+  color: rgba(255, 255, 255, 0.85); 
+  font-size: 14px;          
   font-weight: 600;          
-  line-height: 1.45;        /* Оригинальный интервал */
+  line-height: 1.45;        
   margin: 0;
   padding: 0;
   text-shadow: none;
 }
+
 
 
 /* --- Идеальное расположение плашек  --- */
