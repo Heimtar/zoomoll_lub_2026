@@ -544,14 +544,17 @@ h1, h2, h3, button, a, input, textarea {
   .phone-link { padding: 8px 14px; font-size: 14px; }
   .phone-icon-img { width: 16px; height: 16px; }
 
-  /* Возвращена оригинальная адаптивность без лишних плашек */
+  /* Возвращена оригинальная адаптивность без лишних плашек и БЕЗ !important */
   .new-clean-banner-box {
-    max-width: 100% !important; 
+    max-width: 100%; /* ИСПРАВЛЕНО: убрали !important */
     left: 16px; 
     right: 16px;
     padding: 16px 20px;
-    background: radial-gradient(circle, rgba(var(--banner-glow-color), 0.95) 0%, rgba(var(--banner-glow-color), 0.6) 80%, transparent 100%);
+    
+    /* ИСПРАВЛЕНО: заменили старую переменную на наш новый благородный цвет тумана */
+    background: radial-gradient(circle, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 80%, transparent 100%);
   }
+
   
   .new-clean-banner-box h3 { font-size: 22px; margin-bottom: 8px; text-align: center; }
   .new-clean-banner-box p { font-size: 13px; text-align: center; }
