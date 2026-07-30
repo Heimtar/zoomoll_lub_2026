@@ -250,8 +250,8 @@ h1, h2, h3, button, a, input, textarea {
 
 /* 1. Плашка Мопса: Слева вверху на сером фоне */
 .box-mops {
-  left: 60px;
-  top: 40px;               /* Подняли вверх на пустую стену */
+  left: 230px;
+  top: 50px;               /* Подняли вверх на пустую стену */
   bottom: auto;
   right: auto;
   transform: none;         /* Отключили старое центрирование по центру */
@@ -259,7 +259,7 @@ h1, h2, h3, button, a, input, textarea {
 
 /* 2. Плашка Ретривера: Справа по центру на серой плитке */
 .box-bath-dog {
-  right: 80px;
+  right: 60px;
   left: auto;
   top: 50%; 
   bottom: auto;
