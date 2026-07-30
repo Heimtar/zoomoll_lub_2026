@@ -215,7 +215,49 @@ h1, h2, h3, button, a, input, textarea {
   transition: all 0.3s ease; 
 }
 
-/* --- Идеальное расположение плашек --- */
+/* ВОЗВРАЩЕНО НА ИСХОДНЫЕ МЕСТА: Стрелки ровно по бокам баннера */
+.prev-promo { left: 20px; }
+.next-promo { right: 20px; }
+.promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
+
+/* --- Крупный левосторонний текст БЕЗ плашки (ВАШ ОРИГИНАЛ) --- */
+.new-clean-banner-box {
+  position: absolute;
+  z-index: 5;
+  max-width: 540px;            
+  padding: 0; 
+  background: transparent;     
+  border: none;                
+  box-shadow: none;            
+  left: 60px;                  
+  top: 50%;                    
+  transform: translateY(-50%); 
+}
+
+.new-clean-banner-box h3 {
+  color: #ffffff;           
+  font-size: 32px;                     
+  font-weight: 900;                      
+  line-height: 1.2;         
+  letter-spacing: -0.5px;   
+  margin: 0 0 14px 0;          
+  padding: 0;    
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.7); 
+  text-align: left;            
+}
+
+.new-clean-banner-box p {
+  color: #ffffff;              
+  font-size: 16px;                       
+  font-weight: 700;                      
+  line-height: 1.45;        
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.7); 
+  text-align: left;            
+}
+
+/* --- Ваше расположение плашек для остальных животных --- */
 .box-mops {
   left: 100px;
   top: 50px;               
@@ -247,49 +289,6 @@ h1, h2, h3, button, a, input, textarea {
   font-size: 13px;         
   font-weight: 600;
   line-height: 1.4;
-}
-
-/* --- Крупный левосторонний текст баннера --- */
-.new-clean-banner-box {
-  position: absolute;
-  z-index: 5;
-  max-width: 520px;            
-  padding: 26px 32px; 
-  border-radius: 24px;
-  box-sizing: border-box;
-  height: auto;
-  min-height: max-content;
-  left: 60px;                  
-  top: 50%;                    
-  transform: translateY(-50%); 
-  --banner-glow-color: 51, 65, 85;
-  background: linear-gradient(90deg, rgba(var(--banner-glow-color), 0.9) 0%, rgba(var(--banner-glow-color), 0.45) 60%, transparent 100%);
-  border: none;                
-  box-shadow: none;            
-  word-break: break-word;
-}
-
-.new-clean-banner-box h3 {
-  color: #ffffff;           
-  font-size: 32px;                     
-  font-weight: 900;                      
-  line-height: 1.2;         
-  letter-spacing: -0.5px;   
-  margin: 0 0 14px 0;          
-  padding: 0;    
-  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.5); 
-  text-align: left;            
-}
-
-.new-clean-banner-box p {
-  color: #ffffff;              
-  font-size: 14px;                       
-  font-weight: 600;                      
-  line-height: 1.45;        
-  margin: 0;
-  padding: 0;
-  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.5); 
-  text-align: left;            
 }
 
 .hero {
@@ -499,17 +498,8 @@ h1, h2, h3, button, a, input, textarea {
 
 .footer { background-color: var(--text-color); color: var(--white); text-align: center; padding: 30px; font-size: 14px; }
 
-.promo-btn:hover {
-  background-color: rgba(255, 255, 255, 0.95); 
-  transform: translateY(-50%) scale(1.08);       
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);   
-}
-
-.promo-btn.prev-promo { transform: translateX(20px); }
-.promo-btn.next-promo { transform: translateX(-20px); }
-
 /* ==========================================================================
-   ИСПРАВЛЕНО: АДАПТИВНОСТЬ ПЕРЕНЕСЕНА В САМЫЙ КОНЕЦ ФАЙЛА ДЛЯ ЗАЩИТЫ КАСКАДА
+   ИСПРАВЛЕНО: АДАПТИВНОСТЬ ПЕРЕНЕСЕНА В САМЫЙ КОНЕЦ ДЛЯ ЗАЩИТЫ КАСКАДА
    ========================================================================== */
 @media (max-width: 768px) {
   .site-header .nav { gap: 16px; }
@@ -517,8 +507,9 @@ h1, h2, h3, button, a, input, textarea {
   .phone-link { padding: 8px 14px; font-size: 14px; }
   .phone-icon-img { width: 16px; height: 16px; }
 
+  /* Возвращена оригинальная адаптивность без лишних плашек */
   .new-clean-banner-box {
-    max-width: 100% !important; /* Гарантия защиты от горизонтального скролла */
+    max-width: 100% !important; 
     left: 16px; 
     right: 16px;
     padding: 16px 20px;
