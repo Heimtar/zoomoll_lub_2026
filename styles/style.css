@@ -208,7 +208,7 @@ h1, h2, h3, button, a, input, textarea {
 .next-promo { right: 20px; }
 .promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
 
-/* --- Тонированное матовое стекло (Glassmorphism Premium) --- */
+/* --- Плотная контрастная подложка (Чистый синьорский код без стекла) --- */
 .new-clean-banner-box {
   position: absolute;
   z-index: 5;
@@ -221,19 +221,17 @@ h1, h2, h3, button, a, input, textarea {
   height: auto;
   min-height: max-content;
   
-  /* СТЕКЛО: Полупрозрачная сине-графитовая основа */
-  background: rgba(51, 65, 85, 0.45);       
+  /* ТОТ САМЫЙ ИДЕАЛЬНЫЙ ЦВЕТ ПОДЛОЖКИ */
+  background: rgba(51, 65, 85, 0.85);       
   
-  /* МАКСИМАЛЬНОЕ РАЗМЫТИЕ: делает стекло плотным и матовым, спасает текст от пестрого фона */
-  backdrop-filter: blur(25px) saturate(160%);   
-  -webkit-backdrop-filter: blur(25px) saturate(160%);
+  /* УБРАЛИ СТЕКЛО (Удалили backdrop-filter, чтобы код не был грязным) */
   
-  /* Яркая глянцевая рамка (имитация блика на грани стекла) */
-  border: 1px solid rgba(255, 255, 255, 0.25);   
+  /* Тонкий аккуратный контур, чтобы плашка не сливалась с темными углами */
+  border: 1px solid rgba(255, 255, 255, 0.1);   
   
-  /* ОБЪЕМ: внутреннее свечение фаски (inset) + мягкая глубокая тень */
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4), 
-              0 20px 40px -10px rgba(15, 23, 42, 0.35);
+  /* МЯГКИЙ ОБЪЕМ: глубокая многослойная тень, которая приподнимает плашку над фото */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+              0 20px 40px -8px rgba(15, 23, 42, 0.3);
 }
 
 /* Стили заголовков внутри плашек */
@@ -250,7 +248,7 @@ h1, h2, h3, button, a, input, textarea {
 
 /* Стили описания услуг внутри плашек */
 .new-clean-banner-box p {
-  color: rgba(255, 255, 255, 0.95); /* Сделали текст чуть белее для идеального контраста на стекле */
+  color: rgba(255, 255, 255, 0.95); 
   font-size: 14px;          
   font-weight: 600;          
   line-height: 1.45;        
