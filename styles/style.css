@@ -586,3 +586,126 @@ h1, h2, h3, button, a, input, textarea {
 .promo-btn.next-promo { 
   transform: translateX(-20px); 
 }
+/* --- Плавный скролл для всего сайта --- */
+html {
+    scroll-behavior: smooth;
+}
+section {
+    scroll-margin-top: 90px; /* Чтобы шапка не закрывала заголовки разделов при прокрутке */
+}
+
+/* --- Новые стили для телефона с лапкой --- */
+.phone-link {
+    display: inline-flex;       
+    align-items: center;        
+    text-decoration: none;      
+    color: #2c3e50;             
+    font-weight: 600;
+    transition: color 0.3s ease; 
+}
+
+.paw-icon {
+    width: 22px;                
+    height: 22px;
+    margin-right: 8px;          
+    color: #00a8ff;             /* Ваш фирменный голубой цвет */
+    transition: transform 0.3s ease, color 0.3s ease; 
+}
+
+.phone-link:hover {
+    color: #00a8ff;             
+}
+
+.phone-link:hover .paw-icon {
+    color: #ff9f43;             /* Лапка меняет цвет на теплый оранжевый при наведении */
+    transform: rotate(-15deg) scale(1.1); /* Лапка забавно наклоняется */
+}
+
+/* --- Стили для блока отзывов (Карусель) --- */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.carousel-track-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px; 
+    transition: transform 0.5s ease; 
+}
+
+.review-card {
+    min-width: calc(33.333% - 14px); /* Отображает по 3 карточки в ряд */
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.review-author {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.review-stars {
+    color: #ffb142; /* Золотые звезды */
+}
+
+.review-text {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.yandex-link {
+    color: #00a8ff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.yandex-link:hover {
+    text-decoration: underline;
+}
+
+.carousel-btn {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+    background: #00a8ff;
+    color: white;
+    border-color: #00a8ff;
+}
