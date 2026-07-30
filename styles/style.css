@@ -250,8 +250,8 @@ h1, h2, h3, button, a, input, textarea {
 
 /* 1. Плашка Мопса: Слева вверху на сером фоне */
 .box-mops {
-  left: 140px;
-  top: 40px;               /* Подняли вверх на пустую стену */
+  left: 100px;
+  top: 50px;               /* Подняли вверх на пустую стену */
   bottom: auto;
   right: auto;
   transform: none;         /* Отключили старое центрирование по центру */
@@ -490,3 +490,17 @@ h1, h2, h3, button, a, input, textarea {
 .to-top-button:hover svg { transform: translateY(-3px); }
 
 .footer { background-color: var(--text-color); color: var(--white); text-align: center; padding: 30px; font-size: 14px; }
+/* --- Финальные интерактивные микровзаимодействия --- */
+
+/* Плавный и дорогой отклик кнопок-стрелок при наведении курсора */
+.promo-btn:hover {
+  background-color: rgba(255, 255, 255, 0.95); 
+  transform: translateY(-50%) scale(1.08);       /* Мягкое увеличение кружка */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);   /* Элегантная тень */
+}
+
+/* Идеальное центрирование контента в блоке Hero по сетке */
+.hero-content {
+  margin-left: auto;
+  margin-right: auto;
+}
