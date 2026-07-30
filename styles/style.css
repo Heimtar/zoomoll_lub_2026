@@ -343,9 +343,12 @@ h1, h2, h3, button, a, input, textarea {
 .hero-content h1 { font-size: 52px; font-weight: 800; color: var(--white); margin-bottom: 24px; line-height: 1.15; letter-spacing: -1px; }
 .hero-content p { font-size: 20px; color: #cbd5e1; margin-bottom: 45px; line-height: 1.6; }
 
+/* ==========================================================================
+   КНОПКА ЗАПИСАТЬСЯ: ЯРКОЕ ПРЕМИАЛЬНОЕ СТЕКЛО (Идеальный баланс)
+   ========================================================================== */
 #cta-btn {
-  /* Базовый цвет: глубокий, дорогой цвет ночного неба (сливается с фоном Hero) */
-  background: linear-gradient(135deg, #151e2e 0%, #1e293b 100%);
+  /* ИСПРАВЛЕНО: Сделали базовый цвет заметно светлее и сочнее (графитово-синий) */
+  background: linear-gradient(135deg, #232f42 0%, #151e2e 100%);
   color: var(--white);
   padding: 16px 44px;
   border: none;
@@ -358,55 +361,60 @@ h1, h2, h3, button, a, input, textarea {
   z-index: 2;
   overflow: hidden; /* Срезаем лазерный блик по углам */
   
-  /* Тонкая, едва заметная бирюзовая рамка для связи с телефоном из шапки */
-  border: 1px solid rgba(0, 223, 216, 0.25);
+  /* ИСПРАВЛЕНО: Сделали бирюзовую неоновую рамку намного ярче и заметнее */
+  border: 1px solid rgba(0, 223, 216, 0.65);
   
-  /* Мягкая, глубокая тень парения вместо ядовитого неонового взрыва */
+  /* Добавили внутренний хайлайт для ощущения объема */
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.1), 
-    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
-    0 4px 15px rgba(15, 23, 42, 0.3);       
-  
+    inset 0 1px 0 rgba(255, 255, 255, 0.2), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+    0 4px 15px rgba(0, 223, 216, 0.15); /* Мягкий бирюзовый отсвет в спокойном состоянии */
+      
   transition: transform 0.3s cubic-bezier(0.15, 0.85, 0.35, 1), 
               box-shadow 0.3s cubic-bezier(0.15, 0.85, 0.35, 1),
-              border-color 0.3s ease;
+              border-color 0.3s ease,
+              background 0.3s ease;
 }
 
-/* Скрытый внутри белый лазерный луч */
+/* ЯРКИЙ ВНУТРЕННИЙ ЛАЗЕРНЫЙ БЛИК */
 #cta-btn::before {
   content: '';
   position: absolute;
   top: 0; left: -150%; width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-  transform: skewX(-20deg);
+  
+  /* ИСПРАВЛЕНО: Сделали скользящий луч более плотным и белым */
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  
+  transform: skewX(-20deg); 
   transition: none;
 }
 
-/* Эффект при наведении курсора */
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA */
 #cta-btn:hover {
-  transform: translateY(-3px) scale(1.01); /* Легкое благородное приподнимание */
+  transform: translateY(-3px) scale(1.015); 
   
-  /* Рамка плавно загорается яркой бирюзой, очерчивая кнопку */
-  border-color: rgba(0, 223, 216, 0.7);
+  /* При ховере кнопка становится еще ярче и контрастнее */
+  background: linear-gradient(135deg, #2d3d56 0%, #1c283d 100%);
+  border-color: #00dfd8; /* Рамка вспыхивает чистым неоном */
   
-  /* Снизу под кнопкой загорается аккуратное, дорогое бирюзовое облако */
+  /* Под кнопкой загорается сочное, но аккуратное бирюзовое облако */
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.15), 
-    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
-    0 8px 24px rgba(0, 223, 216, 0.2); 
+    inset 0 1px 0 rgba(255, 255, 255, 0.25), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 223, 216, 0.4); 
 }
 
-/* Запуск скольжения белого луча при наведении */
+/* Плавный запуск лазера при наведении */
 #cta-btn:hover::before {
   left: 150%;
   transition: left 0.7s cubic-bezier(0.3, 1, 0.2, 1);
 }
 
-/* Физический отклик при клике мышкой (Кнопка честно вдавливается) */
+/* Клик мышкой */
 #cta-btn:active { 
   transform: translateY(-1px) scale(0.98); 
   box-shadow: 
-    inset 0 3px 5px rgba(0, 0, 0, 0.3),
+    inset 0 3px 5px rgba(0, 0, 0, 0.4),
     0 2px 6px rgba(0, 0, 0, 0.2); 
 }
 
