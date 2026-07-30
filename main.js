@@ -110,13 +110,15 @@ function initReviewsSlider() {
   };
 
   const moveNext = () => {
-    const maxIndex = track.children.length - 1; 
+    // Останавливаемся, когда видны последние 3 карточки на экране
+    const maxIndex = track.children.length - 3; 
     index = index < maxIndex ? index + 1 : 0;
     track.style.transform = `translateX(-${index * getSlideWidth()}px)`;
   };
 
   const movePrev = () => {
-    index = index > 0 ? index - 1 : track.children.length - 1;
+    const maxIndex = track.children.length - 3;
+    index = index > 0 ? index - 1 : maxIndex;
     track.style.transform = `translateX(-${index * getSlideWidth()}px)`;
   };
 
