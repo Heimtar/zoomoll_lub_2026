@@ -208,71 +208,56 @@ h1, h2, h3, button, a, input, textarea {
 .next-promo { right: 20px; }
 .promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
 
-/* --- Минималистичные контрастные плашки без размытия заднего плана --- */
+/* --- Элегантная парящая типографика без плашек и фонов --- */
 .new-clean-banner-box {
   position: absolute;
   z-index: 5;
-  max-width: 460px;         
-  padding: 28px 36px;       
-  border-radius: 20px;      
+  max-width: 550px;         /* Свободная ширина для красивого переноса строк */
+  padding: 0;               /* Убираем рамки и отступы, текст дышит свободно */
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
 
 .new-clean-banner-box h3 {
-  font-size: 26px;          
+  color: #ffffff;           /* Белоснежные благородные буквы */
+  font-size: 36px;          /* Крупный, дорогой размер заголовка */
   font-weight: 800;          
-  line-height: 1.35;        
+  line-height: 1.25;         
   letter-spacing: -0.5px;
   margin: 0;
-  padding: 0;    
+  padding: 0;
+  /* Синьорская магия: мягкая двойная тень, чтобы белый текст читался даже на светлом фоне */
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 
+               0 2px 4px rgba(0, 0, 0, 0.2);   
 }
 
-/* 1. Плашка Мопса: Чистый, благородный белый глянец */
+/* 1. Текст Мопса: Слева по центру, ближе к верху */
 .box-mops {
-  left: 60px;
+  left: 80px;
   top: 30%; 
   bottom: auto;
   transform: translateY(-50%);
-  background-color: #ffffff; 
-  border: 1px solid #e2e8f0;  
-  box-shadow: 0 12px 30px rgba(43, 61, 74, 0.08); 
-}
-.box-mops h3 {
-  color: var(--text-color);   
 }
 
-/* 2. Плашка Ретривера: Глубокий, матовый темно-угольный цвет (под серую плитку) */
+/* 2. Текст Ретривера: Справа по центру на плитке */
 .box-bath-dog {
-  right: 60px;
+  right: 80px;
   left: auto;
   top: 50%; 
   bottom: auto;
   transform: translateY(-50%);
-  background-color: #1e293b; 
-  border: 1px solid #334155;  
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-.box-bath-dog h3 {
-  color: #ffffff;             
+  text-align: right;        /* Изящно выравниваем строки по правому краю */
 }
 
-/* 3. Плашка Котика: Стильный графитовый минимализм сверху */
+/* 3. Текст Котика: Сверху по центру */
 .box-cat {
   left: 50%;
-  top: 40px; 
+  top: 50px; 
   bottom: auto;
   right: auto;
   transform: translateX(-50%); 
-  text-align: center;
-  background-color: #0f172a; 
-  border: 1px solid #1e293b;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;       
 }
-.box-cat h3 {
-  color: #ffffff;
-}
-
 
 .hero {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
