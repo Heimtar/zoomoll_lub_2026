@@ -315,7 +315,8 @@ h1, h2, h3, button, a, input, textarea {
 .hero-content p { font-size: 20px; color: #cbd5e1; margin-bottom: 45px; line-height: 1.6; }
 
 #cta-btn {
-  background: linear-gradient(135deg, #0070f3 0%, #00dfd8 100%);
+  /* Спокойный, благородный синий градиент в тон сайта */
+  background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
   color: var(--white);
   padding: 16px 44px;
   border: none;
@@ -325,26 +326,34 @@ h1, h2, h3, button, a, input, textarea {
   cursor: pointer;
   display: inline-block;
   position: relative;
-  box-shadow: 0 4px 14px rgba(0, 112, 243, 0.3);       
-  transition: all 0.4s cubic-bezier(0.15, 0.85, 0.35, 1);
+  z-index: 2;
+  
+  /* Мягкая, аккуратная тень */
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.25);       
+  
+  /* Плавный переход для всех изменений */
+  transition: transform 0.3s cubic-bezier(0.15, 0.85, 0.35, 1), 
+              box-shadow 0.3s cubic-bezier(0.15, 0.85, 0.35, 1), 
+              filter 0.3s ease;
 }
 
+/* Эффект при наведении курсора: кнопка просто подсвечивается и приподнимается */
 #cta-btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  background: linear-gradient(270deg, #ff007f, #7928ca, #00dfd8, #0066ff);
-  background-size: 600% 600%;
-  animation: aurora-move 4s ease infinite;
-  box-shadow: 0 8px 25px rgba(121, 40, 202, 0.35);
+  transform: translateY(-3px) scale(1.01); /* Легкое, аккуратное приподнимание */
+  
+  /* Вместо радуги используем фильтр яркости: синий цвет станет чуть сочнее */
+  filter: brightness(1.1); 
+  
+  /* Тень становится чуть глубже, подчеркивая объем */
+  box-shadow: 0 8px 22px rgba(0, 102, 255, 0.35);
 }
 
-@keyframes aurora-move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Физический отклик при клике мышкой (Кнопка уходит вниз под палец) */
+#cta-btn:active { 
+  transform: translateY(-1px) scale(0.98); 
+  box-shadow: 0 3px 8px rgba(0, 102, 255, 0.2); 
 }
 
-#cta-btn:active { transform: translateY(-1px) scale(0.98); animation: none; box-shadow: 0 4px 10px rgba(0, 102, 255, 0.2); }
-.hero-paws-track { position: absolute; width: 35px; height: 35px; z-index: 1; opacity: 0; }
 
 @keyframes pawStep {
   0% { opacity: 0; transform: scale(0.8) rotate(var(--paw-rotate, 0deg)); }
