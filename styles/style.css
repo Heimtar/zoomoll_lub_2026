@@ -172,7 +172,7 @@ h1, h2, h3, button, a, input, textarea {
 
 /* Мопса держим у верхнего края рамки */
 .slide-mops img {
-  object-position: center top;
+  object-position: center 22%;
 }
 
 /* Котика выравниваем по центру */
