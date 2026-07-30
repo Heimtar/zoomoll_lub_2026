@@ -17,7 +17,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
-  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif; /* ИСПРАВЛЕНО: прямые кавычки */
   -webkit-font-smoothing: antialiased; 
 }
 
@@ -86,64 +86,87 @@ h1, h2, h3, button, a, input, textarea {
   gap: 40px;
 }
 
+/* ==========================================================================
+   ОБНОВЛЕННЫЙ СТИЛЬ МЕНЮ (Мягкое премиальное подчеркивание)
+   ========================================================================== */
 .menu-link {
   color: #555555;
   font-size: 16px;
   font-weight: 600;
   position: relative;
-  padding: 6px 14px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+  padding: 6px 4px; 
+  transition: color 0.3s ease;
 }
 
 .menu-link::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  border: 2px solid #2b78e4;
-  border-radius: 10px;
-  box-sizing: border-box;
-  opacity: 0;
-  transform: scale(1.1);
-  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+  left: 0;
+  bottom: 0; 
+  width: 100%;
+  height: 2px; 
+  background: #ff007f; 
+  transform: scaleX(0); 
+  transform-origin: right; 
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .menu-link:hover {
-  color: #2b78e4;
-  background-color: rgba(43, 120, 228, 0.04);
+  color: #7928ca; 
 }
 
-.menu-link:hover::after { opacity: 1; transform: scale(1); }
+.menu-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left; 
+}
 
+.menu-link:focus,
+.menu-link:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   ОБНОВЛЕННАЯ RGB КНОПКА ТЕЛЕФОНА (Медленный благородный перелив)
+   ========================================================================== */
 .phone-link {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #1a1a1a;
+  color: #ffffff; 
   font-weight: 700;
   font-size: 16px;
-  border: 2px solid #eef2f7;
-  padding: 10px 18px;
+  background-image: linear-gradient(120deg, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f);
+  background-size: 400% 100%; 
+  border: none; 
+  padding: 10px 22px;
   border-radius: 50px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: rgb-movement 18s linear infinite;
+  box-shadow: 0 4px 15px rgba(0, 223, 218, 0.25), 0 4px 20px rgba(255, 0, 127, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .phone-icon-img {
   width: 20px;
   height: 20px;
-  transition: all 0.3s ease;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
 .phone-link:hover {
   color: #ffffff;
-  background-color: #2b78e4;
-  border-color: #2b78e4;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(43, 120, 228, 0.2);
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(0, 223, 218, 0.45), 0 6px 25px rgba(255, 0, 127, 0.35);
 }
 
-.phone-link:hover .phone-icon-img { transform: scale(1.1); }
+.phone-link:hover .phone-icon-img { 
+  transform: scale(1.1); 
+}
 
+@keyframes rgb-movement {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 400% 0%; }
+}
 .site-header.shrunk .header-wrap { padding-top: 8px; padding-bottom: 8px; }
 .site-header.shrunk .logo-img { width: 36px; height: 36px; }
 .site-header.shrunk .brand-name { font-size: 22px; }
@@ -162,7 +185,6 @@ h1, h2, h3, button, a, input, textarea {
 .promo-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
 .promo-slide { min-width: 100%; width: 100%; position: relative; flex-shrink: 0; }
 
-/* --- Индивидуальное кадрирование для каждого животного --- */
 .promo-slide img {
   width: 100%;
   height: 480px; 
@@ -170,20 +192,9 @@ h1, h2, h3, button, a, input, textarea {
   display: block;
 }
 
-/* Мопса держим у верхнего края рамки */
-.slide-mops img {
-  object-position: center 22%;
-}
-
-/* Котика выравниваем по центру */
-.slide-cat img {
-  object-position: center 65%;
-}
-
-/* Ретривера в пене центрируем идеально по середине */
-.slide-bath-dog img {
-  object-position: center center;
-}
+.slide-mops img { object-position: center 22%; }
+.slide-cat img { object-position: center 65%; }
+.slide-bath-dog img { object-position: center center; }
 
 .promo-btn {
   position: absolute;       
@@ -197,142 +208,22 @@ h1, h2, h3, button, a, input, textarea {
   color: #333;              
   font-size: 24px;          
   display: flex;            
-  align-items: center;      
+  align-items: center;
   justify-content: center;  
   cursor: pointer;          
   z-index: 10;              
   transition: all 0.3s ease; 
 }
 
-.prev-promo { left: 20px; }
-.next-promo { right: 20px; }
-.promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
-
-/* --- Крупный левосторонний текст без плашки --- */
-.new-clean-banner-box {
-  position: absolute;
-  z-index: 5;
-  max-width: 540px;            /* Ограничили ширину, чтобы текст не растягивался до баночек */
-  padding: 0; 
-  background: transparent;     
-  border: none;                
-  box-shadow: none;            
-  
-  /* ЖЕСТКОЕ ПОЗИЦИОНИРОВАНИЕ: фиксируем плашку слева, чтобы она не гуляла */
-  left: 60px;                  
-  top: 50%;                    /* Центрируем блок по вертикали */
-  transform: translateY(-50%); /* Идеальное выравнивание по центру высоты */
-}
-
-/* Крупный левый заголовок */
-.new-clean-banner-box h3 {
-  color: #ffffff;           
-  font-size: 32px;                     
-  font-weight: 900;                      
-  line-height: 1.2;         
-  letter-spacing: -0.5px;   
-  margin: 0 0 14px 0;          
-  padding: 0;    
-  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.7); 
-  text-align: left;            /* ИЗМЕНЕНО: текст аккуратно прижат влево */
-}
-
-/* Четкий левый текст описания услуг */
-.new-clean-banner-box p {
-  color: #ffffff;              
-  font-size: 16px;                       
-  font-weight: 700;                      
-  line-height: 1.45;        
-  margin: 0;
-  padding: 0;
-  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.7); 
-  text-align: left;            /* ИЗМЕНЕНО: текст аккуратно прижат влево */
-}
-/* --- Финальный премиальный баннер с адаптивностью и защитой верстки --- */
-.new-clean-banner-box {
-  position: absolute;
-  z-index: 5;
-  max-width: 520px;         
-  padding: 26px 32px;       
-  border-radius: 24px;      
-  box-sizing: border-box;
-  
-  height: auto;
-  min-height: max-content;
-  
-  /* Создаем локальную переменную для цвета, чтобы код был гибким */
-  --banner-glow-color: 51, 65, 85;
-  
-  /* Используем переменную в градиенте */
-  background: linear-gradient(90deg, rgba(var(--banner-glow-color), 0.9) 0%, rgba(var(--banner-glow-color), 0.45) 60%, transparent 100%);
-  
-  border: none;
-  box-shadow: none;
-  
-  /* Защита: текст не будет намертво залипать в стрелки карусели */
-  word-break: break-word; 
-}
-
-/* Крупный заголовок */
-.new-clean-banner-box h3 {
-  color: #ffffff;           
-  font-size: 32px;          
-  font-weight: 900;          
-  line-height: 1.2;         
-  letter-spacing: -0.5px;   
-  margin: 0 0 14px 0;       
-  padding: 0;    
-  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.5); 
-  text-align: left;         
-}
-
-/* Аккуратное описание услуг */
-.new-clean-banner-box p {
-  color: #ffffff;           
-  font-size: 14px;          
-  font-weight: 600;          
-  line-height: 1.45;        
-  margin: 0;
-  padding: 0;
-  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.5); 
-  text-align: left;         
-}
-
-/* АДАПТИВНОСТЬ ДЛЯ СМАРТФОНОВ: чтобы на телефонах всё выглядело идеально */
-@media (max-width: 768px) {
-  .new-clean-banner-box {
-    max-width: 100%;
-    left: 16px; /* Минимальный аккуратный отступ от края экрана телефона */
-    right: 16px;
-    padding: 16px 20px;
-    /* На мобилках линейный градиент вбок некрасиво обрежется, меняем его на мягкое круговое облако */
-    background: radial-gradient(circle, rgba(var(--banner-glow-color), 0.95) 0%, rgba(var(--banner-glow-color), 0.6) 80%, transparent 100%);
-  }
-  
-  .new-clean-banner-box h3 {
-    font-size: 22px; /* Уменьшаем заголовок на мобильном, чтобы он не ломал экран */
-    margin-bottom: 8px;
-    text-align: center; /* На телефонах центрированный текст смотрится аккуратнее */
-  }
-  
-  .new-clean-banner-box p {
-    font-size: 13px; /* Слегка уменьшаем подзаголовок */
-    text-align: center;
-  }
-}
-
-/* --- Идеальное расположение плашек  --- */
-
-/* 1. Плашка Мопса: Слева вверху на сером фоне */
+/* --- Идеальное расположение плашек --- */
 .box-mops {
   left: 100px;
-  top: 50px;               /* Подняли вверх на пустую стену */
+  top: 50px;               
   bottom: auto;
   right: auto;
-  transform: none;         /* Отключили старое центрирование по центру */
+  transform: none;         
 }
 
-/* 2. Плашка Ретривера: Справа по центру на серой плитке */
 .box-bath-dog {
   right: 60px;
   left: auto;
@@ -342,7 +233,6 @@ h1, h2, h3, button, a, input, textarea {
   text-align: right;        
 }
 
-/* 3. Плашка Котика: Слева вверху на пустую стену */
 .box-cat {
   left: 60px;              
   right: auto;             
@@ -354,9 +244,52 @@ h1, h2, h3, button, a, input, textarea {
 }
 
 .box-cat p {
-  font-size: 13px;         /* Сделали услуги аккуратными */
+  font-size: 13px;         
   font-weight: 600;
   line-height: 1.4;
+}
+
+/* --- Крупный левосторонний текст баннера --- */
+.new-clean-banner-box {
+  position: absolute;
+  z-index: 5;
+  max-width: 520px;            
+  padding: 26px 32px; 
+  border-radius: 24px;
+  box-sizing: border-box;
+  height: auto;
+  min-height: max-content;
+  left: 60px;                  
+  top: 50%;                    
+  transform: translateY(-50%); 
+  --banner-glow-color: 51, 65, 85;
+  background: linear-gradient(90deg, rgba(var(--banner-glow-color), 0.9) 0%, rgba(var(--banner-glow-color), 0.45) 60%, transparent 100%);
+  border: none;                
+  box-shadow: none;            
+  word-break: break-word;
+}
+
+.new-clean-banner-box h3 {
+  color: #ffffff;           
+  font-size: 32px;                     
+  font-weight: 900;                      
+  line-height: 1.2;         
+  letter-spacing: -0.5px;   
+  margin: 0 0 14px 0;          
+  padding: 0;    
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.5); 
+  text-align: left;            
+}
+
+.new-clean-banner-box p {
+  color: #ffffff;              
+  font-size: 14px;                       
+  font-weight: 600;                      
+  line-height: 1.45;        
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.5); 
+  text-align: left;            
 }
 
 .hero {
@@ -383,7 +316,7 @@ h1, h2, h3, button, a, input, textarea {
 .hero-content p { font-size: 20px; color: #cbd5e1; margin-bottom: 45px; line-height: 1.6; }
 
 #cta-btn {
-  background: linear-gradient(180deg, #25a3ff 0%, #0066ff 100%);
+  background: linear-gradient(135deg, #0070f3 0%, #00dfd8 100%);
   color: var(--white);
   padding: 16px 44px;
   border: none;
@@ -393,16 +326,16 @@ h1, h2, h3, button, a, input, textarea {
   cursor: pointer;
   display: inline-block;
   position: relative;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 102, 255, 0.2);       
+  box-shadow: 0 4px 14px rgba(0, 112, 243, 0.3);       
   transition: all 0.4s cubic-bezier(0.15, 0.85, 0.35, 1);
 }
 
 #cta-btn:hover {
   transform: translateY(-3px) scale(1.02);
-  background: linear-gradient(270deg, #25a3ff, #0066ff, #00d2ff);
+  background: linear-gradient(270deg, #ff007f, #7928ca, #00dfd8, #0066ff);
   background-size: 600% 600%;
   animation: aurora-move 4s ease infinite;
-  box-shadow: 0 8px 20px rgba(0, 102, 255, 0.25);
+  box-shadow: 0 8px 25px rgba(121, 40, 202, 0.35);
 }
 
 @keyframes aurora-move {
@@ -420,7 +353,6 @@ h1, h2, h3, button, a, input, textarea {
   70% { opacity: 0.35; }
   100% { opacity: 0; transform: scale(0.9) rotate(var(--paw-rotate, 0deg)); }
 }
-
 .services { padding: 60px 5%; text-align: center; }
 .services h2 { margin-bottom: 40px; font-size: 32px; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
@@ -494,6 +426,7 @@ h1, h2, h3, button, a, input, textarea {
   transition: background-color 0.2s ease;
 }
 
+.faq-question:focus { outline: none; }
 .faq-question:hover { background-color: rgba(91, 170, 220, 0.1); }
 .faq-icon { font-size: 22px; color: var(--primary-color); transition: transform 0.3s ease; }
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: var(--white); }
@@ -524,11 +457,6 @@ h1, h2, h3, button, a, input, textarea {
   animation: fadeIn 0.3s ease; 
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 .modal-content h2 { color: var(--primary-color); margin-bottom: 15px; }
 .modal-content p { font-size: 16px; margin-bottom: 25px; color: var(--text-color); }
 
@@ -540,9 +468,14 @@ h1, h2, h3, button, a, input, textarea {
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  box-shadow: 0 4px 10px rgba(91, 170, 220, 0.2);
+  transition: all 0.2s ease;
 }
-.ok-btn:hover { background-color: #4392c4; }
+.ok-btn:hover { 
+  background-color: #4392c4; 
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(91, 170, 220, 0.3);
+}
 
 .close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 28px; color: #999; cursor: pointer; transition: color 0.2s; }
 .close-btn:hover { color: var(--text-color); }
@@ -565,72 +498,33 @@ h1, h2, h3, button, a, input, textarea {
 .to-top-button:hover svg { transform: translateY(-3px); }
 
 .footer { background-color: var(--text-color); color: var(--white); text-align: center; padding: 30px; font-size: 14px; }
-/* --- Финальные интерактивные микровзаимодействия --- */
 
-/* Плавный и дорогой отклик кнопок-стрелок при наведении курсора */
 .promo-btn:hover {
   background-color: rgba(255, 255, 255, 0.95); 
-  transform: translateY(-50%) scale(1.08);       /* Мягкое увеличение кружка */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);   /* Элегантная тень */
+  transform: translateY(-50%) scale(1.08);       
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);   
 }
 
-/* Идеальное центрирование контента в блоке Hero по сетке */
-.hero-content {
-  margin-left: auto;
-  margin-right: auto;
-}
-/* Безопасный синьорский сдвиг кнопок карусели внутрь слайда */
-.promo-btn.prev-promo { 
-  transform: translateX(20px); 
-}
-.promo-btn.next-promo { 
-  transform: translateX(-20px); 
-}
-/* Профессиональная RGB кнопка со скрытым приоритетом */
-.header-phone .phone-link {
-    /* Цвета подобраны так, чтобы первый и последний совпадали для бесшовности */
-    background-image: linear-gradient(120deg, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f);
-    background-size: 400% 100%; /* Растягиваем только по ширине, чтобы анимация шла слева направо */
-    
-    border: none; 
-    border-radius: 100px;
-    padding: 10px 22px;
-    color: #ffffff;
-    
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    
-    /* ИСПРАВЛЕНО: Плавный и медленный перелив за 18 секунд */
-    animation: rgb-movement 18s linear infinite;
-    
-    /* Чистое неоновое свечение в тон крайних цветов градиента */
-    box-shadow: 0 4px 15px rgba(0, 223, 218, 0.25), 0 4px 20px rgba(255, 0, 127, 0.2);
-    
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+.promo-btn.prev-promo { transform: translateX(20px); }
+.promo-btn.next-promo { transform: translateX(-20px); }
 
-/* Эффект при наведении курсора */
-.header-phone .phone-link:hover {
-    color: #ffffff;
-    transform: translateY(-2px);
-    
-    /* Усиливаем чистый неон без грязи */
-    box-shadow: 0 6px 20px rgba(0, 223, 218, 0.45), 0 6px 25px rgba(255, 0, 127, 0.35);
-}
+/* ==========================================================================
+   ИСПРАВЛЕНО: АДАПТИВНОСТЬ ПЕРЕНЕСЕНА В САМЫЙ КОНЕЦ ФАЙЛА ДЛЯ ЗАЩИТЫ КАСКАДА
+   ========================================================================== */
+@media (max-width: 768px) {
+  .site-header .nav { gap: 16px; }
+  .menu-link { font-size: 14px; padding: 4px 6px; }
+  .phone-link { padding: 8px 14px; font-size: 14px; }
+  .phone-icon-img { width: 16px; height: 16px; }
 
-/* Выравнивание иконки трубки */
-.header-phone .phone-icon-img {
-    margin-right: 8px;
-    display: block;
-}
-
-/* ИДЕАЛЬНАЯ БЕСШОВНАЯ АНИМАЦИЯ: цвета перетекают строго в одну сторону без рывков */
-@keyframes rgb-movement {
-    0% {
-        background-position: 0% 0%;
-    }
-    100% {
-        background-position: 400% 0%;
-    }
+  .new-clean-banner-box {
+    max-width: 100% !important; /* Гарантия защиты от горизонтального скролла */
+    left: 16px; 
+    right: 16px;
+    padding: 16px 20px;
+    background: radial-gradient(circle, rgba(var(--banner-glow-color), 0.95) 0%, rgba(var(--banner-glow-color), 0.6) 80%, transparent 100%);
+  }
+  
+  .new-clean-banner-box h3 { font-size: 22px; margin-bottom: 8px; text-align: center; }
+  .new-clean-banner-box p { font-size: 13px; text-align: center; }
 }
