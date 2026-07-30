@@ -226,10 +226,10 @@ h1, h2, h3, button, a, input, textarea {
   
   transition: all 0.3s ease;
 }
-/* Общие стили заголовков внутри плашек (Сделали меньше для всех питомцев) */
+/* --- Общие стили заголовков и текстов внутри плашек --- */
 .new-clean-banner-box h3 {
   color: #ffffff;           
-  font-size: 24px;          /* ИСПРАВЛЕНИЕ: Уменьшили заголовок с 30px до 24px */
+  font-size: 24px;          /* Единый аккуратный компактный размер */
   font-weight: 800;          
   line-height: 1.3;         
   letter-spacing: -0.5px;
@@ -237,44 +237,27 @@ h1, h2, h3, button, a, input, textarea {
   padding: 0;    
 }
 
-/* Общие стили списков услуг внутри плашек (Тоже сделали аккуратнее) */
 .new-clean-banner-box p {
   color: #cbd5e1;           
-  font-size: 13px;          /* ИСПРАВЛЕНИЕ: Уменьшили текст услуг с 15px до 13px */
+  font-size: 13px;          /* Компактный размер для текста услуг */
   font-weight: 600;          
   line-height: 1.4;
   margin: 0;
   padding: 0;
 }
-/* --- Индивидуальное расположение плашек на экранах --- */
 
-/* 1. Плашка Мопса: Слева по центру */
+/* --- Идеальное расположение плашек без дубликатов кода --- */
+
+/* 1. Плашка Мопса: Слева вверху на сером фоне (Точно в твою красную зону) */
 .box-mops {
   left: 60px;
-  top: 40%; 
+  top: 40px;               /* Подняли вверх на пустую стену */
   bottom: auto;
-  transform: translateY(-50%);
+  right: auto;
+  transform: none;         /* Отключили старое центрирование по центру */
 }
 
-/* 2. Плашка Ретривера: Справа по центру */
-.box-bath-dog {
-  right: 60px;
-  left: auto;
-  top: 50%; 
-  bottom: auto;
-  transform: translateY(-50%);
-  text-align: right;        /* Выравниваем текст по правому краю для баланса */
-}
-
-/* 1. Текст Мопса: Слева по центру */
-.box-mops {
-  left: 60px;
-  top: 35%; 
-  bottom: auto;
-  transform: translateY(-50%);
-}
-
-/* 2. Текст Ретривера: Справа по центру на плитке */
+/* 2. Плашка Ретривера: Справа по центру на серой плитке */
 .box-bath-dog {
   right: 60px;
   left: auto;
@@ -284,7 +267,7 @@ h1, h2, h3, button, a, input, textarea {
   text-align: right;        
 }
 
-/* 3. Плашка Котика: Вытянутая по ширине с компактным шрифтом без зажатости */
+/* 3. Плашка Котика: Слева вверху на пустую стену */
 .box-cat {
   left: 60px;              
   right: auto;             
@@ -293,14 +276,6 @@ h1, h2, h3, button, a, input, textarea {
   transform: none;         
   text-align: left;        
   max-width: 620px;        
-}
-
-/* Компактные размеры шрифта специально для плашки котика */
-.box-cat h3 {
-  font-size: 24px;         /* Уменьшили заголовок, чтобы убрать зажатость */
-  font-weight: 800;
-  line-height: 1.3;
-  margin: 0 0 8px 0;
 }
 
 .box-cat p {
