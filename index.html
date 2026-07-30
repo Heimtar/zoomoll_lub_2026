@@ -1,77 +1,60 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Зоомол - студия груминга</title>
-    <link rel="icon" type="image/png" href="/img/logo_image_32x32.png">
-
-    <link rel="stylesheet" href="/styles/styles.css">
-
+    <title>Зоомол — студия груминга</title>
+    <link rel="icon" type="image/png" href="img/favourite_image_32x32.png">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
-
 <body>
- <!-- Шапка сайта (ЧИСТЫЙ ВАРИАНТ) -->
-<header class="site-header">
-    <div class="header-wrap">
-        <!-- Левая часть: Картинка-логотип + Название бренда вместе -->
-        <a href="#" class="brand-group">
-            <img src="/img/logo_image_180x180.png" alt="Зоомол" class="logo-img">
-            <span class="brand-name">Зоомол</span>
-        </a>
-        <!-- Центральная часть: Меню навигации -->
-        <nav class="nav">
-            <a href="#services" class="menu-link">Услуги</a>
-            <a href="#portfolio" class="menu-link">Наши работы</a>
-            <a href="#reviews" class="menu-link">Отзывы</a>
-            <a href="#faq" class="menu-link">Вопросы</a>
-            <a href="#contacts" class="menu-link">Контакты</a>
-        </nav>
-        <!-- Правая часть: Телефон для связи -->
-        <div class="header-phone">
-            <a href="tel:+79600000307" class="phone-link">
-                <img src="/img/icon_phone.png" alt="Иконка телефона" class="phone-icon-img">
-                <span>+7 (960) 000-03-07</span>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-wrap">
+            <a href="#" class="brand-group">
+                <img src="img/logo_image.png" alt="Зоомол" class="logo-img">
+                <span class="brand-name">Зоомол</span>
             </a>
+            <nav class="nav">
+                <a href="#services" class="menu-link">Услуги</a>
+                <a href="#portfolio" class="menu-link">Наши работы</a>
+                <a href="#reviews" class="menu-link">Отзывы</a>
+                <a href="#faq" class="menu-link">Вопросы</a>
+                <a href="#contacts" class="menu-link">Контакты</a>
+            </nav>
+            <div class="header-phone">
+                <a href="tel:+79600000307" class="phone-link">
+                    <img src="img/phone_icon.png" alt="Телефон" class="phone-icon-img">
+                    <span>+7 (960) 000-03-07</span>
+                </a>
+            </div>
         </div>
-    </div>
-</header>
-<!-- Новая карусель (БЕЗ КНОПОК + С БЕЛОЙ ЛИНИЕЙ) -->
-<section class="promo-carousel-section">
-    <div class="promo-container" style="position: relative; overflow: hidden; max-width: 1200px; margin: 0 auto; border-radius: 20px;">
-        
-        <!-- КНОПКИ СТРЕЛОК ДЛЯ РУЧНОЙ ПРОКРУТКИ -->
-        <button class="promo-btn prev-promo">❮</button>
-        <button class="promo-btn next-promo">❯</button>
+    </header>
+    <!-- Promo Slider -->
+    <section class="promo-carousel-section">
+        <div class="promo-container">
+            <button class="promo-btn prev-promo" aria-label="Предыдущий слайд">❮</button>
+            <button class="promo-btn next-promo" aria-label="Следующий слайд">❯</button>
 
-        <div class="promo-track" id="promo-track" style="display: flex; transition: transform 0.5s ease-in-out; width: 100%;">
-
-            <!-- Баннер 1: Твой любимый мопс -->
-            <div class="promo-slide" style="min-width: 100%; flex-shrink: 0; position: relative;">
-                <img src="img/mops.jpg" style="width: 100%; display: block; object-fit: cover; height: 500px;">
-                <!-- Новый контейнер текста без кнопок -->
-                <div class="new-clean-banner-box">
-                    <h3>Смываем грязь — оставляем радость!</h3>
+            <div class="promo-track" id="promo-track">
+                <div class="promo-slide">
+                    <img src="img/mops.jpg" alt="Стрижка мопса в салоне">
+                    <div class="new-clean-banner-box">
+                        <h3>Смываем грязь — оставляем радость!</h3>
+                    </div>
+                </div>
+                <div class="promo-slide">
+                    <img src="img/fluffy-cat.jpg" alt="Уход за пушистым котом">
+                    <div class="new-clean-banner-box">
+                        <h3>Профессиональный уход без стресса</h3>
+                    </div>
                 </div>
             </div>
-
-            <!-- Баннер 2: НАШ НОВЫЙ КОТИК ИЗ ШЕДЕВРУМА -->
-            <div class="promo-slide" style="min-width: 100%; flex-shrink: 0; position: relative;">
-                <img src="img/fluffy-cat.jpg" alt="Вычесанный кот" style="width: 100%; display: block; object-fit: cover; height: 500px;">
-                <!-- Новый контейнер текста без кнопок -->
-                <div class="new-clean-banner-box">
-                    <h3>Профессиональный уход без стресса</h3>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-
-
-    <!-- Главный баннер -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Забота, которую заслуживает ваш питомец</h1>
@@ -79,8 +62,7 @@
             <button id="cta-btn">Записаться</button>
         </div>
     </section>
-
-    <!-- Блок услуг -->
+    <!-- Services Section -->
     <section id="services" class="services">
         <h2>Наши услуги</h2>
         <div class="services-grid">
@@ -102,243 +84,86 @@
         </div>
     </section>
 
-    <!-- Блок «Наши работы» -->
-<section id="portfolio" class="portfolio">
-    <h2>Наши работы</h2>
-    <p class="section-subtitle">Посмотрите на наших счастливых и ухоженных клиентов</p>
-
-    <div class="portfolio-grid">
-        <!-- Карточка 1 -->
-        <div class="portfolio-item">
-            <img src="/img/works/10XXXL.webp" alt="Груминг собаки">
-            <div class="portfolio-info">
-                <h3>Йоркширский терьер</h3>
-                <p>Комплексный уход</p>
-            </div>
-        </div>
-
-        <!-- Карточка 2 -->
-        <div class="portfolio-item">
-            <img src="/img/works/11XXXL.webp" alt="Стрижка кота">
-            <div class="portfolio-info">
-                <h3>Персидский кот</h3>
-                <p>Экспресс-линька</p>
-            </div>
-        </div>
-
-        <!-- Карточка 3 -->
-        <div class="portfolio-item">
-            <img src="/img/works/12XXXL.webp" alt="Груминг шпица">
-            <div class="portfolio-info">
-                <h3>Померанский шпиц</h3>
-                <p>Гигиеническая стрижка</p>
-            </div>
-        </div>
-
-        <!-- Карточка 4 -->
-        <div class="portfolio-item">
-            <img src="/img/works/13XXXL.webp" alt="Груминг собаки">
-            <div class="portfolio-info">
-                <h3>Йоркширский терьер</h3>
-                <p>Комплексный уход</p>
-            </div>
-        </div>
-
-        <!-- Карточка 5 -->
-        <div class="portfolio-item">
-            <img src="/img/works/1XXXL.webp" alt="Стрижка кота">
-            <div class="portfolio-info">
-                <h3>Персидский кот</h3>
-                <p>Экспресс-линька</p>
-            </div>
-        </div>
-
-        <!-- Карточка 6 -->
-        <div class="portfolio-item">
-            <img src="/img/works/2XXXL.webp" alt="Груминг шпица">
-            <div class="portfolio-info">
-                <h3>Померанский шпиц</h3>
-                <p>Гигиеническая стрижка</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <!-- Блок «Частые вопросы» -->
-    <section id="faq" class="faq-section">
-        <h2>Частые вопросы</h2>
-        <p class="section-subtitle">Отвечаем на то, что чаще всего интересует владельцев питомцев</p>
-
-        <div class="faq-container">
-            <!-- Вопрос 1 -->
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Можно ли присутствовать во время стрижки?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Обычно мы не рекомендуем этого делать. В присутствии хозяина питомцы часто ведут себя более
-                        беспокойно, пытаются вырваться и прыгнуть на ручки. Без владельца животное быстрее успокаивается
-                        и доверяет мастеру.</p>
-                </div>
-            </div>
-
-            <!-- Вопрос 2 -->
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Что делать, если мой питомец агрессивный или очень пугливый?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Наши мастера умеют находить подход к разным характерам без применения жесткой силы и седации.
-                        Пожалуйста, предупредите нас об особенностях поведения при записи, чтобы мы заложили чуть больше
-                        времени на адаптацию.</p>
-                </div>
-            </div>
-
-            <!-- Вопрос 3 -->
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Как часто нужно водить собаку на груминг?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>В среднем — каждые 4–6 недель для длинношерстных пород (йорки, шпицы, мальтезе) для поддержания
-                        формы и предотвращения колтунов. Для гладкошерстных собак экспресс-линьку достаточно делать раз
-                        в 2–3 месяца.</p>
-                </div>
-            </div>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2>Наши работы</h2>
+        <p class="section-subtitle">Посмотрите на наших счастливых и ухоженных клиентов</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-item"><img src="img/works/10XXXL.webp" alt="Йоркширский терьер"><div class="portfolio-info"><h3>Йоркширский терьер</h3><p>Комплексный уход</p></div></div>
+            <div class="portfolio-item"><img src="img/works/11XXXL.webp" alt="Персидский кот"><div class="portfolio-info"><h3>Персидский кот</h3><p>Экспресс-линька</p></div></div>
+            <div class="portfolio-item"><img src="img/works/12XXXL.webp" alt="Померанский шпиц"><div class="portfolio-info"><h3>Померанский шпиц</h3><p>Гигиеническая стрижка</p></div></div>
+            <div class="portfolio-item"><img src="img/works/13XXXL.webp" alt="Йоркширский терьер после груминга"><div class="portfolio-info"><h3>Йоркширский терьер</h3><p>Комплексный уход</p></div></div>
+            <div class="portfolio-item"><img src="img/works/1XXXL.webp" alt="Персидский кот после вычесывания"><div class="portfolio-info"><h3>Персидский кот</h3><p>Экспресс-линька</p></div></div>
+            <div class="portfolio-item"><img src="img/works/2XXXL.webp" alt="Померанский шпиц после стрижки"><div class="portfolio-info"><h3>Померанский шпиц</h3><p>Гигиеническая стрижка</p></div></div>
         </div>
     </section>
-
-    <!-- Блок Отзывов -->
+    <!-- Reviews Section -->
     <section id="reviews" class="reviews-section">
         <h2>Отзывы наших клиентов</h2>
         <p class="section-subtitle">Что говорят владельцы о нашей студии груминга</p>
-
-        <!-- Контейнер карусели -->
         <div class="carousel-container">
-            <!-- Кнопки стрелок для прокрутки -->
-            <button class="carousel-btn prev-btn">❮</button>
-
+            <button class="carousel-btn prev-btn" aria-label="Предыдущий отзыв">❮</button>
             <div class="carousel-track-wrapper">
                 <div class="carousel-track" id="carousel-track">
-
-                    <!-- Плитка отзыва 1 -->
                     <div class="review-card">
-                        <div class="review-header">
-                            <span class="review-author">Александра Федотова</span>
-                            <span class="review-stars">★★★★★</span>
-                        </div>
-                        <p class="review-text">«Отличный салон, ходим с кошечкой уже 4 год, приветливый персонал.
-                            Девчонки любят свою работу и питомцев. Рекомендую однозначно 👍»</p>
-                        <a href="https://yandex.ru/maps/org/197742311713/reviews?reviews%5BpublicId%5D=mw7pbgqdeqvk2yb80rkbvnt624&si=xg9z4fxnbbxvynw6qfhgpdtbhc&utm_source=review"
-                            target="_blank" class="yandex-link">Читать на Яндекс Картах
-                            →</a>
+                        <div class="review-header"><span class="review-author">Александра Ф.</span><span class="review-stars">★★★★★</span></div>
+                        <p class="review-text">«Отличный салон, ходим с кошечкой уже 4 год, приветливый персонал. Девчонки любят свою работу и питомцев.»</p>
+                        <a href="https://yandex.ru" target="_blank" class="yandex-link">Читать на Яндекс Картах →</a>
                     </div>
-
-                    <!-- Плитка отзыва 2 -->
                     <div class="review-card">
-                        <div class="review-header">
-                            <span class="review-author">Олеся Литвинцева</span>
-                            <span class="review-stars">★★★★★</span>
-                        </div>
-                        <p class="review-text">«Хорошее место! И девушки - профессионалы своего дела! Не страшно
-                            доверить самое дорогое 🙏»</p>
-                        <a href="https://yandex.ru/maps/org/197742311713/reviews?reviews%5BpublicId%5D=15f6humd0rt4e3vpfgfrdpte1g&si=xg9z4fxnbbxvynw6qfhgpdtbhc&utm_source=review"
-                            target="_blank" class="yandex-link">Читать на Яндекс Картах
-                            →</a>
+                        <div class="review-header"><span class="review-author">Олеся Л.</span><span class="review-stars">★★★★★</span></div>
+                        <p class="review-text">«Хорошее место! И девушки - профессионалы своего дела! Не страшно доверить самое дорогое 🙏»</p>
+                        <a href="https://yandex.ru" target="_blank" class="yandex-link">Читать на Яндекс Картах →</a>
                     </div>
-
-                    <!-- Плитка отзыва 3 -->
                     <div class="review-card">
-                        <div class="review-header">
-                            <span class="review-author">Натали Марценюк</span>
-                            <span class="review-stars">★★★★★</span>
-                        </div>
-                        <p class="review-text">«Не первый раз уже обращаемся за подстрижкой в Зоомол. Нам очень нравится
-                            как подстригают , быстро и красиво. Всегда уточняют как стричь. Еще не раз обратимся туда.»
-                        </p>
-                        <a href="https://yandex.ru/maps/org/197742311713/reviews?reviews%5BpublicId%5D=q2mr7a9ue5j3etrnagefa5yc6r&si=xg9z4fxnbbxvynw6qfhgpdtbhc&utm_source=review"
-                            target="_blank" class="yandex-link">Читать на Яндекс Картах
-                            →</a>
+                        <div class="review-header"><span class="review-author">Натали М.</span><span class="review-stars">★★★★★</span></div>
+                        <p class="review-text">«Не первый раз уже обращаемся за подстрижкой в Зоомол. Нам очень нравится как подстригают, быстро и красиво.»</p>
+                        <a href="https://yandex.ru" target="_blank" class="yandex-link">Читать на Яндекс Картах →</a>
                     </div>
-                    <!-- Плитка отзыва 4 -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <span class="review-author">Людмила Хохлова</span>
-                            <span class="review-stars">★★★★★</span>
-                        </div>
-                        <p class="review-text">«Нам очень понравилось. И оказанная услуга и отношение. Спасибо, мы
-                            обязательно вернёмся ещё.»</p>
-                        <a href="https://yandex.ru/maps/org/197742311713/reviews?reviews%5BpublicId%5D=y8qavccdmvpmx1zg76t86q4zr0&si=xg9z4fxnbbxvynw6qfhgpdtbhc&utm_source=review"
-                            target="_blank" class="yandex-link">Читать на Яндекс Картах
-                            →</a>
-                    </div>
-                    <!-- Плитка отзыва 5 -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <span class="review-author">Бабич Лапунька</span>
-                            <span class="review-stars">★★★★★</span>
-                        </div>
-                        <p class="review-text">«Ходим уже 3 раз и все в лучшем виде! Очень приятная и позитивная
-                            атмосфера, работают добрые и счастливые люди. Стригут отлично. Не сомневайтесь , попробуйте,
-                            вам понравится. Шпиц Эля.»</p>
-                        <a href="https://yandex.ru/maps/org/197742311713/reviews?reviews%5BpublicId%5D=1uyu8f1n2297j97qd2cm739cdc&si=xg9z4fxnbbxvynw6qfhgpdtbhc&utm_source=review"
-                            target="_blank" class="yandex-link">Читать на Яндекс Картах
-                            →</a>
-                    </div>
-                    <!-- Плитка отзыва 6 -->
-                    <div class="review-card">
-                        <div class="review-header">
-                            <span class="review-author">Ольга Цыбулина</span>
-                            <span class="review-stars">★★★★★</span>
-                        </div>
-                        <p class="review-text">«Ходим уже не первый раз на модельную стрижку с йорком. Так же посещали
-                            салон несколько раз с мейнкуном. Все очень нравится, доброжелательный персонал. Большое
-                            спасибо груммеру Яне за красотку Рокси🌸»</p>
-                        <a href="https://yandex.ru/maps/org/197742311713/reviews?reviews%5BpublicId%5D=mga4qxkgg0nmup1cwzc4enpnbg&si=xg9z4fxnbbxvynw6qfhgpdtbhc&utm_source=review"
-                            target="_blank" class="yandex-link">Читать на Яндекс Картах
-                            →</a>
-                    </div>
-
                 </div>
             </div>
-
-            <button class="carousel-btn next-btn">❯</button>
+            <button class="carousel-btn next-btn" aria-label="Следующий отзыв">❯</button>
         </div>
     </section>
 
-
-    <!-- Контакты -->
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <h2>Частые вопросы</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question"><span>Можно ли присутствовать во время стрижки?</span><span class="faq-icon">+</span></button>
+                <div class="faq-answer"><p>Обычно мы не рекомендуем этого делать. В присутствии хозяина питомцы часто ведут себя более беспокойно.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question"><span>Что делать, если мой питомец агрессивный?</span><span class="faq-icon">+</span></button>
+                <div class="faq-answer"><p>Наши мастера умеют находить подход к разным характерам без применения жесткой силы и седации.</p></div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
     <footer id="contacts" class="footer">
         <p>© 2026 Зоомол. Архангельск, Московский просп., 6, корп. 3</p>
         <p>Телефон: +7 (960) 000-03-07</p>
     </footer>
 
-    <!-- Модальное окно записи -->
+    <!-- Modal Window -->
     <div id="modal" class="modal-overlay">
         <div class="modal-content">
-            <!-- Кнопка-крестик для закрытия окна -->
             <button id="modal-close" class="close-btn">&times;</button>
-            <!-- Добавляем тег картинки с классом для стилизации -->
-            <img src="/img/modal.jpg" alt="Радостный пес" class="modal-img">
-
+            <img src="img/modal.jpg" alt="Радостный пес" class="modal-img">
             <h2>Заявка принята! 🐾</h2>
-            <p>Спасибо за доверие. Мы уже увидели ваше сообщение и свяжемся с вами в течение 10 минут, чтобы подобрать
-                идеальное время для вашего питомца.</p>
+            <p>Мы свяжемся с вами в течение 10 минут, чтобы подобрать идеальное время.</p>
             <button id="modal-ok-btn" class="ok-btn">Отлично, жду!</button>
         </div>
     </div>
-    <!-- Кнопка Наверх -->
+
+    <!-- Scroll to Top Button -->
     <a href="#" id="to-top-btn" class="to-top-button" title="Наверх">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
-            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round" />
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
     </a>
+
     <script src="main.js"></script>
 </body>
-
 </html>
