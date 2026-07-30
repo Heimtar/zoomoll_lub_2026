@@ -35,9 +35,9 @@ h1, h2, h3, button, a, input, textarea {
 
 .site-header {
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.35);  
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  background-color: rgba(255, 255, 255, 0.75);  
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04); 
   position: sticky;
@@ -171,6 +171,7 @@ h1, h2, h3, button, a, input, textarea {
   width: 100%;
   height: 500px; 
   object-fit: cover; 
+  object-position: center top; /* Спасает голову мопса от обрезания */
   display: block;
 }
 
@@ -217,7 +218,7 @@ h1, h2, h3, button, a, input, textarea {
 .hero {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
   width: 100%;
-  margin-top: 30px;
+  margin-top: 0; /* Полностью убрали наложение блоков друг на друга */
   padding: 120px 0; 
   position: relative;
   overflow: hidden;
