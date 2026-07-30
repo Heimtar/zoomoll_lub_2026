@@ -162,12 +162,27 @@ h1, h2, h3, button, a, input, textarea {
 .promo-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
 .promo-slide { min-width: 100%; width: 100%; position: relative; flex-shrink: 0; }
 
+/* --- Индивидуальное кадрирование для каждого животного --- */
 .promo-slide img {
   width: 100%;
   height: 480px; 
   object-fit: cover; 
-  object-position: center top; 
   display: block;
+}
+
+/* Мопса держим у верхнего края рамки */
+.slide-mops img {
+  object-position: center top;
+}
+
+/* Котика выравниваем по центру */
+.slide-cat img {
+  object-position: center center;
+}
+
+/* Ретривера в пене центрируем идеально по середине */
+.slide-bath-dog img {
+  object-position: center center;
 }
 
 .promo-btn {
