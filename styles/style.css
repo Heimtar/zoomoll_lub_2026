@@ -601,8 +601,8 @@ h1, h2, h3, button, a, input, textarea {
     align-items: center;
     text-decoration: none;
     
-    /* Плавный перелив за 6 секунд */
-    animation: rgb-movement 6s linear infinite;
+    /* ИСПРАВЛЕНО: Плавный и медленный перелив за 18 секунд */
+    animation: rgb-movement 18s linear infinite;
     
     /* Чистое неоновое свечение в тон крайних цветов градиента */
     box-shadow: 0 4px 15px rgba(0, 223, 218, 0.25), 0 4px 20px rgba(255, 0, 127, 0.2);
