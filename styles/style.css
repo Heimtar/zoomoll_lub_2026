@@ -263,7 +263,8 @@ h1, h2, h3, button, a, input, textarea {
   top: 25px;               
   bottom: auto;
   right: auto;
-  transform: none;         
+  transform: none;
+  width: 340px;        
 }
 
 .box-bath-dog {
