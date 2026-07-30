@@ -1,6 +1,3 @@
-// ==========================================
-// 1. ГЛАВНЫЙ ИНИЦИАЛИЗАТОР ВСЕХ СКРИПТОВ
-// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
   initModal();
   initScrollEffects();
@@ -10,9 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPawAnimation();
 });
 
-// ==========================================
-// 2. ЛОГИКА ДЛЯ МОДАЛЬНОГО ОКНА (ЗАПИСЬ)
-// ==========================================
+// --- Modal System ---
 function initModal() {
   const ctaButton = document.getElementById("cta-btn");
   const modal = document.getElementById("modal");
@@ -34,9 +29,7 @@ function initModal() {
   });
 }
 
-// ==========================================
-// 3. СКРОЛЛ-ЭФФЕКТЫ (ШАПКА И КНОПКА НАВЕРХ)
-// ==========================================
+// --- Scroll Effects (Header & To Top Button) ---
 function initScrollEffects() {
   const toTopButton = document.getElementById("to-top-btn");
   const siteHeader = document.querySelector(".site-header");
@@ -53,10 +46,7 @@ function initScrollEffects() {
     }
   });
 }
-
-// ==========================================
-// 4. ВЕРХНИЙ ПРОМО-СЛАЙДЕР (МОПС И КОТ)
-// ==========================================
+// --- Promo Slider ---
 function initPromoSlider() {
   const promoTrack = document.getElementById("promo-track");
   const prevPromoBtn = document.querySelector(".prev-promo");
@@ -67,13 +57,11 @@ function initPromoSlider() {
   let promoIndex = 0;
   let promoTimer = null;
 
-  const getPromoWidth = () => {
-    const slide = promoTrack.querySelector("img");
-    return slide ? slide.getBoundingClientRect().width : 0;
-  };
-
   const updatePromoSlider = () => {
-    promoTrack.style.transform = `translateX(-${promoIndex * getPromoWidth()}px)`;
+    const slide = promoTrack.querySelector(".promo-slide");
+    if (!slide) return;
+    const slideWidth = slide.getBoundingClientRect().width;
+    promoTrack.style.transform = `translateX(-${promoIndex * slideWidth}px)`;
   };
 
   const handleNextSlide = () => {
@@ -100,12 +88,11 @@ function initPromoSlider() {
   }
 
   window.addEventListener("resize", updatePromoSlider);
+  window.addEventListener("load", updatePromoSlider);
   promoTimer = setInterval(handleNextSlide, 5000);
 }
 
-// ==========================================
-// 5. НИЖНИЙ СЛАЙДЕР ОТЗЫВОВ С ПАУЗОЙ
-// ==========================================
+// --- Reviews Slider ---
 function initReviewsSlider() {
   const track = document.getElementById("carousel-track");
   const prevBtn = document.querySelector(".prev-btn");
@@ -147,22 +134,20 @@ function initReviewsSlider() {
   startAutoPlay();
 }
 
-// ==========================================
-// 6. АККОРДЕОН ДЛЯ БЛОКА ВОПРОСОВ (FAQ)
-// ==========================================
+// --- FAQ Accordion ---
 function initFaqAccordion() {
   const faqQuestions = document.querySelectorAll(".faq-question");
   faqQuestions.forEach((question) => {
     question.addEventListener("click", () => {
-      const faqItem = question.parentElement;
-      if (faqItem) faqItem.classList.toggle("active");
+      const faqItem = question.closest(".faq-item");
+      if (faqItem) {
+        faqItem.classList.toggle("active");
+      }
     });
   });
 }
 
-// ==========================================
-// 7. ДЕКОРАТИВНАЯ АНИМАЦИЯ СЛЕДОВ ЛАПОК
-// ==========================================
+// --- Decorative Paw Animation ---
 function initPawAnimation() {
   const heroBlock = document.querySelector(".hero");
   if (!heroBlock) return;
