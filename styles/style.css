@@ -226,34 +226,32 @@ h1, h2, h3, button, a, input, textarea {
   
   transition: all 0.3s ease;
 }
-
-/* Общие стили заголовков внутри плашек */
+/* Общие стили заголовков внутри плашек (Сделали меньше для всех питомцев) */
 .new-clean-banner-box h3 {
-  color: #ffffff;           /* Белоснежный контрастный шрифт */
-  font-size: 30px;          
+  color: #ffffff;           
+  font-size: 24px;          /* ИСПРАВЛЕНИЕ: Уменьшили заголовок с 30px до 24px */
   font-weight: 800;          
-  line-height: 1.25;         
+  line-height: 1.3;         
   letter-spacing: -0.5px;
-  margin: 0 0 10px 0;       /* Отступ до списка услуг */
+  margin: 0 0 8px 0;       
   padding: 0;    
 }
 
-/* Общие стили списков услуг внутри плашек */
+/* Общие стили списков услуг внутри плашек (Тоже сделали аккуратнее) */
 .new-clean-banner-box p {
-  color: #cbd5e1;           /* Серебристо-серый приятный цвет */
-  font-size: 15px;          
+  color: #cbd5e1;           
+  font-size: 13px;          /* ИСПРАВЛЕНИЕ: Уменьшили текст услуг с 15px до 13px */
   font-weight: 600;          
   line-height: 1.4;
   margin: 0;
   padding: 0;
 }
-
 /* --- Индивидуальное расположение плашек на экранах --- */
 
 /* 1. Плашка Мопса: Слева по центру */
 .box-mops {
-  left: 60px;
-  top: 35%; 
+  left: 90px;
+  top: 15%; 
   bottom: auto;
   transform: translateY(-50%);
 }
