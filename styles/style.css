@@ -579,3 +579,10 @@ h1, h2, h3, button, a, input, textarea {
   margin-left: auto;
   margin-right: auto;
 }
+/* Безопасный синьорский сдвиг кнопок карусели внутрь слайда */
+.promo-btn.prev-promo { 
+  transform: translateX(20px); 
+}
+.promo-btn.next-promo { 
+  transform: translateX(-20px); 
+}
