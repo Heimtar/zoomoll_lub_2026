@@ -208,54 +208,49 @@ h1, h2, h3, button, a, input, textarea {
 .next-promo { right: 20px; }
 .promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
 
-/* --- Глянцевое объемное матовое стекло (Glassmorphism Premium) --- */
+/* --- Глянцевое объемное матовое стекло (Glassmorphism Pro) --- */
 .new-clean-banner-box {
   position: absolute;
   z-index: 5;
   max-width: 520px;         
-  padding: 30px 36px;       /* Увеличили воздух вокруг текста */
-  border-radius: 24px;      
+  padding: 26px 32px;       /* Чуть увеличили отступы для солидности */
+  border-radius: 24px;      /* Сделали углы более мягкими и современными */
   box-sizing: border-box;
   
-  /* Плотная теплая подложка в тон деревянных полок на фото */
-  background: rgba(253, 251, 247, 0.78);       
+  /* Истинный эффект объемного хрусталя */
+  background: rgba(255, 255, 255, 0.65);       /* Сделали стекло плотнее, чтобы оно не казалось плоским */
+  backdrop-filter: blur(20px) saturate(180%);   /* Усилили размытие и сочность цветов под стеклом */
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   
-  /* Максимальное кинематографичное размытие */
-  backdrop-filter: blur(24px) saturate(200%);   
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  /* Секретный синьорский прием: яркий глянцевый контур сверху и легкий темный снизу */
+  border: 1px solid rgba(255, 255, 255, 0.8);   
   
-  /* Истинный объем: блик падает сверху слева, мягкая тень уходит вниз */
-  border-top: 1px solid rgba(255, 255, 255, 0.95);   
-  border-left: 1px solid rgba(255, 255, 255, 0.70);   
-  border-right: 1px solid rgba(139, 115, 85, 0.08);   
-  border-bottom: 1px solid rgba(139, 115, 85, 0.15);   
-  
-  /* Сложная тень с добавлением теплого пигмента дерева (убирает грязь) */
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.6),
-              0 4px 10px -1px rgba(62, 50, 38, 0.04),
-              0 25px 50px -12px rgba(62, 50, 38, 0.15);
+  /* Глубокая многослойная тень, которая приподнимает плашку над картинкой */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+              0 20px 40px -8px rgba(15, 23, 42, 0.12),
+              0 0 0 1px rgba(0, 0, 0, 0.02);
   
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Стили заголовков (улучшенная читаемость) */
+/* Общие стили заголовков внутри стеклянных плашек */
 .new-clean-banner-box h3 {
-  color: #0f172a;           
-  font-size: 26px; /* Чуть крупнее для баланса */          
-  font-weight: 800; /* Безопасное значение для любых шрифтов */         
-  line-height: 1.25;         
-  letter-spacing: -0.02em;
-  margin: 0 0 12px 0;       
+  color: #0f172a;           /* Сделали цвет букв еще глубже для четкости */
+  font-size: 25px;          
+  font-weight: 850;          
+  line-height: 1.3;         
+  letter-spacing: -0.5px;
+  margin: 0 0 10px 0;       
   padding: 0;    
   text-shadow: none;        
 }
 
-/* Стили описания */
+/* Общие стили списков услуг внутри стеклянных плашек */
 .new-clean-banner-box p {
-  color: #334155;           
+  color: #334155;           /* Контрастный графитовый оттенок, буквы больше не блеклые */
   font-size: 14px;          
   font-weight: 600;          
-  line-height: 1.5; /* Больше межстрочного интервала для легкого чтения */
+  line-height: 1.45;
   margin: 0;
   padding: 0;
   text-shadow: none;
