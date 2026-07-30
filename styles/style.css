@@ -248,27 +248,32 @@ h1, h2, h3, button, a, input, textarea {
   text-shadow: 0 1px 6px rgba(15, 23, 42, 0.7); 
   text-align: left;            /* ИЗМЕНЕНО: текст аккуратно прижат влево */
 }
-/* --- Финальная невидимая подложка-дымка для левого текста --- */
+/* --- Финальный премиальный баннер с адаптивностью и защитой верстки --- */
 .new-clean-banner-box {
   position: absolute;
   z-index: 5;
   max-width: 520px;         
-  padding: 26px 32px;       /* Твои оригинальные размеры */
+  padding: 26px 32px;       
   border-radius: 24px;      
   box-sizing: border-box;
   
   height: auto;
   min-height: max-content;
   
-  /* ИДЕАЛЬНЫЙ ЛИНЕЙНЫЙ ГРАДИЕНТ: плотный слева под текстом, тает в прозрачность справа */
-  background: linear-gradient(90deg, rgba(51, 65, 85, 0.9) 0%, rgba(51, 65, 85, 0.45) 60%, transparent 100%);
+  /* Создаем локальную переменную для цвета, чтобы код был гибким */
+  --banner-glow-color: 51, 65, 85;
   
-  /* Полностью чистый код без жестких рамок и теней */
+  /* Используем переменную в градиенте */
+  background: linear-gradient(90deg, rgba(var(--banner-glow-color), 0.9) 0%, rgba(var(--banner-glow-color), 0.45) 60%, transparent 100%);
+  
   border: none;
   box-shadow: none;
+  
+  /* Защита: текст не будет намертво залипать в стрелки карусели */
+  word-break: break-word; 
 }
 
-/* Крупный заголовок — строго твой левый текст */
+/* Крупный заголовок */
 .new-clean-banner-box h3 {
   color: #ffffff;           
   font-size: 32px;          
@@ -277,20 +282,43 @@ h1, h2, h3, button, a, input, textarea {
   letter-spacing: -0.5px;   
   margin: 0 0 14px 0;       
   padding: 0;    
-  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.5); /* Мягкая тень под буквами */
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.5); 
   text-align: left;         
 }
 
-/* Четкий текст описания услуг — строго твой левый текст */
+/* Аккуратное описание услуг */
 .new-clean-banner-box p {
   color: #ffffff;           
-  font-size: 16px;          
-  font-weight: 700;          
+  font-size: 14px;          
+  font-weight: 600;          
   line-height: 1.45;        
   margin: 0;
   padding: 0;
   text-shadow: 0 1px 6px rgba(15, 23, 42, 0.5); 
   text-align: left;         
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ СМАРТФОНОВ: чтобы на телефонах всё выглядело идеально */
+@media (max-width: 768px) {
+  .new-clean-banner-box {
+    max-width: 100%;
+    left: 16px; /* Минимальный аккуратный отступ от края экрана телефона */
+    right: 16px;
+    padding: 16px 20px;
+    /* На мобилках линейный градиент вбок некрасиво обрежется, меняем его на мягкое круговое облако */
+    background: radial-gradient(circle, rgba(var(--banner-glow-color), 0.95) 0%, rgba(var(--banner-glow-color), 0.6) 80%, transparent 100%);
+  }
+  
+  .new-clean-banner-box h3 {
+    font-size: 22px; /* Уменьшаем заголовок на мобильном, чтобы он не ломал экран */
+    margin-bottom: 8px;
+    text-align: center; /* На телефонах центрированный текст смотрится аккуратнее */
+  }
+  
+  .new-clean-banner-box p {
+    font-size: 13px; /* Слегка уменьшаем подзаголовок */
+    text-align: center;
+  }
 }
 
 /* --- Идеальное расположение плашек  --- */
