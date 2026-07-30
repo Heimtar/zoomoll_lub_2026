@@ -94,36 +94,7 @@ h1, h2, h3, button, a, input, textarea {
   padding: 6px 14px;
   border-radius: 10px;
   transition: all 0.3s ease;
-} /* <-- Поставьте курсор сразу после этой закрывающей фигурной скобки */
-/* Настройки для блока телефона */
-.header-phone .phone-link {
-  display: inline-flex;       /* Выстраиваем трубку и номер в одну ровную линию */
-  align-items: center;        /* Центрируем их строго по высоте */
-  color: var(--text-color);   /* Берем ваш фирменный темный цвет текста */
-  font-weight: 600;           /* Слегка жирный шрифт */
-  font-size: 16px;
-  transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
 }
-
-/* Настройки для значка трубочки */
-.header-phone .phone-icon {
-  width: 22px;                /* Хороший, заметный размер значка */
-  height: 22px;               
-  margin-right: 8px;          /* Отступ между трубочкой и цифрами */
-  color: var(--primary-color);/* Красим трубку в ваш небесно-голубой цвет */
-  flex-shrink: 0;             /* Не дает значку сжиматься */
-  transition: transform 0.3s ease; /* Плавное увеличение значка */
-}
-
-/* Что происходит при наведении мышки на телефон */
-.header-phone .phone-link:hover {
-  color: var(--primary-hover); /* Номер плавно меняет цвет на темно-голубой */
-}
-
-.header-phone .phone-link:hover .phone-icon {
-  transform: scale(1.1);      /* Значок трубочки станет чуть-чуть крупнее */
-}
-
 
 .menu-link::after {
   content: '';
@@ -277,78 +248,17 @@ h1, h2, h3, button, a, input, textarea {
   text-shadow: 0 1px 6px rgba(15, 23, 42, 0.7); 
   text-align: left;            /* ИЗМЕНЕНО: текст аккуратно прижат влево */
 }
-/* --- Финальный премиальный баннер с адаптивностью и защитой верстки --- */
-.new-clean-banner-box {
+
+/* --- Умное затемнение слайдов --- */
+.slider-item::after {
+  content: "";
   position: absolute;
-  z-index: 5;
-  max-width: 520px;         
-  padding: 26px 32px;       
-  border-radius: 24px;      
-  box-sizing: border-box;
-  
-  height: auto;
-  min-height: max-content;
-  
-  /* Создаем локальную переменную для цвета, чтобы код был гибким */
-  --banner-glow-color: 51, 65, 85;
-  
-  /* Используем переменную в градиенте */
-  background: linear-gradient(90deg, rgba(var(--banner-glow-color), 0.9) 0%, rgba(var(--banner-glow-color), 0.45) 60%, transparent 100%);
-  
-  border: none;
-  box-shadow: none;
-  
-  /* Защита: текст не будет намертво залипать в стрелки карусели */
-  word-break: break-word; 
+  inset: 0;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0.25) 40%, rgba(15, 23, 42, 0) 70%);
+  z-index: 2;
+  pointer-events: none;
 }
 
-/* Крупный заголовок */
-.new-clean-banner-box h3 {
-  color: #ffffff;           
-  font-size: 32px;          
-  font-weight: 900;          
-  line-height: 1.2;         
-  letter-spacing: -0.5px;   
-  margin: 0 0 14px 0;       
-  padding: 0;    
-  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.5); 
-  text-align: left;         
-}
-
-/* Аккуратное описание услуг */
-.new-clean-banner-box p {
-  color: #ffffff;           
-  font-size: 14px;          
-  font-weight: 600;          
-  line-height: 1.45;        
-  margin: 0;
-  padding: 0;
-  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.5); 
-  text-align: left;         
-}
-
-/* АДАПТИВНОСТЬ ДЛЯ СМАРТФОНОВ: чтобы на телефонах всё выглядело идеально */
-@media (max-width: 768px) {
-  .new-clean-banner-box {
-    max-width: 100%;
-    left: 16px; /* Минимальный аккуратный отступ от края экрана телефона */
-    right: 16px;
-    padding: 16px 20px;
-    /* На мобилках линейный градиент вбок некрасиво обрежется, меняем его на мягкое круговое облако */
-    background: radial-gradient(circle, rgba(var(--banner-glow-color), 0.95) 0%, rgba(var(--banner-glow-color), 0.6) 80%, transparent 100%);
-  }
-  
-  .new-clean-banner-box h3 {
-    font-size: 22px; /* Уменьшаем заголовок на мобильном, чтобы он не ломал экран */
-    margin-bottom: 8px;
-    text-align: center; /* На телефонах центрированный текст смотрится аккуратнее */
-  }
-  
-  .new-clean-banner-box p {
-    font-size: 13px; /* Слегка уменьшаем подзаголовок */
-    text-align: center;
-  }
-}
 
 /* --- Идеальное расположение плашек  --- */
 
@@ -607,134 +517,4 @@ h1, h2, h3, button, a, input, textarea {
 .hero-content {
   margin-left: auto;
   margin-right: auto;
-}
-/* Безопасный синьорский сдвиг кнопок карусели внутрь слайда */
-.promo-btn.prev-promo { 
-  transform: translateX(20px); 
-}
-.promo-btn.next-promo { 
-  transform: translateX(-20px); 
-}
-/* --- Плавный скролл для всего сайта --- */
-html {
-    scroll-behavior: smooth;
-}
-section {
-    scroll-margin-top: 90px; /* Чтобы шапка не закрывала заголовки разделов при прокрутке */
-}
-
-/* --- Новые стили для телефона с лапкой --- */
-.phone-link {
-    display: inline-flex;       
-    align-items: center;        
-    text-decoration: none;      
-    color: #2c3e50;             
-    font-weight: 600;
-    transition: color 0.3s ease; 
-}
-
-.paw-icon {
-    width: 22px;                
-    height: 22px;
-    margin-right: 8px;          
-    color: #00a8ff;             /* Ваш фирменный голубой цвет */
-    transition: transform 0.3s ease, color 0.3s ease; 
-}
-
-.phone-link:hover {
-    color: #00a8ff;             
-}
-
-.phone-link:hover .paw-icon {
-    color: #ff9f43;             /* Лапка меняет цвет на теплый оранжевый при наведении */
-    transform: rotate(-15deg) scale(1.1); /* Лапка забавно наклоняется */
-}
-
-/* --- Стили для блока отзывов (Карусель) --- */
-.carousel-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.carousel-track-wrapper {
-    overflow: hidden;
-    width: 100%;
-}
-
-.carousel-track {
-    display: flex;
-    gap: 20px; 
-    transition: transform 0.5s ease; 
-}
-
-.review-card {
-    min-width: calc(33.333% - 14px); /* Отображает по 3 карточки в ряд */
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.review-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.review-author {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.review-stars {
-    color: #ffb142; /* Золотые звезды */
-}
-
-.review-text {
-    font-size: 14px;
-    color: #555555;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    flex-grow: 1;
-}
-
-.yandex-link {
-    color: #00a8ff;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.yandex-link:hover {
-    text-decoration: underline;
-}
-
-.carousel-btn {
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 10;
-    transition: background 0.3s;
-}
-
-.carousel-btn:hover {
-    background: #00a8ff;
-    color: white;
-    border-color: #00a8ff;
 }
