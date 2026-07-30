@@ -344,8 +344,8 @@ h1, h2, h3, button, a, input, textarea {
 .hero-content p { font-size: 20px; color: #cbd5e1; margin-bottom: 45px; line-height: 1.6; }
 
 #cta-btn {
-  /* Трёхмерный объём: перелив от сочной бирюзы к благородному сине-бирюзовому */
-  background: linear-gradient(180deg, #00dfd8 0%, #0070f3 100%);
+  /* Базовый цвет: глубокий, дорогой цвет ночного неба (сливается с фоном Hero) */
+  background: linear-gradient(135deg, #151e2e 0%, #1e293b 100%);
   color: var(--white);
   padding: 16px 44px;
   border: none;
@@ -356,60 +356,60 @@ h1, h2, h3, button, a, input, textarea {
   display: inline-block;
   position: relative;
   z-index: 2;
-  overflow: hidden;
+  overflow: hidden; /* Срезаем лазерный блик по углам */
   
-  /* Эффект линзы: добавляем тонкую верхнюю рамку-блик и внутреннюю тень для объёма */
+  /* Тонкая, едва заметная бирюзовая рамка для связи с телефоном из шапки */
+  border: 1px solid rgba(0, 223, 216, 0.25);
+  
+  /* Мягкая, глубокая тень парения вместо ядовитого неонового взрыва */
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.4), 
-    inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-    0 4px 12px rgba(0, 50, 150, 0.25); /* Аккуратная, не грязная и не сильная тень */
-      
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+    0 4px 15px rgba(15, 23, 42, 0.3);       
+  
   transition: transform 0.3s cubic-bezier(0.15, 0.85, 0.35, 1), 
-              box-shadow 0.3s cubic-bezier(0.15, 0.85, 0.35, 1);
+              box-shadow 0.3s cubic-bezier(0.15, 0.85, 0.35, 1),
+              border-color 0.3s ease;
 }
 
-/* СВЕТОВОЙ ЛАЗЕРНЫЙ БЛИК */
+/* Скрытый внутри белый лазерный луч */
 #cta-btn::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -150%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.3), 
-    transparent
-  );
+  top: 0; left: -150%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
   transform: skewX(-20deg);
   transition: none;
 }
 
-/* ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA */
+/* Эффект при наведении курсора */
 #cta-btn:hover {
-  transform: translateY(-3px) scale(1.015);
+  transform: translateY(-3px) scale(1.01); /* Легкое благородное приподнимание */
   
-  /* ИСПРАВЛЕНО: Никакого взрыва неона. Тень просто становится чуть глубже, приподнимая кнопку */
+  /* Рамка плавно загорается яркой бирюзой, очерчивая кнопку */
+  border-color: rgba(0, 223, 216, 0.7);
+  
+  /* Снизу под кнопкой загорается аккуратное, дорогое бирюзовое облако */
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.4), 
-    inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-    0 8px 20px rgba(0, 50, 150, 0.35);
+    inset 0 1px 0 rgba(255, 255, 255, 0.15), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+    0 8px 24px rgba(0, 223, 216, 0.2); 
 }
 
-/* Скольжение луча при наведении */
+/* Запуск скольжения белого луча при наведении */
 #cta-btn:hover::before {
   left: 150%;
-  transition: left 0.7s cubic-bezier(0.2, 1, 0.2, 1);
+  transition: left 0.7s cubic-bezier(0.3, 1, 0.2, 1);
 }
 
-/* Клик мышкой (Кнопка физически прожимается, внутренние тени меняются) */
+/* Физический отклик при клике мышкой (Кнопка честно вдавливается) */
 #cta-btn:active { 
   transform: translateY(-1px) scale(0.98); 
   box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.2),
-    0 2px 6px rgba(0, 50, 150, 0.15); 
+    inset 0 3px 5px rgba(0, 0, 0, 0.3),
+    0 2px 6px rgba(0, 0, 0, 0.2); 
 }
+
 
 
 @keyframes pawStep {
