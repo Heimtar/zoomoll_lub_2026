@@ -208,49 +208,49 @@ h1, h2, h3, button, a, input, textarea {
 .next-promo { right: 20px; }
 .promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
 
-/* --- Глянцевое объемное матовое стекло (Glassmorphism Pro) --- */
+/* --- Универсальная глянцевая синяя плашка (Оригинальные размеры) --- */
 .new-clean-banner-box {
   position: absolute;
   z-index: 5;
   max-width: 520px;         
-  padding: 26px 32px;       /* Чуть увеличили отступы для солидности */
-  border-radius: 24px;      /* Сделали углы более мягкими и современными */
+  padding: 26px 32px;       /* Размеры строго как в вашем первом варианте */
+  border-radius: 24px;      
   box-sizing: border-box;
   
-  /* Истинный эффект объемного хрусталя */
-  background: rgba(255, 255, 255, 0.65);       /* Сделали стекло плотнее, чтобы оно не казалось плоским */
-  backdrop-filter: blur(20px) saturate(180%);   /* Усилили размытие и сочность цветов под стеклом */
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  /* Плотный благородный синий цвет под цвет вашего нижнего блока */
+  background: rgba(15, 23, 42, 0.88);       
   
-  /* Секретный синьорский прием: яркий глянцевый контур сверху и легкий темный снизу */
-  border: 1px solid rgba(255, 255, 255, 0.8);   
+  /* Эффект матового стекла по краям */
+  backdrop-filter: blur(15px);   
+  -webkit-backdrop-filter: blur(15px);
   
-  /* Глубокая многослойная тень, которая приподнимает плашку над картинкой */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
-              0 20px 40px -8px rgba(15, 23, 42, 0.12),
-              0 0 0 1px rgba(0, 0, 0, 0.02);
+  /* Тонкая глянцевая рамка, чтобы плашка выглядела объемной */
+  border: 1px solid rgba(255, 255, 255, 0.15);   
+  
+  /* Мягкая тень, которая приподнимает плашку над фото */
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
   
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Общие стили заголовков внутри стеклянных плашек */
 .new-clean-banner-box h3 {
-  color: #0f172a;           /* Сделали цвет букв еще глубже для четкости */
-  font-size: 25px;          
-  font-weight: 850;          
-  line-height: 1.3;         
-  letter-spacing: -0.5px;
-  margin: 0 0 10px 0;       
+  color: #ffffff;           /* Изменено на белый для максимального контраста */
+  font-size: 25px;          /* Оригинальный размер */
+  font-weight: 800;          
+  line-height: 1.3;         /* Оригинальный интервал */
+  letter-spacing: -0.5px;   /* Оригинальный трекинг */
+  margin: 0 0 10px 0;       /* Оригинальный отступ */
   padding: 0;    
   text-shadow: none;        
 }
 
 /* Общие стили списков услуг внутри стеклянных плашек */
 .new-clean-banner-box p {
-  color: #334155;           /* Контрастный графитовый оттенок, буквы больше не блеклые */
-  font-size: 14px;          
+  color: rgba(255, 255, 255, 0.85); /* Изменено на матовый белый */
+  font-size: 14px;          /* Оригинальный размер */
   font-weight: 600;          
-  line-height: 1.45;
+  line-height: 1.45;        /* Оригинальный интервал */
   margin: 0;
   padding: 0;
   text-shadow: none;
