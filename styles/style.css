@@ -586,3 +586,44 @@ h1, h2, h3, button, a, input, textarea {
 .promo-btn.next-promo { 
   transform: translateX(-20px); 
 }
+/* Профессиональная стилизация кнопки телефона с градиентом */
+.header-phone .phone-link {
+    /* Красивый перелив: от глубокого индиго до благородного сине-зеленого */
+    background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
+    color: #ffffff;
+    border: none;
+    
+    /* Форма капсулы */
+    border-radius: 100px;
+    padding: 10px 22px;
+    
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    
+    /* Делаем тень более мягкой и полупрозрачной */
+    box-shadow: 0 4px 15px rgba(3, 105, 161, 0.2);
+    
+    /* Анимация: теперь плавно меняется и сам градиентный фон */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* Эффект при наведении курсора */
+.header-phone .phone-link:hover {
+    color: #ffffff;
+    
+    /* Слегка приподнимаем кнопку */
+    transform: translateY(-2px);
+    
+    /* Тень становится объемнее */
+    box-shadow: 0 6px 20px rgba(3, 105, 161, 0.3);
+    
+    /* Хитрость для градиентов без !important: делаем цвета чуть насыщеннее при наведении */
+    filter: brightness(1.1);
+}
+
+/* Настройка иконки трубки */
+.header-phone .phone-icon-img {
+    margin-right: 8px;
+    display: block;
+}
