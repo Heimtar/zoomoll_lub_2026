@@ -586,27 +586,27 @@ h1, h2, h3, button, a, input, textarea {
 .promo-btn.next-promo { 
   transform: translateX(-20px); 
 }
-/* Профессиональная RGB-кнопка на чистом CSS */
+/* Профессиональная RGB кнопка со скрытым приоритетом */
 .header-phone .phone-link {
-    /* Задаем базовый яркий градиент из трех сочных цветов */
-    background: linear-gradient(135deg, #00dfd8, #7928ca, #ff007f);
-    color: #ffffff;
-    border: none;
+    /* Цвета подобраны так, чтобы первый и последний совпадали для бесшовности */
+    background-image: linear-gradient(120deg, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f);
+    background-size: 400% 100%; /* Растягиваем только по ширине, чтобы анимация шла слева направо */
+    
+    border: none; 
     border-radius: 100px;
     padding: 10px 22px;
+    color: #ffffff;
     
-    /* inline-flex делает ссылку блочной, чтобы к ней правильно применялись все эффекты */
     display: inline-flex;
     align-items: center;
     text-decoration: none;
     
-    /* Включаем бесконечное круговое изменение цвета за 4 секунды */
-    animation: rgb-rainbow 4s linear infinite;
+    /* Плавный перелив за 6 секунд */
+    animation: rgb-movement 6s linear infinite;
     
-    /* Аккуратное, легкое неоновое свечение в тон кнопки */
-    box-shadow: 0 4px 15px rgba(121, 40, 202, 0.3);
+    /* Чистое неоновое свечение в тон крайних цветов градиента */
+    box-shadow: 0 4px 15px rgba(0, 223, 218, 0.25), 0 4px 20px rgba(255, 0, 127, 0.2);
     
-    /* Настройка плавности для наведения мышки */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -615,22 +615,22 @@ h1, h2, h3, button, a, input, textarea {
     color: #ffffff;
     transform: translateY(-2px);
     
-    /* Усиливаем неоновый контур, когда пользователь наводит мышку */
-    box-shadow: 0 6px 20px rgba(255, 0, 127, 0.5);
+    /* Усиливаем чистый неон без грязи */
+    box-shadow: 0 6px 20px rgba(0, 223, 218, 0.45), 0 6px 25px rgba(255, 0, 127, 0.35);
 }
 
-/* Выравнивание иконки трубки внутри кнопки */
+/* Выравнивание иконки трубки */
 .header-phone .phone-icon-img {
     margin-right: 8px;
     display: block;
 }
 
-/* ТЕХНИЧЕСКАЯ МАГИЯ: Вращение цветового спектра на 360 градусов */
-@keyframes rgb-rainbow {
+/* ИДЕАЛЬНАЯ БЕСШОВНАЯ АНИМАЦИЯ: цвета перетекают строго в одну сторону без рывков */
+@keyframes rgb-movement {
     0% {
-        filter: hue-rotate(0deg);
+        background-position: 0% 0%;
     }
     100% {
-        filter: hue-rotate(360deg);
+        background-position: 400% 0%;
     }
 }
