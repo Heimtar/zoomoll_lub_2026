@@ -208,7 +208,7 @@ h1, h2, h3, button, a, input, textarea {
 .next-promo { right: 20px; }
 .promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
 
-/* --- Универсальная глянцевая синяя плашка (Финальный чистый вариант) --- */
+/* --- Универсальная глянцевая синяя плашка (Контрастный вариант) --- */
 .new-clean-banner-box {
   position: absolute;
   z-index: 5;
@@ -217,22 +217,22 @@ h1, h2, h3, button, a, input, textarea {
   border-radius: 24px;      
   box-sizing: border-box;
   
-  /* ПРАВИЛЬНАЯ ВЫСОТА: плашка сама растягивается под текст, синьор одобрит */
+  /* Авто-высота: текст теперь сидит строго внутри плашки */
   height: auto;
   min-height: max-content;
   
-  /* ТОЧНЫЙ ЦВЕТ ИЗ БЛОКА .HERO (с легким эффектом стекла) */
-  background: rgba(30, 41, 59, 0.9);       
+  /* Сделали цвет светлее, чтобы плашка выделялась на фоне нижнего блока */
+  background: rgba(51, 65, 85, 0.85);       
   
-  /* Эффект матового стекла по краям */
-  backdrop-filter: blur(15px);   
-  -webkit-backdrop-filter: blur(15px);
+  /* Усилили матовое стекло, чтобы плашка «горела» на тёмном фоне */
+  backdrop-filter: blur(20px) saturate(140%);   
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
   
-  /* Тонкая глянцевая рамка, чтобы плашка выглядела объемной */
+  /* Тонкая рамка для объёма */
   border: 1px solid rgba(255, 255, 255, 0.15);   
   
-  /* Мягкая тень, которая приподнимает плашку над фото */
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  /* Более глубокая тень, чтобы приподнять плашку над сайтом */
+  box-shadow: 0 20px 45px -12px rgba(15, 23, 42, 0.4);
   
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -251,7 +251,7 @@ h1, h2, h3, button, a, input, textarea {
 
 /* Общие стили списков услуг внутри стеклянных плашек */
 .new-clean-banner-box p {
-  color: rgba(255, 255, 255, 0.85); 
+  color: rgba(255, 255, 255, 0.9); /* Сделали буквы чуть ярче для чёткости */
   font-size: 14px;          
   font-weight: 600;          
   line-height: 1.45;        
