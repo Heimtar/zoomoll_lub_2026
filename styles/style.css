@@ -250,8 +250,8 @@ h1, h2, h3, button, a, input, textarea {
 
 /* 1. Плашка Мопса: Слева по центру */
 .box-mops {
-  left: 90px;
-  top: 15%; 
+  left: 60px;
+  top: 40%; 
   bottom: auto;
   transform: translateY(-50%);
 }
