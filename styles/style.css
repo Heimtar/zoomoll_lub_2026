@@ -257,14 +257,13 @@ h1, h2, h3, button, a, input, textarea {
   text-align: left;            
 }
 
-/* --- Ваше расположение плашек для остальных животных --- */
+/* --- Ваше оригинальное расположение плашек для остальных животных --- */
 .box-mops {
-  left: 260px;
-  top: 25px;               
+  left: 200px;
+  top: 40px;               
   bottom: auto;
   right: auto;
-  transform: none;
-  width: 440px;        
+  transform: none;         
 }
 
 .box-bath-dog {
@@ -273,7 +272,7 @@ h1, h2, h3, button, a, input, textarea {
   top: 50%; 
   bottom: auto;
   transform: translateY(-50%);
-  text-align: right;        
+  text-align: center; /* ИСПРАВЛЕНО: выравнивание по центру */        
 }
 
 .box-cat {
@@ -282,7 +281,7 @@ h1, h2, h3, button, a, input, textarea {
   top: 40px;               
   bottom: auto;
   transform: none;         
-  text-align: left;        
+  text-align: center; /* ИСПРАВЛЕНО: выравнивание по центру */        
   max-width: 620px;        
 }
 
@@ -291,6 +290,35 @@ h1, h2, h3, button, a, input, textarea {
   font-weight: 600;
   line-height: 1.4;
 }
+
+/* --- ИСПРАВЛЕНО: Текст внутри плашек теперь всегда строго по центру --- */
+.box-mops h3,
+.box-bath-dog h3,
+.box-cat h3 {
+  color: #ffffff;           
+  font-size: 32px;          
+  font-weight: 900;          
+  line-height: 1.2;         
+  letter-spacing: -0.5px;   
+  margin: 0 0 14px 0;       
+  padding: 0;    
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.5); 
+  text-align: center; /* ИСПРАВЛЕНО: жестко выровняли заголовки по центру */         
+}
+
+.box-mops p,
+.box-bath-dog p,
+.box-cat p {
+  color: #ffffff;           
+  font-size: 14px;          
+  font-weight: 600;          
+  line-height: 1.45;        
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.5); 
+  text-align: center; /* ИСПРАВЛЕНО: жестко выровняли абзацы по центру */         
+}
+
 
 .hero {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
