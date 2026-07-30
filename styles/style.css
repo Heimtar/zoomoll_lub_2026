@@ -306,7 +306,6 @@ h1, h2, h3, button, a, input, textarea {
   max-width: 580px;        /* Расширили плашку, чтобы тексту внутри было просторно */
 }
 
-
 .hero {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
   width: 100%;
