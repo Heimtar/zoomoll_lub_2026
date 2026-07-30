@@ -259,7 +259,7 @@ h1, h2, h3, button, a, input, textarea {
 
 /* --- Ваше оригинальное расположение плашек для остальных животных --- */
 .box-mops {
-  left: 200px;
+  left: 240px;
   top: 40px;               
   bottom: auto;
   right: auto;
