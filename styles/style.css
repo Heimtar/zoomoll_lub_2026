@@ -177,7 +177,7 @@ h1, h2, h3, button, a, input, textarea {
 
 /* Котика выравниваем по центру */
 .slide-cat img {
-  object-position: center 30%;
+  object-position: center 65%;
 }
 
 /* Ретривера в пене центрируем идеально по середине */
