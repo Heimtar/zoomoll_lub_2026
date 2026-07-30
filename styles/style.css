@@ -344,11 +344,9 @@ h1, h2, h3, button, a, input, textarea {
 .hero-content p { font-size: 20px; color: #cbd5e1; margin-bottom: 45px; line-height: 1.6; }
 
 /* ==========================================================================
-   КНОПКА ЗАПИСАТЬСЯ: ЯРКОЕ ПРЕМИАЛЬНОЕ СТЕКЛО (Идеальный баланс)
+   КНОПКА ЗАПИСАТЬСЯ: КОРОЛЕВА ЭКРАНА С RGB-ПЕРЕЛИВОМ
    ========================================================================== */
 #cta-btn {
-  /* ИСПРАВЛЕНО: Сделали базовый цвет заметно светлее и сочнее (графитово-синий) */
-  background: linear-gradient(135deg, #232f42 0%, #151e2e 100%);
   color: var(--white);
   padding: 16px 44px;
   border: none;
@@ -359,63 +357,60 @@ h1, h2, h3, button, a, input, textarea {
   display: inline-block;
   position: relative;
   z-index: 2;
-  overflow: hidden; /* Срезаем лазерный блик по углам */
+  overflow: hidden;
   
-  /* ИСПРАВЛЕНО: Сделали бирюзовую неоновую рамку намного ярче и заметнее */
-  border: 1px solid rgba(0, 223, 216, 0.65);
+  /* Мягкий, бесконечный RGB-перелив из вашего оригинального телефона */
+  background-image: linear-gradient(120deg, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f);
+  background-size: 400% 100%; 
+  animation: cta-rgb-movement 15s linear infinite; /* Медленный благородный ход спектра */
   
-  /* Добавили внутренний хайлайт для ощущения объема */
+  /* Эффект линзы: сохраняем ваш крутой внутренний объем */
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.2), 
-    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
-    0 4px 15px rgba(0, 223, 216, 0.15); /* Мягкий бирюзовый отсвет в спокойном состоянии */
+    inset 0 1px 0 rgba(255, 255, 255, 0.3), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+    0 6px 20px rgba(0, 223, 218, 0.25), 0 6px 25px rgba(255, 0, 127, 0.2);       
       
   transition: transform 0.3s cubic-bezier(0.15, 0.85, 0.35, 1), 
-              box-shadow 0.3s cubic-bezier(0.15, 0.85, 0.35, 1),
-              border-color 0.3s ease,
-              background 0.3s ease;
+              box-shadow 0.3s cubic-bezier(0.15, 0.85, 0.35, 1);
 }
 
-/* ЯРКИЙ ВНУТРЕННИЙ ЛАЗЕРНЫЙ БЛИК */
+/* СВЕТОВОЙ ЛАЗЕРНЫЙ БЛИК */
 #cta-btn::before {
   content: '';
   position: absolute;
   top: 0; left: -150%; width: 100%; height: 100%;
-  
-  /* ИСПРАВЛЕНО: Сделали скользящий луч более плотным и белым */
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  
-  transform: skewX(-20deg); 
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
   transition: none;
 }
 
 /* ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA */
 #cta-btn:hover {
-  transform: translateY(-3px) scale(1.015); 
-  
-  /* При ховере кнопка становится еще ярче и контрастнее */
-  background: linear-gradient(135deg, #2d3d56 0%, #1c283d 100%);
-  border-color: #00dfd8; /* Рамка вспыхивает чистым неоном */
-  
-  /* Под кнопкой загорается сочное, но аккуратное бирюзовое облако */
+  transform: translateY(-4px) scale(1.015);
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.25), 
-    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
-    0 8px 24px rgba(0, 223, 216, 0.4); 
+    inset 0 1px 0 rgba(255, 255, 255, 0.4), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+    0 10px 25px rgba(0, 223, 218, 0.4), 0 10px 30px rgba(255, 0, 127, 0.35);
 }
 
-/* Плавный запуск лазера при наведении */
+/* Бег лазерного луча сквозь RGB-текстуру при наведении */
 #cta-btn:hover::before {
   left: 150%;
-  transition: left 0.7s cubic-bezier(0.3, 1, 0.2, 1);
+  transition: left 0.7s cubic-bezier(0.2, 1, 0.2, 1);
 }
 
 /* Клик мышкой */
 #cta-btn:active { 
   transform: translateY(-1px) scale(0.98); 
   box-shadow: 
-    inset 0 3px 5px rgba(0, 0, 0, 0.4),
-    0 2px 6px rgba(0, 0, 0, 0.2); 
+    inset 0 3px 5px rgba(0, 0, 0, 0.3),
+    0 3px 8px rgba(0, 0, 0, 0.2); 
+}
+
+/* Наша родная анимация движения спектра */
+@keyframes cta-rgb-movement {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 400% 0%; }
 }
 
 
