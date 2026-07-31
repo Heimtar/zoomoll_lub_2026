@@ -143,9 +143,6 @@ h1, h2, h3, button, a, input, textarea {
 
 
 
-/* ==========================================================================
-   ФИНАЛ: СТРОГАЯ ГРАФИТОВАЯ ПЛАШКА БЕЗ БАГА С ИСЧЕЗНОВЕНИЕМ КАРТИНКИ
-   ========================================================================== */
 .phone-link {
   display: flex;
   align-items: center;
@@ -154,43 +151,28 @@ h1, h2, h3, button, a, input, textarea {
   font-weight: 700;
   font-size: 16px;
   
-  /* ИСПРАВЛЕНО: Полностью убрали RGB-анимацию и мигание */
   animation: none;
   background-image: none;
   background-size: auto;
   
-  /* ИСПРАВЛЕНО: Включаем благородный цвет полуночного угля в тон секции Hero */
-  background: #1e293b; 
+  /* ИСПРАВЛЕНО: Сделали цвет матовым, приглушенным и очень мягким */
+  background: #6faad0; 
   border: 1px solid rgba(255, 255, 255, 0.15); 
   
   padding: 10px 22px;
   border-radius: 50px;
   
-  /* ИСПРАВЛЕНО: Заменили неоновые тени на аккуратную глубокую тень для объема */
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  /* Убрали яркое свечение, сделали тень едва заметной */
+  box-shadow: 0 4px 12px rgba(111, 170, 208, 0.2);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
-/* Новые стили для модной SVG-иконки смартфона */
-.phone-icon-svg {
-  width: 18px;
-  height: 18px;
-  display: block;
-  stroke: currentColor; /* Иконка автоматически станет белой */
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* 1. Эффект для самой кнопки при наведении */
+/* Эффект при наведении (кнопка станет чуть глубже, но без неона) */
 .phone-link:hover {
   color: #ffffff;
   transform: translateY(-2px); 
-  background: var(--primary-hover); /* Включается твой благородный синий цвет */
-  box-shadow: 0 6px 20px rgba(67, 146, 196, 0.4); /* Мягкая синяя тень */
-}
-
-/* 2. Эффект для иконки смартфона при наведении */
-.phone-link:hover .phone-icon-svg { 
-  transform: scale(1.15) rotate(7deg); /* Иконка приятно увеличится и наклонится */
+  background: #5b95bc; /* Приглушенный синий для ховера */
+  box-shadow: 0 6px 16px rgba(91, 149, 188, 0.3); 
 }
 
 
