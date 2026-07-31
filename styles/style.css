@@ -130,53 +130,50 @@ h1, h2, h3, button, a, input, textarea {
    ОБНОВЛЕННАЯ RGB КНОПКА ТЕЛЕФОНА (Медленный благородный перелив)
    ========================================================================== */
 /* ==========================================================================
-   КОРОЛЕВСКИЙ ФИНАЛ: СОЧНЫЙ МАЛИНОВЫЙ ЛЕДЕНЕЦ (Идеальный баланс и чистота)
+   ФИНАЛ: ЧИСТЫЙ НОМЕР И ТРУБКА ИДЕАЛЬНО В ТОН БУКВ ШАПКИ
    ========================================================================== */
 .phone-link {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #ffffff; 
+  
+  /* Точный графитовый цвет букв вашего меню */
+  color: #2b3d4a; 
   font-weight: 700;
   font-size: 16px;
   animation: none;
   background-size: auto;
   
-  /* ИСПРАВЛЕНО: Очень сочный, дорогой малиново-ягодный градиент */
-  background: linear-gradient(180deg, #ff1a8c 0%, #cc005c 100%);
-  border: none; 
-  padding: 10px 22px;
-  border-radius: 50px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 6px 4px;
   
-  /* ИСПРАВЛЕНО: Внешнего свечения НЕТ (полная чистота), но внутри создаем дорогой объем */
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.35), 
-    inset 0 -2px 0 rgba(0, 0, 0, 0.15);
-  
-  transition: transform 0.2s ease, filter 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .phone-icon-img {
   width: 20px;
   height: 20px;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  
+  /* ИСПРАВЛЕНО: Чистый графитовый цвет для трубки без синих искажений браузера */
+  filter: invert(21%) sepia(11%) saturate(2206%) hue-rotate(167deg) brightness(95%) contrast(92%);
 }
 
-/* Интерактивный отклик при наведении */
+/* ИНТЕРАКТИВНЫЙ ХОВЕР ПРИ НАВЕДЕНИИ МЫШКИ */
 .phone-link:hover {
-  color: #ffffff;
+  /* При наведении номер телефона плавно загорается вашим фирменным ягодным цветом */
+  color: #ff1a8c; 
   transform: translateY(-2px); 
-  
-  /* Кнопка мягко подсвечивается изнутри, сохраняя идеальную внешнюю чистоту */
-  filter: brightness(1.06); 
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.45), 
-    inset 0 -2px 0 rgba(0, 0, 0, 0.15);
 }
 
 .phone-link:hover .phone-icon-img { 
   transform: scale(1.1); 
+  
+  /* ИСПРАВЛЕНО: При наведении трубка плавно и точно становится сочно-ягодной */
+  filter: invert(18%) sepia(88%) saturate(5422%) hue-rotate(321deg) brightness(95%) contrast(110%);
 }
 
 
