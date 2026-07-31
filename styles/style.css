@@ -187,19 +187,14 @@ h1, h2, h3, button, a, input, textarea {
 }
 
 
-/* Интерактивный благородный ховер без цветного неона */
+/* Интерактивный ховер: кнопка плавно темнеет и приподнимается */
 .phone-link:hover {
   color: #ffffff;
-  transform: translateY(-2px); /* Кнопка мягко приподнимается */
-  background: #233044; /* Цвет плашки становится на капельку светлее */
-  
-  /* Аккуратная, чистая и глубокая тень без капли цветного неона */
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25); 
+  transform: translateY(-2px); 
+  background: var(--primary-hover); /* Включается твой благородный синий цвет */
+  box-shadow: 0 6px 20px rgba(67, 146, 196, 0.4); /* Мягкая синяя тень вместо черной */
 }
 
-.phone-link:hover .phone-icon-img { 
-  transform: scale(1.1); 
-}
 
 
 .phone-icon-img {
