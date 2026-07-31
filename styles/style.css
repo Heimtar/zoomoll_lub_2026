@@ -140,7 +140,7 @@ h1, h2, h3, button, a, input, textarea {
   box-shadow: none;
 }
 /* ==========================================================================
-   ФИНАЛ: ЭФФЕКТ СВЕТЛОГО ЧИСТОГО СТЕКЛА (Идеальный баланс и легкость)
+   ИСПРАВЛЕНО: ЕЩЁ БОЛЕЕ СВЕТЛАЯ И МЯГКАЯ ТЕМНАЯ ПЛАШКА
    ========================================================================== */
 .phone-link {
   display: inline-flex;
@@ -148,8 +148,7 @@ h1, h2, h3, button, a, input, textarea {
   justify-content: center;
   gap: 10px;
   
-  /* ИСПРАВЛЕНО: Текст номера теперь благородного темного цвета, чтобы отлично читаться */
-  color: #1a1a1a; 
+  color: #ffffff; 
   font-weight: 700;
   font-size: 16px;
   
@@ -157,20 +156,16 @@ h1, h2, h3, button, a, input, textarea {
   background-image: none;
   background-size: auto;
   
-  /* Матовое белое стекло: пропускает свет, выглядит очень легко */
-  background: rgba(255, 255, 255, 0.6); 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  
-  /* Изящная светлая граница */
-  border: 1px solid rgba(26, 26, 26, 0.15); 
+  /* ИСПРАВЛЕНО: Сделали цвет ещё светлее и мягче — теперь это благородный средне-серый */
+  background: #475569; 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
   
   padding: 10px 22px;
   border-radius: 50px;
   
-  /* Очень мягкая, парящая тень без грязи */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, border-color 0.3s ease;
+  /* Очень тонкая, незаметная тень */
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
 /* Стили для модной SVG-иконки смартфона */
@@ -183,13 +178,12 @@ h1, h2, h3, button, a, input, textarea {
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 1. Эффект для кнопки при наведении: она наливается чистым белым цветом, а рамка подсвечивается сочной бирюзой */
+/* 1. Эффект для кнопки при наведении: плавно переходит в цвет исправленного Зоомолл */
 .phone-link:hover {
-  color: #1a1a1a;
+  color: #ffffff;
   transform: translateY(-2px); 
-  background: rgba(255, 255, 255, 1); 
-  border-color: #00dfd8; /* Тонкий намек на бирюзовый цвет из градиента меню! */
-  box-shadow: 0 6px 16px rgba(0, 223, 216, 0.15); 
+  background: #6faad0; /* Наш мягкий серо-голубой цвет */
+  box-shadow: 0 6px 16px rgba(111, 170, 208, 0.3); 
 }
 
 /* 2. Эффект для иконки смартфона при наведении */
