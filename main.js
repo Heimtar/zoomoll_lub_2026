@@ -274,8 +274,7 @@ function initPriceCalculator() {
     } else {
       serviceSelect.disabled = true;
     }
-  });
-
+  })
   // Выбор услуги и финал цены
   serviceSelect.addEventListener('change', function() {
     if (this.value) {
