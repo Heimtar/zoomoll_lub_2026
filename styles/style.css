@@ -139,20 +139,17 @@ h1, h2, h3, button, a, input, textarea {
   outline: none;
   box-shadow: none;
 }
-
-
-
 /* ==========================================================================
-   ОБНОВЛЕННАЯ ГОЛУБАЯ ПЛАШКА (ИСПРАВЛЕНА: ШАПКА БОЛЬШЕ НЕ ЕДЕТ)
+   ФИНАЛ: ЭФФЕКТ СВЕТЛОГО ЧИСТОГО СТЕКЛА (Идеальный баланс и легкость)
    ========================================================================== */
 .phone-link {
-  /* ИСПРАВЛЕНО: inline-flex жестко удерживает кнопку в общей строке шапки */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   
-  color: #ffffff; 
+  /* ИСПРАВЛЕНО: Текст номера теперь благородного темного цвета, чтобы отлично читаться */
+  color: #1a1a1a; 
   font-weight: 700;
   font-size: 16px;
   
@@ -160,34 +157,39 @@ h1, h2, h3, button, a, input, textarea {
   background-image: none;
   background-size: auto;
   
-  /* Наш мягкий благородный серо-голубой цвет */
-  background: #6faad0; 
-  border: 1px solid rgba(255, 255, 255, 0.15); 
+  /* Матовое белое стекло: пропускает свет, выглядит очень легко */
+  background: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Изящная светлая граница */
+  border: 1px solid rgba(26, 26, 26, 0.15); 
   
   padding: 10px 22px;
   border-radius: 50px;
   
-  box-shadow: 0 4px 12px rgba(111, 170, 208, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+  /* Очень мягкая, парящая тень без грязи */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
 /* Стили для модной SVG-иконки смартфона */
 .phone-icon-svg {
   width: 18px;
   height: 18px;
-  /* ИСПРАВЛЕНО: inline-block вместо block, чтобы иконка не расталкивала текст */
   display: inline-block;
   vertical-align: middle;
   stroke: currentColor; 
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 1. Эффект для самой кнопки при наведении */
+/* 1. Эффект для кнопки при наведении: она наливается чистым белым цветом, а рамка подсвечивается сочной бирюзой */
 .phone-link:hover {
-  color: #ffffff;
+  color: #1a1a1a;
   transform: translateY(-2px); 
-  background: #5b95bc; 
-  box-shadow: 0 6px 16px rgba(91, 149, 188, 0.3); 
+  background: rgba(255, 255, 255, 1); 
+  border-color: #00dfd8; /* Тонкий намек на бирюзовый цвет из градиента меню! */
+  box-shadow: 0 6px 16px rgba(0, 223, 216, 0.15); 
 }
 
 /* 2. Эффект для иконки смартфона при наведении */
