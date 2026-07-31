@@ -221,10 +221,25 @@ h1, h2, h3, button, a, input, textarea {
   0% { background-position: 0% 0%; }
   100% { background-position: 400% 0%; }
 }
+/* ==========================================================================
+   ИСПРАВЛЕНО: ЭФФЕКТ ОТДЕЛЕНИЯ ШАПКИ ПРИ СКРОЛЛЕ (Больше не сливается с белым)
+   ========================================================================== */
+
+/* Сама плавающая панель при прокрутке вниз получает тень и контур */
+.site-header.shrunk {
+  background-color: rgba(255, 255, 255, 0.95); /* Становится капельку плотнее */
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); /* Мягкая, дорогая тень парения */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Едва заметная нижняя граница */
+}
+
+/* Ваши оригинальные компактные размеры элементов при скролле */
 .site-header.shrunk .header-wrap { padding-top: 8px; padding-bottom: 8px; }
 .site-header.shrunk .logo-img { width: 36px; height: 36px; }
 .site-header.shrunk .brand-name { font-size: 22px; }
+
+/* Начало следующей секции карусели (Оставляем без изменений) */
 .promo-carousel-section { padding: 0 5%; margin-bottom: 30px; }
+
 
 .promo-container {
   width: 100%;
