@@ -176,43 +176,23 @@ h1, h2, h3, button, a, input, textarea {
   width: 18px;
   height: 18px;
   display: block;
-  stroke: currentColor; /* Иконка автоматически станет белой, под цвет текста кнопки */
+  stroke: currentColor; /* Иконка автоматически станет белой */
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* При наведении мышки на кнопку телефона */
-.phone-link:hover .phone-icon-svg { 
-  /* Иконка приятно увеличится и слегка наклонится вбок */
-  transform: scale(1.15) rotate(7deg); 
-}
-
-
-/* Интерактивный ховер: кнопка плавно темнеет и приподнимается */
+/* 1. Эффект для самой кнопки при наведении */
 .phone-link:hover {
   color: #ffffff;
   transform: translateY(-2px); 
   background: var(--primary-hover); /* Включается твой благородный синий цвет */
-  box-shadow: 0 6px 20px rgba(67, 146, 196, 0.4); /* Мягкая синяя тень вместо черной */
+  box-shadow: 0 6px 20px rgba(67, 146, 196, 0.4); /* Мягкая синяя тень */
 }
 
-
-
-.phone-icon-img {
-  width: 20px;
-  height: 20px;
-  display: block;
-  transition: transform 0.3s ease;
+/* 2. Эффект для иконки смартфона при наведении */
+.phone-link:hover .phone-icon-svg { 
+  transform: scale(1.15) rotate(7deg); /* Иконка приятно увеличится и наклонится */
 }
 
-.phone-link:hover {
-  color: #ffffff;
-  transform: translateY(-2px); 
-  box-shadow: 0 6px 20px rgba(0, 223, 218, 0.45), 0 6px 25px rgba(255, 0, 127, 0.35);
-}
-
-.phone-link:hover .phone-icon-img { 
-  transform: scale(1.1); 
-}
 
 @keyframes rgb-movement {
   0% { background-position: 0% 0%; }
