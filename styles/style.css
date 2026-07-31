@@ -190,11 +190,11 @@ h1, h2, h3, button, a, input, textarea {
 /* Интерактивный благородный ховер без цветного неона */
 .phone-link:hover {
   color: #ffffff;
-  transform: translateY(-2px); 
-  background: #2d3d56; /* Кнопка станет чуть мягче по цвету */
+  transform: translateY(-2px); /* Кнопка мягко приподнимается */
+  background: #233044; /* Цвет плашки становится на капельку светлее */
   
-  /* ИСПРАВЛЕНО: Чистая синяя тень без розового и бирюзового неона */
-  box-shadow: 0 6px 20px rgba(43, 120, 228, 0.4); 
+  /* Аккуратная, чистая и глубокая тень без капли цветного неона */
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25); 
 }
 
 .phone-link:hover .phone-icon-img { 
