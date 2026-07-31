@@ -93,7 +93,6 @@ function initPromoSlider() {
   window.addEventListener("load", updatePromoSlider);
   promoTimer = setInterval(handleNextSlide, 5000);
 }
-
 // --- Reviews Slider (Отзывы) ---
 function initReviewsSlider() {
   const track = document.getElementById("carousel-track");
@@ -184,8 +183,7 @@ function initPawAnimation() {
   triggerPawsAnimation();
   setInterval(triggerPawsAnimation, 15000);
 }
-
-/// --- УМНЫЙ КАЛЬКУЛЯТОР ЦЕН БЕЗ ОШИБОК И СТЫКОВ ---
+// --- УМНЫЙ КАЛЬКУЛЯТОР ЦЕН БЕЗ ОШИБОК И СТЫКОВ ---
 function initPriceCalculator() {
   const priceData = {
     dog: {
@@ -206,7 +204,6 @@ function initPriceCalculator() {
     }
   };
 
-  /* ИСПРАВЛЕНО: Объявлена строго одна переменная через ID */
   const calcModal = document.getElementById('price-calculator-modal');
   const petSelect = document.getElementById('calc-pet-type');
   const breedSelect = document.getElementById('calc-breed');
@@ -302,100 +299,4 @@ function initPriceCalculator() {
     serviceSelect.disabled = true;
     resultBox.style.display = 'none';
   }
-}
-
-  // Ищем модалку по общему классу .modal-overlay, чтобы точно сработало!
-  const calcModal = document.querySelector('.modal-overlay');
-  const petSelect = document.getElementById('calc-pet-type');
-  const breedSelect = document.getElementById('calc-breed');
-  const serviceSelect = document.getElementById('calc-service');
-  const resultBox = document.getElementById('calc-result-box');
-  const finalPrice = document.getElementById('calc-final-price');
-  const closeBtn = document.querySelector('.close-calc-btn');
-
-  if (!calcModal || !petSelect || !breedSelect || !serviceSelect) return;
-
-  // Открытие по кнопкам "Подробнее"
-  document.querySelectorAll('.details-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      calcModal.style.display = 'flex';
-    });
-  });
-
-  // Закрытие
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      calcModal.style.display = 'none';
-      resetCalculator();
-    });
-  }
-
-  calcModal.addEventListener('click', (e) => {
-    if (e.target === calcModal) {
-      calcModal.style.display = 'none';
-      resetCalculator();
-    }
-  });
-
-  // Выбор питомца
-  petSelect.addEventListener('change', function() {
-    resetSelect(breedSelect, '-- Выберите породу --');
-    resetSelect(serviceSelect, '-- Сначала выберите породу --');
-    resultBox.style.display = 'none';
-    
-    if (this.value) {
-      priceData[this.value].breeds.forEach(breed => {
-        let opt = new Option(breed, breed);
-        breedSelect.add(opt);
-      });
-      breedSelect.disabled = false;
-    } else {
-      breedSelect.disabled = true;
-    }
-    serviceSelect.disabled = true;
-  });
-
-  // Выбор породы
-  breedSelect.addEventListener('change', function() {
-    resetSelect(serviceSelect, '-- Выберите процедуру --');
-    resultBox.style.display = 'none';
-    
-    if (this.value) {
-      const petType = petSelect.value;
-      const availableServices = Object.keys(priceData[petType].services[this.value]);
-      
-      availableServices.forEach(service => {
-        let opt = new Option(service, service);
-        serviceSelect.add(opt);
-      });
-      serviceSelect.disabled = false;
-    } else {
-      serviceSelect.disabled = true;
-    }
-  })
-  // Выбор услуги и финал цены
-  serviceSelect.addEventListener('change', function() {
-    if (this.value) {
-      const petType = petSelect.value;
-      const breed = breedSelect.value;
-      const price = priceData[petType].services[breed][this.value];
-      
-      finalPrice.innerText = price + ' ₽';
-      resultBox.style.display = 'block';
-    } else {
-      resultBox.style.display = 'none';
-    }
-  });
-
-  function resetSelect(selectElement, defaultText) {
-    selectElement.innerHTML = `<option value="">${defaultText}</option>`;
-  }
-
-  function resetCalculator() {
-  petSelect.value = '';
-  resetSelect(breedSelect, '-- Сначала выберите питомца --');
-  resetSelect(serviceSelect, '-- Сначала выберите породу --');
-  breedSelect.disabled = true;
-  serviceSelect.disabled = true;
-  resultBox.style.display = 'none';
 }
