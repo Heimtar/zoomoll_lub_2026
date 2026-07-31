@@ -130,59 +130,53 @@ h1, h2, h3, button, a, input, textarea {
    ОБНОВЛЕННАЯ RGB КНОПКА ТЕЛЕФОНА (Медленный благородный перелив)
    ========================================================================== */
 /* ==========================================================================
-   УЛЬТРА-МИНИМАЛИЗМ: ПРОЗРАЧНАЯ КНОПКА ТЕЛЕФОНА (Ghost Button)
+   КОРОЛЕВСКИЙ ФИНАЛ: СОЧНЫЙ МАЛИНОВЫЙ ЛЕДЕНЕЦ (Идеальный баланс и чистота)
    ========================================================================== */
 .phone-link {
   display: flex;
   align-items: center;
   gap: 10px;
-  
-  /* В покое текст и иконка будут сочного малинового цвета */
-  color: #ff1a8c; 
+  color: #ffffff; 
   font-weight: 700;
   font-size: 16px;
   animation: none;
   background-size: auto;
   
-  /* ИСПРАВЛЕНО: Полностью прозрачный фон кнопки */
-  background: transparent;
-  
-  /* Тонкая, аккуратная малиновая рамка, чтобы обозначить кнопку */
-  border: 2px solid #ff1a8c; 
-  padding: 8px 22px; /* Чуть уменьшили внутренние отступы из-за рамки */
+  /* ИСПРАВЛЕНО: Очень сочный, дорогой малиново-ягодный градиент */
+  background: linear-gradient(180deg, #ff1a8c 0%, #cc005c 100%);
+  border: none; 
+  padding: 10px 22px;
   border-radius: 50px;
   
-  /* Идеальная чистота: никаких внешних теней и свечений */
-  box-shadow: none; 
+  /* ИСПРАВЛЕНО: Внешнего свечения НЕТ (полная чистота), но внутри создаем дорогой объем */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.35), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15);
   
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s ease, filter 0.3s ease;
 }
 
 .phone-icon-img {
   width: 20px;
   height: 20px;
   display: block;
-  transition: transform 0.3s ease, filter 0.25s ease;
-  
-  /* Окрашиваем иконку телефона в тон текста */
-  filter: drop-shadow(0px 0px 0px #ff1a8c) brightness(1);
+  transition: transform 0.3s ease;
 }
 
-/* ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA */
+/* Интерактивный отклик при наведении */
 .phone-link:hover {
-  /* При наведении кнопка плавно наливается сочным малиновым глянцем, а текст становится белым */
-  background: linear-gradient(180deg, #ff1a8c 0%, #cc005c 100%);
-  color: #ffffff; 
-  border-color: #ff1a8c;
-  
+  color: #ffffff;
   transform: translateY(-2px); 
-  box-shadow: 0 4px 12px rgba(255, 0, 127, 0.2); /* Легкий аккуратный отсвет только при ховере */
+  
+  /* Кнопка мягко подсвечивается изнутри, сохраняя идеальную внешнюю чистоту */
+  filter: brightness(1.06); 
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.45), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15);
 }
 
 .phone-link:hover .phone-icon-img { 
   transform: scale(1.1); 
-  /* Делаем иконку белой, когда фон кнопки становится розовым */
-  filter: brightness(0) invert(1); 
 }
 
 
