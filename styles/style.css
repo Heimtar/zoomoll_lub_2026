@@ -130,48 +130,53 @@ h1, h2, h3, button, a, input, textarea {
    ОБНОВЛЕННАЯ RGB КНОПКА ТЕЛЕФОНА (Медленный благородный перелив)
    ========================================================================== */
 /* ==========================================================================
-   ИСПРАВЛЕНО: СТРОГИЙ ГРАФИТ С ЧИСТОЙ ИНВЕРСИЕЙ (Без ягодного неона)
+   ФИНАЛ: ЧИСТАЯ СТРОГАЯ ГРАФИТОВАЯ ПЛАШКА (Вычистили баг с опечаткой)
    ========================================================================== */
 .site-header .header-phone .phone-link {
   display: flex;
   align-items: center;
   gap: 10px;
   
-  /* Идеально белый читаемый текст номера */
+  /* Идеалльно белый читаемый текст номера */
   color: #ffffff; 
   font-weight: 700;
   font-size: 16px;
+  
+  /* ЖЕСТКИЙ СБРОС СТАРОГО МИГАНИЯ И БАГОВ */
   animation: none;
+  background-image: none;
   background-size: auto;
   
   /* Матовый, глубокий цвет полуночного угля (в тон секции Hero) */
   background: #1e293b;
   
-  /* Строгая серебряно-стальная рамка без неона */
+  /* Ультратонкая, строгая серебряно-стальная рамка без неона */
   border: 1px solid rgba(255, 255, 255, 0.15); 
   padding: 10px 22px;
   border-radius: 50px;
   
-  /* Полная чистота вокруг: только нейтральная тень для объема */
+  /* Полная чистота вокруг: только нейтральная аккуратная тень для объема */
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12); 
   
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
               background 0.3s ease, 
-              color 0.3s ease,
-              border-color 0.3s ease,
               box-shadow 0.3s ease;
 }
 
 .site-header .header-phone .phone-icon-img {
+  /* Жестко фиксируем нормальный размер трубки в ряд с цифрами */
   width: 20px;
   height: 20px;
+  min-width: 20px;
+  min-height: 20px;
   display: block;
   background: transparent;
+  background-color: transparent;
   border-radius: 0;
   border: none;
   box-shadow: none;
   
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform 0.3s ease;
   
   /* Иконка трубки идеально белая на графитовом фоне */
   filter: brightness(0) invert(1);
@@ -179,24 +184,18 @@ h1, h2, h3, button, a, input, textarea {
 
 /* ИНТЕРАКТИВНЫЙ ХОВЕР ПРИ НАВЕДЕНИИ МЫШКИ */
 .site-header .header-phone .phone-link:hover {
-  /* При наведении кнопка инвертируется: становится белой, а текст — графитовым */
-  background: #ffffff;
-  color: #2b3d4a; 
-  
-  /* Рамка становится аккуратным серым контуром */
-  border-color: rgba(43, 61, 74, 0.2);
-  
+  color: #ffffff;
   transform: translateY(-2px); 
   
-  /* Нейтральная мягкая тень парения без капли розового или бирюзового цвета */
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.15); 
+  /* При наведении кнопка благородно становится капельку мягче по цвету */
+  background: #2d3d56;
+  
+  /* Строгая нейтральная тень парения без капли розового или бирюзового неона */
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25); 
 }
 
 .site-header .header-phone .phone-link:hover .phone-icon-img { 
   transform: scale(1.1); 
-  
-  /* При наведении иконка трубки тоже красится в строгий графитовый цвет букв шапки */
-  filter: invert(21%) sepia(11%) saturate(2206%) hue-rotate(167deg) brightness(95%) contrast(92%);
 }
 
 
