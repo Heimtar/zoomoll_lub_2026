@@ -129,7 +129,7 @@ h1, h2, h3, button, a, input, textarea {
 /* ==========================================================================
    ОБНОВЛЕННАЯ RGB КНОПКА ТЕЛЕФОНА (Медленный благородный перелив)
    ========================================================================== */
-/* --- СОЧНЫЙ ТЕЛЕФОН ЦВЕТА МАДЖЕНТА ЭЛЕКТРИК (Идеальный баланс сочности) --- */
+/* --- СТИЛЬНЫЙ ПРИГЛУШЕННЫЙ ПУДРОВО-РОЗОВЫЙ ТЕЛЕФОН БЕЗ СВЕЧЕНИЯ --- */
 .phone-link {
   display: flex;
   align-items: center;
@@ -140,15 +140,16 @@ h1, h2, h3, button, a, input, textarea {
   animation: none;
   background-size: auto;
   
-  /* ИСПРАВЛЕНО: Благородный, глубокий, но при этом светящийся цвет сочной фуксии */
-  background: linear-gradient(135deg, #f50076 0%, #c20059 100%);
+  /* ИСПРАВЛЕНО: Благородный приглушенный пудрово-ягодный градиент */
+  background: linear-gradient(135deg, #e05295 0%, #b83d75 100%);
   border: none; 
   padding: 10px 22px;
   border-radius: 50px;
   
-  /* ИСПРАВЛЕНО: Аккуратная, мягкая тень в тон кнопки без грязного ореола */
-  box-shadow: 0 4px 12px rgba(245, 0, 118, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.3s ease;
+  /* Строгая чистота: никакого внешнего свечения и теней */
+  box-shadow: none; 
+  
+  transition: transform 0.2s ease, filter 0.3s ease;
 }
 
 .phone-icon-img {
@@ -158,11 +159,14 @@ h1, h2, h3, button, a, input, textarea {
   transition: transform 0.3s ease;
 }
 
+/* Интерактивный отклик при наведении мышки */
 .phone-link:hover {
   color: #ffffff;
   transform: translateY(-2px); 
-  filter: brightness(1.08); /* Красивая интерактивная подсветка */
-  box-shadow: 0 6px 16px rgba(245, 0, 118, 0.35);
+  
+  /* При наведении кнопка мягко и интерактивно становится чуть сочнее */
+  filter: brightness(1.08); 
+  box-shadow: none; 
 }
 
 .phone-link:hover .phone-icon-img { 
