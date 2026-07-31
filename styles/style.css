@@ -390,9 +390,13 @@ h1, h2, h3, button, a, input, textarea {
 /* ==========================================================================
    КНОПКА ЗАПИСАТЬСЯ: КОРОЛЕВА ЭКРАНА С RGB-ПЕРЕЛИВОМ
    ========================================================================== */
-/* ==========================================================================
-   КНОПКА ЗАПИСАТЬСЯ: НАЩУПАЛИ ИДЕАЛЬНЫЙ СБАЛАНСИРОВАННЫЙ ХОД
-   ========================================================================== */
+/* Прописываем свойство для плавной анимации углов вращения */
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 #cta-btn {
   color: var(--white);
   padding: 16px 44px;
@@ -406,13 +410,13 @@ h1, h2, h3, button, a, input, textarea {
   z-index: 2;
   overflow: hidden;
   
-  /* Цвета оставляем сочными и глубокими */
-  background-image: linear-gradient(120deg, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f, #00dfd8, #ff007f);
-  background-size: 600% 100%; 
+  /* Конический градиент на всю кнопку */
+  background: conic-gradient(from var(--gradient-angle) at 50% 50%, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f);
   
-  /* ИСПРАВЛЕНО: Поставили 12 секунд. Теперь движение плавное, вальяжное и приятное глазу */
-  animation: cta-rgb-movement 12s linear infinite; 
+  /* Медленный, завораживающий ход кружения по кругу (12 секунд) */
+  animation: cta-rotate-movement 12s linear infinite; 
   
+  /* Мягкий объёмный кант и неоновое парение */
   box-shadow: 
     inset 0 -3px 0 rgba(0, 0, 0, 0.15),
     0 8px 24px rgba(121, 40, 202, 0.25);       
@@ -420,42 +424,52 @@ h1, h2, h3, button, a, input, textarea {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* СВЕТОВОЙ ЛАЗЕРНЫЙ БЛИК */
+/* ХИТРОСТЬ: Накладываем внутренний размытый слой, чтобы полностью стереть острую точку в центре */
+#cta-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Мягкий полупрозрачный слой, который сглаживает центр, но оставляет кнопку сочной */
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+  z-index: -1;
+  /* Легкое размытие внутренностей кнопки, чтобы убрать жесткие стыки цветов */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Лазерный блик, который бежит при наведении */
 #cta-btn::before {
   content: '';
   position: absolute;
   top: 0; left: -150%; width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
   transform: skewX(-20deg);
+  z-index: 3; /* Чтобы блик бежал поверх размытия */
   transition: none;
 }
 
-/* ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA */
+/* Анимация вращения */
+@keyframes cta-rotate-movement {
+  0% { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+/* Эффекты при наведении */
 #cta-btn:hover {
   transform: translateY(-3px); 
   box-shadow: 
     inset 0 -3px 0 rgba(0, 0, 0, 0.15),
     0 12px 30px rgba(121, 40, 202, 0.4);
 }
-
-/* Бег лазерного луча при наведении */
 #cta-btn:hover::before {
   left: 150%;
   transition: left 0.7s cubic-bezier(0.2, 1, 0.2, 1);
 }
 
-/* Нажатие кнопки мыши */
+/* Клик мышкой */
 #cta-btn:active { 
   transform: translateY(1px); 
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.2),
-    0 4px 10px rgba(0, 0, 0, 0.1); 
-}
-
-/* Наша анимация движения спектра */
-@keyframes cta-rgb-movement {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 600% 0%; }
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 
