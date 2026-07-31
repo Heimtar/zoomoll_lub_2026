@@ -129,83 +129,58 @@ h1, h2, h3, button, a, input, textarea {
 /* ==========================================================================
    ОБНОВЛЕННАЯ RGB КНОПКА ТЕЛЕФОНА (Медленный благородный перелив)
    ========================================================================== */
-/* ==========================================================================
-   ФИНАЛ: ЧИСТАЯ СТРОГАЯ ГРАФИТОВАЯ ПЛАШКА (Вычистили баг с опечаткой)
-   ========================================================================== */
-.site-header .header-phone .phone-link {
+.phone-link {
   display: flex;
   align-items: center;
   gap: 10px;
-  
-  /* Идеалльно белый читаемый текст номера */
   color: #ffffff; 
   font-weight: 700;
   font-size: 16px;
-  
-  /* ЖЕСТКИЙ СБРОС СТАРОГО МИГАНИЯ И БАГОВ */
-  animation: none;
-  background-image: none;
-  background-size: auto;
-  
-  /* Матовый, глубокий цвет полуночного угля (в тон секции Hero) */
-  background: #1e293b;
-  
-  /* Ультратонкая, строгая серебряно-стальная рамка без неона */
-  border: 1px solid rgba(255, 255, 255, 0.15); 
+  background-image: linear-gradient(120deg, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f);
+  background-size: 400% 100%; 
+  border: none; 
   padding: 10px 22px;
   border-radius: 50px;
-  
-  /* Полная чистота вокруг: только нейтральная аккуратная тень для объема */
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12); 
-  
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              background 0.3s ease, 
-              box-shadow 0.3s ease;
+  animation: rgb-movement 18s linear infinite;
+  box-shadow: 0 4px 15px rgba(0, 223, 218, 0.25), 0 4px 20px rgba(255, 0, 127, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.site-header .header-phone .phone-icon-img {
-  /* Жестко фиксируем нормальный размер трубки в ряд с цифрами */
+.phone-icon-img {
   width: 20px;
   height: 20px;
-  min-width: 20px;
-  min-height: 20px;
   display: block;
-  background: transparent;
-  background-color: transparent;
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  
   transition: transform 0.3s ease;
-  
-  /* Иконка трубки идеально белая на графитовом фоне */
-  filter: brightness(0) invert(1);
 }
 
-/* ==========================================================================
-   ИСПРАВЛЕНО: ЧИСТЫЙ СТРОГИЙ ХОВЕР ДЛЯ ПК И КОРРЕКТНЫЕ СТИЛИ ШАПКИ
-   ========================================================================== */
-
-/* 1. Единственный и правильный ховер телефона для ПК */
-.site-header .header-phone .phone-link:hover {
+.phone-link:hover {
   color: #ffffff;
   transform: translateY(-2px); 
-  background: #2d3d56; /* При наведении плашка становится капельку мягче */
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25); 
+  box-shadow: 0 6px 20px rgba(0, 223, 218, 0.45), 0 6px 25px rgba(255, 0, 127, 0.35);
 }
 
-.site-header .header-phone .phone-link:hover .phone-icon-img { 
+.phone-link:hover .phone-icon-img { 
   transform: scale(1.1); 
 }
 
-/* 2. Стили уменьшения шапки при скролле (Ваш оригинал, скобки закрыты) */
+@keyframes rgb-movement {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 400% 0%; }
+}
 .site-header.shrunk .header-wrap { padding-top: 8px; padding-bottom: 8px; }
 .site-header.shrunk .logo-img { width: 36px; height: 36px; }
 .site-header.shrunk .brand-name { font-size: 22px; }
-
-/* 3. Стили секции карусели (Ваш оригинал, скобки закрыты) */
 .promo-carousel-section { padding: 0 5%; margin-bottom: 30px; }
 
+.promo-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
 
 .promo-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
 .promo-slide { min-width: 100%; width: 100%; position: relative; flex-shrink: 0; }
