@@ -191,8 +191,10 @@ h1, h2, h3, button, a, input, textarea {
 .phone-link:hover {
   color: #ffffff;
   transform: translateY(-2px); 
-  background: #2d3d56; /* При наведении плашка становится капельку мягче */
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25); 
+  background: #2d3d56; /* Кнопка станет чуть мягче по цвету */
+  
+  /* ИСПРАВЛЕНО: Чистая синяя тень без розового и бирюзового неона */
+  box-shadow: 0 6px 20px rgba(43, 120, 228, 0.4); 
 }
 
 .phone-link:hover .phone-icon-img { 
