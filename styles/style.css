@@ -130,73 +130,65 @@ h1, h2, h3, button, a, input, textarea {
    ОБНОВЛЕННАЯ RGB КНОПКА ТЕЛЕФОНА (Медленный благородный перелив)
    ========================================================================== */
 /* ==========================================================================
-   ИСПРАВЛЕНО: ЧИСТЫЙ СБРОС ТЕКСТОВОГО ТЕЛЕФОНА ЗА СЧЕТ КАСКАДА (Без !important)
+   ФИНАЛ: СТРОГИЙ ГРАФИТ С ЯГОДНЫМ ОТКЛИКОМ (Идеальная связь с меню)
    ========================================================================== */
-
-/* Точный путь к кнопке: сбрасываем старый розовый фон и рамки */
 .site-header .header-phone .phone-link {
   display: flex;
   align-items: center;
   gap: 10px;
-  
-  /* Строго графитовый цвет букв в тон вашего меню */
-  color: #2b3d4a; 
+  color: #ffffff; 
   font-weight: 700;
   font-size: 16px;
-  
   animation: none;
-  background-image: none;
-  background: transparent;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  padding: 6px 4px; 
-  border-radius: 0;
+  background-size: auto;
   
-  transition: color 0.3s ease, transform 0.2s ease;
+  /* В покое — строгий матовый графит (в тон секции Hero) */
+  background: #1e293b;
+  
+  /* Аккуратная нейтральная рамка, чтобы не перегружать шапку */
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  padding: 10px 22px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12); 
+  
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              background 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
 }
 
-/* Точный путь к иконке: сжимаем её из круга обратно в аккуратную трубку */
 .site-header .header-phone .phone-icon-img {
   width: 20px;
   height: 20px;
   min-width: 20px;
   min-height: 20px;
   display: block;
-  
-  /* Намертво счищаем старый розовый фон и скругление */
   background: transparent;
-  background-color: transparent;
   border-radius: 0;
   border: none;
   box-shadow: none;
   
   transition: transform 0.3s ease, filter 0.3s ease;
-  
-  /* Графитовый цвет для трубки */
-  filter: invert(21%) sepia(11%) saturate(2206%) hue-rotate(167deg) brightness(95%) contrast(92%);
+  filter: brightness(0) invert(1); /* Белая трубка в покое */
 }
 
 /* ИНТЕРАКТИВНЫЙ ХОВЕР ПРИ НАВЕДЕНИИ МЫШКИ */
 .site-header .header-phone .phone-link:hover {
-  /* При наведении номер плавно загорается вашим фирменным ягодным цветом */
-  color: #ff1a8c; 
+  color: #ffffff;
   transform: translateY(-2px); 
   
-  /* Гарантируем, что при ховере не всплывет старых цветных фонов и рамок */
-  background: transparent;
-  background-image: none;
-  border: none;
-  box-shadow: none;
+  /* При наведении кнопка становится чуть мягче */
+  background: #2d3d56;
+  
+  /* ИСПРАВЛЕНО: Рамка загорается ягодным цветом в тон подчеркивания меню! */
+  border-color: #ff007f;
+  
+  /* ИСПРАВЛЕНО: Мягкое ягодное облако плавно подсвечивает кнопку снизу */
+  box-shadow: 0 6px 18px rgba(255, 0, 127, 0.3); 
 }
 
 .site-header .header-phone .phone-link:hover .phone-icon-img { 
   transform: scale(1.1); 
-  background: transparent;
-  background-color: transparent;
-  
-  /* При наведении трубка плавно и точно становится сочно-ягодной */
-  filter: invert(18%) sepia(88%) saturate(5422%) hue-rotate(321deg) brightness(95%) contrast(110%);
 }
 
 
