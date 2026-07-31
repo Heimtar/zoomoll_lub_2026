@@ -129,9 +129,7 @@ h1, h2, h3, button, a, input, textarea {
 /* ==========================================================================
    ОБНОВЛЕННАЯ RGB КНОПКА ТЕЛЕФОНА (Медленный благородный перелив)
    ========================================================================== */
-/* ==========================================================================
-   ИСПРАВЛЕНО: СТРОГИЙ ГРАФИТОВЫЙ ТЕЛЕФОН С РОЗОВОЙ СВЯЗЬЮ (Без грязи и перегруза)
-   ========================================================================= */
+/* --- ЯРКИЙ РОЗОВЫЙ ТЕЛЕФОН БЕЗ ЛИШНЕГО СВЕЧЕНИЯ --- */
 .phone-link {
   display: flex;
   align-items: center;
@@ -139,22 +137,18 @@ h1, h2, h3, button, a, input, textarea {
   color: #ffffff; 
   font-weight: 700;
   font-size: 16px;
-  
-  /* ПОЛНЫЙ СБРОС RGB И СТАРОГО МИГАНИЯ */
   animation: none;
   background-size: auto;
   
-  /* СВЯЗЬ: Точно такой же благородный графитово-синий фон, как у нижней кнопки */
-  background: linear-gradient(135deg, #232f42 0%, #151e2e 100%);
-  
-  /* АКЦЕНТ: Заменяем бирюзу на вашу любимую тонкую ягодно-розовую рамку */
-  border: 1px solid #ff007f; 
+  /* Ваша любимая сочная розовая основа кнопки */
+  background: linear-gradient(135deg, #ff007f 0%, #d40066 100%);
+  border: none; 
   padding: 10px 22px;
   border-radius: 50px;
   
-  /* ИСПРАВЛЕНО: Убрали ядовитое свечение, оставив лишь легкий чистый розовый отсвет */
+  /* ИСПРАВЛЕНО: Убрали ядовитый неоновый взрыв, оставив аккуратную мягкую тень */
   box-shadow: 0 4px 12px rgba(255, 0, 127, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.3s ease;
 }
 
 .phone-icon-img {
@@ -162,29 +156,16 @@ h1, h2, h3, button, a, input, textarea {
   height: 20px;
   display: block;
   transition: transform 0.3s ease;
-  
-  /* Окрашиваем иконку телефона в сочный розовый цвет под цвет рамки */
-  filter: drop-shadow(0px 0px 0px #ff007f) brightness(1);
 }
 
-/* Интерактивный премиальный отклик при наведении мышки */
 .phone-link:hover {
   color: #ffffff;
   transform: translateY(-2px); 
-  
-  /* При наведении кнопка телефона плавно заливается сочным розовым цветом */
-  background: linear-gradient(135deg, #ff007f 0%, #d40066 100%);
-  border-color: #ff007f;
-  
-  /* Розовое облако под кнопкой мягко подсвечивает шапку */
-  box-shadow: 0 6px 18px rgba(255, 0, 127, 0.4);
+  filter: brightness(1.08); /* Мягкая интерактивная подсветка */
+  box-shadow: 0 6px 16px rgba(255, 0, 127, 0.25);
 }
 
-.phone-link:hover .phone-icon-img { 
-  transform: scale(1.1);
-  /* Делаем иконку чисто белой на розовом фоне */
-  filter: brightness(0) invert(1); 
-}
+.phone-link:hover .phone-icon-img { transform: scale(1.1); }
 
 
 .phone-icon-img {
