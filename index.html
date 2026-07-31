@@ -229,30 +229,71 @@
         </div>
     </section>
 
-    <!-- Подвал -->
-    <footer id="contacts" class="footer">
-        <p>© 2026 Зоомол. Архангельск, Московский просп., 6, корп. 3</p>
-        <p>Телефон: +7 (960) 000-03-07</p>
-    </footer>
+ <!-- Подвал -->
+<footer id="contacts" class="footer">
+    <p>© 2026 Зоомол. Архангельск, Московский просп., 6, корп. 3</p>
+    <p>Телефон: +7 (960) 000-03-07</p>
+</footer>
 
-    <!-- Модальное окно -->
-    <div id="modal" class="modal-overlay">
-        <div class="modal-content">
-            <button id="modal-close" class="close-btn">&times;</button>
-            <img src="img/modal.jpg" alt="Радостный пес" class="modal-img" width="120" height="120">
-            <h2>Заявка принята! 🐾</h2>
-            <p>Мы свяжемся с вами в течение 10 минут, чтобы подобрать идеальное время.</p>
-            <button id="modal-ok-btn" class="ok-btn">Отлично, жду!</button>
-        </div>
+<!-- Модальное окно (Ваше старое окно заявки) -->
+<div id="modal" class="modal-overlay">
+    <div class="modal-content">
+        <button id="modal-close" class="close-btn">&times;</button>
+        <img src="img/modal.jpg" alt="Радостный пес" class="modal-img" width="120" height="120">
+        <h2>Заявка принята! 🐾</h2>
+        <p>Мы свяжемся с вами в течение 10 минут, чтобы подобрать идеальное время.</p>
+        <button id="modal-ok-btn" class="ok-btn">Отлично, жду!</button>
     </div>
+</div>
 
-    <!-- Кнопка Вверх -->
-    <a href="#" id="to-top-btn" class="to-top-button" title="Наверх">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
-            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </a>
+<!-- НАШ НОВЫЙ КАРКАС УМНОГО ОКНА-КАЛЬКУЛЯТОРА (ВСТАВИЛИ СЮДА) -->
+<div id="price-calculator-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>Рассчитать стоимость</h2>
+        <p class="modal-subtitle">Выберите параметры вашего питомца, чтобы узнать точную цену</p>
+        
+        <div class="calculator-form">
+            <div class="form-group">
+                <label>Кто у вас?</label>
+                <select id="calc-pet-type">
+                    <option value="">-- Выберите --</option>
+                    <option value="dog">Собака</option>
+                    <option value="cat">Кошка</option>
+                </select>
+            </div>
 
-    <script src="main.js"></script>
+            <div class="form-group">
+                <label>Порода пушистика</label>
+                <select id="calc-breed" disabled>
+                    <option value="">-- Сначала выберите питомца --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Какая процедура нужна?</label>
+                <select id="calc-service" disabled>
+                    <option value="">-- Сначала выберите породу --</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="calc-result-box" class="result-box" style="display: none;">
+            <span class="result-label">Стоимость услуги:</span>
+            <div id="calc-final-price" class="final-price">0 ₽</div>
+            <a href="https://dikidi.net" target="_blank" class="calc-book-btn">Записаться онлайн через DIKIDI</a>
+        </div>
+
+        <button class="close-calc-btn">Закрыть</button>
+    </div>
+</div>
+
+<!-- Кнопка Вверх -->
+<a href="#" id="to-top-btn" class="to-top-button" title="Наверх">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+        <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</a>
+
+<script src="main.js"></script>
 </body>
 </html>
