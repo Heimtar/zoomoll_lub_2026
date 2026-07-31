@@ -130,29 +130,34 @@ h1, h2, h3, button, a, input, textarea {
    ОБНОВЛЕННАЯ RGB КНОПКА ТЕЛЕФОНА (Медленный благородный перелив)
    ========================================================================== */
 /* ==========================================================================
-   ФИНАЛ: СТРОГИЙ ГРАФИТ С ЯГОДНЫМ ОТКЛИКОМ (Идеальная связь с меню)
+   ИСПРАВЛЕНО: СТРОГИЙ ГРАФИТ С ЧИСТОЙ ИНВЕРСИЕЙ (Без ягодного неона)
    ========================================================================== */
 .site-header .header-phone .phone-link {
   display: flex;
   align-items: center;
   gap: 10px;
+  
+  /* Идеально белый читаемый текст номера */
   color: #ffffff; 
   font-weight: 700;
   font-size: 16px;
   animation: none;
   background-size: auto;
   
-  /* В покое — строгий матовый графит (в тон секции Hero) */
+  /* Матовый, глубокий цвет полуночного угля (в тон секции Hero) */
   background: #1e293b;
   
-  /* Аккуратная нейтральная рамка, чтобы не перегружать шапку */
+  /* Строгая серебряно-стальная рамка без неона */
   border: 1px solid rgba(255, 255, 255, 0.15); 
   padding: 10px 22px;
   border-radius: 50px;
+  
+  /* Полная чистота вокруг: только нейтральная тень для объема */
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12); 
   
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
               background 0.3s ease, 
+              color 0.3s ease,
               border-color 0.3s ease,
               box-shadow 0.3s ease;
 }
@@ -160,8 +165,6 @@ h1, h2, h3, button, a, input, textarea {
 .site-header .header-phone .phone-icon-img {
   width: 20px;
   height: 20px;
-  min-width: 20px;
-  min-height: 20px;
   display: block;
   background: transparent;
   border-radius: 0;
@@ -169,26 +172,31 @@ h1, h2, h3, button, a, input, textarea {
   box-shadow: none;
   
   transition: transform 0.3s ease, filter 0.3s ease;
-  filter: brightness(0) invert(1); /* Белая трубка в покое */
+  
+  /* Иконка трубки идеально белая на графитовом фоне */
+  filter: brightness(0) invert(1);
 }
 
 /* ИНТЕРАКТИВНЫЙ ХОВЕР ПРИ НАВЕДЕНИИ МЫШКИ */
 .site-header .header-phone .phone-link:hover {
-  color: #ffffff;
+  /* При наведении кнопка инвертируется: становится белой, а текст — графитовым */
+  background: #ffffff;
+  color: #2b3d4a; 
+  
+  /* Рамка становится аккуратным серым контуром */
+  border-color: rgba(43, 61, 74, 0.2);
+  
   transform: translateY(-2px); 
   
-  /* При наведении кнопка становится чуть мягче */
-  background: #2d3d56;
-  
-  /* ИСПРАВЛЕНО: Рамка загорается ягодным цветом в тон подчеркивания меню! */
-  border-color: #ff007f;
-  
-  /* ИСПРАВЛЕНО: Мягкое ягодное облако плавно подсвечивает кнопку снизу */
-  box-shadow: 0 6px 18px rgba(255, 0, 127, 0.3); 
+  /* Нейтральная мягкая тень парения без капли розового или бирюзового цвета */
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.15); 
 }
 
 .site-header .header-phone .phone-link:hover .phone-icon-img { 
   transform: scale(1.1); 
+  
+  /* При наведении иконка трубки тоже красится в строгий графитовый цвет букв шапки */
+  filter: invert(21%) sepia(11%) saturate(2206%) hue-rotate(167deg) brightness(95%) contrast(92%);
 }
 
 
