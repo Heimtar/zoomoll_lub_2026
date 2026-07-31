@@ -5,11 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initReviewsSlider();
   initFaqAccordion();
   initPawAnimation();
-  initPriceCalculator(); /* <-- ДОБАВИЛИ: Теперь калькулятор запустится вместе с сайтом! */
+  initPriceCalculator(); // Запуск нашего калькулятора цен
 });
 
-
-// --- Modal System ---
+// --- Modal System (Ваше старое окно "Заявка принята") ---
 function initModal() {
   const ctaButton = document.getElementById("cta-btn");
   const modal = document.getElementById("modal");
@@ -48,7 +47,8 @@ function initScrollEffects() {
     }
   });
 }
-// --- Promo Slider ---
+
+// --- Promo Slider (Баннеры) ---
 function initPromoSlider() {
   const promoTrack = document.getElementById("promo-track");
   const prevPromoBtn = document.querySelector(".prev-promo");
@@ -94,18 +94,99 @@ function initPromoSlider() {
   promoTimer = setInterval(handleNextSlide, 5000);
 }
 
-// --- Reviews Slider ---
+// --- Reviews Slider (Отзывы) ---
 function initReviewsSlider() {
   const track = document.getElementById("carousel-track");
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
-  const container = document.querySelector(".carousel-container"); 
+  const container = document.querySelector(".carousel-container");
 
-  // ==========================================================================
-// --- СИСТЕМА УМНОГО КАЛЬКУЛЯТОРА ЦЕН (Интеграция с DIKIDI) ---
-// ==========================================================================
+  if (!track) return;
+
+  let index = 0;
+  let autoPlayTimer = null; 
+
+  const getSlideWidth = () => {
+    const card = track.querySelector(".review-card"); 
+    return card ? card.getBoundingClientRect().width + 20 : 0;
+  };
+
+  const moveNext = () => {
+    const maxIndex = track.children.length - 3; 
+    index = index < maxIndex ? index + 1 : 0;
+    track.style.transform = `translateX(-${index * getSlideWidth()}px)`;
+  };
+
+  const movePrev = () => {
+    const maxIndex = track.children.length - 3;
+    index = index > 0 ? index - 1 : maxIndex;
+    track.style.transform = `translateX(-${index * getSlideWidth()}px)`;
+  };
+
+  const startAutoPlay = () => { autoPlayTimer = setInterval(moveNext, 4000); };
+  const stopAutoPlay = () => { clearInterval(autoPlayTimer); };
+
+  if (nextBtn) nextBtn.addEventListener("click", () => { moveNext(); stopAutoPlay(); startAutoPlay(); });
+  if (prevBtn) prevBtn.addEventListener("click", () => { movePrev(); stopAutoPlay(); startAutoPlay(); });
+
+  if (container) {
+    container.addEventListener("mouseenter", stopAutoPlay);
+    container.addEventListener("mouseleave", startAutoPlay);
+  }
+
+  startAutoPlay();
+}
+
+// --- FAQ Accordion ---
+function initFaqAccordion() {
+  const faqQuestions = document.querySelectorAll(".faq-question");
+  faqQuestions.forEach((question) => {
+    question.addEventListener("click", () => {
+      const faqItem = question.closest(".faq-item");
+      if (faqItem) {
+        faqItem.classList.toggle("active");
+      }
+    });
+  });
+}
+
+// --- Decorative Paw Animation ---
+function initPawAnimation() {
+  const heroBlock = document.querySelector(".hero");
+  if (!heroBlock) return;
+
+  const pawSteps = [
+    { top: "80%", left: "10%", delay: "0.0s", rotate: "45deg" },
+    { top: "72%", left: "16%", delay: "0.3s", rotate: "40deg" },
+    { top: "63%", left: "20%", delay: "0.6s", rotate: "30deg" },
+    { top: "55%", left: "26%", delay: "0.9s", rotate: "50deg" },
+    { top: "48%", left: "33%", delay: "1.2s", rotate: "55deg" },
+    { top: "40%", left: "42%", delay: "1.5s", rotate: "45deg" },
+    { top: "33%", left: "49%", delay: "1.8s", rotate: "60deg" },
+    { top: "25%", left: "58%", delay: "2.1s", rotate: "65deg" }
+  ];
+
+  const triggerPawsAnimation = () => {
+    pawSteps.forEach((data) => {
+      const pawElement = document.createElement("div");
+      pawElement.className = "hero-paws-track";
+      pawElement.style.setProperty("--paw-rotate", data.rotate);
+      pawElement.style.top = data.top;
+      pawElement.style.left = data.left;
+      pawElement.style.background = "url('img/cat_paws.png') no-repeat center/contain"; 
+      pawElement.style.animation = `pawStep 2.5s ease-out ${data.delay} forwards`;
+      
+      heroBlock.appendChild(pawElement);
+      setTimeout(() => pawElement.remove(), 5000);
+    });
+  };
+
+  triggerPawsAnimation();
+  setInterval(triggerPawsAnimation, 15000);
+}
+
+// --- УМНЫЙ КАЛЬКУЛЯТОР ЦЕН БЕЗ ОШИБОК И СТЫКОВ ---
 function initPriceCalculator() {
-  // 1. НАША БАЗА ДАННЫХ: Породы и цены (ты можешь менять эти цифры в любой момент)
   const priceData = {
     dog: {
       breeds: ['Шпиц', 'Йоркширский терьер', 'Корги', 'Лабрадор'],
@@ -125,8 +206,8 @@ function initPriceCalculator() {
     }
   };
 
-  // Находим все элементы калькулятора на странице
-  const calcModal = document.getElementById('price-calculator-modal');
+  // Ищем модалку по общему классу .modal-overlay, чтобы точно сработало!
+  const calcModal = document.querySelector('.modal-overlay');
   const petSelect = document.getElementById('calc-pet-type');
   const breedSelect = document.getElementById('calc-breed');
   const serviceSelect = document.getElementById('calc-service');
@@ -136,14 +217,14 @@ function initPriceCalculator() {
 
   if (!calcModal || !petSelect || !breedSelect || !serviceSelect) return;
 
-  // Открытие окна по клику на любую кнопку «Подробнее»
+  // Открытие по кнопкам "Подробнее"
   document.querySelectorAll('.details-btn').forEach(button => {
     button.addEventListener('click', () => {
       calcModal.style.display = 'flex';
     });
   });
 
-  // Закрытие окна
+  // Закрытие
   if (closeBtn) {
     closeBtn.addEventListener('click', () => {
       calcModal.style.display = 'none';
@@ -151,7 +232,6 @@ function initPriceCalculator() {
     });
   }
 
-  // Закрытие по клику на темный фон вокруг окна
   calcModal.addEventListener('click', (e) => {
     if (e.target === calcModal) {
       calcModal.style.display = 'none';
@@ -159,7 +239,7 @@ function initPriceCalculator() {
     }
   });
 
-  // Шаг 1: Выбор питомца (Собака / Кошка)
+  // Выбор питомца
   petSelect.addEventListener('change', function() {
     resetSelect(breedSelect, '-- Выберите породу --');
     resetSelect(serviceSelect, '-- Сначала выберите породу --');
@@ -177,7 +257,7 @@ function initPriceCalculator() {
     serviceSelect.disabled = true;
   });
 
-  // Шаг 2: Выбор конкретной породы
+  // Выбор породы
   breedSelect.addEventListener('change', function() {
     resetSelect(serviceSelect, '-- Выберите процедуру --');
     resultBox.style.display = 'none';
@@ -196,7 +276,7 @@ function initPriceCalculator() {
     }
   });
 
-  // Шаг 3: Выбор услуги и моментальный расчет цены
+  // Выбор услуги и финал цены
   serviceSelect.addEventListener('change', function() {
     if (this.value) {
       const petType = petSelect.value;
@@ -204,22 +284,17 @@ function initPriceCalculator() {
       const price = priceData[petType].services[breed][this.value];
       
       finalPrice.innerText = price + ' ₽';
-      resultBox.style.display = 'block'; // Показываем итоговый блок
+      resultBox.style.display = 'block';
     } else {
       resultBox.style.display = 'none';
     }
   });
-// Вспомогательные функции очистки (ИСПРАВЛЕНО!)
-function resetSelect(selectElement, defaultText) {
-  selectElement.innerHTML = `<option value="">${defaultText}</option>`;
-}
 
-function resetCalculator() {
-  petSelect.value = '';
-  resetSelect(breedSelect, '-- Сначала выберите питомца --');
-  resetSelect(serviceSelect, '-- Сначала выберите породу --'); /* <-- ИСПРАВИЛИ ТУТ */
-  breedSelect.disabled = true;
-  serviceSelect.disabled = true;
-  resultBox.style.display = 'none';
-}
-}}
+  function resetSelect(selectElement, defaultText) {
+    selectElement.innerHTML = `<option value="">${defaultText}</option>`;
+  }
+
+  function resetCalculator() {
+    petSelect.value = '';
+    resetSelect(breedSelect, '-- Сначала выберите питомца --');
+resetSelect(serviceSelect, '-- Сначала выберите породу --');breedSelect.disabled = true;serviceSelect.disabled = true;resultBox.style.display = 'none';}}
