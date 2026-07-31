@@ -182,15 +182,15 @@ h1, h2, h3, button, a, input, textarea {
   filter: brightness(0) invert(1);
 }
 
-/* ИНТЕРАКТИВНЫЙ ХОВЕР ПРИ НАВЕДЕНИИ МЫШКИ */
+/* ==========================================================================
+   ИСПРАВЛЕНО: ЧИСТЫЙ СТРОГИЙ ХОВЕР ДЛЯ ПК И КОРРЕКТНЫЕ СТИЛИ ШАПКИ
+   ========================================================================== */
+
+/* 1. Единственный и правильный ховер телефона для ПК */
 .site-header .header-phone .phone-link:hover {
   color: #ffffff;
   transform: translateY(-2px); 
-  
-  /* При наведении кнопка благородно становится капельку мягче по цвету */
-  background: #2d3d56;
-  
-  /* Строгая нейтральная тень парения без капли розового или бирюзового неона */
+  background: #2d3d56; /* При наведении плашка становится капельку мягче */
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25); 
 }
 
@@ -198,42 +198,14 @@ h1, h2, h3, button, a, input, textarea {
   transform: scale(1.1); 
 }
 
-
-.phone-icon-img {
-  width: 20px;
-  height: 20px;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.phone-link:hover {
-  color: #ffffff;
-  transform: translateY(-2px); 
-  box-shadow: 0 6px 20px rgba(0, 223, 218, 0.45), 0 6px 25px rgba(255, 0, 127, 0.35);
-}
-
-.phone-link:hover .phone-icon-img { 
-  transform: scale(1.1); 
-}
-
-@keyframes rgb-movement {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 400% 0%; }
-}
+/* 2. Стили уменьшения шапки при скролле (Ваш оригинал, скобки закрыты) */
 .site-header.shrunk .header-wrap { padding-top: 8px; padding-bottom: 8px; }
 .site-header.shrunk .logo-img { width: 36px; height: 36px; }
 .site-header.shrunk .brand-name { font-size: 22px; }
+
+/* 3. Стили секции карусели (Ваш оригинал, скобки закрыты) */
 .promo-carousel-section { padding: 0 5%; margin-bottom: 30px; }
 
-.promo-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  position: relative;
-}
 
 .promo-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
 .promo-slide { min-width: 100%; width: 100%; position: relative; flex-shrink: 0; }
