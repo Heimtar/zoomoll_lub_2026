@@ -260,11 +260,12 @@ h1, h2, h3, h4, button, a, input, textarea {
 
 .box-mops {
   left: 220px;
-  top: 40px;               
+  top: 60px; /* ИСПРАВЛЕНО: Надпись опустилась на идеальную высоту */              
   bottom: auto;
   right: auto;
   transform: none;         
 }
+
 
 .box-bath-dog {
   right: 60px;
