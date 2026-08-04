@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-<!-- Шапка сайта -->
+
 <header class="site-header">
     <div class="header-wrap">
         <a href="#" class="brand-group">
@@ -24,7 +24,6 @@
         </nav>
         <div class="header-phone">
             <a href="tel:+79600000307" class="phone-link">
-                <!-- Заменили старый <img> на красивую SVG-иконку смартфона -->
                 <svg class="phone-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
                     <line x1="12" y1="18" x2="12.01" y2="18"></line>
@@ -34,14 +33,14 @@
         </div>
     </div>
 </header>
-          <!-- Карусель рекламных баннеров (Согласованная финальная версия) -->
+
+<main>
     <section class="promo-carousel-section">
         <div class="promo-container">
             <button class="promo-btn prev-promo" aria-label="Предыдущий слайд">❮</button>
             <button class="promo-btn next-promo" aria-label="Следующий слайд">❯</button>
 
             <div class="promo-track" id="promo-track">
-                <!-- Баннер 1: Мопс -->
                 <div class="promo-slide slide-mops">
                     <img src="img/mops.jpg" alt="Стрижка собаки в салоне Зоомол">
                     <div class="new-clean-banner-box box-mops">
@@ -50,7 +49,6 @@
                     </div>
                 </div>
 
-                <!-- Баннер 2: Золотистый ретривер в ванной -->
                 <div class="promo-slide slide-bath-dog">
                     <img src="img/bath-dog.jpg" alt="Мытье собаки в салоне Зоомол">
                     <div class="new-clean-banner-box box-bath-dog">
@@ -59,7 +57,6 @@
                     </div>
                 </div>
                 
-                <!-- Баннер 3: Котик -->
                 <div class="promo-slide slide-cat">
                     <img src="img/fluffy-cat.jpg" alt="Вычесывание кота в салоне Зоомол">
                     <div class="new-clean-banner-box box-cat">
@@ -71,100 +68,112 @@
         </div>
     </section>
 
-    <!-- Главный баннер (Hero) -->
     <section class="hero">
         <div class="hero-content">
             <h1>Забота, которую заслуживает ваш питомец</h1>
             <p>Профессиональный груминг собак и кошек с любовью и терпением.</p>
-            <button id="cta-btn">Записаться</button>
+            <a href="https://dikidi.net" target="_blank" rel="noopener" class="hero-cta-link">
+                <button id="cta-btn">Записаться</button>
+            </a>
+        </div>
+    </section>
+    <section id="services" class="services">
+        <div class="services-container">
+            <h2 class="section-title">Наши услуги и цены</h2>
+            <p class="section-subtitle">Популярные процедуры для ваших питомцев. Полный актуальный прайс доступен в системе онлайн-записи.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3 class="service-title">Комплексный уход</h3>
+                    <p class="service-desc">Мытье, сушка, стрижка по стандарту породы, чистка ушей и подстригание когтей.</p>
+                    <span class="service-price">от 1 900 ₽</span>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧼</div>
+                    <h3 class="service-title">Гигиена</h3>
+                    <p class="service-desc">Удаление колтунов, выстригание шерсти между подушечками лап, уход за ушками и глазками.</p>
+                    <span class="service-price">от 1 200 ₽</span>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌪️</div>
+                    <h3 class="service-title">Экспресс-линька</h3>
+                    <p class="service-desc">Тщательное вычесывание отмершего подшерстка специальными инструментами. Меньше шерсти в доме!</p>
+                    <span class="service-price">от 1 700 ₽</span>
+                </div>
+            </div>
+
+            <div class="dikidi-cta-block">
+                <p class="dikidi-text">
+                    Стоимость процедур зависит от породы и размера вашего пушистика. Чтобы посмотреть точную цену для вашей собаки или кошки и выбрать время, перейдите в онлайн-запись.
+                </p>
+                <a href="https://dikidi.net" class="dikidi-btn" target="_blank" rel="noopener">
+                    <span>Выбрать породу и записаться</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
         </div>
     </section>
 
-<!-- Блок услуг (ИСПРАВЛЕНО: Теперь у каждой карточки есть кнопка «Подробнее») -->
-<section id="services" class="services">
-    <h2>Наши услуги</h2>
-    <div class="services-grid">
-        <div class="card">
-            <h3>Комплексный уход</h3>
-            <p>Мытье, сушка, стрижка по стандарту породы, чистка ушей и подстригание когтей.</p>
-            <span class="price">от 2 000 ₽</span>
-            <button class="details-btn">Подробнее</button>
-        </div>
-        <div class="card">
-            <h3>Гигиеническая стрижка</h3>
-            <p>Удаление колтунов, выстригание шерсти между подушечками лап, уход за ушами.</p>
-            <span class="price">от 1 200 ₽</span>
-            <button class="details-btn">Подробнее</button>
-        </div>
-        <div class="card">
-            <h3>Экспресс-линька</h3>
-            <p>Вычесывание отмершего подшерстка специальными инструментами для уменьшения шерсти в доме.</p>
-            <span class="price">от 1 800 ₽</span>
-            <button class="details-btn">Подробнее</button>
-        </div>
-    </div>
-</section>
-    <!-- Блок Наши работы -->
-<section id="portfolio" class="portfolio-section">
-    <h2>Наши работы</h2>
-    <p class="portfolio-subtitle">Доверяйте профессионалам: преображение наших любимых клиентов</p>
-    
-    <div class="portfolio-grid">
-        <!-- Работа 1 -->
-        <div class="portfolio-item">
-            <div class="portfolio-images">
-                <div class="img-container">
-                    <img src="img/before1.jpg" alt="Шпиц до стрижки">
-                    <span class="badge badge-before">До</span>
+    <section id="portfolio" class="portfolio-section">
+        <h2>Наши работы</h2>
+        <p class="portfolio-subtitle">Доверяйте профессионалам: преображение наших любимых клиентов</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-images">
+                    <div class="img-container">
+                        <img src="img/before1.jpg" alt="Шпиц до стрижки">
+                        <span class="badge badge-before">До</span>
+                    </div>
+                    <div class="img-container">
+                        <img src="img/after1.jpg" alt="Шпиц после стрижки">
+                        <span class="badge badge-after">После</span>
+                    </div>
                 </div>
-                <div class="img-container">
-                    <img src="img/after1.jpg" alt="Шпиц после стрижки">
-                    <span class="badge badge-after">После</span>
+                <div class="portfolio-info">
+                    <h4>Померанский шпиц (Комплекс)</h4>
                 </div>
             </div>
-            <div class="portfolio-info">
-                <h4>Померанский шпиц (Комплекс)</h4>
-            </div>
-        </div>
 
-        <!-- Работа 2 -->
-        <div class="portfolio-item">
-            <div class="portfolio-images">
-                <div class="img-container">
-                    <img src="img/before2.jpg" alt="Йорк до стрижки">
-                    <span class="badge badge-before">До</span>
+            <div class="portfolio-item">
+                <div class="portfolio-images">
+                    <div class="img-container">
+                        <img src="img/before2.jpg" alt="Йорк до стрижки">
+                        <span class="badge badge-before">До</span>
+                    </div>
+                    <div class="img-container">
+                        <img src="img/after2.jpg" alt="Йорк после стрижки">
+                        <span class="badge badge-after">После</span>
+                    </div>
                 </div>
-                <div class="img-container">
-                    <img src="img/after2.jpg" alt="Йорк после стрижки">
-                    <span class="badge badge-after">После</span>
+                <div class="portfolio-info">
+                    <h4>Йоркширский терьер (Стрижка)</h4>
                 </div>
             </div>
-            <div class="portfolio-info">
-                <h4>Йоркширский терьер (Стрижка)</h4>
+
+            <div class="portfolio-item">
+                <div class="portfolio-images">
+                    <div class="img-container">
+                        <img src="img/before3.jpg" alt="Корги до экспресс-линьки">
+                        <span class="badge badge-before">До</span>
+                    </div>
+                    <div class="img-container">
+                        <img src="img/after3.jpg" alt="Корги после экспресс-линьки">
+                        <span class="badge badge-after">После</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Вельш-корги (Экспресс-линька)</h4>
+                </div>
             </div>
         </div>
-
-        <!-- Работа 3 -->
-        <div class="portfolio-item">
-            <div class="portfolio-images">
-                <div class="img-container">
-                    <img src="img/before3.jpg" alt="Корги до экспресс-линьки">
-                    <span class="badge badge-before">До</span>
-                </div>
-                <div class="img-container">
-                    <img src="img/after3.jpg" alt="Корги после экспресс-линьки">
-                    <span class="badge badge-after">После</span>
-                </div>
-            </div>
-            <div class="portfolio-info">
-                <h4>Вельш-корги (Экспресс-линька)</h4>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <!-- Блок Отзывов -->
+    </section>
     <section id="reviews" class="reviews-section">
         <h2>Отзывы наших клиентов</h2>
         <p class="section-subtitle">Что говорят владельцы о нашей студии груминга</p>
@@ -173,7 +182,6 @@
             <button class="carousel-btn prev-btn" aria-label="Предыдущий отзыв">❮</button>
             <div class="carousel-track-wrapper">
                 <div class="carousel-track" id="carousel-track">
-                    <!-- Плитка отзыва 1 -->
                     <div class="review-card">
                         <div class="review-header">
                             <span class="review-author">Александра Федотова</span>
@@ -183,17 +191,15 @@
                         <a href="https://yandex.ru" target="_blank" class="yandex-link">Читать на Яндекс Картах →</a>
                     </div>
 
-                    <!-- Плитка отзыва 2 -->
                     <div class="review-card">
                         <div class="review-header">
                             <span class="review-author">Олеся Литвинцева</span>
                             <span class="review-stars">★★★★★</span>
                         </div>
-                        <p class="review-text">«Хорошее место! И девушки - профессионалы своего дела! Не страшно доверить самое дорогое 🙏»</p>
+                        <p class="review-text">«Ходетское место! И девушки - профессионалы своего дела! Не страшно доверить самое дорогое 🙏»</p>
                         <a href="https://yandex.ru" target="_blank" class="yandex-link">Читать на Яндекс Картах →</a>
                     </div>
 
-                    <!-- Плитка отзыва 3 -->
                     <div class="review-card">
                         <div class="review-header">
                             <span class="review-author">Натали Марценюк</span>
@@ -203,7 +209,6 @@
                         <a href="https://yandex.ru" target="_blank" class="yandex-link">Читать на Яндекс Картах →</a>
                     </div>
 
-                    <!-- Плитка отзыва 4 -->
                     <div class="review-card">
                         <div class="review-header">
                             <span class="review-author">Людмила Хохлова</span>
@@ -213,7 +218,6 @@
                         <a href="https://yandex.ru" target="_blank" class="yandex-link">Читать на Яндекс Картах →</a>
                     </div>
 
-                    <!-- Плитка отзыва 5 -->
                     <div class="review-card">
                         <div class="review-header">
                             <span class="review-author">Бабич Лапунька</span>
@@ -223,7 +227,6 @@
                         <a href="https://yandex.ru" target="_blank" class="yandex-link">Читать на Яндекс Картах →</a>
                     </div>
 
-                    <!-- Плитка отзыва 6 -->
                     <div class="review-card">
                         <div class="review-header">
                             <span class="review-author">Ольга Цыбулина</span>
@@ -238,11 +241,9 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section id="faq" class="faq-section">
         <h2>Частые вопросы</h2>
         <div class="faq-container">
-            <!-- Вопрос 1 -->
             <div class="faq-item">
                 <button class="faq-question">
                     <span>Можно ли присутствовать во время стрижки?</span>
@@ -252,7 +253,6 @@
                     <p>Обычно мы не рекомендуем этого делать. В присутствии хозяина питомцы часто ведут себя более беспокойно, пытаются вырваться и прыгнуть на ручки. Без владельца животное быстрее успокаивается и доверяет masterу.</p>
                 </div>
             </div>
-            <!-- Вопрос 2 -->
             <div class="faq-item">
                 <button class="faq-question">
                     <span>Что делать, если мой питомец агрессивный или очень пугливый?</span>
@@ -262,7 +262,6 @@
                     <p>Наши мастера умеют находить подход к разным характерам без применения жесткой силы и седации. Пожалуйста, предупредите нас об особенностях поведения при записи, чтобы мы заложили чуть больше времени на адаптацию.</p>
                 </div>
             </div>
-            <!-- Вопрос 3 -->
             <div class="faq-item">
                 <button class="faq-question">
                     <span>Как часто нужно водить собаку на груминг?</span>
@@ -274,40 +273,19 @@
             </div>
         </div>
     </section>
+</main>
 
- <!-- Подвал -->
 <footer id="contacts" class="footer">
     <p>© 2026 Зоомол. Архангельск, Московский просп., 6, корп. 3</p>
     <p>Телефон: +7 (960) 000-03-07</p>
 </footer>
 
-<!-- Модальное окно (Ваше старое окно заявки) -->
-<div id="modal" class="modal-overlay">
-    <div class="modal-content">
-        <button id="modal-close" class="close-btn">&times;</button>
-        <img src="img/modal.jpg" alt="Радостный пес" class="modal-img" width="120" height="120">
-        <h2>Заявка принята! 🐾</h2>
-        <p>Мы свяжемся с вами в течение 10 минут, чтобы подобрать идеальное время.</p>
-        <button id="modal-ok-btn" class="ok-btn">Отлично, жду!</button>
-    </div>
-</div>
+<a href="#" id="to-top-btn" class="to-top-button" title="Наверх">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+        <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</a>
 
-<section id="services" class="services">
-    <h2>Наши услуги и цены</h2>
-    <p class="section-subtitle">Выберите категорию и найдите вашу породу</p>
-
-    <!-- Поле быстрого поиска по породам -->
-    <div class="search-box-wrap">
-        <input type="text" id="price-search" placeholder="Введите название породы (например: Шпиц)...">
-    </div>
-
-    <!-- Кнопки переключения категорий -->
-    <div class="tabs-container">
-        <button class="tab-btn active" data-category="dog">🐶 Собаки</button>
-        <button class="tab-btn" data-category="cat">🐱 Кошки</button>
-        <button class="tab-btn" data-category="extra">✨ Доп. услуги</button>
-    </div>
-
-    <!-- Сюда JavaScript будет сам выводить строчки из прайса -->
-    <div id="dynamic-price-table" class="price-table"></div>
-</section>
+<script src="main.js"></script>
+</body>
+</html>
