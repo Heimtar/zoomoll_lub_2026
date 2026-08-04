@@ -1,0 +1,10 @@
+[
+  { "id": "shpic", "category": "dog", "title": "Шпиц малый", "price": 1900 },
+  { "id": "york", "category": "dog", "title": "Йоркширский терьер", "price": 2000 },
+  { "id": "corgi", "category": "dog", "title": "Вельш-корги", "price": 2000 },
+  { "id": "akita", "category": "dog", "title": "Акита Ину", "price": 2700 },
+  { "id": "cat-groom", "category": "cat", "title": "Кошка (стрижка)", "price": 2000 },
+  { "id": "cat-lin", "category": "cat", "title": "Кошка (экспресс-линька)", "price": 1700 },
+  { "id": "ear", "category": "extra", "title": "Чистка ушей", "price": 200 },
+  { "id": "claws", "category": "extra", "title": "Стрижка когтей", "price": 300 }
+]
