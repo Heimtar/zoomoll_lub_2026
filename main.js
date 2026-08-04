@@ -1,36 +1,15 @@
+"use strict";
+
 document.addEventListener('DOMContentLoaded', () => {
-  initModal();
   initScrollEffects();
   initPromoSlider();
   initReviewsSlider();
   initFaqAccordion();
-  initPawAnimation();
-  initPriceCalculator(); // Запуск нашего калькулятора цен
 });
 
-// --- Modal System (Ваше старое окно "Заявка принята") ---
-function initModal() {
-  const ctaButton = document.getElementById("cta-btn");
-  const modal = document.getElementById("modal");
-  const closeButton = document.getElementById("modal-close");
-  const okButton = document.getElementById("modal-ok-btn");
-
-  if (!modal) return;
-
-  const toggleModal = (displayState) => {
-    modal.style.display = displayState;
-  };
-
-  if (ctaButton) ctaButton.addEventListener("click", () => toggleModal("flex"));
-  if (closeButton) closeButton.addEventListener("click", () => toggleModal("none"));
-  if (okButton) okButton.addEventListener("click", () => toggleModal("none"));
-  
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) toggleModal("none");
-  });
-}
-
-// --- Scroll Effects (Header & To Top Button) ---
+/**
+ * Эффекты скролла (Шапка сайта и кнопка "Наверх")
+ */
 function initScrollEffects() {
   const toTopButton = document.getElementById("to-top-btn");
   const siteHeader = document.querySelector(".site-header");
@@ -48,7 +27,9 @@ function initScrollEffects() {
   });
 }
 
-// --- Promo Slider (Баннеры) ---
+/**
+ * Слайдер рекламных промо-баннеров
+ */
 function initPromoSlider() {
   const promoTrack = document.getElementById("promo-track");
   const prevPromoBtn = document.querySelector(".prev-promo");
@@ -93,7 +74,9 @@ function initPromoSlider() {
   window.addEventListener("load", updatePromoSlider);
   promoTimer = setInterval(handleNextSlide, 5000);
 }
-// --- Reviews Slider (Отзывы) ---
+/**
+ * Карусель отзывов клиентов
+ */
 function initReviewsSlider() {
   const track = document.getElementById("carousel-track");
   const prevBtn = document.querySelector(".prev-btn");
@@ -136,9 +119,12 @@ function initReviewsSlider() {
   startAutoPlay();
 }
 
-// --- FAQ Accordion ---
+/**
+ * Аккордеон часто задаваемых вопросов (FAQ)
+ */
 function initFaqAccordion() {
   const faqQuestions = document.querySelectorAll(".faq-question");
+  
   faqQuestions.forEach((question) => {
     question.addEventListener("click", () => {
       const faqItem = question.closest(".faq-item");
@@ -147,95 +133,4 @@ function initFaqAccordion() {
       }
     });
   });
-}
-
-// --- Decorative Paw Animation ---
-function initPawAnimation() {
-  const heroBlock = document.querySelector(".hero");
-  if (!heroBlock) return;
-
-  const pawSteps = [
-    { top: "80%", left: "10%", delay: "0.0s", rotate: "45deg" },
-    { top: "72%", left: "16%", delay: "0.3s", rotate: "40deg" },
-    { top: "63%", left: "20%", delay: "0.6s", rotate: "30deg" },
-    { top: "55%", left: "26%", delay: "0.9s", rotate: "50deg" },
-    { top: "48%", left: "33%", delay: "1.2s", rotate: "55deg" },
-    { top: "40%", left: "42%", delay: "1.5s", rotate: "45deg" },
-    { top: "33%", left: "49%", delay: "1.8s", rotate: "60deg" },
-    { top: "25%", left: "58%", delay: "2.1s", rotate: "65deg" }
-  ];
-
-  const triggerPawsAnimation = () => {
-    pawSteps.forEach((data) => {
-      const pawElement = document.createElement("div");
-      pawElement.className = "hero-paws-track";
-      pawElement.style.setProperty("--paw-rotate", data.rotate);
-      pawElement.style.top = data.top;
-      pawElement.style.left = data.left;
-      pawElement.style.background = "url('img/cat_paws.png') no-repeat center/contain"; 
-      pawElement.style.animation = `pawStep 2.5s ease-out ${data.delay} forwards`;
-      
-      heroBlock.appendChild(pawElement);
-      setTimeout(() => pawElement.remove(), 5000);
-    });
-  };
-
-  triggerPawsAnimation();
-  setInterval(triggerPawsAnimation, 15000);
-}
-function initPriceCalculator() {
-  let groomPrices = [];
-  let currentCategory = "dog"; 
-
-  const tableContainer = document.getElementById('dynamic-price-table');
-  const searchInput = document.getElementById('price-search');
-  const tabButtons = document.querySelectorAll('.tab-btn');
-
-  if (!tableContainer || !searchInput) return;
-
-  fetch('prices.json')
-    .then(res => res.json())
-    .then(data => {
-      groomPrices = data;
-      renderPriceList(); 
-    })
-    .catch(err => console.error("Ошибка загрузки прайса:", err));
-
-  function renderPriceList() {
-    tableContainer.innerHTML = ""; 
-    const searchText = searchInput.value.toLowerCase().trim();
-
-    const filtered = groomPrices.filter(item => {
-      const matchCategory = item.category === currentCategory;
-      const matchSearch = item.title.toLowerCase().includes(searchText);
-      return matchCategory && matchSearch;
-    });
-
-    if (filtered.length === 0) {
-      tableContainer.innerHTML = `<div class="no-results">Ничего не найдено 🐾</div>`;
-      return;
-    }
-
-    filtered.forEach(item => {
-      const row = document.createElement('div');
-      row.className = 'price-row-item';
-      row.innerHTML = `
-        <span class="service-name">${item.title}</span>
-        <span class="service-dots"></span>
-        <span class="service-price-val">${item.price} ₽</span>
-      `;
-      tableContainer.appendChild(row);
-    });
-  }
-
-  tabButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
-      currentCategory = this.getAttribute('data-category');
-      renderPriceList(); 
-    });
-  });
-
-  searchInput.addEventListener('input', renderPriceList);
 }
