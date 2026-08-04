@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Эффекты скролла (Шапка сайта и кнопка "Наверх")
+ * Эффекты скролла страницы (Шапка сайта и кнопка "Наверх")
  */
 function initScrollEffects() {
   const toTopButton = document.getElementById("to-top-btn");
@@ -74,6 +74,7 @@ function initPromoSlider() {
   window.addEventListener("load", updatePromoSlider);
   promoTimer = setInterval(handleNextSlide, 5000);
 }
+
 /**
  * Карусель отзывов клиентов
  */
