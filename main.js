@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReviewsSlider();
   initFaqAccordion();
   initPortfolioLoader(); /* Кнопка Показать/Свернуть без инлайн-стилей */
-  initLightbox();        /* Увеличение картинок при клике */
+  initLightbox();        /* Современный Lightbox-слайдер со стрелками */
 });
 
 /**
@@ -153,32 +153,61 @@ function initPortfolioLoader() {
 }
 
 /**
- * Интерактивный Lightbox для просмотра картинок в большом окне
+ * Интерактивный Lightbox-слайдер с перелистыванием стрелками
  */
 function initLightbox() {
+  const images = document.querySelectorAll('.portfolio-masonry .masonry-item img');
+  if (images.length === 0) return;
+
+  let currentIndex = 0;
+
   const lightbox = document.createElement('div');
   lightbox.id = 'lightbox-overlay';
   lightbox.innerHTML = `
+    <button class="lightbox-arrow lightbox-prev" aria-label="Предыдущее фото">❮</button>
     <div class="lightbox-content">
       <span class="lightbox-close">&times;</span>
       <img src="" alt="Большое фото питомца">
     </div>
+    <button class="lightbox-arrow lightbox-next" aria-label="Следующее фото">❯</button>
   `;
   document.body.appendChild(lightbox);
 
   const lightboxImg = lightbox.querySelector('img');
   const closeBtn = lightbox.querySelector('.lightbox-close');
-  const items = document.querySelectorAll('.portfolio-masonry .masonry-item img');
+  const prevBtn = lightbox.querySelector('.lightbox-prev');
+  const nextBtn = lightbox.querySelector('.lightbox-next');
 
-  items.forEach(img => {
-    img.style.cursor = 'zoom-in';
+  const updateLightboxImage = (index) => {
+    if (index < 0 || index >= images.length) return;
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex].src;
+  };
+
+  images.forEach((img, index) => {
+    img.style.cursor = 'pointer';
     img.addEventListener('click', (e) => {
       e.stopPropagation();
-      lightboxImg.src = img.src;
+      updateLightboxImage(index);
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
   });
+
+  const showNext = (e) => {
+    e.stopPropagation();
+    let nextIndex = (currentIndex + 1) % images.length;
+    updateLightboxImage(nextIndex);
+  };
+
+  const showPrev = (e) => {
+    e.stopPropagation();
+    let prevIndex = (currentIndex - 1 + images.length) % images.length;
+    updateLightboxImage(prevIndex);
+  };
+
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
 
   const closeLightbox = () => {
     lightbox.classList.remove('active');
@@ -189,4 +218,11 @@ function initLightbox() {
   closeBtn.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', closeLightbox);
   lightbox.querySelector('.lightbox-content').addEventListener('click', (e) => e.stopPropagation());
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowRight') showNext(e);
+    if (e.key === 'ArrowLeft') showPrev(e);
+    if (e.key === 'Escape') closeLightbox();
+  });
 }
