@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoSlider();
   initReviewsSlider();
   initFaqAccordion();
+  initPortfolioLoader(); /* Обновленная кнопка Показать/Свернуть */
+  initLightbox();        /* НОВАЯ ФУНКЦИЯ: Увеличение картинок при клике */
 });
 
 /**
@@ -16,14 +18,8 @@ function initScrollEffects() {
 
   window.addEventListener("scroll", () => {
     const currentScroll = window.scrollY;
-
-    if (toTopButton) {
-      toTopButton.classList.toggle("show", currentScroll > 300);
-    }
-    
-    if (siteHeader) {
-      siteHeader.classList.toggle("shrunk", currentScroll > 50);
-    }
+    if (toTopButton) toTopButton.classList.toggle("show", currentScroll > 300);
+    if (siteHeader) siteHeader.classList.toggle("shrunk", currentScroll > 50);
   });
 }
 
@@ -34,7 +30,6 @@ function initPromoSlider() {
   const promoTrack = document.getElementById("promo-track");
   const prevPromoBtn = document.querySelector(".prev-promo");
   const nextPromoBtn = document.querySelector(".next-promo");
-
   if (!promoTrack) return;
 
   let promoIndex = 0;
@@ -63,12 +58,8 @@ function initPromoSlider() {
     promoTimer = setInterval(handleNextSlide, 5000);
   };
 
-  if (nextPromoBtn) {
-    nextPromoBtn.addEventListener("click", () => { handleNextSlide(); restartAutoPlay(); });
-  }
-  if (prevPromoBtn) {
-    prevPromoBtn.addEventListener("click", () => { handlePrevSlide(); restartAutoPlay(); });
-  }
+  if (nextPromoBtn) nextPromoBtn.addEventListener("click", () => { handleNextSlide(); restartAutoPlay(); });
+  if (prevPromoBtn) prevPromoBtn.addEventListener("click", () => { handlePrevSlide(); restartAutoPlay(); });
 
   window.addEventListener("resize", updatePromoSlider);
   window.addEventListener("load", updatePromoSlider);
@@ -83,7 +74,6 @@ function initReviewsSlider() {
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
   const container = document.querySelector(".carousel-container");
-
   if (!track) return;
 
   let index = 0;
@@ -116,7 +106,6 @@ function initReviewsSlider() {
     container.addEventListener("mouseenter", stopAutoPlay);
     container.addEventListener("mouseleave", startAutoPlay);
   }
-
   startAutoPlay();
 }
 
@@ -125,13 +114,98 @@ function initReviewsSlider() {
  */
 function initFaqAccordion() {
   const faqQuestions = document.querySelectorAll(".faq-question");
-  
   faqQuestions.forEach((question) => {
     question.addEventListener("click", () => {
       const faqItem = question.closest(".faq-item");
-      if (faqItem) {
-        faqItem.classList.toggle("active");
-      }
+      if (faqItem) faqItem.classList.toggle("active");
     });
   });
+}
+
+/**
+ * Умная кнопка: Раскрытие галереи и сворачивание её обратно
+ */
+function initPortfolioLoader() {
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const portfolioSection = document.getElementById('portfolio');
+  if (!loadMoreBtn) return;
+
+  // Изначально вешаем состояние, что галерея свернута
+  loadMoreBtn.setAttribute('data-state', 'collapsed');
+
+  loadMoreBtn.addEventListener('click', () => {
+    const hiddenItems = document.querySelectorAll('.portfolio-masonry .masonry-item');
+    const state = loadMoreBtn.getAttribute('data-state');
+
+    if (state === 'collapsed') {
+      // РАСКРЫВАЕМ: Показываем карточки с 7 по 13
+      hiddenItems.forEach((item, index) => {
+        if (index >= 6) {
+          item.style.display = 'block';
+          item.classList.add('fade-in-active');
+        }
+      });
+      // Меняем текст и состояние кнопки
+      loadMoreBtn.textContent = 'Свернуть работы обратно';
+      loadMoreBtn.setAttribute('data-state', 'expanded');
+    } else {
+      // СВОРАЧИВАЕМ: Прячем карточки обратно
+      hiddenItems.forEach((item, index) => {
+        if (index >= 6) {
+          item.style.display = 'none';
+          item.classList.remove('fade-in-active');
+        }
+      });
+      // Возвращаем текст и состояние кнопки
+      loadMoreBtn.textContent = 'Показать ещё работы';
+      loadMoreBtn.setAttribute('data-state', 'collapsed');
+
+      // Мягко скроллим пользователя к началу блока портфолио, чтобы он не потерялся
+      if (portfolioSection) {
+        portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+}
+
+/**
+ * Интерактивный Lightbox для просмотра картинок в большом окне
+ */
+function initLightbox() {
+  // Динамически создаем окно просмотра в памяти, чтобы не захламлять HTML
+  const lightbox = document.createElement('div');
+  lightbox.id = 'lightbox-overlay';
+  lightbox.innerHTML = `
+    <div class="lightbox-content">
+      <span class="lightbox-close">&times;</span>
+      <img src="" alt="Большое фото питомца">
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lightboxImg = lightbox.querySelector('img');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  const items = document.querySelectorAll('.portfolio-masonry .masonry-item img');
+
+  // Клик на любую картинку в галерее открывает окно
+  items.forEach(img => {
+    img.style.cursor = 'zoom-in'; // Меняем курсор на лупу при наведении
+    img.addEventListener('click', (e) => {
+      e.stopPropagation(); // Защита от конфликтов
+      lightboxImg.src = img.src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Запрещаем скролл сайта под окном
+    });
+  });
+
+  // Закрытие окна при клике на крестик, фон или кнопку назад
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = ''; // Возвращаем скролл сайта
+    lightboxImg.src = '';
+  };
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', closeLightbox);
+  lightbox.querySelector('.lightbox-content').addEventListener('click', (e) => e.stopPropagation());
 }
