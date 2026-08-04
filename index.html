@@ -292,54 +292,22 @@
     </div>
 </div>
 
-<!-- НАШ НОВЫЙ КАРКАС УМНОГО ОКНА-КАЛЬКУЛЯТОРА (ВСТАВИЛИ СЮДА) -->
-<div id="price-calculator-modal" class="modal-overlay">
-    <div class="modal-content">
-        <h2>Рассчитать стоимость</h2>
-        <p class="modal-subtitle">Выберите параметры вашего питомца, чтобы узнать точную цену</p>
-        
-        <div class="calculator-form">
-            <div class="form-group">
-                <label>Кто у вас?</label>
-                <select id="calc-pet-type">
-                    <option value="">-- Выберите --</option>
-                    <option value="dog">Собака</option>
-                    <option value="cat">Кошка</option>
-                </select>
-            </div>
+<section id="services" class="services">
+    <h2>Наши услуги и цены</h2>
+    <p class="section-subtitle">Выберите категорию и найдите вашу породу</p>
 
-            <div class="form-group">
-                <label>Порода пушистика</label>
-                <select id="calc-breed" disabled>
-                    <option value="">-- Сначала выберите питомца --</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Какая процедура нужна?</label>
-                <select id="calc-service" disabled>
-                    <option value="">-- Сначала выберите породу --</option>
-                </select>
-            </div>
-        </div>
-
-        <div id="calc-result-box" class="result-box" style="display: none;">
-            <span class="result-label">Стоимость услуги:</span>
-            <div id="calc-final-price" class="final-price">0 ₽</div>
-            <a href="https://dikidi.net" target="_blank" class="calc-book-btn">Записаться онлайн через DIKIDI</a>
-        </div>
-
-        <button class="close-calc-btn">Закрыть</button>
+    <!-- Поле быстрого поиска по породам -->
+    <div class="search-box-wrap">
+        <input type="text" id="price-search" placeholder="Введите название породы (например: Шпиц)...">
     </div>
-</div>
 
-<!-- Кнопка Вверх -->
-<a href="#" id="to-top-btn" class="to-top-button" title="Наверх">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
-        <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-</a>
+    <!-- Кнопки переключения категорий -->
+    <div class="tabs-container">
+        <button class="tab-btn active" data-category="dog">🐶 Собаки</button>
+        <button class="tab-btn" data-category="cat">🐱 Кошки</button>
+        <button class="tab-btn" data-category="extra">✨ Доп. услуги</button>
+    </div>
 
-<script src="main.js"></script>
-</body>
-</html>
+    <!-- Сюда JavaScript будет сам выводить строчки из прайса -->
+    <div id="dynamic-price-table" class="price-table"></div>
+</section>
