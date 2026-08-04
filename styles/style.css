@@ -525,7 +525,7 @@ h1, h2, h3, h4, button, a, input, textarea {
 
 
 /* ==========================================================================
-   НАШИ РАБОТЫ (СТИЛЬНАЯ СЕТКА MASONRY / PINTEREST)
+   НАШИ РАБОТЫ (СТАБИЛЬНАЯ СЕТКА GRID — БЕЗ РАЗДУВАНИЯ КАРТИНОК)
    ========================================================================== */
 .portfolio-section {
   padding: 60px 20px;
@@ -539,10 +539,11 @@ h1, h2, h3, h4, button, a, input, textarea {
   margin-bottom: 40px;
 }
 
-/* Формируем колонки потока как в Pinterest */
+/* Жесткая сетка Grid вместо column-count держит картинки аккуратными */
 .portfolio-masonry {
-  column-count: 3; /* 3 колонки для компьютеров */
-  column-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Строго 3 одинаковые колонки */
+  gap: 24px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -550,23 +551,37 @@ h1, h2, h3, h4, button, a, input, textarea {
 .masonry-item {
   position: relative;
   background: #f8fafc;
-  margin-bottom: 20px; /* Отступ между карточками по вертикали */
   border-radius: 20px;
   overflow: hidden;
-  break-inside: avoid; /* Запрещаем карточке разрываться между колонками */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  aspect-ratio: 4 / 5; /* Идеальные журнальные пропорции карточки */
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
 }
 
 .masonry-item img {
   width: 100%;
-  height: auto; /* Картинка сохраняет свои родные пропорции */
+  height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: cover; /* Фото аккуратно заполняет карточку без искажений */
   transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-/* При наведении карточка приподнимается, а фото внутри плавно увеличивается */
+/* Скрытие карточек с 7 по 13 без использования !important */
+.portfolio-masonry .masonry-item.hidden-item {
+  display: none;
+}
+
+/* Анимация плавного появления */
+@keyframes masonryFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.portfolio-masonry .masonry-item.fade-in-active {
+  display: block;
+  animation: masonryFadeIn 0.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
 .masonry-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(15, 23, 42, 0.12);
@@ -576,7 +591,7 @@ h1, h2, h3, h4, button, a, input, textarea {
   transform: scale(1.06);
 }
 
-/* Затемняющий оверлей с текстом породы (всплывает снизу при наведении) */
+/* Затемняющий оверлей */
 .masonry-overlay {
   position: absolute;
   left: 0;
@@ -590,11 +605,11 @@ h1, h2, h3, h4, button, a, input, textarea {
   align-items: center;
   padding: 25px 20px;
   box-sizing: border-box;
-  opacity: 0; /* Изначально скрыт */
+  opacity: 0; 
   transform: translateY(10px);
   transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
   z-index: 2;
-  pointer-events: none; /* Пропускает клики сквозь себя */
+  pointer-events: none; 
 }
 
 .masonry-item:hover .masonry-overlay {
@@ -618,15 +633,16 @@ h1, h2, h3, h4, button, a, input, textarea {
 /* Адаптивность для планшетов и мобильных телефонов */
 @media (max-width: 900px) {
   .portfolio-masonry {
-    column-count: 2; /* 2 колонки на планшетах */
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
   }
 }
 
 @media (max-width: 600px) {
   .portfolio-masonry {
-    column-count: 1; /* 1 колонка на смартфонах */
+    grid-template-columns: 1fr; /* 1 колонка на телефонах */
   }
 }
+
 
 /* ==========================================================================
    КАРУСЕЛЬ ОТЗЫВОВ
