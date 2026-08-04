@@ -185,115 +185,57 @@ function initPawAnimation() {
 }
 function initPriceCalculator() {
   let groomPrices = [];
+  let currentCategory = "dog"; 
 
-  // Загружаем цены из внешнего файла prices.json
+  const tableContainer = document.getElementById('dynamic-price-table');
+  const searchInput = document.getElementById('price-search');
+  const tabButtons = document.querySelectorAll('.tab-btn');
+
+  if (!tableContainer || !searchInput) return;
+
   fetch('prices.json')
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
       groomPrices = data;
+      renderPriceList(); 
     })
-    .catch(err => console.error("Ошибка загрузки цен:", err));
+    .catch(err => console.error("Ошибка загрузки прайса:", err));
 
-  const calcModal = document.getElementById('price-calculator-modal');
-  const petSelect = document.getElementById('calc-pet-type');
-  const breedSelect = document.getElementById('calc-breed');
-  const serviceSelect = document.getElementById('calc-service');
-  const resultBox = document.getElementById('calc-result-box');
-  const finalPrice = document.getElementById('calc-final-price');
-  const closeBtn = document.querySelector('.close-calc-btn');
+  function renderPriceList() {
+    tableContainer.innerHTML = ""; 
+    const searchText = searchInput.value.toLowerCase().trim();
 
-  if (!calcModal || !petSelect || !breedSelect || !serviceSelect) return;
+    const filtered = groomPrices.filter(item => {
+      const matchCategory = item.category === currentCategory;
+      const matchSearch = item.title.toLowerCase().includes(searchText);
+      return matchCategory && matchSearch;
+    });
 
-  // Открытие по кнопкам "Подробнее"
-  document.querySelectorAll('.details-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      calcModal.style.display = 'flex';
+    if (filtered.length === 0) {
+      tableContainer.innerHTML = `<div class="no-results">Ничего не найдено 🐾</div>`;
+      return;
+    }
+
+    filtered.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'price-row-item';
+      row.innerHTML = `
+        <span class="service-name">${item.title}</span>
+        <span class="service-dots"></span>
+        <span class="service-price-val">${item.price} ₽</span>
+      `;
+      tableContainer.appendChild(row);
+    });
+  }
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      currentCategory = this.getAttribute('data-category');
+      renderPriceList(); 
     });
   });
 
-  // Закрытие
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      calcModal.style.display = 'none';
-      resetCalculator();
-    });
-  }
-
-  calcModal.addEventListener('click', (e) => {
-    if (e.target === calcModal) {
-      calcModal.style.display = 'none';
-      resetCalculator();
-    }
-  });
-
-  // Шаг 1: Выбор питомца (Собака / Кошка)
-  petSelect.addEventListener('change', function() {
-    resetSelect(breedSelect, '-- Выберите породу --');
-    resetSelect(serviceSelect, '-- Сначала выберите породу --');
-    resultBox.style.display = 'none';
-    
-    if (this.value) {
-      const filtered = groomPrices.filter(item => item.category === this.value);
-      filtered.forEach(item => {
-        let opt = new Option(item.title, item.id);
-        breedSelect.add(opt);
-      });
-      breedSelect.disabled = false;
-    } else {
-      breedSelect.disabled = true;
-    }
-    serviceSelect.disabled = true;
-  });
-
-  // Шаг 2: Выбор породы
-  breedSelect.addEventListener('change', function() {
-    resetSelect(serviceSelect, '-- Выберите процедуру --');
-    resultBox.style.display = 'none';
-    
-    if (this.value) {
-      let optBase = new Option("Основной комплексный уход", "base");
-      serviceSelect.add(optBase);
-
-      const extras = groomPrices.filter(item => item.category === 'extra');
-      extras.forEach(extra => {
-        let optExtra = new Option(`+ ${extra.title} (+${extra.price} ₽)`, extra.id);
-        serviceSelect.add(optExtra);
-      });
-      serviceSelect.disabled = false;
-    } else {
-      serviceSelect.disabled = true;
-    }
-  });
-
-  // Шаг 3: Расчет цены
-  serviceSelect.addEventListener('change', function() {
-    if (this.value) {
-      const selectedBreedId = breedSelect.value;
-      const breedData = groomPrices.find(item => item.id === selectedBreedId);
-      let totalPrice = breedData ? breedData.price : 0; 
-
-      if (this.value !== "base") {
-        const extraData = groomPrices.find(item => item.id === this.value);
-        if (extraData) totalPrice += extraData.price;
-      }
-      
-      finalPrice.innerText = totalPrice + ' ₽';
-      resultBox.style.display = 'block';
-    } else {
-      resultBox.style.display = 'none';
-    }
-  });
-
-  function resetSelect(selectElement, defaultText) {
-    selectElement.innerHTML = `<option value="">${defaultText}</option>`;
-  }
-
-  function resetCalculator() {
-    petSelect.value = '';
-    resetSelect(breedSelect, '-- Сначала выберите питомца --');
-    resetSelect(serviceSelect, '-- Сначала выберите породу --');
-    breedSelect.disabled = true;
-    serviceSelect.disabled = true;
-    resultBox.style.display = 'none';
-  }
+  searchInput.addEventListener('input', renderPriceList);
 }
