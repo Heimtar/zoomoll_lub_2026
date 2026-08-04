@@ -362,11 +362,11 @@ h1, h2, h3, h4, button, a, input, textarea {
 }
 
 /* ==========================================================================
-   ОБЪЕДИНЕННАЯ СЕКЦИЯ УСЛУГ (КОМПАКТНЫЙ ПРЕМИУМ-СТИЛЬ)
+   ВАРИАНТ 4: МЯГКИЙ НЕОН (МОНОЛИТНЫЕ ТЕМНО-СИНИЕ ПЛАШКИ С ПОДСВЕТКОЙ)
    ========================================================================== */
 .services {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
-  padding: 45px 0; /* Резко сжали высоту всей темной полосы с 80px */
+  padding: 55px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -381,102 +381,84 @@ h1, h2, h3, h4, button, a, input, textarea {
 }
 
 .services .section-title {
-  font-size: 38px;
-  font-weight: 800;
+  font-size: 34px; 
+  font-weight: 700; 
   color: var(--white);
-  margin-bottom: 12px;
+  margin-bottom: 50px; 
   line-height: 1.2;
   letter-spacing: -0.5px;
-}
-
-.services .section-subtitle {
-  color: #cbd5e1;
-  font-size: 16px;
-  margin-bottom: 35px; /* Уменьшили отступ до карточек */
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  margin-bottom: 35px; /* Уменьшили отступ до блока записи */
+  margin-bottom: 35px;
 }
 
-/* Компактная карточка услуги */
+/* Монолитная карточка в тон общего фона */
 .service-card {
-  background: var(--white);
-  padding: 25px 20px; /* Убрали лишнюю пустоту, зажали карточки */
+  background: #1e293b; /* Карточка идеально сливается с верхним уровнем градиента */
+  padding: 28px 24px; 
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); 
+  border: 1px solid rgba(255, 255, 255, 0.04); /* Тончайший светлый контур */
   position: relative;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(180deg, rgba(91, 170, 220, 0.03) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  border-color: rgba(91, 170, 220, 0.3); /* Грани начинают мягко светиться */
+  box-shadow: 0 20px 40px rgba(91, 170, 220, 0.1); 
 }
 
-.service-card:hover::before {
-  opacity: 1;
-}
-
-/* Круглая подложка для SVG */
+/* Контейнер для SVG */
 .service-icon-wrap {
-  width: 64px; /* Чуть уменьшили размер круга */
+  width: 64px;
   height: 64px;
   margin: 0 auto 15px;
-  background: #f8fafc; 
+  background: rgba(255, 255, 255, 0.02); 
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #475569; 
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #94a3b8; 
+  transition: all 0.3s ease;
 }
 
 .modern-icon {
   width: 28px;
   height: 28px;
-  transition: transform 0.4s ease;
 }
 
 .service-card:hover .service-icon-wrap {
-  background: rgba(91, 170, 220, 0.15); 
-  color: var(--primary-color); 
-  transform: scale(1.1) rotate(-8deg); 
+  background: rgba(91, 170, 220, 0.15);
+  color: var(--primary-color); /* Иконка загорается фирменным синим */
+  border-color: rgba(91, 170, 220, 0.4);
 }
 
 .service-title {
   font-size: 20px;
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--white);
   margin-bottom: 10px;
 }
 
 .service-desc {
-  font-size: 15px;
-  color: #555555;
+  font-size: 14px;
+  color: #94a3b8; 
   line-height: 1.6;
-  margin-bottom: 15px; /* Уменьшили отступ до цены */
-  /* Мертвый min-height полностью удален, карточки сжались по высоте текста */
+  margin-bottom: 18px;
 }
 
+/* Фирменный сине-голубой ценник */
 .service-price {
   font-size: 22px;
-  font-weight: 700;
-  color: #27ae60;
+  font-weight: 800;
+  color: var(--primary-color); 
   display: block;
 }
 
@@ -485,7 +467,7 @@ h1, h2, h3, h4, button, a, input, textarea {
   max-width: 680px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.02);
-  padding: 30px; /* Сделали нижний блок компактнее */
+  padding: 30px; 
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -494,17 +476,17 @@ h1, h2, h3, h4, button, a, input, textarea {
   font-size: 16px;
   color: #cbd5e1; 
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-/* Легендарная неоновая RGB-кнопка */
+/* Наша сочная RGB-кнопка */
 .dikidi-btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
   color: var(--white);
-  padding: 14px 36px;
-  font-size: 16px;
+  padding: 16px 55px; 
+  font-size: 18px; 
   font-weight: 700;
   border-radius: 50px;
   border: none;
@@ -518,44 +500,11 @@ h1, h2, h3, h4, button, a, input, textarea {
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
 }
 
-.dikidi-btn::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -150%; width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-  transform: skewX(-20deg);
-  transition: none;
-}
-
-.dikidi-btn:hover {
-  transform: translateY(-4px); 
-  box-shadow: 0 12px 28px rgba(121, 40, 202, 0.6), 0 12px 35px rgba(0, 223, 218, 0.4);
-}
-
-.dikidi-btn:hover::before {
-  left: 150%;
-  transition: left 0.8s cubic-bezier(0.2, 1, 0.2, 1);
-}
-
-.dikidi-btn:active { 
-  transform: translateY(1px); 
-}
-
-.btn-icon {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor;
-  transition: transform 0.3s ease;
-}
-
-.dikidi-btn:hover .btn-icon {
-  transform: translateX(4px);
-}
-
 @keyframes cta-rgb-movement {
   0% { background-position: 0% 0%; }
   100% { background-position: 600% 0%; }
 }
+
 
 /* ==========================================================================
    НАШИ РАБОТЫ (ПОРТФОЛИО ДО/ПОСЛЕ)
