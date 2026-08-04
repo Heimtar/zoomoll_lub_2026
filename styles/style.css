@@ -362,11 +362,11 @@ h1, h2, h3, h4, button, a, input, textarea {
 }
 
 /* ==========================================================================
-   ОБЪЕДИНЕННАЯ СЕКЦИЯ УСЛУГ (КОМПАКТНЫЙ ПРЕМИУМ-СТИЛЬ)
+   КОМПАКТНАЯ СЕКЦИЯ УСЛУГ (БЕЗ РАМОК, С БЛАГОРОДНЫМИ АКЦЕНТАМИ)
    ========================================================================== */
 .services {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
-  padding: 45px 0; /* Резко сжали высоту всей темной полосы с 80px */
+  padding: 55px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -392,23 +392,23 @@ h1, h2, h3, h4, button, a, input, textarea {
 .services .section-subtitle {
   color: #cbd5e1;
   font-size: 16px;
-  margin-bottom: 35px; /* Уменьшили отступ до карточек */
+  margin-bottom: 35px;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  margin-bottom: 35px; /* Уменьшили отступ до блока записи */
+  margin-bottom: 35px;
 }
 
-/* Компактная карточка услуги */
+/* Изменили карточку: убрали рамку border, добавили мягкую тень */
 .service-card {
   background: var(--white);
-  padding: 25px 20px; /* Убрали лишнюю пустоту, зажали карточки */
+  padding: 28px 24px; 
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); /* Глубокая объемная тень вместо рамок */
+  border: none; /* ПОЛНОСТЬЮ УБРАЛИ СТАРУЮ РАМКУ */
   position: relative;
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
@@ -425,19 +425,19 @@ h1, h2, h3, h4, button, a, input, textarea {
 
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4); /* Карточка плавно взлетает над темным фоном */
 }
 
 .service-card:hover::before {
   opacity: 1;
 }
 
-/* Круглая подложка для SVG */
+/* Круглый контейнер для SVG */
 .service-icon-wrap {
-  width: 64px; /* Чуть уменьшили размер круга */
+  width: 64px;
   height: 64px;
   margin: 0 auto 15px;
-  background: #f8fafc; 
+  background: #f1f5f9; 
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -466,17 +466,17 @@ h1, h2, h3, h4, button, a, input, textarea {
 }
 
 .service-desc {
-  font-size: 15px;
-  color: #555555;
+  font-size: 14px;
+  color: #64748b; /* Сделали описание чуть мягче для контраста */
   line-height: 1.6;
-  margin-bottom: 15px; /* Уменьшили отступ до цены */
-  /* Мертвый min-height полностью удален, карточки сжались по высоте текста */
+  margin-bottom: 18px;
 }
 
+/* ИЗМЕНИЛИ ЦЕННИК: убрали зеленый, сделали стильный сине-голубой под цвет бренда */
 .service-price {
   font-size: 22px;
-  font-weight: 700;
-  color: #27ae60;
+  font-weight: 800;
+  color: #38bdf8; /* Новый неоновый небесно-голубой цвет — шикарно смотрится в карточке */
   display: block;
 }
 
@@ -485,7 +485,7 @@ h1, h2, h3, h4, button, a, input, textarea {
   max-width: 680px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.02);
-  padding: 30px; /* Сделали нижний блок компактнее */
+  padding: 30px; 
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -556,6 +556,7 @@ h1, h2, h3, h4, button, a, input, textarea {
   0% { background-position: 0% 0%; }
   100% { background-position: 600% 0%; }
 }
+
 
 /* ==========================================================================
    НАШИ РАБОТЫ (ПОРТФОЛИО ДО/ПОСЛЕ)
