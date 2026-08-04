@@ -362,7 +362,7 @@ h1, h2, h3, h4, button, a, input, textarea {
 }
 
 /* ==========================================================================
-   КОНТРАСТНЫЙ СТИЛЬ: СВЕТЛОЕ МАТОВОЕ СТЕКЛО (WHITE GLASSMORPHISM)
+   КОНТРАСТНАЯ СЕКЦИЯ УСЛУГ (ПЛОТНЫЕ БЕЛЫЕ ПЛАТФОРМЫ С МЯГКОЙ ТЕНЬЮ)
    ========================================================================== */
 .services {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
@@ -380,7 +380,7 @@ h1, h2, h3, h4, button, a, input, textarea {
   z-index: 2;
 }
 
-/* Изящный белый заголовок */
+/* Белый изящный заголовок с отступом */
 .services .section-title {
   font-size: 34px; 
   font-weight: 700; 
@@ -397,39 +397,35 @@ h1, h2, h3, h4, button, a, input, textarea {
   margin-bottom: 35px;
 }
 
-/* Светлая полупрозрачная карточка "матовое стекло" */
+/* Идеально чистая плотная белая карточка без грубых рамок */
 .service-card {
-  background: rgba(255, 255, 255, 0.88); /* Плотный молочно-белый полупрозрачный фон */
-  backdrop-filter: blur(20px); /* Сильное размытие заднего плана */
-  -webkit-backdrop-filter: blur(20px);
-  padding: 28px 24px; 
-  border-radius: 24px; /* Округлые трендовые углы */
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.6); 
-  border: 1px solid rgba(255, 255, 255, 0.4); /* Стеклянная светлая грань */
+  background: #ffffff; /* 100% плотный белый цвет без грязи и серости */
+  padding: 32px 24px; 
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35); /* Мягкая объемная тень создает эффект парения */
+  border: none; /* НИКАКИХ СЕРЫХ РАМОК */
   position: relative;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, background 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
 }
 
-/* При наведении карточка становится плотнее и парит над фоном */
+/* При наведении карточка плавно взлетает еще выше */
 .service-card:hover {
   transform: translateY(-6px);
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* Контрастный круг для иконки */
+/* Аккуратная круглая подложка для иконки */
 .service-icon-wrap {
   width: 64px;
   height: 64px;
-  margin: 0 auto 15px;
-  background: rgba(15, 23, 42, 0.04); /* Матовая подложка */
-  border: 1px solid rgba(15, 23, 42, 0.02);
+  margin: 0 auto 18px;
+  background: #f1f5f9; /* Мягкий светло-серый круг */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #475569; /* Контрастный темный цвет линий */
+  color: #475569; /* Темная контрастная иконка */
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -439,34 +435,34 @@ h1, h2, h3, h4, button, a, input, textarea {
   transition: transform 0.4s ease;
 }
 
+/* Эффект ховера для иконки внутри белой карточки */
 .service-card:hover .service-icon-wrap {
   background: rgba(91, 170, 220, 0.15); /* Мягкая синяя подсветка */
-  color: var(--primary-color); 
-  border-color: rgba(91, 170, 220, 0.2);
+  color: var(--primary-color); /* Иконка загорается синим */
   transform: scale(1.1) rotate(-8deg); 
 }
 
-/* Глубокий темный читаемый заголовок услуги на светлой плашке */
+/* Глубокий темный заголовок услуги — идеально читается */
 .service-title {
   font-size: 20px;
   font-weight: 700;
   color: var(--text-color);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-/* Благородный темный цвет текста описания */
+/* Четкий темный текст описания */
 .service-desc {
   font-size: 14px;
-  color: #475569; 
+  color: #555555; 
   line-height: 1.6;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
-/* Глубокий, контрастный и очень солидный цвет ценника */
+/* Яркий, сочный и очень красивый небесно-голубой ценник */
 .service-price {
   font-size: 22px;
   font-weight: 800;
-  color: #0f172a; /* Графитовый темный */
+  color: #0284c7; /* Насыщенный голубой цвет бренда — выглядит дорого и контрастно */
   display: block;
 }
 
@@ -487,7 +483,7 @@ h1, h2, h3, h4, button, a, input, textarea {
   margin-bottom: 25px;
 }
 
-/* Крупная переливающаяся RGB-кнопка записи */
+/* Легендарная RGB-кнопка */
 .dikidi-btn {
   display: inline-flex;
   align-items: center;
