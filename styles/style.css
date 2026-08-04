@@ -754,7 +754,7 @@ h1, h2, h3, h4, button, a, input, textarea {
   }
 }
 /* ==========================================================================
-   ИНТЕРАКТИВНОЕ ОКНО LIGHTBOX И УПРАВЛЕНИЕ ГАЛЕРЕЕЙ
+   ИНТЕРАКТИВНОЕ ОКНО LIGHTBOX И УПРАВЛЕНИЕ ГАЛЕРЕЕЙ (ФИНАЛ)
    ========================================================================== */
 /* По умолчанию прячем карточки с 7 по 13 */
 .portfolio-masonry .masonry-item.hidden-item {
@@ -773,11 +773,11 @@ h1, h2, h3, h4, button, a, input, textarea {
   animation: masonryFadeIn 0.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
 }
 
-/* Окно увеличения фотографии */
+/* Фон полноэкранного слайдера */
 #lightbox-overlay {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background-color: rgba(15, 23, 42, 0.95); 
+  background-color: rgba(10, 15, 30, 0.95); /* Ультратемный благородный фон */
   z-index: 9999; 
   display: flex;
   align-items: center;
@@ -794,10 +794,10 @@ h1, h2, h3, h4, button, a, input, textarea {
 
 .lightbox-content {
   position: relative;
-  max-width: 85%;
-  max-height: 85vh;
-  transform: scale(0.9);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 75%; /* Оставили место по бокам для стрелок на ПК */
+  max-height: 80vh;
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 #lightbox-overlay.active .lightbox-content {
@@ -806,24 +806,68 @@ h1, h2, h3, h4, button, a, input, textarea {
 
 .lightbox-content img {
   max-width: 100%;
-  max-height: 85vh;
-  border-radius: 16px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  max-height: 80vh;
+  border-radius: 20px; /* Трендовые мягкие углы */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
   display: block;
 }
 
+/* Белый изящный тонкий крестик: сдвинут ближе к кадру, без розового цвета */
 .lightbox-close {
   position: absolute;
-  top: -45px; right: 0;
-  color: var(--white);
-  font-size: 42px;
-  font-weight: 300;
+  top: -50px; 
+  right: 10px; /* Сдвинули внутрь, чтобы не зажимался в самый угол экрана */
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 46px;
+  font-weight: 200; 
   cursor: pointer;
+  line-height: 1;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .lightbox-close:hover {
-  color: #ff007f; 
+  color: #ffffff; /* Мягкое белое свечение */
   transform: scale(1.1);
 }
 
+/* Изящные полупрозрачные круглые стрелки перелистывания по бокам экрана */
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  z-index: 10000;
+}
+
+.lightbox-arrow:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.lightbox-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.lightbox-prev { left: 40px; }
+.lightbox-next { right: 40px; }
+
+/* Адаптивность слайдера под мобильные экраны */
+@media (max-width: 768px) {
+  .lightbox-content { max-width: 90%; }
+  .lightbox-arrow { width: 45px; height: 45px; font-size: 18px; }
+  .lightbox-prev { left: 15px; }
+  .lightbox-next { right: 15px; }
+  .lightbox-close { top: -45px; right: 0; }
+}
