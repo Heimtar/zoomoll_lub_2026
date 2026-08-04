@@ -183,26 +183,16 @@ function initPawAnimation() {
   triggerPawsAnimation();
   setInterval(triggerPawsAnimation, 15000);
 }
-// --- УМНЫЙ КАЛЬКУЛЯТОР ЦЕН БЕЗ ОШИБОК И СТЫКОВ ---
 function initPriceCalculator() {
-  const priceData = {
-    dog: {
-      breeds: ['Шпиц', 'Йоркширский терьер', 'Корги', 'Лабрадор'],
-      services: {
-        'Шпиц': { 'Комплексный уход': 2000, 'Гигиеническая стрижка': 1200, 'Экспресс-линька': 1800 },
-        'Йоркширский терьер': { 'Комплексный уход': 2000, 'Гигиеническая стрижка': 1200, 'Экспресс-линька': 1800 },
-        'Корги': { 'Комплексный уход': 2500, 'Гигиеническая стрижка': 1500, 'Экспресс-линька': 2200 },
-        'Лабрадор': { 'Комплексный уход': 3500, 'Гигиеническая стрижка': 1800, 'Экспресс-линька': 3000 }
-      }
-    },
-    cat: {
-      breeds: ['Короткошерстная кошка', 'Мейн-кун / Пушистая кошка'],
-      services: {
-        'Короткошерстная кошка': { 'Комплексный уход': 1800, 'Гигиеническая стрижка': 1500, 'Экспресс-линька': 1800 },
-        'Мейн-кун / Пушистая кошка': { 'Комплексный уход': 2500, 'Гигиеническая стрижка': 1800, 'Экспресс-линька': 2400 }
-      }
-    }
-  };
+  let groomPrices = [];
+
+  // Загружаем цены из внешнего файла prices.json
+  fetch('prices.json')
+    .then(response => response.json())
+    .then(data => {
+      groomPrices = data;
+    })
+    .catch(err => console.error("Ошибка загрузки цен:", err));
 
   const calcModal = document.getElementById('price-calculator-modal');
   const petSelect = document.getElementById('calc-pet-type');
@@ -236,15 +226,16 @@ function initPriceCalculator() {
     }
   });
 
-  // Выбор питомца
+  // Шаг 1: Выбор питомца (Собака / Кошка)
   petSelect.addEventListener('change', function() {
     resetSelect(breedSelect, '-- Выберите породу --');
     resetSelect(serviceSelect, '-- Сначала выберите породу --');
     resultBox.style.display = 'none';
     
     if (this.value) {
-      priceData[this.value].breeds.forEach(breed => {
-        let opt = new Option(breed, breed);
+      const filtered = groomPrices.filter(item => item.category === this.value);
+      filtered.forEach(item => {
+        let opt = new Option(item.title, item.id);
         breedSelect.add(opt);
       });
       breedSelect.disabled = false;
@@ -254,18 +245,19 @@ function initPriceCalculator() {
     serviceSelect.disabled = true;
   });
 
-  // Выбор породы
+  // Шаг 2: Выбор породы
   breedSelect.addEventListener('change', function() {
     resetSelect(serviceSelect, '-- Выберите процедуру --');
     resultBox.style.display = 'none';
     
     if (this.value) {
-      const petType = petSelect.value;
-      const availableServices = Object.keys(priceData[petType].services[this.value]);
-      
-      availableServices.forEach(service => {
-        let opt = new Option(service, service);
-        serviceSelect.add(opt);
+      let optBase = new Option("Основной комплексный уход", "base");
+      serviceSelect.add(optBase);
+
+      const extras = groomPrices.filter(item => item.category === 'extra');
+      extras.forEach(extra => {
+        let optExtra = new Option(`+ ${extra.title} (+${extra.price} ₽)`, extra.id);
+        serviceSelect.add(optExtra);
       });
       serviceSelect.disabled = false;
     } else {
@@ -273,14 +265,19 @@ function initPriceCalculator() {
     }
   });
 
-  // Выбор услуги и финал цены
+  // Шаг 3: Расчет цены
   serviceSelect.addEventListener('change', function() {
     if (this.value) {
-      const petType = petSelect.value;
-      const breed = breedSelect.value;
-      const price = priceData[petType].services[breed][this.value];
+      const selectedBreedId = breedSelect.value;
+      const breedData = groomPrices.find(item => item.id === selectedBreedId);
+      let totalPrice = breedData ? breedData.price : 0; 
+
+      if (this.value !== "base") {
+        const extraData = groomPrices.find(item => item.id === this.value);
+        if (extraData) totalPrice += extraData.price;
+      }
       
-      finalPrice.innerText = price + ' ₽';
+      finalPrice.innerText = totalPrice + ' ₽';
       resultBox.style.display = 'block';
     } else {
       resultBox.style.display = 'none';
