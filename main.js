@@ -183,26 +183,18 @@ function initPawAnimation() {
   triggerPawsAnimation();
   setInterval(triggerPawsAnimation, 15000);
 }
-// --- УМНЫЙ КАЛЬКУЛЯТОР ЦЕН БЕЗ ОШИБОК И СТЫКОВ ---
 function initPriceCalculator() {
-  const priceData = {
-    dog: {
-      breeds: ['Шпиц', 'Йоркширский терьер', 'Корги', 'Лабрадор'],
-      services: {
-        'Шпиц': { 'Комплексный уход': 2000, 'Гигиеническая стрижка': 1200, 'Экспресс-линька': 1800 },
-        'Йоркширский терьер': { 'Комплексный уход': 2000, 'Гигиеническая стрижка': 1200, 'Экспресс-линька': 1800 },
-        'Корги': { 'Комплексный уход': 2500, 'Гигиеническая стрижка': 1500, 'Экспресс-линька': 2200 },
-        'Лабрадор': { 'Комплексный уход': 3500, 'Гигиеническая стрижка': 1800, 'Экспресс-линька': 3000 }
-      }
-    },
-    cat: {
-      breeds: ['Короткошерстная кошка', 'Мейн-кун / Пушистая кошка'],
-      services: {
-        'Короткошерстная кошка': { 'Комплексный уход': 1800, 'Гигиеническая стрижка': 1500, 'Экспресс-линька': 1800 },
-        'Мейн-кун / Пушистая кошка': { 'Комплексный уход': 2500, 'Гигиеническая стрижка': 1800, 'Экспресс-линька': 2400 }
-      }
-    }
-  };
+  // Наш список цен. Если нужно изменить цену, просто меняйте цифры здесь!
+  const groomPrices = [
+    { id: "shpic", category: "dog", title: "Шпиц малый", price: 1900 },
+    { id: "york", category: "dog", title: "Йоркширский терьер", price: 2000 },
+    { id: "corgi", category: "dog", title: "Вельш-корги", price: 2000 },
+    { id: "akita", category: "dog", title: "Акита Ину", price: 2700 },
+    { id: "cat-groom", category: "cat", title: "Кошка (стрижка)", price: 2000 },
+    { id: "cat-lin", category: "cat", title: "Кошка (экспресс-линька)", price: 1700 },
+    { id: "ear", category: "extra", title: "Чистка ушей", price: 200 },
+    { id: "claws", category: "extra", title: "Стрижка когтей", price: 300 }
+  ];
 
   const calcModal = document.getElementById('price-calculator-modal');
   const petSelect = document.getElementById('calc-pet-type');
@@ -213,6 +205,101 @@ function initPriceCalculator() {
   const closeBtn = document.querySelector('.close-calc-btn');
 
   if (!calcModal || !petSelect || !breedSelect || !serviceSelect) return;
+
+  // Открытие по кнопкам "Подробнее"
+  document.querySelectorAll('.details-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      calcModal.style.display = 'flex';
+    });
+  });
+
+  // Закрытие
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      calcModal.style.display = 'none';
+      resetCalculator();
+    });
+  }
+
+  calcModal.addEventListener('click', (e) => {
+    if (e.target === calcModal) {
+      calcModal.style.display = 'none';
+      resetCalculator();
+    }
+  });
+
+  // Выбор питомца (Собака / Кошка)
+  petSelect.addEventListener('change', function() {
+    resetSelect(breedSelect, '-- Выберите породу --');
+    resetSelect(serviceSelect, '-- Сначала выберите породу --');
+    resultBox.style.display = 'none';
+    
+    if (this.value) {
+      const filtered = groomPrices.filter(item => item.category === this.value);
+      filtered.forEach(item => {
+        let opt = new Option(item.title, item.id);
+        breedSelect.add(opt);
+      });
+      breedSelect.disabled = false;
+    } else {
+      breedSelect.disabled = true;
+    }
+    serviceSelect.disabled = true;
+  });
+
+  // Выбор породы
+  breedSelect.addEventListener('change', function() {
+    resetSelect(serviceSelect, '-- Выберите процедуру --');
+    resultBox.style.display = 'none';
+    
+    if (this.value) {
+      let optBase = new Option("Основной комплексный уход", "base");
+      serviceSelect.add(optBase);
+
+      const extras = groomPrices.filter(item => item.category === 'extra');
+      extras.forEach(extra => {
+        let optExtra = new Option(`+ ${extra.title} (+${extra.price} ₽)`, extra.id);
+        serviceSelect.add(optExtra);
+      });
+      serviceSelect.disabled = false;
+    } else {
+      serviceSelect.disabled = true;
+    }
+  });
+
+  // Расчет финальной цены
+  serviceSelect.addEventListener('change', function() {
+    if (this.value) {
+      const selectedBreedId = breedSelect.value;
+      const breedData = groomPrices.find(item => item.id === selectedBreedId);
+      let totalPrice = breedData ? breedData.price : 0; 
+
+      if (this.value !== "base") {
+        const extraData = groomPrices.find(item => item.id === this.value);
+        if (extraData) totalPrice += extraData.price;
+      }
+      
+      finalPrice.innerText = totalPrice + ' ₽';
+      resultBox.style.display = 'block';
+    } else {
+      resultBox.style.display = 'none';
+    }
+  });
+
+  function resetSelect(selectElement, defaultText) {
+    selectElement.innerHTML = `<option value="">${defaultText}</option>`;
+  }
+
+  function resetCalculator() {
+    petSelect.value = '';
+    resetSelect(breedSelect, '-- Сначала выберите питомца --');
+    resetSelect(serviceSelect, '-- Сначала выберите породу --');
+    breedSelect.disabled = true;
+    serviceSelect.disabled = true;
+    resultBox.style.display = 'none';
+  }
+}
+
 
   // Открытие по кнопкам "Подробнее"
   document.querySelectorAll('.details-btn').forEach(button => {
@@ -299,4 +386,5 @@ function initPriceCalculator() {
     serviceSelect.disabled = true;
     resultBox.style.display = 'none';
   }
-}
+
+
