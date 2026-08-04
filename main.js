@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoSlider();
   initReviewsSlider();
   initFaqAccordion();
-  initPortfolioLoader(); /* Обновленная кнопка Показать/Свернуть */
-  initLightbox();        /* НОВАЯ ФУНКЦИЯ: Увеличение картинок при клике */
+  initPortfolioLoader(); /* Кнопка Показать/Свернуть без инлайн-стилей */
+  initLightbox();        /* Увеличение картинок при клике */
 });
 
 /**
@@ -123,44 +123,28 @@ function initFaqAccordion() {
 }
 
 /**
- * Умная кнопка: Раскрытие галереи и сворачивание её обратно
+ * Умная кнопка: Раскрытие галереи и сворачивание её обратно (БЕЗ ИНЛАЙН-СТИЛЕЙ)
  */
 function initPortfolioLoader() {
   const loadMoreBtn = document.getElementById('load-more-btn');
   const portfolioSection = document.getElementById('portfolio');
-  if (!loadMoreBtn) return;
+  const masonryGrid = document.querySelector('.portfolio-masonry');
+  if (!loadMoreBtn || !masonryGrid) return;
 
-  // Изначально вешаем состояние, что галерея свернута
   loadMoreBtn.setAttribute('data-state', 'collapsed');
 
   loadMoreBtn.addEventListener('click', () => {
-    const hiddenItems = document.querySelectorAll('.portfolio-masonry .masonry-item');
     const state = loadMoreBtn.getAttribute('data-state');
 
     if (state === 'collapsed') {
-      // РАСКРЫВАЕМ: Показываем карточки с 7 по 13
-      hiddenItems.forEach((item, index) => {
-        if (index >= 6) {
-          item.style.display = 'block';
-          item.classList.add('fade-in-active');
-        }
-      });
-      // Меняем текст и состояние кнопки
+      masonryGrid.classList.add('is-expanded');
       loadMoreBtn.textContent = 'Свернуть работы обратно';
       loadMoreBtn.setAttribute('data-state', 'expanded');
     } else {
-      // СВОРАЧИВАЕМ: Прячем карточки обратно
-      hiddenItems.forEach((item, index) => {
-        if (index >= 6) {
-          item.style.display = 'none';
-          item.classList.remove('fade-in-active');
-        }
-      });
-      // Возвращаем текст и состояние кнопки
+      masonryGrid.classList.remove('is-expanded');
       loadMoreBtn.textContent = 'Показать ещё работы';
       loadMoreBtn.setAttribute('data-state', 'collapsed');
 
-      // Мягко скроллим пользователя к началу блока портфолио, чтобы он не потерялся
       if (portfolioSection) {
         portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
@@ -172,7 +156,6 @@ function initPortfolioLoader() {
  * Интерактивный Lightbox для просмотра картинок в большом окне
  */
 function initLightbox() {
-  // Динамически создаем окно просмотра в памяти, чтобы не захламлять HTML
   const lightbox = document.createElement('div');
   lightbox.id = 'lightbox-overlay';
   lightbox.innerHTML = `
@@ -187,21 +170,19 @@ function initLightbox() {
   const closeBtn = lightbox.querySelector('.lightbox-close');
   const items = document.querySelectorAll('.portfolio-masonry .masonry-item img');
 
-  // Клик на любую картинку в галерее открывает окно
   items.forEach(img => {
-    img.style.cursor = 'zoom-in'; // Меняем курсор на лупу при наведении
+    img.style.cursor = 'zoom-in';
     img.addEventListener('click', (e) => {
-      e.stopPropagation(); // Защита от конфликтов
+      e.stopPropagation();
       lightboxImg.src = img.src;
       lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Запрещаем скролл сайта под окном
+      document.body.style.overflow = 'hidden';
     });
   });
 
-  // Закрытие окна при клике на крестик, фон или кнопку назад
   const closeLightbox = () => {
     lightbox.classList.remove('active');
-    document.body.style.overflow = ''; // Возвращаем скролл сайта
+    document.body.style.overflow = '';
     lightboxImg.src = '';
   };
 
