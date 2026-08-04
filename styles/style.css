@@ -13,21 +13,15 @@
   scroll-behavior: smooth; 
 }
 
-/* ==========================================================================
-   БАЗОВЫЙ ФОН САЙТА: ПОЛНОЕ СЛИЯНИЕ С ШАПКОЙ (Эффект единого стекла)
-   ========================================================================== */
 body {
-  /* ИСПРАВЛЕНО: Дали бокам точно такой же матово-молочный оттенок, как у шапки */
   background: rgba(255, 255, 255, 0.85);
-  
   color: var(--text-color);
   line-height: 1.6;
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   -webkit-font-smoothing: antialiased; 
 }
 
-
-h1, h2, h3, button, a, input, textarea {
+h1, h2, h3, h4, button, a, input, textarea {
   font-family: inherit; 
   color: inherit;       
   text-decoration: none; 
@@ -38,6 +32,9 @@ h1, h2, h3, button, a, input, textarea {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ==========================================================================
+   ШАПКА САЙТА И НАВИГАЦИЯ
+   ========================================================================== */
 .site-header {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.85);  
@@ -92,9 +89,6 @@ h1, h2, h3, button, a, input, textarea {
   gap: 40px;
 }
 
-/* ==========================================================================
-   ОБНОВЛЕННЫЙ СТИЛЬ МЕНЮ (Мягкое премиальное подчеркивание)
-   ========================================================================== */
 .menu-link {
   color: #555555;
   font-size: 16px;
@@ -104,9 +98,6 @@ h1, h2, h3, button, a, input, textarea {
   transition: color 0.3s ease;
 }
 
-/* ==========================================================================
-   ФИНАЛ: СОВРЕМЕННЫЙ ГРАДИЕНТНЫЙ ХОВЕР (Связь синего логотипа и ягодных нот)
-   ========================================================================== */
 .menu-link::after {
   content: '';
   position: absolute;
@@ -114,19 +105,14 @@ h1, h2, h3, button, a, input, textarea {
   bottom: 0; 
   width: 100%;
   height: 2px; 
-  
-  /* ВОЗВРАЩАЕМ СОЧНОСТЬ: Модный перелив от чистой бирюзы к сочной спелой ягоде */
   background: linear-gradient(90deg, #00dfd8 0%, #ff007f 100%); 
-  
   transform: scaleX(0); 
   transform-origin: right; 
   transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .menu-link:hover {
-  /* Буквы становятся четкими и графитовыми, уступая главную роль сочной полоске */
   color: #1a1a1a; 
-  text-shadow: none; 
 }
 
 .menu-link:hover::after {
@@ -134,41 +120,22 @@ h1, h2, h3, button, a, input, textarea {
   transform-origin: left; 
 }
 
-.menu-link:focus,
-.menu-link:active {
-  outline: none;
-  box-shadow: none;
-}
-/* ==========================================================================
-   ИСПРАВЛЕНО: ЕЩЁ БОЛЕЕ СВЕТЛАЯ И МЯГКАЯ ТЕМНАЯ ПЛАШКА
-   ========================================================================== */
 .phone-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  
   color: #ffffff; 
   font-weight: 700;
   font-size: 16px;
-  
-  animation: none;
-  background-image: none;
-  background-size: auto;
-  
-  /* ИСПРАВЛЕНО: Сделали цвет ещё светлее и мягче — теперь это благородный средне-серый */
   background: #475569; 
   border: 1px solid rgba(255, 255, 255, 0.1); 
-  
   padding: 10px 22px;
   border-radius: 50px;
-  
-  /* Очень тонкая, незаметная тень */
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
-/* Стили для модной SVG-иконки смартфона */
 .phone-icon-svg {
   width: 18px;
   height: 18px;
@@ -178,48 +145,35 @@ h1, h2, h3, button, a, input, textarea {
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 1. Эффект для кнопки при наведении: плавно переходит в цвет исправленного Зоомолл */
 .phone-link:hover {
   color: #ffffff;
   transform: translateY(-2px); 
-  background: #6faad0; /* Наш мягкий серо-голубой цвет */
+  background: #6faad0; 
   box-shadow: 0 6px 16px rgba(111, 170, 208, 0.3); 
 }
 
-/* 2. Эффект для иконки смартфона при наведении */
 .phone-link:hover .phone-icon-svg { 
   transform: scale(1.15) rotate(7deg); 
 }
 
-
-@keyframes rgb-movement {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 400% 0%; }
-}
-/* ==========================================================================
-   ИСПРАВЛЕНО: ЭФФЕКТ ОТДЕЛЕНИЯ ШАПКИ ПРИ СКРОЛЛЕ (Больше не сливается с белым)
-   ========================================================================== */
-
-/* Сама плавающая панель при прокрутке вниз получает тень и контур */
 .site-header.shrunk {
-  /* ИСПРАВЛЕНО: Сделали фон прозрачнее (0.80), чтобы стекло «заработало», но усилили размытие blur */
   background-color: rgba(255, 255, 255, 0.80); 
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  
-  /* ИСПРАВЛЕНО: Сделали тень объемнее и глубже, чтобы шапка парила над белым фоном */
   box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06), 0 2px 10px rgba(15, 23, 42, 0.02); 
   border-bottom: 1px solid rgba(0, 0, 0, 0.06); 
 }
 
-/* Ваши оригинальные компактные размеры элементов при скролле */
 .site-header.shrunk .header-wrap { padding-top: 8px; padding-bottom: 8px; }
 .site-header.shrunk .logo-img { width: 36px; height: 36px; }
 .site-header.shrunk .brand-name { font-size: 22px; }
-
-/* Начало следующей секции карусели (Оставляем без изменений) */
-.promo-carousel-section { padding: 0 5%; margin-bottom: 30px; }
-
+/* ==========================================================================
+   ПРОМО-КАРУСЕЛЬ (БАННЕРЫ)
+   ========================================================================== */
+.promo-carousel-section { 
+  padding: 0 5%; 
+  margin-bottom: 30px; 
+}
 
 .promo-container {
   width: 100%;
@@ -264,12 +218,10 @@ h1, h2, h3, button, a, input, textarea {
   transition: all 0.3s ease; 
 }
 
-/* ВОЗВРАЩЕНО НА ИСХОДНЫЕ МЕСТА: Стрелки ровно по бокам баннера */
 .prev-promo { left: 20px; }
 .next-promo { right: 20px; }
 .promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
 
-/* --- Крупный левосторонний текст БЕЗ плашки (ВАШ ОРИГИНАЛ) --- */
 .new-clean-banner-box {
   position: absolute;
   z-index: 5;
@@ -306,7 +258,6 @@ h1, h2, h3, button, a, input, textarea {
   text-align: left;            
 }
 
-/* --- Ваше оригинальное расположение плашек для остальных животных --- */
 .box-mops {
   left: 220px;
   top: 40px;               
@@ -321,7 +272,7 @@ h1, h2, h3, button, a, input, textarea {
   top: 50%; 
   bottom: auto;
   transform: translateY(-50%);
-  text-align: center; /* ИСПРАВЛЕНО: выравнивание по центру */        
+  text-align: center;         
 }
 
 .box-cat {
@@ -330,7 +281,7 @@ h1, h2, h3, button, a, input, textarea {
   top: 40px;               
   bottom: auto;
   transform: none;         
-  text-align: center; /* ИСПРАВЛЕНО: выравнивание по центру */        
+  text-align: center;         
   max-width: 620px;        
 }
 
@@ -340,10 +291,7 @@ h1, h2, h3, button, a, input, textarea {
   line-height: 1.4;
 }
 
-/* --- ИСПРАВЛЕНО: Текст внутри плашек теперь всегда строго по центру --- */
-.box-mops h3,
-.box-bath-dog h3,
-.box-cat h3 {
+.box-mops h3, .box-bath-dog h3, .box-cat h3 {
   color: #ffffff;           
   font-size: 32px;          
   font-weight: 900;          
@@ -352,12 +300,10 @@ h1, h2, h3, button, a, input, textarea {
   margin: 0 0 14px 0;       
   padding: 0;    
   text-shadow: 0 2px 10px rgba(15, 23, 42, 0.5); 
-  text-align: center; /* ИСПРАВЛЕНО: жестко выровняли заголовки по центру */         
+  text-align: center;          
 }
 
-.box-mops p,
-.box-bath-dog p,
-.box-cat p {
+.box-mops p, .box-bath-dog p, .box-cat p {
   color: #ffffff;           
   font-size: 14px;          
   font-weight: 600;          
@@ -365,10 +311,12 @@ h1, h2, h3, button, a, input, textarea {
   margin: 0;
   padding: 0;
   text-shadow: 0 1px 6px rgba(15, 23, 42, 0.5); 
-  text-align: center; /* ИСПРАВЛЕНО: жестко выровняли абзацы по центру */         
+  text-align: center;          
 }
 
-
+/* ==========================================================================
+   ГЛАВНЫЙ ЭКРАН (HERO BANNER)
+   ========================================================================== */
 .hero {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
   width: 100%;
@@ -392,12 +340,6 @@ h1, h2, h3, button, a, input, textarea {
 .hero-content h1 { font-size: 52px; font-weight: 800; color: var(--white); margin-bottom: 24px; line-height: 1.15; letter-spacing: -1px; }
 .hero-content p { font-size: 20px; color: #cbd5e1; margin-bottom: 45px; line-height: 1.6; }
 
-/* ==========================================================================
-   КНОПКА ЗАПИСАТЬСЯ: КОРОЛЕВА ЭКРАНА С RGB-ПЕРЕЛИВОМ
-   ========================================================================== */
-/* ==========================================================================
-   КНОПКА ЗАПИСАТЬСЯ: ЧИСТЫЙ СОВРЕМЕННЫЙ ОБЪЕМ (БЕЗ ТЕМНЫХ ПОЛОС)
-   ========================================================================== */
 #cta-btn {
   color: var(--white);
   padding: 16px 44px;
@@ -410,23 +352,13 @@ h1, h2, h3, button, a, input, textarea {
   position: relative;
   z-index: 2;
   overflow: hidden;
-  
-  /* Твой сочный градиент */
   background-image: linear-gradient(120deg, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f, #00dfd8, #ff007f);
   background-size: 600% 100%; 
-  
-  /* Идеальная плавная скорость в 16 секунд */
   animation: cta-rgb-movement 16s linear infinite; 
-  
-  /* ИСПРАВЛЕНО: Никаких внутренних теней и полос! Только чистый объем за счет мягкого внешнего свечения */
-  box-shadow: 
-    0 8px 20px rgba(121, 40, 202, 0.3),  /* Фиолетовое парение */
-    0 12px 30px rgba(0, 223, 218, 0.15); /* Бирюзовый ореол */
-      
+  box-shadow: 0 8px 20px rgba(121, 40, 202, 0.3), 0 12px 30px rgba(0, 223, 218, 0.15);      
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* СВЕТОВОЙ ЛАЗЕРНЫЙ БЛИК */
 #cta-btn::before {
   content: '';
   position: absolute;
@@ -436,58 +368,245 @@ h1, h2, h3, button, a, input, textarea {
   transition: none;
 }
 
-/* ЭФФЕКТ ПРИ НАВЕДЕНИИ КУРСОРA */
 #cta-btn:hover {
-  transform: translateY(-3px); /* Кнопка аккуратно приподнимается */
-  box-shadow: 
-    0 12px 28px rgba(121, 40, 202, 0.45), 
-    0 16px 35px rgba(0, 223, 218, 0.25);
+  transform: translateY(-3px); 
+  box-shadow: 0 12px 28px rgba(121, 40, 202, 0.45), 0 16px 35px rgba(0, 223, 218, 0.25);
 }
 
-/* Бег лазерного луча при наведении */
 #cta-btn:hover::before {
   left: 150%;
   transition: left 0.7s cubic-bezier(0.2, 1, 0.2, 1);
 }
 
-/* Нажатие кнопки мыши — кнопка просто мягко уходит вниз */
 #cta-btn:active { 
   transform: translateY(1px); 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
 }
-
-/* Наша анимация движения спектра */
-@keyframes cta-rgb-movement {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 600% 0%; }
+/* ==========================================================================
+   СЕКЦИЯ УСЛУГ И ИНТЕГРАЦИЯ С DIKIDI
+   ========================================================================== */
+.services {
+  padding: 80px 0;
+  text-align: center;
+  background-color: var(--white);
 }
 
-
-
-@keyframes pawStep {
-  0% { opacity: 0; transform: scale(0.8) rotate(var(--paw-rotate, 0deg)); }
-  20% { opacity: 0.35; transform: scale(1) rotate(var(--paw-rotate, 0deg)); }
-  70% { opacity: 0.35; }
-  100% { opacity: 0; transform: scale(0.9) rotate(var(--paw-rotate, 0deg)); }
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-.services { padding: 60px 5%; text-align: center; }
-.services h2 { margin-bottom: 40px; font-size: 32px; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.services .card { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); }
-.services .card h3 { margin-bottom: 15px; color: var(--primary-color); }
-.services .card p { font-size: 15px; margin-bottom: 20px; }
-.services .card .price { font-weight: bold; font-size: 18px; display: block; }
-.portfolio { padding: 60px 5%; text-align: center; background-color: var(--white); }
-.portfolio h2 { font-size: 32px; margin-bottom: 10px; }
-.portfolio .section-subtitle { color: #777; margin-bottom: 40px; font-size: 16px; }
-.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-.portfolio-item { background: var(--bg-color); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-.portfolio-item img { width: 100%; height: 250px; object-fit: cover; display: block; }
-.portfolio-info { padding: 20px; text-align: left; }
-.portfolio-info h3 { font-size: 18px; margin-bottom: 5px; }
-.portfolio-info p { color: #777; font-size: 14px; }
 
+.services .section-title {
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.services .section-subtitle {
+  color: #64748b;
+  font-size: 16px;
+  margin-bottom: 48px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 48px;
+}
+
+.service-card {
+  background: var(--white);
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.service-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.service-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 14px;
+}
+
+.service-desc {
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  min-height: 72px;
+}
+
+.service-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #27ae60;
+  display: block;
+}
+
+.dikidi-cta-block {
+  max-width: 680px;
+  margin: 0 auto;
+  background: #f8fafc;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.dikidi-text {
+  font-size: 16px;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.dikidi-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 16px 38px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(91, 170, 220, 0.25);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dikidi-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(91, 170, 220, 0.4);
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.dikidi-btn:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+.hero-cta-link {
+  display: inline-block;
+}
+
+/* ==========================================================================
+   НАШИ РАБОТЫ (ПОРТФОЛИО ДО/ПОСЛЕ)
+   ========================================================================== */
+.portfolio-section {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: var(--white);
+}
+
+.portfolio-section h2 { font-size: 32px; }
+
+.portfolio-subtitle {
+  font-size: 16px;
+  color: #64748b;
+  margin-bottom: 40px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-item {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px; 
+  background: #f1f5f9;
+}
+
+.img-container {
+  position: relative;
+  aspect-ratio: 1 / 1; 
+  overflow: hidden;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover .img-container img {
+  transform: scale(1.05); 
+}
+
+.badge {
+  position: absolute;
+  bottom: 10px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 20px;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.badge-before {
+  left: 10px;
+  background: rgba(239, 68, 68, 0.85); 
+}
+
+.badge-after {
+  right: 10px;
+  background: rgba(34, 197, 94, 0.85); 
+}
+
+.portfolio-info {
+  padding: 20px;
+  text-align: left;
+}
+
+.portfolio-info h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+}
+/* ==========================================================================
+   КАРУСЕЛЬ ОТЗЫВОВ
+   ========================================================================== */
 .reviews-section { padding: 60px 5%; text-align: center; background-color: var(--bg-color); }
+.reviews-section h2 { font-size: 32px; }
+.reviews-section .section-subtitle { color: #777; margin-bottom: 40px; font-size: 16px; }
 .carousel-container { display: flex; align-items: center; justify-content: center; max-width: 1100px; margin: 0 auto; position: relative; gap: 15px; }
 .carousel-track-wrapper { overflow: hidden; width: 100%; padding: 10px 0; }
 .carousel-track { display: flex; gap: 20px; transition: transform 0.4s ease-in-out; will-change: transform; }
@@ -523,7 +642,11 @@ h1, h2, h3, button, a, input, textarea {
 }
 .carousel-btn:hover { background-color: var(--primary-color); color: var(--white); }
 
+/* ==========================================================================
+   ВОПРОСЫ И ОТВЕТЫ (FAQ ACCORDION)
+   ========================================================================== */
 .faq-section { padding: 60px 5%; text-align: center; background-color: var(--white); }
+.faq-section h2 { font-size: 32px; margin-bottom: 40px; }
 .faq-container { max-width: 800px; margin: 0 auto; text-align: left; }
 .faq-item { background-color: var(--bg-color); margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02); }
 
@@ -552,51 +675,10 @@ h1, h2, h3, button, a, input, textarea {
 .faq-item.active .faq-answer { max-height: 300px; }
 .faq-item.active .faq-icon { transform: rotate(45deg); color: var(--text-color); }
 
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; 
-}
-
-.modal-content {
-  background-color: var(--white);
-  padding: 40px;
-  border-radius: 15px;
-  max-width: 450px;
-  width: 90%; 
-  text-align: center;
-  position: relative; 
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease; 
-}
-
-.modal-content h2 { color: var(--primary-color); margin-bottom: 15px; }
-.modal-content p { font-size: 16px; margin-bottom: 25px; color: var(--text-color); }
-
-.ok-btn {
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: none;
-  padding: 12px 30px;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(91, 170, 220, 0.2);
-  transition: all 0.2s ease;
-}
-.ok-btn:hover { 
-  background-color: #4392c4; 
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(91, 170, 220, 0.3);
-}
-
-.close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 28px; color: #999; cursor: pointer; transition: color 0.2s; }
-.close-btn:hover { color: var(--text-color); }
-.modal-img { width: 120px; height: 120px; display: block; margin: 0 auto 20px; border-radius: 50%; object-fit: cover; border: 3px solid var(--bg-color); }
+/* ==========================================================================
+   ПОДВАЛ САЙТА И КНОПКА НАВЕРХ
+   ========================================================================== */
+.footer { background-color: var(--text-color); color: var(--white); text-align: center; padding: 30px; font-size: 14px; }
 
 .to-top-button {
   position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
@@ -614,121 +696,27 @@ h1, h2, h3, button, a, input, textarea {
 .to-top-button:hover { background-color: var(--text-color); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); }
 .to-top-button:hover svg { transform: translateY(-3px); }
 
-.footer { background-color: var(--text-color); color: var(--white); text-align: center; padding: 30px; font-size: 14px; }
-
 /* ==========================================================================
-   ИСПРАВЛЕНО: АДАПТИВНОСТЬ ПЕРЕНЕСЕНА В САМЫЙ КОНЕЦ ДЛЯ ЗАЩИТЫ КАСКАДА
+   АДАПТИВНОСТЬ САЙТА (MEDIA QUERIES)
    ========================================================================== */
 @media (max-width: 768px) {
   .site-header .nav { gap: 16px; }
   .menu-link { font-size: 14px; padding: 4px 6px; }
   .phone-link { padding: 8px 14px; font-size: 14px; }
-  .phone-icon-img { width: 16px; height: 16px; }
 
-  /* Возвращена оригинальная адаптивность без лишних плашек и БЕЗ !important */
   .new-clean-banner-box {
-    max-width: 100%; /* ИСПРАВЛЕНО: убрали !important */
+    max-width: 100%; 
     left: 16px; 
     right: 16px;
     padding: 16px 20px;
-    
-    /* ИСПРАВЛЕНО: заменили старую переменную на наш новый благородный цвет тумана */
     background: radial-gradient(circle, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 80%, transparent 100%);
   }
-
   
   .new-clean-banner-box h3 { font-size: 22px; margin-bottom: 8px; text-align: center; }
   .new-clean-banner-box p { font-size: 13px; text-align: center; }
-}
-/* СТИЛИ ДЛЯ БЛОКА НАШИ РАБОТЫ */
-.portfolio-section {
-  padding: 60px 20px;
-  text-align: center;
-  background-color: var(--white);
-}
 
-.portfolio-subtitle {
-  font-size: 16px;
-  color: #64748b;
-  margin-bottom: 40px;
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.portfolio-item {
-  background: var(--white);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.portfolio-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Сетка для картинок До и После внутри одной карточки */
-.portfolio-images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px; /* Тонкая изящная линия разделения */
-  background: #f1f5f9;
-}
-
-.img-container {
-  position: relative;
-  aspect-ratio: 1 / 1; /* Картинки всегда будут строго квадратными и ровными */
-  overflow: hidden;
-}
-
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Фотографии не будут растягиваться или сплющиваться */
-  transition: transform 0.5s ease;
-}
-
-.portfolio-item:hover .img-container img {
-  transform: scale(1.05); /* Легкий интерактивный наезд при ховере */
-}
-
-/* Аккуратные плашки До / После */
-.badge {
-  position: absolute;
-  bottom: 10px;
-  padding: 4px 12px;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 20px;
-  color: var(--white);
-  text-transform: uppercase;
-}
-
-.badge-before {
-  left: 10px;
-  background: rgba(239, 68, 68, 0.85); /* Мягкий красный */
-}
-
-.badge-after {
-  right: 10px;
-  background: rgba(34, 197, 94, 0.85); /* Мягкий зеленый */
-}
-
-.portfolio-info {
-  padding: 20px;
-  text-align: left;
-}
-
-.portfolio-info h4 {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-color);
-  margin: 0;
+  .services { padding: 60px 0; }
+  .dikidi-cta-block { padding: 30px 20px; }
+  .service-card { padding: 30px 20px; }
+  .service-desc { min-height: auto; }
 }
