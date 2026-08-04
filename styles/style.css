@@ -362,27 +362,35 @@ h1, h2, h3, h4, button, a, input, textarea {
 }
 
 /* ==========================================================================
-   СЕКЦИЯ УСЛУГ И ИНТЕГРАЦИЯ С DIKIDI
+   ОБЪЕДИНЕННАЯ СЕКЦИЯ УСЛУГ (БЛАГОРОДНЫЙ ТЁМНЫЙ ФОН)
    ========================================================================== */
 .services {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
   padding: 80px 0;
   text-align: center;
-  background-color: var(--white);
+  position: relative;
+  overflow: hidden;
 }
 
 .services-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .services .section-title {
-  margin-bottom: 10px;
-  font-size: 32px;
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .services .section-subtitle {
-  color: #64748b;
+  color: #cbd5e1;
   font-size: 16px;
   margin-bottom: 48px;
 }
@@ -398,14 +406,14 @@ h1, h2, h3, h4, button, a, input, textarea {
   background: var(--white);
   padding: 40px 30px;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
 }
 
 .service-icon {
@@ -438,15 +446,15 @@ h1, h2, h3, h4, button, a, input, textarea {
 .dikidi-cta-block {
   max-width: 680px;
   margin: 0 auto;
-  background: #f8fafc;
+  background: rgba(255, 255, 255, 0.03);
   padding: 40px;
   border-radius: 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dikidi-text {
   font-size: 16px;
-  color: var(--text-color);
+  color: #cbd5e1; 
   line-height: 1.6;
   margin-bottom: 28px;
 }
@@ -482,9 +490,6 @@ h1, h2, h3, h4, button, a, input, textarea {
   transform: translateX(4px);
 }
 
-.hero-cta-link {
-  display: inline-block;
-}
 
 /* ==========================================================================
    НАШИ РАБОТЫ (ПОРТФОЛИО ДО/ПОСЛЕ)
