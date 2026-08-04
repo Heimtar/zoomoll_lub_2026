@@ -699,8 +699,15 @@ h1, h2, h3, h4, button, a, input, textarea {
   .new-clean-banner-box h3 { font-size: 22px; margin-bottom: 8px; text-align: center; }
   .new-clean-banner-box p { font-size: 13px; text-align: center; }
 
-  .services { padding: 60px 0; }
-  .dikidi-cta-block { padding: 30px 20px; }
-  .service-card { padding: 30px 20px; }
-  .service-desc { min-height: auto; }
+  @media (max-width: 768px) {
+  .services { 
+    padding: 40px 0; /* Сжали высоту всей темной полосы на мобильных */
+  }
+  .dikidi-cta-block { 
+    padding: 25px 15px; 
+  }
+  .service-card { 
+    padding: 25px 20px; /* Сделали карточки компактными на смартфонах */
+  }
+}
 }
