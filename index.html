@@ -43,7 +43,6 @@
     </div>
 </header>
 <main>
-    <!-- 2. ПРОМО-КАРУСЕЛЬ -->
     <section class="promo-carousel-section" aria-label="Промо-баннеры студии">
         <div class="promo-container">
             <button class="promo-btn prev-promo" aria-label="Предыдущий слайд">❮</button>
@@ -51,7 +50,7 @@
 
             <div class="promo-track" id="promo-track">
                 <div class="promo-slide slide-mops">
-                    <img src="img/mops.jpg" alt="Стрижка собаки в салон Зоомолл" fetchpriority="high" decoding="async">
+                    <img src="img/mops.jpg" alt="Стрижка собаки в салоне Зоомолл" fetchpriority="high" decoding="async">
                     <div class="new-clean-banner-box box-mops">
                         <h3>Профессиональный уход без стресса</h3>
                     </div>
@@ -73,7 +72,6 @@
             </div>
         </div>
     </section>
-    <!-- 3. СЕКЦИЯ УСЛУГ -->
     <section id="services" class="services">
         <div class="services-container">
             <h2 class="section-title">Наши услуги и цены</h2>
@@ -92,10 +90,107 @@
                     <p class="service-desc">Мытье, сушка, стрижка по стандарту породы, чистка ушей и подстригание когтей.</p>
                     <span class="service-price">от 1 900 ₽</span>
                 </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrap">
+                        <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M9 12l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Гигиена</h3>
+                    <p class="service-desc">Удаление колтунов, выстригание шерсти между подушечками лап, уход за ушками и глазками.</p>
+                    <span class="service-price">от 1 200 ₽</span>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrap">
+                        <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Экспресс-линька</h3>
+                    <p class="service-desc">Тщательное вычесывание отмершего подшерстка специальными инструментами. Меньше шерсти в доме!</p>
+                    <span class="service-price">от 1 700 ₽</span>
+                </div>
+            </div>
+
+            <div class="dikidi-cta-block">
+                <p class="dikidi-text">
+                    Популярные процедуры для ваших питомцев. Стоимость зависит от породы и размера пушистика. Полный актуальный прайс и онлайн-запись доступны в DIKIDI.
+                </p>
+                <a href="https://dikidi.net" class="dikidi-btn" target="_blank" rel="noopener noreferrer">
+                    <span>Записаться</span>
+                </a>
             </div>
         </div>
     </section>
-    <!-- 6. FAQ (АККОРДЕОН) -->
+    <section id="portfolio" class="portfolio-section">
+        <h2 class="section-title">Наши работы</h2>
+        <p class="portfolio-subtitle">Примеры стрижек и ухода от наших мастеров.</p>
+
+        <div class="portfolio-slider-container">
+            <button class="portfolio-arrow port-prev" aria-label="Назад">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button class="portfolio-arrow port-next" aria-label="Вперед">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+
+            <div class="portfolio-track-wrapper">
+                <div class="portfolio-track" id="portfolio-track">
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/1XXXL.webp" alt="Груминг йоркширского терьера">
+                        <div class="portfolio-slide-overlay"><h4>Йоркширский терьер</h4><p>Комплексный уход</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/13XXXL.webp" alt="Экспресс-линька сиамской кошки">
+                        <div class="portfolio-slide-overlay"><h4>Сиамская кошка</h4><p>Экспресс-линька кошек</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/3XXXL.webp" alt="Груминг померанского шпица">
+                        <div class="portfolio-slide-overlay"><h4>Померанский шпиц</h4><p>Комплексный уход</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/11XXXL.webp" alt="Экспресс-линька сибирской хаски">
+                        <div class="portfolio-slide-overlay"><h4>Сибирский хаски</h4><p>Экспресс-линька</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/4XXXL.webp" alt="Экспресс-линька черного шпица">
+                        <div class="portfolio-slide-overlay"><h4>Померанский шпиц</h4><p>Экспресс-линька</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/7XXXL.webp" alt="Груминг шпица пати-колор">
+                        <div class="portfolio-slide-overlay"><h4>Шпиц пати-колор</h4><p>Комплексный уход</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/2XXXL.webp" alt="Экспресс-линька шотландской вислоухой кошки">
+                        <div class="portfolio-slide-overlay"><h4>Шотландская вислоухая</h4><p>Экспресс-линька кошек</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/5XXXL.webp" alt="Груминг белого шпица">
+                        <div class="portfolio-slide-overlay"><h4>Немецкий шпиц</h4><p>Комплексный уход</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/12XXXL.webp" alt="Гигиенический уход за биглем">
+                        <div class="portfolio-slide-overlay"><h4>Бигль</h4><p>Гигиена</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/6XXXL.webp" alt="Стрижка вест-хайленд-уайт-терьера">
+                        <div class="portfolio-slide-overlay"><h4>Вест-хайленд-уайт-терьер</h4><p>Комплексный уход</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/10XXXL.webp" alt="Породный груминг йоркширского терьера">
+                        <div class="portfolio-slide-overlay"><h4>Йоркширский терьер</h4><p>Комплексный уход</p></div>
+                    </div>
+                    <div class="portfolio-slide-item">
+                        <img src="img/works/8XXXL.webp" alt="Экспресс-линька метиса">
+                        <div class="portfolio-slide-overlay"><h4>Метис</h4><p>Экспресс-линька</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="faq" class="faq-section">
         <h2>Частые вопросы</h2>
         <div class="faq-container">
@@ -123,13 +218,13 @@
                     <span class="faq-icon">▼</span>
                 </button>
                 <div class="faq-answer">
-                    <p>В среднем — каждые 4–6 недель для длинношерстных пород (йорки, шпицы, мальтезе) для поддержания формы и предотвращения колтунов. Для глачкошерстных собак экспресс-линьку достаточно делать раз в 2–3 месяца.</p>
+                    <p>В среднем — каждые 4–6 недель для длинношерстных пород (йорки, шпицы, мальтезе) для поддержания формы и предотвращения колтунов. Для гладкошерстных собак экспресс-линьку достаточно делать раз в 2–3 месяца.</p>
                 </div>
             </div>
         </div>
     </section>
 </main>
-<!-- 5. ОТЗЫВЫ -->
+
 <section id="reviews" class="reviews-section">
     <h2>Отзывы наших клиентов</h2>
     <p class="section-subtitle">What owners say about our grooming studio</p>
@@ -176,8 +271,22 @@
         <button class="carousel-btn next-btn" aria-label="Следующий отзыв">❯</button>
     </div>
 </section>
-<!-- 7. ПОДВАЛ САЙТА -->
-<footer class="footer" id="contacts">
+<!-- 7. КАРТА ПРОЕЗДА -->
+<section id="contacts" class="map-section" aria-label="Схема проезда">
+    <div class="map-container">
+        <!-- Надежный виджет Яндекс.Карт по текстовому адресу студии -->
+        <iframe src="https://yandex.ru" 
+                width="100%" 
+                height="100%" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                style="display: block; border: none;">
+        </iframe>
+    </div>
+</section>
+
+
+<footer class="footer">
     <p>© 2026 Зоомолл. Архангельск, Московский просп., 6, корп. 3</p>
     <p>Телефон: <a href="tel:+79600000307">+7 (960) 000-03-07</a></p>
 </footer>
