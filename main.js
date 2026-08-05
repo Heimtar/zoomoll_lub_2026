@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /**
  * Вспомогательная функция для безопасного управления блокировкой скролла.
- * Предотвращает баг, когда закрытие одного элемента разблокирует скролл для другого.
  */
 const updateScrollLock = () => {
   const isMenuOpen = document.querySelector('.nav-container.open');
@@ -52,6 +51,7 @@ function initMobileMenu() {
     });
   });
 }
+
 /**
  * Эффекты скролла страницы (Шапка сайта и кнопка "Наверх")
  */
@@ -65,7 +65,6 @@ function initScrollEffects() {
     if (siteHeader) siteHeader.classList.toggle("shrunk", currentScroll > 50);
   }, { passive: true });
 }
-
 /**
  * Слайдер рекламных промо-баннеров
  */
@@ -126,10 +125,14 @@ function initPortfolioSlider() {
   };
 
   const updateSliderPosition = () => {
-    const maxIndex = track.children.length - getVisibleSlidesCount();
+    const visibleCount = getVisibleSlidesCount();
+    const maxIndex = track.children.length - visibleCount;
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     if (currentIndex < 0) currentIndex = 0;
+    
+    // Передаем переменные в CSS для плавного адаптивного расчета
     track.style.setProperty('--current-index', currentIndex);
+    track.style.setProperty('--visible-slides', visibleCount);
   };
 
   if (nextBtn) {
