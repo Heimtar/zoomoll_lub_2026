@@ -687,17 +687,17 @@ section {
 
 
 /* ==========================================================================
-   КАРУСЕЛЬ ОТЗЫВОВ — ПРЕМИУМ СТИЛЬ С ЦИТАТАМИ И АКЦЕНТАМИ
+   КАРУСЕЛЬ ОТЗЫВОВ — КОМПАКТНЫЙ МИНИМАЛИЗМ С КАВЫЧКАМИ
    ========================================================================== */
 .reviews-section { 
-  padding: 85px 20px; 
-  background-color: #f8fafc; 
+  padding: 65px 20px; /* Компактные отступы секции, как у FAQ */
+  background-color: #f8fafc; /* Мягкий фон для контраста белых карточек */
   text-align: center; 
 }
 
 .reviews-section h2 { 
   margin-bottom: 12px; 
-  font-size: 34px; 
+  font-size: 30px; 
   font-weight: 800;
   color: var(--text-dark);
   letter-spacing: -0.5px;
@@ -721,7 +721,7 @@ section {
 .carousel-track-wrapper { 
   overflow: hidden; 
   width: 100%; 
-  padding: 15px 0; 
+  padding: 15px 0; /* Пространство для теней при парении */
 }
 
 .carousel-track { 
@@ -733,7 +733,7 @@ section {
 
 /* Объемные белоснежные карточки с фоновой цитатой */
 .review-card { 
-  position: relative; /* Для позиционирования кавычек */
+  position: relative; 
   padding: 32px 28px; 
   background-color: var(--white); 
   border-radius: 20px; 
@@ -760,7 +760,7 @@ section {
   top: -15px;
   right: 15px;
   font-size: 110px;
-  color: rgba(91, 170, 220, 0.09); /* Очень нежный, едва заметный голубой цвет */
+  color: rgba(91, 170, 220, 0.09); /* Тонкий, едва заметный голубой цвет */
   font-family: "Georgia", serif;
   line-height: 1;
   font-weight: 900;
@@ -788,28 +788,17 @@ section {
   letter-spacing: 2px;
 }
 
+/* ИСПРАВЛЕНО: Полностью удален ::first-letter, текст стал строго однородным и ровным */
 .review-text { 
   margin-bottom: 20px; 
   color: #475569; 
   font-style: normal; 
-  font-size: 15px; 
+  font-size: 14px; /* Компактный утонченный размер */
   line-height: 1.6;
   font-weight: 500;
   flex-grow: 1;
   position: relative;
   z-index: 2;
-}
-
-/* 🎯 МОДНЫЙ ХАК: Выделяем первую букву текста крупным синим цветом */
-.review-text::first-letter {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--primary-color);
-  font-family: inherit;
-  float: left;
-  line-height: 1;
-  margin-right: 4px;
-  margin-top: 2px;
 }
 
 /* Ссылка на Яндекс Карты */
@@ -828,7 +817,7 @@ section {
   color: var(--primary-color);
 }
 
-/* Круглые кнопки-стрелки с микро-эффектами */
+/* Круглые кнопки-стрелки с изящными SVG-иконками */
 .carousel-btn { 
   position: absolute;
   top: 50%;
@@ -859,6 +848,7 @@ section {
   box-shadow: 0 10px 22px rgba(91, 170, 220, 0.35);
 }
 
+/* Отодвинули стрелки вовне */
 .prev-btn { left: -65px; }
 .next-btn { right: -65px; }
 
