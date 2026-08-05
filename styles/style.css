@@ -1165,6 +1165,7 @@ section {
 .map-section {
   width: 100%;
   padding: 60px 0; 
+  padding-bottom: 0; 
   background-color: var(--white);
 }
 
