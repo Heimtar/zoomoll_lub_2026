@@ -982,48 +982,97 @@ section {
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
 /* ==========================================================================
-   ИНТЕРАКТИВНЫЕ ЛАПКИ (БЕЗОШИБОЧНАЯ АНИМАЦИЯ)
+   ИНТЕРАКТИВНЫЕ ЛАПКИ (ТОЧНАЯ НАСТРОЙКА ВЫСОТЫ И РАЗМЕРОВ)
    ========================================================================== */
 
 .faq-section {
   position: relative;
   overflow: hidden;
-  padding-top: 100px;
+  padding-top: 100px; /* Увеличили отступ сверху для воздуха */
 }
 
-/* Базовый класс для всех лапок */
-.custom-faq-paw {
+/* Базовый стиль для одиночной лапки */
+.paw-item {
   position: absolute;
+  width: 44px;   /* Сделали лапки крупными и отчётливыми */
+  height: 44px;
   fill: var(--primary-color);
   opacity: 0; 
   pointer-events: none;
   z-index: 1;
   filter: drop-shadow(0 2px 5px rgba(15, 23, 42, 0.05));
-  animation: paw-single-step 5s ease-in-out infinite;
 }
 
-/* Стабильная покадровая анимация шагов */
+/* --- ТОЧНЫЕ КООРДИНАТЫ ШАГОВ (Высота настроена под вопросы) --- */
+
+/* Левая дорожка (Шагает снизу вверх) */
+.paw-1 { 
+  top: 360px; /* Напротив третьего вопроса */
+  left: 45px; 
+  transform: rotate(-25deg) scale(0.85); 
+  animation: paw-single-step 5s ease-in-out infinite;
+  animation-delay: 0s; 
+}
+.paw-2 { 
+  top: 260px; /* Напротив второго вопроса */
+  left: 100px; 
+  transform: rotate(10deg) scale(1.0); 
+  animation: paw-single-step 5s ease-in-out infinite;
+  animation-delay: 0.3s; 
+}
+.paw-3 { 
+  top: 160px; /* Напротив первого вопроса */
+  left: 40px; 
+  transform: rotate(-15deg) scale(1.2); 
+  animation: paw-single-step 5s ease-in-out infinite;
+  animation-delay: 0.6s; 
+}
+
+/* Правая дорожка (Шагает сверху вниз) */
+.paw-4 { 
+  top: 160px; /* Напротив первого вопроса */
+  right: 40px; 
+  transform: rotate(20deg) scale(1.2); 
+  animation: paw-single-step 5s ease-in-out infinite;
+  animation-delay: 1.2s; 
+}
+.paw-5 { 
+  top: 260px; /* Напротив второго вопроса */
+  right: 100px; 
+  transform: rotate(-10deg) scale(1.0); 
+  animation: paw-single-step 5s ease-in-out infinite;
+  animation-delay: 1.5s; 
+}
+.paw-6 { 
+  top: 360px; /* Напротив третьего вопроса */
+  right: 45px; 
+  transform: rotate(35deg) scale(0.85); 
+  animation: paw-single-step 5s ease-in-out infinite;
+  animation-delay: 1.8s; 
+}
+
+/* Плавная анимация шага (сохранили твою рабочую логику) */
 @keyframes paw-single-step {
   0% {
     opacity: 0;
   }
   12% {
-    opacity: 1; /* Лапка плавно проявляется */
+    opacity: 1; 
   }
   70% {
-    opacity: 1; /* След застывает на листе */
+    opacity: 1; 
   }
   85% {
-    opacity: 0; /* Мягко растворяется */
+    opacity: 0; 
   }
   100% {
     opacity: 0;
   }
 }
 
-/* Скрываем декор на планшетах и мобильных */
+/* Спокойно скрываем на средних экранах и мобильных */
 @media (max-width: 1250px) {
-  .custom-faq-paw {
+  .paw-item {
     display: none;
   }
 }
