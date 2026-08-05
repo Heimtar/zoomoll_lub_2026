@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoSlider();
   initReviewsSlider();
   initFaqAccordion();
-  initPortfolioSlider(); /* ОБНОВЛЕНО: Точный пиксельный расчет шага */
-  initLightbox();        /* Полноэкранный просмотр фото */
+  initPortfolioSlider(); /* ИЗОЛИРОВАНО: Работает автономно */
+  initLightbox();        /* ИЗОЛИРОВАНО: Не мешает стрелкам слайдера */
 });
 
 /**
@@ -67,60 +67,58 @@ function initPromoSlider() {
 }
 
 /**
- * Изящная горизонтальная лента «Наши работы» (Точный расчет без стыков)
+ * Изящная горизонтальная лента «Наши работы»
  */
 function initPortfolioSlider() {
-  const track = document.getElementById("portfolio-track");
-  const prevBtn = document.querySelector(".port-prev");
-  const nextBtn = document.querySelector(".port-next");
-  if (!track || track.children.length === 0) return;
+  const portfolioTrack = document.getElementById("portfolio-track");
+  const prevPortfolioBtn = document.querySelector(".port-prev");
+  const nextPortfolioBtn = document.querySelector(".port-next");
+  if (!portfolioTrack || portfolioTrack.children.length === 0) return;
 
-  let currentIndex = 0;
+  let portfolioIndex = 0;
 
-  const getVisibleSlidesCount = () => {
-    const width = window.innerWidth;
-    if (width <= 650) return 1;
-    if (width <= 1024) return 2;
+  const getVisibleCount = () => {
+    const w = window.innerWidth;
+    if (w <= 650) return 1;
+    if (w <= 1024) return 2;
     return 3;
   };
 
-  const updateSliderPosition = () => {
-    const slide = track.querySelector(".portfolio-slide-item");
-    if (!slide) return;
+  const updateSlider = () => {
+    const firstSlide = portfolioTrack.querySelector(".portfolio-slide-item");
+    if (!firstSlide) return;
 
-    // Считываем точные физические пиксели карточки, выставленные новым CSS
-    const slideWidth = slide.getBoundingClientRect().width;
-    const gap = parseFloat(window.getComputedStyle(track).gap) || 0; 
-    const maxIndex = track.children.length - getVisibleSlidesCount();
+    const sWidth = firstSlide.getBoundingClientRect().width;
+    const sGap = parseFloat(window.getComputedStyle(portfolioTrack).gap) || 0; 
+    const maxIdx = portfolioTrack.children.length - getVisibleCount();
 
-    if (currentIndex > maxIndex) currentIndex = maxIndex;
-    if (currentIndex < 0) currentIndex = 0;
+    if (portfolioIndex > maxIdx) portfolioIndex = maxIdx;
+    if (portfolioIndex < 0) portfolioIndex = 0;
     
-    // Идеальный математический сдвиг ленты
-    const totalTranslate = currentIndex * (slideWidth + gap);
-    track.style.transform = `translateX(-${totalTranslate}px)`;
+    const translateValue = portfolioIndex * (sWidth + sGap);
+    portfolioTrack.style.transform = `translateX(-${translateValue}px)`;
   };
 
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      const maxIndex = track.children.length - getVisibleSlidesCount();
-      currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0; 
-      updateSliderPosition();
+  if (nextPortfolioBtn) {
+    nextPortfolioBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Защита от авто-открытия Lightbox
+      const maxIdx = portfolioTrack.children.length - getVisibleCount();
+      portfolioIndex = portfolioIndex < maxIdx ? portfolioIndex + 1 : 0; 
+      updateSlider();
     });
   }
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-      const maxIndex = track.children.length - getVisibleSlidesCount();
-      currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex; 
-      updateSliderPosition();
+  if (prevPortfolioBtn) {
+    prevPortfolioBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Защита от авто-открытия Lightbox
+      const maxIdx = portfolioTrack.children.length - getVisibleCount();
+      portfolioIndex = portfolioIndex > 0 ? portfolioIndex - 1 : maxIdx; 
+      updateSlider();
     });
   }
 
-  window.addEventListener("resize", updateSliderPosition);
-  
-  // Даем браузеру 50 миллисекунд переварить CSS, затем идеально ровно выравниваем ленту
-  setTimeout(updateSliderPosition, 50); 
+  window.addEventListener("resize", updateSlider);
+  setTimeout(updateSlider, 100); 
 }
 
 /**
@@ -180,19 +178,19 @@ function initFaqAccordion() {
 }
 
 /**
- * Интерактивный Lightbox-слайдер с перелистыванием стрелками
+ * Интерактивный Lightbox-слайдер (Полноэкранный режим)
  */
 function initLightbox() {
-  const images = document.querySelectorAll('.portfolio-track .portfolio-slide-item img');
-  if (images.length === 0) return;
+  const lightboxImages = document.querySelectorAll('.portfolio-track .portfolio-slide-item img');
+  if (lightboxImages.length === 0) return;
 
-  let currentIndex = 0;
+  let currentLightboxIndex = 0;
 
-  let lightbox = document.getElementById('lightbox-overlay');
-  if (!lightbox) {
-    lightbox = document.createElement('div');
-    lightbox.id = 'lightbox-overlay';
-    lightbox.innerHTML = `
+  let lightboxOverlay = document.getElementById('lightbox-overlay');
+  if (!lightboxOverlay) {
+    lightboxOverlay = document.createElement('div');
+    lightboxOverlay.id = 'lightbox-overlay';
+    lightboxOverlay.innerHTML = `
       <button class="lightbox-arrow lightbox-prev" aria-label="Предыдущее фото">❮</button>
       <div class="lightbox-content">
         <span class="lightbox-close">&times;</span>
@@ -200,57 +198,57 @@ function initLightbox() {
       </div>
       <button class="lightbox-arrow lightbox-next" aria-label="Следующее фото">❯</button>
     `;
-    document.body.appendChild(lightbox);
+    document.body.appendChild(lightboxOverlay);
   }
 
-  const lightboxImg = lightbox.querySelector('img');
-  const closeBtn = lightbox.querySelector('.lightbox-close');
-  const prevBtn = lightbox.querySelector('.lightbox-prev');
-  const nextBtn = lightbox.querySelector('.lightbox-next');
+  const lightboxImg = lightboxOverlay.querySelector('img');
+  const closeBtn = lightboxOverlay.querySelector('.lightbox-close');
+  const prevBtn = lightboxOverlay.querySelector('.lightbox-prev');
+  const nextBtn = lightboxOverlay.querySelector('.lightbox-next');
 
-  const updateLightboxImage = (index) => {
-    if (index < 0 || index >= images.length) return;
-    currentIndex = index;
-    lightboxImg.src = images[currentIndex].src;
+  const updateLightboxImage = (idx) => {
+    if (idx < 0 || idx >= lightboxImages.length) return;
+    currentLightboxIndex = idx;
+    lightboxImg.src = lightboxImages[currentLightboxIndex].src;
   };
 
-  images.forEach((img, index) => {
+  lightboxImages.forEach((img, idx) => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', (e) => {
       e.stopPropagation();
-      updateLightboxImage(index);
-      lightbox.classList.add('active');
+      updateLightboxImage(idx);
+      lightboxOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
   });
 
   const showNext = (e) => {
     e.stopPropagation();
-    let nextIndex = (currentIndex + 1) % images.length;
-    updateLightboxImage(nextIndex);
+    let nextIdx = (currentLightboxIndex + 1) % lightboxImages.length;
+    updateLightboxImage(nextIdx);
   };
 
   const showPrev = (e) => {
     e.stopPropagation();
-    let prevIndex = (currentIndex - 1 + images.length) % images.length;
-    updateLightboxImage(prevIndex);
+    let prevIdx = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+    updateLightboxImage(prevIdx);
   };
 
   nextBtn.addEventListener('click', showNext);
   prevBtn.addEventListener('click', showPrev);
 
   const closeLightbox = () => {
-    lightbox.classList.remove('active');
+    lightboxOverlay.classList.remove('active');
     document.body.style.overflow = '';
     lightboxImg.src = '';
   };
 
   closeBtn.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', closeLightbox);
-  lightbox.querySelector('.lightbox-content').addEventListener('click', (e) => e.stopPropagation());
+  lightboxOverlay.addEventListener('click', closeLightbox);
+  lightboxOverlay.querySelector('.lightbox-content').addEventListener('click', (e) => e.stopPropagation());
 
   document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
+    if (!lightboxOverlay.classList.contains('active')) return;
     if (e.key === 'ArrowRight') showNext(e);
     if (e.key === 'ArrowLeft') showPrev(e);
     if (e.key === 'Escape') closeLightbox();
