@@ -273,10 +273,13 @@
 </section>
 <!-- 7. КАРТА ПРОЕЗДА -->
 <section id="contacts" class="map-section" aria-label="Схема проезда">
-    <div class="map-container" style="position: relative; overflow: hidden; border-radius: 10px; height: 450px;">
-        <!-- Скрытые обязательные ссылки Яндекса -->
-        <a href="https://yandex.ru/maps/org/zoomoll/197742311713/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;left:0px;opacity:0;">Зоомолл</a>
-        <a href="https://yandex.ru/maps/20/arkhangelsk/category/pet_salon/184107224/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;left:0px;opacity:0;">Зоосалон, зоопарикмахерская в Архангельске</a>
+    <div class="map-container" style="position: relative; overflow: hidden; border-radius: 10px; height: 450px; display: flex; flex-direction: column-reverse;">
+        
+        <!-- Видимые обязательные ссылки Яндекса внизу карты -->
+        <div style="padding: 10px 0; display: flex; gap: 20px; flex-wrap: wrap;">
+            <a href="https://yandex.ru" target="_blank" style="color: #333; font-size: 14px; text-decoration: underline; font-family: sans-serif;">Зоомолл на Яндекс Картах</a>
+            <a href="https://yandex.ru" target="_blank" style="color: #666; font-size: 14px; text-decoration: underline; font-family: sans-serif;">Зоосалон, зоопарикмахерская в Архангельске</a>
+        </div>
         
         <!-- Рабочий виджет карты -->
         <iframe src="https://yandex.ru/map-widget/v1/?ll=40.579129%2C64.533102&mode=search&oid=197742311713&ol=biz&z=16.98" 
