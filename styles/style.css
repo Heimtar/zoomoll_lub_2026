@@ -648,61 +648,85 @@ section {
   }
 
   /* ==========================================================================
-     ЭЛЕГАНТНАЯ АДАПТАЦИЯ ТЕКСТА БАННЕРОВ БЕЗ ЦЕНТРИРОВАНИЯ И IMPORTANT
+     ОРИГИНАЛЬНЫЙ ДИЗАЙН БЕЗ ПОДЛОЖЕК И ОБРЕЗОК: ФОТО ЦЕЛИКОМ, ТЕКСТ СНИЗУ
      ========================================================================== */
+  .promo-carousel-section {
+    padding: 0 15px; 
+  }
+
+  .promo-container {
+    height: 320px; /* Задаем комфортную высоту, чтобы фото вошло целиком */
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .promo-slide {
+    height: 320px;
+    background: transparent;
+  }
+
   .promo-slide img {
-    height: 420px; /* Чуть увеличили высоту на планшетах/мобилках, чтобы дать простор */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Картинка сжимается и больше не режется по бокам */
+    object-position: center center;
   }
 
-  .promo-slide .new-clean-banner-box {
-    max-width: 85%;
-    transform: none;
-    top: auto;
-  }
-
-  /* Мопс: прижимаем к левому краю, опускаем ниже мордочки */
-  .promo-slide .box-mops {
-    left: 30px;
-    bottom: 30px;
-  }
-
-  /* Собака в ванной: оставляем справа, аккуратно смещаем в угол */
-  .promo-slide .box-bath-dog {
-    right: 30px;
-    left: auto;
-    bottom: 30px;
-  }
-
-  /* Кот: оставляем центрирование на 40px сверху, как у тебя было, но уменьшаем шрифт */
+  /* Абсолютно чистый текст без подложек, рамок и размытий */
+  .promo-slide .new-clean-banner-box,
+  .promo-slide .box-mops,
+  .promo-slide .box-bath-dog,
   .promo-slide .box-cat {
-    left: 30px;
-    top: 30px;
-    bottom: auto;
-    max-width: 85%;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 15px; /* Опускаем в самый низ слайда под мордочки */
+    top: auto;
+    transform: none;
+    max-width: none;
+    width: auto;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: center;
   }
 
-  /* Уменьшаем шрифты, чтобы они выглядели аккуратно и компактно */
-  .promo-slide .new-clean-banner-box h3 {
-    font-size: 24px;
-    line-height: 1.2;
-    letter-spacing: -0.3px;
-    margin: 0;
-    text-shadow: 0 2px 8px rgba(15, 23, 42, 0.8);
-  }
-
+  /* Шрифт компактный, аккуратный и хорошо читается за счет оригинальной тени */
+  .promo-slide .new-clean-banner-box h3,
   .promo-slide .box-mops h3, 
   .promo-slide .box-bath-dog h3, 
   .promo-slide .box-cat h3 {
-    font-size: 24px;
-    text-align: inherit; /* Сохраняем оригинальное выравнивание для каждого баннера */
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.3;
+    text-align: center;
+    margin: 0;
+    /* Оставляем только тень букв, чтобы текст не сливался со светлой шерстью */
+    text-shadow: 0 2px 8px rgba(15, 23, 42, 0.9); 
   }
 
   .promo-slide .new-clean-banner-box p {
-    font-size: 14px;
-    text-shadow: 0 1px 5px rgba(15, 23, 42, 0.8);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 4px;
+    color: var(--white);
+    text-shadow: 0 1px 5px rgba(15, 23, 42, 0.9);
   }
 
-  /* Заголовки секций */
+  /* Компактные стрелки для мобильных */
+  .promo-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+  .prev-promo { left: 5px; }
+  .next-promo { right: 5px; }
+
+  /* Заголовки остальных секций */
   .services .section-title, 
   .portfolio-section .section-title, 
   .reviews-section h2, 
