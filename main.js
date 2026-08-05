@@ -51,7 +51,6 @@ function initScrollEffects() {
     if (siteHeader) siteHeader.classList.toggle("shrunk", currentScroll > 50);
   }, { passive: true });
 }
-
 /**
  * Слайдер рекламных промо-баннеров
  */
@@ -93,6 +92,7 @@ function initPromoSlider() {
   window.addEventListener("resize", updatePromoSlider);
   promoTimer = setInterval(handleNextSlide, 5000);
 }
+
 /**
  * Лента «Наши работы»
  */
@@ -139,7 +139,6 @@ function initPortfolioSlider() {
   window.addEventListener("resize", updateSliderPosition);
   updateSliderPosition();
 }
-
 /**
  * Карусель отзывов клиентов
  */
@@ -201,7 +200,6 @@ function initReviewsSlider() {
   
   startAutoPlay();
 }
-
 /**
  * Аккордеон часто задаваемых вопросов (FAQ)
  */
@@ -229,7 +227,6 @@ function initLightbox() {
     lightboxOverlay = document.createElement('div');
     lightboxOverlay.id = 'lightbox-overlay';
     
-    // Безопасное создание структуры DOM через innerHTML без пользовательского ввода
     lightboxOverlay.innerHTML = `
       <button class="lightbox-arrow lightbox-prev" aria-label="Предыдущее фото">❮</button>
       <div class="lightbox-content">
@@ -253,49 +250,47 @@ function initLightbox() {
     const targetImg = slideItems[currentLightboxIndex].querySelector('img');
     if (targetImg) {
       lightboxImg.src = targetImg.src;
-      lightboxImg.alt = targetImg.alt;
+      lightboxImg.alt = targetImg.alt || "Фото питомца";
     }
   };
 
-  slideItems.forEach((item, idx) => {
-    item.style.cursor = 'pointer';
+  slideItems.forEach((item, index) => {
     item.addEventListener('click', (e) => {
-      e.preventDefault();
-      updateLightboxImage(idx);
+      if (e.target.closest('a') || e.target.closest('button')) return;
+      
+      updateLightboxImage(index);
       lightboxOverlay.classList.add('active');
       document.body.classList.add('lock-scroll');
     });
   });
 
-  const showNext = (e) => {
-    e.stopPropagation();
-    let nextIdx = (currentLightboxIndex + 1) % slideItems.length;
-    updateLightboxImage(nextIdx);
-  };
-
-  const showPrev = (e) => {
-    e.stopPropagation();
-    let prevIdx = (currentLightboxIndex - 1 + slideItems.length) % slideItems.length;
-    updateLightboxImage(prevIdx);
-  };
-
-  nextBtn.addEventListener('click', showNext);
-  prevBtn.addEventListener('click', showPrev);
-
   const closeLightbox = () => {
     lightboxOverlay.classList.remove('active');
     document.body.classList.remove('lock-scroll');
-    lightboxImg.src = '';
   };
 
   closeBtn.addEventListener('click', closeLightbox);
-  lightboxOverlay.addEventListener('click', closeLightbox);
-  lightboxOverlay.querySelector('.lightbox-content').addEventListener('click', (e) => e.stopPropagation());
+  lightboxOverlay.addEventListener('click', (e) => {
+    if (e.target === lightboxOverlay) closeLightbox();
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    let nextIdx = (currentLightboxIndex + 1) % slideItems.length;
+    updateLightboxImage(nextIdx);
+  });
+
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    let prevIdx = (currentLightboxIndex - 1 + slideItems.length) % slideItems.length;
+    updateLightboxImage(prevIdx);
+  });
 
   document.addEventListener('keydown', (e) => {
     if (!lightboxOverlay.classList.contains('active')) return;
-    if (e.key === 'ArrowRight') showNext(e);
-    if (e.key === 'ArrowLeft') showPrev(e);
+    
     if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextBtn.click();
+    if (e.key === 'ArrowLeft') prevBtn.click();
   });
 }
