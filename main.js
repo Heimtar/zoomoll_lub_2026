@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoSlider();
   initReviewsSlider();
   initFaqAccordion();
-  initPortfolioSlider(); /* ИСПРАВЛЕНО: Точный математический расчет шага */
+  initPortfolioSlider(); /* ОБНОВЛЕНО: Точный пиксельный расчет шага */
   initLightbox();        /* Полноэкранный просмотр фото */
 });
 
@@ -67,7 +67,7 @@ function initPromoSlider() {
 }
 
 /**
- * Изящная горизонтальная лента «Наши работы» с точным шагом прокрутки
+ * Изящная горизонтальная лента «Наши работы» (Точный расчет без стыков)
  */
 function initPortfolioSlider() {
   const track = document.getElementById("portfolio-track");
@@ -84,21 +84,19 @@ function initPortfolioSlider() {
     return 3;
   };
 
-  const getSlideWidth = () => {
-    const slide = track.querySelector(".portfolio-slide-item");
-    if (!slide) return 0;
-    return slide.getBoundingClientRect().width;
-  };
-
   const updateSliderPosition = () => {
-    const slideWidth = getSlideWidth();
+    const slide = track.querySelector(".portfolio-slide-item");
+    if (!slide) return;
+
+    // Считываем точные физические пиксели карточки, выставленные новым CSS
+    const slideWidth = slide.getBoundingClientRect().width;
     const gap = parseFloat(window.getComputedStyle(track).gap) || 0; 
     const maxIndex = track.children.length - getVisibleSlidesCount();
 
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     if (currentIndex < 0) currentIndex = 0;
     
-    // Математический расчет смещения с учетом зазоров между карточками
+    // Идеальный математический сдвиг ленты
     const totalTranslate = currentIndex * (slideWidth + gap);
     track.style.transform = `translateX(-${totalTranslate}px)`;
   };
@@ -120,7 +118,9 @@ function initPortfolioSlider() {
   }
 
   window.addEventListener("resize", updateSliderPosition);
-  setTimeout(updateSliderPosition, 100); 
+  
+  // Даем браузеру 50 миллисекунд переварить CSS, затем идеально ровно выравниваем ленту
+  setTimeout(updateSliderPosition, 50); 
 }
 
 /**
