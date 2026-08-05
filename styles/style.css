@@ -981,72 +981,41 @@ section {
   .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; color: #334155; }
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
-/* ==========================================================================
-   ДЕКОРАТИВНЫЕ ЛАПКИ (СТАТИЧНЫЙ ВАРИАНТ — НОВЫЙ СИЛУЭТ С КАРТИНКИ)
-   ========================================================================== */
-
-.faq-section {
-  position: relative;
-  overflow: hidden;
-  padding: 100px 0 80px 0;
-}
-
-/* Базовый стиль статичной лапки */
-.static-paw {
-  position: absolute;
-  display: block;
-  margin: 0;
-  padding: 0;
-  fill: var(--primary-color);
-  opacity: 0.85; /* Постоянная комфортная видимость */
-  pointer-events: none;
-  z-index: 1;
-  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.04));
-  left: 50%; 
-}
-
-/* --- ИДЕАЛЬНОЕ РАСПОЛОЖЕНИЕ И ГАБАРИТЫ ПО ТВОЕМУ МАКЕТУ --- */
+/* --- КОРРЕКЦИЯ КООРДИНАТ ДЛЯ НОВОГО СИЛУЭТА ЛАПОК --- */
 
 .paw-1 { 
-  top: 400px; 
-  margin-left: -630px; 
+  top: 410px; 
+  margin-left: -530px; /* Вернули ближе к центру */
   width: 58px;   
   height: 58px;
 }
 
 .paw-2 { 
-  top: 260px; 
-  margin-left: -580px; 
+  top: 270px; 
+  margin-left: -490px; /* Вернули ближе к центру */
   width: 68px;   
   height: 68px;
 }
 
 .paw-3 { 
   top: 130px;  
-  margin-left: -420px; 
+  margin-left: -390px; /* Идеально встала у заголовка */
   width: 60px;   
   height: 60px;
 }
 
 .paw-4 { 
   top: 120px;  
-  margin-left: 360px; 
+  margin-left: 310px; /* Сместили левее к заголовку, как на схеме */
   width: 68px;   
   height: 68px;
 }
 
 .paw-5 { 
-  top: 290px; 
-  margin-left: 550px; 
+  top: 280px; 
+  margin-left: 490px; /* Отодвинули шире вправо к краю страницы */
   width: 58px;   
   height: 58px;
-}
-
-/* Скрываем декор на средних и мобильных экранах */
-@media (max-width: 1250px) {
-  .static-paw {
-    display: none;
-  }
 }
 
 /* ==========================================================================
