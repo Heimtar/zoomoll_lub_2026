@@ -512,7 +512,7 @@ section {
   100% { background-position: 600% 0%; } 
 }
 /* ==========================================================================
-   ПОРТФОЛИО (ФИНАЛЬНЫЙ СТИЛЬ С ФИКСОМ ПРОПОРЦИЙ)
+   ПОРТФОЛИО (БЕЗУПРЕЧНОЕ КАДРИРОВАНИЕ)
    ========================================================================== */
 .portfolio-section { 
   padding: 60px 20px; 
@@ -577,15 +577,53 @@ section {
   height: auto;
   aspect-ratio: 4 / 3; 
   object-fit: cover; 
-  object-position: center 32%; /* ИЗМЕНЕНО: Сдвинули фокус чуть ниже, чтобы центрировать кошек и собак */
+  object-position: center center; /* Базовый центр для всей галереи */
   border-bottom: 1px solid rgba(15, 23, 42, 0.04);
   transition: transform 0.5s ease; 
 }
 
-
 .portfolio-slide-item:hover img { 
   transform: scale(1.03); 
 }
+
+/* 🎯 ИНДИВИДУАЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ КАЖДОГО ПИТОМЦА */
+
+/* 1. Йоркширский терьер — поднимаем фокус к мордочке */
+.portfolio-track .portfolio-slide-item:nth-child(1) img { object-position: center 75%; }
+
+/* 2. Сиамская кошка — центрируем по вертикали */
+.portfolio-track .portfolio-slide-item:nth-child(2) img { object-position: center 36%; }
+
+/* 3. Померанский шпиц (рыжий) — открываем ушки и глазки */
+.portfolio-track .portfolio-slide-item:nth-child(3) img { object-position: center 55%; }
+
+/* 4. Сибирский хаски — центрируем по пояс */
+.portfolio-track .portfolio-slide-item:nth-child(4) img { object-position: center 30%; }
+
+/* 5. Померанский шпиц (черный) — фокус на мордочке */
+.portfolio-track .portfolio-slide-item:nth-child(5) img { object-position: center 35%; }
+
+/* 6. Шпиц пати-колор — выравниваем положение */
+.portfolio-track .portfolio-slide-item:nth-child(6) img { object-position: center 20%; }
+
+/* 7. Шотландская вислоухая — кошка крупным планом, чуть опускаем */
+.portfolio-track .portfolio-slide-item:nth-child(7) img { object-position: center 40%; }
+
+/* 8. Немецкий шпиц (белый) — кадрируем по центру */
+.portfolio-track .portfolio-slide-item:nth-child(8) img { object-position: center 15%; }
+
+/* 9. Бигль — центрируем собаку на петле */
+.portfolio-track .portfolio-slide-item:nth-child(9) img { object-position: center 60%; }
+
+/* 10. Вест-хайленд — центрируем круглую голову */
+.portfolio-track .portfolio-slide-item:nth-child(10) img { object-position: center 20%; }
+
+/* 11. Йорк с юбочкой — фокус на всей стойке */
+.portfolio-track .portfolio-slide-item:nth-child(11) img { object-position: center 45%; }
+
+/* 12. Метис — центрируем пушистую собаку на столе */
+.portfolio-track .portfolio-slide-item:nth-child(12) img { object-position: center 20%; }
+
 
 .portfolio-slide-overlay {
   position: relative; 
@@ -595,9 +633,6 @@ section {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
 }
 
 .portfolio-slide-overlay h4 { 
