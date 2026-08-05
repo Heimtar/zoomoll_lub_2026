@@ -1060,7 +1060,7 @@ section {
   border: none;
 }
 /* ==========================================================================
-   КНОПКА НАВЕРХ (ВОЗДУШНЫЙ МАТОВЫЙ МИНИМАЛИЗМ)
+   КНОПКА НАВЕРХ (ФИРМЕННЫЙ ГОЛУБОЙ СТИЛЬ В ТОН ЗООМОЛЛ)
    ========================================================================== */
 .to-top-button { 
   position: fixed; 
@@ -1069,13 +1069,13 @@ section {
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  width: 54px;  /* ИСПРАВЛЕНО: Сделали кнопку чуть больше */     
+  width: 54px;  /* Кнопка осталась комфортного крупного размера */     
   height: 54px; 
-  background-color: var(--white); 
+  background-color: var(--primary-color); /* ИСПРАВЛЕНО: Теперь кнопка изначально цвета Зоомолл при наведении */
   border-radius: 50%; 
-  border: 1px solid #e2e8f0; 
-  /* ИСПРАВЛЕНО: Очень мягкая, размытая и воздушная тень для эффекта невесомости */
-  box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.08), 0 4px 12px -4px rgba(15, 23, 42, 0.03); 
+  border: 1px solid rgba(15, 23, 42, 0.03); /* Почти невидимый мягкий контур */
+  /* Воздушная, сильно размытая тень для эффекта невесомости */
+  box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.12), 0 4px 12px -4px rgba(15, 23, 42, 0.04); 
   z-index: 99; 
   opacity: 0;        
   visibility: hidden; 
@@ -1084,33 +1084,30 @@ section {
               visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
               transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
               background-color 0.25s ease, 
-              border-color 0.25s ease,
               box-shadow 0.25s ease; 
   cursor: pointer;
 }
 
 /* Изящная контурная стрелочка птичкой */
 .to-top-button svg { 
-  width: 22px;  /* ИСПРАВЛЕНО: Пропорционально увеличили стрелочку */     
+  width: 22px;       
   height: 22px; 
   display: block;
   margin: 0 auto;
-  color: var(--primary-color); 
+  color: var(--white); /* ИСПРАВЛЕНО: Стрелочка стала идеально белоснежной и контрастной */
   fill: none;               
   stroke: currentColor; 
   stroke-width: 2.5px; 
-  transition: color 0.2s ease;
 }
 
-/* СТРОГИЙ ХОВЕР: Мягкое переключение цветов с сохранением воздушной тени */
+/* ХОВЕР: Кнопка мягко темнеет в тон ховера телефона и услуг */
 .to-top-button:hover {
-  background-color: var(--primary-color); 
-  border-color: var(--primary-color);
-  /* Тень просто становится чуть плотнее, без неона */
-  box-shadow: 0 16px 35px -10px rgba(15, 23, 42, 0.12); 
-  transform: translateY(-3px) scale(1.02); /* Легкий взлет */
+  background-color: var(--primary-hover); /* ИСПРАВЛЕНО: При наведении цвет меняется на насыщенный primary-hover */
+  box-shadow: 0 16px 35px -10px rgba(67, 146, 196, 0.25); /* Тень аккуратно наполняется синим тоном */
+  transform: translateY(-3px) scale(1.02); /* Элегантный взлет вверх */
 }
 
+/* При наведении стрелочка остается белой */
 .to-top-button:hover svg {
   color: var(--white);
 }
@@ -1129,6 +1126,7 @@ section {
     right: 20px;
     width: 46px;
     height: 46px;
+    background-color: var(--primary-color);
   }
   .to-top-button svg {
     width: 18px;
