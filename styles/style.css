@@ -610,8 +610,104 @@ section {
 .lightbox-prev { left: 40px; }
 .lightbox-next { right: 40px; }
 
+/* БРЕЙКПОИНТ: Смартфоны и мобильные устройства (до 768px) */
 @media (max-width: 768px) {
-  .lightbox-arrow { width: 45px; height: 45px; font-size: 18px; }
-  .lightbox-prev { left: 15px; }
-  .lightbox-next { right: 15px; }
+  .menu-toggle {
+    display: flex; 
+  }
+
+  .nav-container {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 290px;
+    height: 100vh;
+    background-color: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 100px 35px;
+    gap: 35px;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.08);
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 101;
+  }
+
+  .nav-container.open {
+    right: 0; 
+  }
+
+  .site-header .nav {
+    flex-direction: column;
+    gap: 26px;
+    width: 100%;
+  }
+
+  .menu-link {
+    font-size: 20px;
+    display: block;
+  }
+
+  /* ==========================================================================
+     ЭЛЕГАНТНАЯ АДАПТАЦИЯ ТЕКСТА БАННЕРОВ БЕЗ ЦЕНТРИРОВАНИЯ И IMPORTANT
+     ========================================================================== */
+  .promo-slide img {
+    height: 420px; /* Чуть увеличили высоту на планшетах/мобилках, чтобы дать простор */
+  }
+
+  .promo-slide .new-clean-banner-box {
+    max-width: 85%;
+    transform: none;
+    top: auto;
+  }
+
+  /* Мопс: прижимаем к левому краю, опускаем ниже мордочки */
+  .promo-slide .box-mops {
+    left: 30px;
+    bottom: 30px;
+  }
+
+  /* Собака в ванной: оставляем справа, аккуратно смещаем в угол */
+  .promo-slide .box-bath-dog {
+    right: 30px;
+    left: auto;
+    bottom: 30px;
+  }
+
+  /* Кот: оставляем центрирование на 40px сверху, как у тебя было, но уменьшаем шрифт */
+  .promo-slide .box-cat {
+    left: 30px;
+    top: 30px;
+    bottom: auto;
+    max-width: 85%;
+  }
+
+  /* Уменьшаем шрифты, чтобы они выглядели аккуратно и компактно */
+  .promo-slide .new-clean-banner-box h3 {
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(15, 23, 42, 0.8);
+  }
+
+  .promo-slide .box-mops h3, 
+  .promo-slide .box-bath-dog h3, 
+  .promo-slide .box-cat h3 {
+    font-size: 24px;
+    text-align: inherit; /* Сохраняем оригинальное выравнивание для каждого баннера */
+  }
+
+  .promo-slide .new-clean-banner-box p {
+    font-size: 14px;
+    text-shadow: 0 1px 5px rgba(15, 23, 42, 0.8);
+  }
+
+  /* Заголовки секций */
+  .services .section-title, 
+  .portfolio-section .section-title, 
+  .reviews-section h2, 
+  .faq-section h2 {
+    font-size: 26px;
+  }
 }
+
