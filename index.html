@@ -138,7 +138,20 @@
             <!-- Окно просмотра (скрывает все, что не помещается на экране) -->
             <div class="portfolio-track-wrapper">
                 <!-- Живая горизонтальная лента со всеми вашими 13 питомцами -->
-                                <div class="portfolio-track" id="portfolio-track">
+                     <!-- ГАРАНТИРОВАННО РАБОЧИЙ БЛОК ГАЛЕРЕИ -->
+    <section id="portfolio" class="portfolio-section">
+        <h2 class="section-title">Наши работы</h2>
+        <p class="portfolio-subtitle">Каждый питомец для нас — особенный. Посмотрите на результаты работы наших мастеров.</p>
+
+        <div class="portfolio-slider-container">
+            <!-- КРИТИЧЕСКИ ВАЖНО: Стрелки управления, которые ищет JavaScript -->
+            <button class="portfolio-arrow port-prev" aria-label="Назад">❮</button>
+            <button class="portfolio-arrow port-next" aria-label="Вперед">❯</button>
+
+            <!-- Окно просмотра -->
+            <div class="portfolio-track-wrapper">
+                <!-- Бегущая дорожка (ровно 12 перемешанных уникальных карточек) -->
+                <div class="portfolio-track" id="portfolio-track">
                     
                     <!-- Карточка 1 (Йорк с синим бантиком) -->
                     <div class="portfolio-slide-item">
@@ -249,6 +262,10 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+    </section>
+
 
     <section id="reviews" class="reviews-section">
         <h2>Отзывы наших клиентов</h2>
