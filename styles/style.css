@@ -1060,64 +1060,72 @@ section {
   border: none;
 }
 /* ==========================================================================
-   КНОПКА НАВЕРХ (ИСПРАВЛЕНО: ПРИПОДНЯЛИ НАД СИСТЕМНЫМ ТЕКСТОМ)
+   КНОПКА НАВЕРХ (ВОЗДУШНЫЙ МАТОВЫЙ МИНИМАЛИЗМ)
    ========================================================================== */
 .to-top-button { 
   position: fixed; 
-  bottom: 50px; /* ИСПРАВЛЕНО: Приподняли кнопку выше, чтобы она не перекрывалась текстом активации */
-  right: 30px; 
+  bottom: 50px; 
+  right: 35px; 
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  width: 52px;       
-  height: 52px; 
-  background: linear-gradient(135deg, #71bee8 0%, var(--primary-color) 100%); 
+  width: 54px;  /* ИСПРАВЛЕНО: Сделали кнопку чуть больше */     
+  height: 54px; 
+  background-color: var(--white); 
   border-radius: 50%; 
-  /* ИСПРАВЛЕНО: Сделали внешнюю тень чуть темнее для лучшей читаемости поверх текста */
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 
-              0 12px 28px -5px rgba(15, 23, 42, 0.22), 
-              0 8px 16px -6px rgba(15, 23, 42, 0.15); 
+  border: 1px solid #e2e8f0; 
+  /* ИСПРАВЛЕНО: Очень мягкая, размытая и воздушная тень для эффекта невесомости */
+  box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.08), 0 4px 12px -4px rgba(15, 23, 42, 0.03); 
   z-index: 99; 
   opacity: 0;        
   visibility: hidden; 
-  transform: translateY(20px); 
-  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease, background 0.3s ease, box-shadow 0.3s ease; 
-  border: none;
+  transform: translateY(20px) scale(0.95); 
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.25s ease, 
+              border-color 0.25s ease,
+              box-shadow 0.25s ease; 
   cursor: pointer;
 }
 
-/* Настройки для нашей новой тонкой SVG-иконки */
+/* Изящная контурная стрелочка птичкой */
 .to-top-button svg { 
-  width: 22px;       
+  width: 22px;  /* ИСПРАВЛЕНО: Пропорционально увеличили стрелочку */     
   height: 22px; 
   display: block;
   margin: 0 auto;
-  color: var(--white); 
+  color: var(--primary-color); 
   fill: none;               
-  stroke: var(--white); 
+  stroke: currentColor; 
   stroke-width: 2.5px; 
-  filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.15));
+  transition: color 0.2s ease;
 }
 
-/* Ховер с пружинистым подскоком */
+/* СТРОГИЙ ХОВЕР: Мягкое переключение цветов с сохранением воздушной тени */
 .to-top-button:hover {
-  background: linear-gradient(135deg, #7ec6ee 0%, var(--primary-hover) 100%);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5), 
-              0 15px 30px -5px rgba(67, 146, 196, 0.35);
-  transform: translateY(-3px); 
+  background-color: var(--primary-color); 
+  border-color: var(--primary-color);
+  /* Тень просто становится чуть плотнее, без неона */
+  box-shadow: 0 16px 35px -10px rgba(15, 23, 42, 0.12); 
+  transform: translateY(-3px) scale(1.02); /* Легкий взлет */
 }
 
-/* Класс для проявления кнопки при скролле */
+.to-top-button:hover svg {
+  color: var(--white);
+}
+
+/* Класс для плавного проявления кнопки при скролле */
 .to-top-button.show { 
   opacity: 1; 
   visibility: visible; 
-  transform: translateY(0); 
+  transform: translateY(0) scale(1); 
 }
 
-/* Адаптивность для мобилок */
+/* Адаптивность для мобильных экранов */
 @media (max-width: 768px) {
   .to-top-button {
-    bottom: 25px; /* На мобилках тоже слегка приподнимем */
+    bottom: 25px;
     right: 20px;
     width: 46px;
     height: 46px;
@@ -1126,6 +1134,72 @@ section {
     width: 18px;
     height: 18px;
   }
+}
+
+/* ==========================================================================
+   СТРЕЛКИ ОКНА ПРОСМОТРА (LIGHTBOX ARROWS)
+   ========================================================================== */
+.lightbox-arrow {
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--white); 
+  font-size: 24px;
+  width: 60px; 
+  height: 60px; 
+  border-radius: 50%;
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  z-index: 10000; 
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-arrow:hover { 
+  background: rgba(255, 255, 255, 0.2); 
+  transform: translateY(-50%) scale(1.05);
+}
+
+.lightbox-prev { left: 40px; }
+.lightbox-next { right: 40px; }
+
+/* ==========================================================================
+   ИНТЕРАКТИВНАЯ КАРТА СТУДИИ (MAP СЕКЦИЯ)
+   ========================================================================== */
+.map-section {
+  width: 100%;
+  padding: 60px 0; 
+  background-color: var(--white);
+}
+
+.map-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.map-container a {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 24px; 
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06);
+}
+
+.map-container img {
+  display: block;
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.map-container a:hover img {
+  transform: scale(1.015); 
 }
 
 /* ==========================================================================
