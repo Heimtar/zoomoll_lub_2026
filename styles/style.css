@@ -592,26 +592,27 @@ h1, h2, h3, h4, button, a, input, textarea {
   transform: scale(1.06);
 }
 
-/* Затемняющий оверлей */
 .masonry-overlay {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%);
+  /* Уплотненный темный градиент для 100% читаемости текста */
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.5) 40%, transparent 80%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding: 25px 20px;
+  padding: 30px 20px;
   box-sizing: border-box;
   opacity: 0; 
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  transform: translateY(15px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 1, 0.3, 1);
   z-index: 2;
   pointer-events: none; 
 }
+
 
 .masonry-item:hover .masonry-overlay {
   opacity: 1;
