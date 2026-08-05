@@ -1095,109 +1095,14 @@ section {
   padding: 0 20px;
 }
 
-/* ==========================================================================
-   НАДЕЖНАЯ АДАПТИВНАЯ КАРТА СТУДИИ (БЕЗ ИСПОЛЬЗОВАНИЯ IFRAME)
-   ========================================================================== */
-.map-section {
-  width: 100%;
-  padding: 60px 0; 
-  background-color: var(--white);
-}
-
-.map-section .map-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.map-static-wrapper {
-  position: relative;
+.map-section .map-container iframe {
   display: block;
   width: 100%;
   height: 450px;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: 24px; 
   box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06);
-  border: 1px solid #e2e8f0;
 }
-
-.map-static-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s var(--transition-smooth);
-}
-
-.map-static-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease;
-}
-
-.map-overlay-box {
-  background: var(--white);
-  padding: 24px 32px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
-  max-width: 90%;
-  width: 360px;
-  transition: transform 0.3s var(--transition-smooth);
-}
-
-.map-overlay-box h3 {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--text-dark);
-  margin-bottom: 4px;
-}
-
-.map-overlay-box p {
-  font-size: 13px;
-  color: #64748b;
-  margin-bottom: 16px;
-}
-
-.map-overlay-btn {
-  display: inline-block;
-  padding: 10px 24px;
-  background-color: var(--primary-color);
-  color: var(--white);
-  font-weight: 700;
-  font-size: 14px;
-  border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(91, 170, 220, 0.25);
-  transition: background-color 0.2s ease;
-}
-
-/* Эффекты при наведении */
-.map-static-wrapper:hover .map-static-img {
-  transform: scale(1.03);
-}
-
-.map-static-wrapper:hover .map-static-overlay {
-  background: rgba(15, 23, 42, 0.3);
-}
-
-.map-static-wrapper:hover .map-overlay-btn {
-  background-color: var(--primary-hover);
-}
-
-@media (max-width: 500px) {
-  .map-static-wrapper { height: 350px; }
-  .map-overlay-box { padding: 20px; }
-  .map-overlay-box h3 { font-size: 16px; }
-}
-
 
 
 
