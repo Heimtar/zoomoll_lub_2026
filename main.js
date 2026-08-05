@@ -80,7 +80,7 @@ function initPromoSlider() {
   const updatePromoSlider = () => {
     const slide = promoTrack.querySelector(".promo-slide");
     if (!slide) return;
-    const slideWidth = slide.getBoundingClientRect().width;
+    const slideWidth = promoTrack.parentElement.clientWidth;
     promoTrack.style.transform = `translateX(-${promoIndex * slideWidth}px)`;
   };
 
@@ -130,7 +130,6 @@ function initPortfolioSlider() {
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     if (currentIndex < 0) currentIndex = 0;
     
-    // Передаем переменные в CSS для плавного адаптивного расчета
     track.style.setProperty('--current-index', currentIndex);
     track.style.setProperty('--visible-slides', visibleCount);
   };
