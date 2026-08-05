@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initReviewsSlider();   // Карусель отзывов
   initFaqAccordion();    // Аккордеон вопросов FAQ
   initPortfolioSlider(); // Слайдер портфолио
+  initLightbox();        // Фикс: возвращаем вызов полноэкранного Lightbox
 });
+
 
 /**
  * Мобильное бургер-меню
