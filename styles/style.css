@@ -512,11 +512,11 @@ section {
   100% { background-position: 600% 0%; } 
 }
 /* ==========================================================================
-   ПОРТФОЛИО (ПРЕМИАЛЬНЫЙ КОНТРАСТНЫЙ СТИЛЬ)
+   ПОРТФОЛИО (ФИНАЛЬНЫЙ СТИЛЬ — ИДЕАЛЬНЫЙ БАЛАНС)
    ========================================================================== */
 .portfolio-section { 
   padding: 70px 20px; 
-  background-color: #f8fafc; /* Мягкий фон, на котором заиграют белые карточки */
+  background-color: #f8fafc; /* Мягкий фон для контраста белых карточек */
   text-align: center; 
   overflow: hidden; 
 }
@@ -543,7 +543,7 @@ section {
 .portfolio-track-wrapper { 
   overflow: hidden; 
   width: 100%; 
-  padding: 15px 0; /* Пространство для теней при парении карточек */
+  padding: 15px 0; /* Место для мягких теней при парении */
 }
 
 .portfolio-track {
@@ -554,7 +554,7 @@ section {
   will-change: transform;
 }
 
-/* Карточки как дорогие белые плитки */
+/* Объемные глянцевые карточки */
 .portfolio-slide-item { 
   position: relative; 
   flex: 0 0 calc(33.333% - 16px); 
@@ -562,7 +562,6 @@ section {
   border-radius: 24px; 
   overflow: hidden; 
   background-color: var(--white);
-  /* Объемная мягкая тень */
   box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 16px -6px rgba(15, 23, 42, 0.03); 
   border: 1px solid rgba(15, 23, 42, 0.04);
   display: flex;
@@ -571,28 +570,31 @@ section {
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
-/* Эффект глубокого парения при наведении */
+/* Плавный подъем всей карточки */
 .portfolio-slide-item:hover {
   transform: translateY(-8px);
   box-shadow: 0 30px 45px -10px rgba(15, 23, 42, 0.12);
 }
 
+/* ИСПРАВЛЕНО: Скругленные углы и тонкая разделительная линия */
 .portfolio-slide-item img { 
   width: 100%; 
   height: auto;
   aspect-ratio: 4 / 3; 
   object-fit: cover; 
-  border-bottom: 1px solid rgba(15, 23, 42, 0.03);
+  border-radius: 24px 24px 0 0; /* Идеально вписывает фото в контур карточки */
+  border-bottom: 1px solid #f1f5f9; /* Едва заметный разделитель */
   filter: saturate(0.96);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease; 
 }
 
+/* Наезд камеры при наведении */
 .portfolio-slide-item:hover img { 
   transform: scale(1.04); 
   filter: saturate(1.08);
 }
 
-/* 🎯 ВАШЕ ИНДИВИДУАЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ (БЕЗ ИЗМЕНЕНИЙ) */
+/* 🎯 ВАШЕ ИНДИВИДУАЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ КАРТИНОК */
 .portfolio-track .portfolio-slide-item:nth-child(1) img { object-position: center 75%; }
 .portfolio-track .portfolio-slide-item:nth-child(2) img { object-position: center 36%; }
 .portfolio-track .portfolio-slide-item:nth-child(3) img { object-position: center 55%; }
@@ -606,16 +608,17 @@ section {
 .portfolio-track .portfolio-slide-item:nth-child(11) img { object-position: center 45%; }
 .portfolio-track .portfolio-slide-item:nth-child(12) img { object-position: center 20%; }
 
-/* Обновленная текстовая плашка */
+/* Текстовая плашка */
 .portfolio-slide-overlay {
   position: relative; 
   width: 100%;
-  padding: 20px 22px; 
-  background: var(--white);
+  padding: 22px 24px; 
+  background: linear-gradient(to bottom, #ffffff 0%, #fcfdfe 100%); 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 6px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.8), 0 -2px 10px rgba(15, 23, 42, 0.02);
 }
 
 .portfolio-slide-overlay h4 { 
@@ -623,34 +626,25 @@ section {
   font-size: 18px; 
   font-weight: 700;
   text-align: left;
-  transition: color 0.3s ease;
+  letter-spacing: -0.3px;
 }
 
-.portfolio-slide-item:hover .portfolio-slide-overlay h4 {
-  color: var(--primary-color);
-}
-
-/* Стильные бейджи вместо скучного текста */
 .portfolio-slide-overlay p { 
-  display: inline-flex;
-  padding: 4px 12px;
-  background-color: #f0f7ff; 
-  color: #0284c7; 
-  font-size: 11px; 
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  border-radius: 100px;
+  display: block;
+  padding: 0;
+  background: transparent;
+  color: #64748b; 
+  font-size: 14px; 
+  font-weight: 500;
+  text-transform: none; 
+  letter-spacing: normal;
+  border-radius: 0;
+  border: none;
   margin: 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: left;
 }
 
-.portfolio-slide-item:hover .portfolio-slide-overlay p {
-  background-color: var(--primary-color);
-  color: var(--white);
-}
-
-/* Минималистичные стрелки навигации */
+/* Стрелки навигации */
 .portfolio-arrow { 
   position: absolute; 
   top: 50%; 
@@ -668,9 +662,10 @@ section {
   cursor: pointer; 
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04); 
   z-index: 10; 
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
 
+/* ИСПРАВЛЕНО: Интерактивный ховер и микро-движение стрелок */
 .portfolio-arrow:hover { 
   background-color: var(--primary-color); 
   color: var(--white); 
@@ -680,6 +675,9 @@ section {
 
 .port-prev { left: -55px; }
 .port-next { right: -55px; }
+
+.port-prev:hover { transform: translateY(-50%) translateX(-3px); }
+.port-next:hover { transform: translateY(-50%) translateX(3px); }
 
 
 /* ==========================================================================
