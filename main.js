@@ -1,13 +1,42 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
-  initScrollEffects();
-  initPromoSlider();
-  initReviewsSlider();
-  initFaqAccordion();
-  initPortfolioSlider(); /* ФИНАЛ: Передача индекса в CSS-переменную */
-  initLightbox();        /* Полноэкранный просмотр фото */
+  initMobileMenu();      // Инициализация адаптивного меню
+  initScrollEffects();   // Эффекты скролла (шапка и кнопка Наверх)
+  initPromoSlider();     // Главный промо-баннер
+  initReviewsSlider();   // Карусель отзывов
+  initFaqAccordion();    // Аккордеон вопросов
+  initPortfolioSlider(); // Слайдер портфолио
+  initLightbox();        // Полноэкранный Lightbox
 });
+
+/**
+ * Мобильное бургер-меню
+ */
+function initMobileMenu() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navContainer = document.querySelector('.nav-container');
+  const menuLinks = document.querySelectorAll('.menu-link');
+
+  if (!menuToggle || !navContainer) return;
+
+  const toggleMenu = () => {
+    menuToggle.classList.toggle('open');
+    navContainer.classList.toggle('open');
+    document.body.classList.toggle('lock-scroll'); // Фикс скролла фона
+  };
+
+  menuToggle.addEventListener('click', toggleMenu);
+
+  // Автозакрытие шторки меню при клике на якорные ссылки
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (navContainer.classList.contains('open')) {
+        toggleMenu();
+      }
+    });
+  });
+}
 
 /**
  * Эффекты скролла страницы (Шапка сайта и кнопка "Наверх")
@@ -22,7 +51,6 @@ function initScrollEffects() {
     if (siteHeader) siteHeader.classList.toggle("shrunk", currentScroll > 50);
   });
 }
-
 /**
  * Слайдер рекламных промо-баннеров
  */
@@ -67,7 +95,7 @@ function initPromoSlider() {
 }
 
 /**
- * Изящная горизонтальная лента «Наши работы» (Управление индексом)
+ * Изящная горизонтальная лента «Наши работы»
  */
 function initPortfolioSlider() {
   const track = document.getElementById("portfolio-track");
@@ -79,18 +107,15 @@ function initPortfolioSlider() {
 
   const getVisibleSlidesCount = () => {
     const width = window.innerWidth;
-    if (width <= 650) return 1;
+    if (width <= 500) return 1;
     if (width <= 1024) return 2;
     return 3;
   };
 
   const updateSliderPosition = () => {
     const maxIndex = track.children.length - getVisibleSlidesCount();
-
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     if (currentIndex < 0) currentIndex = 0;
-    
-    // Передаем чистый индекс в CSS. Браузер сам сделает идеальный сдвиг без багов округления
     track.style.setProperty('--current-index', currentIndex);
   };
 
@@ -115,7 +140,6 @@ function initPortfolioSlider() {
   window.addEventListener("resize", updateSliderPosition);
   updateSliderPosition();
 }
-
 /**
  * Карусель отзывов клиентов
  */
@@ -124,29 +148,38 @@ function initReviewsSlider() {
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
   const container = document.querySelector(".carousel-container");
-  if (!track) return;
+  if (!track || track.children.length === 0) return;
 
   let index = 0;
   let autoPlayTimer = null; 
 
+  const getVisibleCount = () => {
+    const width = window.innerWidth;
+    if (width <= 500) return 1;
+    if (width <= 1024) return 2;
+    return 3;
+  };
+
   const getSlideWidth = () => {
     const card = track.querySelector(".review-card"); 
-    return card ? card.getBoundingClientRect().width + 20 : 0;
+    return card ? card.getBoundingClientRect().width + 20 : 0; 
   };
 
   const moveNext = () => {
-    const maxIndex = track.children.length - 3; 
+    const maxIndex = track.children.length - getVisibleCount(); 
     index = index < maxIndex ? index + 1 : 0;
     track.style.transform = `translateX(-${index * getSlideWidth()}px)`;
   };
 
   const movePrev = () => {
-    const maxIndex = track.children.length - 3;
+    const maxIndex = track.children.length - getVisibleCount();
     index = index > 0 ? index - 1 : maxIndex;
     track.style.transform = `translateX(-${index * getSlideWidth()}px)`;
   };
 
-  const startAutoPlay = () => { autoPlayTimer = setInterval(moveNext, 4000); };
+  const startAutoPlay = () => { 
+    if(window.innerWidth > 500) autoPlayTimer = setInterval(moveNext, 4000); 
+  };
   const stopAutoPlay = () => { clearInterval(autoPlayTimer); };
 
   if (nextBtn) nextBtn.addEventListener("click", () => { moveNext(); stopAutoPlay(); startAutoPlay(); });
@@ -156,6 +189,12 @@ function initReviewsSlider() {
     container.addEventListener("mouseenter", stopAutoPlay);
     container.addEventListener("mouseleave", startAutoPlay);
   }
+  
+  window.addEventListener("resize", () => {
+    index = 0;
+    track.style.transform = `translateX(0px)`;
+  });
+  
   startAutoPlay();
 }
 
@@ -173,15 +212,15 @@ function initFaqAccordion() {
 }
 
 /**
- * Интерактивный Lightbox-слайдер (Полноэкранный режим)
+ * Интерактивный Lightbox-слайдер (Полная версия)
  */
 function initLightbox() {
-  const lightboxImages = document.querySelectorAll('.portfolio-track .portfolio-slide-item img');
-  if (lightboxImages.length === 0) return;
+  const slideItems = document.querySelectorAll('.portfolio-track .portfolio-slide-item');
+  if (slideItems.length === 0) return;
 
   let currentLightboxIndex = 0;
-
   let lightboxOverlay = document.getElementById('lightbox-overlay');
+  
   if (!lightboxOverlay) {
     lightboxOverlay = document.createElement('div');
     lightboxOverlay.id = 'lightbox-overlay';
@@ -202,14 +241,15 @@ function initLightbox() {
   const nextBtn = lightboxOverlay.querySelector('.lightbox-next');
 
   const updateLightboxImage = (idx) => {
-    if (idx < 0 || idx >= lightboxImages.length) return;
+    if (idx < 0 || idx >= slideItems.length) return;
     currentLightboxIndex = idx;
-    lightboxImg.src = lightboxImages[currentLightboxIndex].src;
+    const targetImg = slideItems[currentLightboxIndex].querySelector('img');
+    if (targetImg) lightboxImg.src = targetImg.src;
   };
 
-  lightboxImages.forEach((img, idx) => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', (e) => {
+  slideItems.forEach((item, idx) => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', (e) => {
       e.stopPropagation();
       updateLightboxImage(idx);
       lightboxOverlay.classList.add('active');
@@ -219,13 +259,13 @@ function initLightbox() {
 
   const showNext = (e) => {
     e.stopPropagation();
-    let nextIdx = (currentLightboxIndex + 1) % lightboxImages.length;
+    let nextIdx = (currentLightboxIndex + 1) % slideItems.length;
     updateLightboxImage(nextIdx);
   };
 
   const showPrev = (e) => {
     e.stopPropagation();
-    let prevIdx = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+    let prevIdx = (currentLightboxIndex - 1 + slideItems.length) % slideItems.length;
     updateLightboxImage(prevIdx);
   };
 
