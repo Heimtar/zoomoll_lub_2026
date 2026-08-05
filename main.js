@@ -1,13 +1,12 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
-  initMobileMenu();      // Инициализация адаптивного меню
+  initMobileMenu();      // Инициализация мобильного бургер-меню
   initScrollEffects();   // Эффекты скролла (шапка и кнопка Наверх)
   initPromoSlider();     // Главный промо-баннер
   initReviewsSlider();   // Карусель отзывов
-  initFaqAccordion();    // Аккордеон вопросов
+  initFaqAccordion();    // Аккордеон вопросов FAQ
   initPortfolioSlider(); // Слайдер портфолио
-  initLightbox();        // Полноэкранный Lightbox
 });
 
 /**
@@ -23,12 +22,12 @@ function initMobileMenu() {
   const toggleMenu = () => {
     menuToggle.classList.toggle('open');
     navContainer.classList.toggle('open');
-    document.body.classList.toggle('lock-scroll'); // Фикс скролла фона
+    document.body.classList.toggle('lock-scroll'); // Чтобы контент страницы не прокручивался под меню
   };
 
   menuToggle.addEventListener('click', toggleMenu);
 
-  // Автозакрытие шторки меню при клике на якорные ссылки
+  // Автоматическое закрытие шторки меню при клике на якорные ссылки
   menuLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (navContainer.classList.contains('open')) {
@@ -178,7 +177,7 @@ function initReviewsSlider() {
   };
 
   const startAutoPlay = () => { 
-    if(window.innerWidth > 500) autoPlayTimer = setInterval(moveNext, 4000); 
+    if (window.innerWidth > 500) autoPlayTimer = setInterval(moveNext, 4000); 
   };
   const stopAutoPlay = () => { clearInterval(autoPlayTimer); };
 
@@ -208,84 +207,5 @@ function initFaqAccordion() {
       const faqItem = question.closest(".faq-item");
       if (faqItem) faqItem.classList.toggle("active");
     });
-  });
-}
-
-/**
- * Интерактивный Lightbox-слайдер (Полная версия)
- */
-function initLightbox() {
-  const slideItems = document.querySelectorAll('.portfolio-track .portfolio-slide-item');
-  if (slideItems.length === 0) return;
-
-  let currentLightboxIndex = 0;
-  let lightboxOverlay = document.getElementById('lightbox-overlay');
-  
-  if (!lightboxOverlay) {
-    lightboxOverlay = document.createElement('div');
-    lightboxOverlay.id = 'lightbox-overlay';
-    lightboxOverlay.innerHTML = `
-      <button class="lightbox-arrow lightbox-prev" aria-label="Предыдущее фото">❮</button>
-      <div class="lightbox-content">
-        <span class="lightbox-close">&times;</span>
-        <img src="" alt="Большое фото питомца">
-      </div>
-      <button class="lightbox-arrow lightbox-next" aria-label="Следующее фото">❯</button>
-    `;
-    document.body.appendChild(lightboxOverlay);
-  }
-
-  const lightboxImg = lightboxOverlay.querySelector('img');
-  const closeBtn = lightboxOverlay.querySelector('.lightbox-close');
-  const prevBtn = lightboxOverlay.querySelector('.lightbox-prev');
-  const nextBtn = lightboxOverlay.querySelector('.lightbox-next');
-
-  const updateLightboxImage = (idx) => {
-    if (idx < 0 || idx >= slideItems.length) return;
-    currentLightboxIndex = idx;
-    const targetImg = slideItems[currentLightboxIndex].querySelector('img');
-    if (targetImg) lightboxImg.src = targetImg.src;
-  };
-
-  slideItems.forEach((item, idx) => {
-    item.style.cursor = 'pointer';
-    item.addEventListener('click', (e) => {
-      e.stopPropagation();
-      updateLightboxImage(idx);
-      lightboxOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  const showNext = (e) => {
-    e.stopPropagation();
-    let nextIdx = (currentLightboxIndex + 1) % slideItems.length;
-    updateLightboxImage(nextIdx);
-  };
-
-  const showPrev = (e) => {
-    e.stopPropagation();
-    let prevIdx = (currentLightboxIndex - 1 + slideItems.length) % slideItems.length;
-    updateLightboxImage(prevIdx);
-  };
-
-  nextBtn.addEventListener('click', showNext);
-  prevBtn.addEventListener('click', showPrev);
-
-  const closeLightbox = () => {
-    lightboxOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-    lightboxImg.src = '';
-  };
-
-  closeBtn.addEventListener('click', closeLightbox);
-  lightboxOverlay.addEventListener('click', closeLightbox);
-  lightboxOverlay.querySelector('.lightbox-content').addEventListener('click', (e) => e.stopPropagation());
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightboxOverlay.classList.contains('active')) return;
-    if (e.key === 'ArrowRight') showNext(e);
-    if (e.key === 'ArrowLeft') showPrev(e);
-    if (e.key === 'Escape') closeLightbox();
   });
 }
