@@ -687,11 +687,11 @@ section {
 
 
 /* ==========================================================================
-   КАРУСЕЛЬ ОТЗЫВОВ — СТИЛЬНЫЙ МИНИМАЛИЗМ С КАВЫЧКАМИ
+   КАРУСЕЛЬ ОТЗЫВОВ — ПРЕМИУМ СТИЛЬ С ЦИТАТАМИ И АКЦЕНТАМИ
    ========================================================================== */
 .reviews-section { 
   padding: 85px 20px; 
-  background-color: #f8fafc; /* Мягкий фон для контраста белых карточек */
+  background-color: #f8fafc; 
   text-align: center; 
 }
 
@@ -721,7 +721,7 @@ section {
 .carousel-track-wrapper { 
   overflow: hidden; 
   width: 100%; 
-  padding: 15px 0; /* Пространство для теней при парении */
+  padding: 15px 0; 
 }
 
 .carousel-track { 
@@ -733,7 +733,7 @@ section {
 
 /* Объемные белоснежные карточки с фоновой цитатой */
 .review-card { 
-  position: relative; 
+  position: relative; /* Для позиционирования кавычек */
   padding: 32px 28px; 
   background-color: var(--white); 
   border-radius: 20px; 
@@ -760,7 +760,7 @@ section {
   top: -15px;
   right: 15px;
   font-size: 110px;
-  color: rgba(91, 170, 220, 0.09); /* Тонкий, едва заметный голубой цвет */
+  color: rgba(91, 170, 220, 0.09); /* Очень нежный, едва заметный голубой цвет */
   font-family: "Georgia", serif;
   line-height: 1;
   font-weight: 900;
@@ -788,7 +788,6 @@ section {
   letter-spacing: 2px;
 }
 
-/* ИСПРАВЛЕНО: Текст без буквиц, строгий, однотонный и ровный */
 .review-text { 
   margin-bottom: 20px; 
   color: #475569; 
@@ -799,6 +798,18 @@ section {
   flex-grow: 1;
   position: relative;
   z-index: 2;
+}
+
+/* 🎯 МОДНЫЙ ХАК: Выделяем первую букву текста крупным синим цветом */
+.review-text::first-letter {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary-color);
+  font-family: inherit;
+  float: left;
+  line-height: 1;
+  margin-right: 4px;
+  margin-top: 2px;
 }
 
 /* Ссылка на Яндекс Карты */
@@ -817,7 +828,7 @@ section {
   color: var(--primary-color);
 }
 
-/* Круглые кнопки-стрелки с изящными SVG-иконками */
+/* Круглые кнопки-стрелки с микро-эффектами */
 .carousel-btn { 
   position: absolute;
   top: 50%;
@@ -848,7 +859,6 @@ section {
   box-shadow: 0 10px 22px rgba(91, 170, 220, 0.35);
 }
 
-/* Отодвинули стрелки вовне */
 .prev-btn { left: -65px; }
 .next-btn { right: -65px; }
 
@@ -861,57 +871,46 @@ section {
 }
 
 /* ==========================================================================
-   АККОРДЕОН ВОПРОСОВ (СИНЙ ГРАДИЕНТ — СТРОГАЯ ПРЯМАЯ С ФИКСОМ УГЛОВ)
+   АККОРДЕОН ВОПРОСОВ (СТИЛЬ APPLE НА ЧИСТО БЕЛОМ ФОНЕ)
    ========================================================================== */
 .faq-section { 
-  padding: 85px 20px; 
-  background-color: var(--white); 
+  padding: 75px 20px; 
+  background-color: var(--white); /* ИСПРАВЛЕНО: Возвращаем чисто белый фон */
   text-align: center; 
 }
 
 .faq-section h2 { 
-  margin-bottom: 12px; 
-  font-size: 34px; 
+  margin-bottom: 8px; 
+  font-size: 30px; 
   font-weight: 800;
   color: var(--text-dark);
   letter-spacing: -0.5px;
 }
 
 .faq-container { 
-  max-width: 850px; 
-  margin: 45px auto 0; 
+  max-width: 780px; 
+  margin: 35px auto 0; 
   text-align: left; 
   display: flex;
   flex-direction: column;
-  gap: 18px; 
+  gap: 0; 
+  border-top: 1px solid #e2e8f0; 
 }
 
-/* Объемные карточки вопросов */
+/* Каждая строчка вопроса */
 .faq-item { 
-  position: relative;
-  background-color: #f8fafc; 
-  border-radius: 16px; 
-  overflow: hidden; /* ИСПРАВЛЕНО: Срезает синие острые углы, которые вылезали наружу */
-  box-shadow: inset 0 1px 0 0 var(--white), 0 10px 25px -15px rgba(15, 23, 42, 0.08);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: transparent; 
+  border-radius: 0; 
+  border: none;
+  border-bottom: 1px solid #e2e8f0; 
+  overflow: hidden; 
+  box-shadow: none;
+  transition: background-color 0.3s ease;
 }
 
-/* Прямая градиентная линия */
-.faq-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px; 
-  height: 100%;
-  background-image: linear-gradient(180deg, #1e40af 0%, #3b82f6 50%, #5baadc 100%); 
-  z-index: 2;
-}
-
-/* Легкий отклик всей карточки при наведении мыши */
+/* Мягкая подсветка строки при наведении мышки */
 .faq-item:hover {
-  background-color: #f5f9fc; 
-  box-shadow: inset 0 1px 0 0 var(--white), 0 15px 30px -12px rgba(15, 23, 42, 0.12);
+  background-color: #f8fafc; /* Приятный нежно-серый налет при ховере */
 }
 
 .faq-question { 
@@ -919,60 +918,72 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 24px 28px 24px 34px; 
+  padding: 20px 12px; 
   background: none; 
   border: none; 
   color: var(--text-dark); 
-  font-size: 18px; 
+  font-size: 16px; 
   font-weight: 700; 
   text-align: left; 
   cursor: pointer; 
-  gap: 20px;
+  gap: 16px;
 }
 
+.faq-item:hover .faq-question {
+  color: var(--text-dark);
+}
+
+/* Маленькая аккуратная стрелочка */
 .faq-icon { 
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  border-radius: 0;
   color: #94a3b8; 
-  font-size: 14px; 
+  font-size: 11px; 
   font-weight: 700;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease; 
+  box-shadow: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
-.faq-item:hover .faq-icon {
-  color: var(--primary-color);
-}
-
-/* Контейнер ответа с чистым белым фоном */
+/* Контейнер ответа */
 .faq-answer { 
   max-height: 0; 
-  background-color: var(--white); 
+  background-color: transparent; 
   overflow: hidden; 
   transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
-/* Текст ответа отделен аккуратной пунктирной линией */
+/* Текст ответа */
 .faq-answer p { 
-  padding: 24px 28px 24px 34px; 
+  padding: 0 12px 20px 12px; 
   color: #566a7f; 
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 14px; 
+  line-height: 1.6;
   font-weight: 500;
-  border-top: 1px dashed #e2e8f0; 
+  border-top: none; 
   opacity: 0;
   transform: translateY(-4px);
   transition: opacity 0.3s ease, transform 0.3s ease; 
 }
 
-/* СОСТОЯНИЕ ПРИ КЛИКЕ (ОТКРЫТО) */
+/* ==========================================
+   СОСТОЯНИЕ ПРИ КЛИКЕ (ОТКРЫТО)
+   ========================================== */
 .faq-item.active {
-  background-color: #f1f7fc;
-  box-shadow: inset 0 1px 0 0 var(--white), 0 20px 40px -15px rgba(15, 23, 42, 0.1);
+  background-color: #f8fafc; /* При клике строка мягко тонируется под цвет ховера */
+}
+
+.faq-item.active .faq-question {
+  color: var(--text-dark);
 }
 
 .faq-item.active .faq-answer { 
-  max-height: 350px; 
+  max-height: 250px; 
 }
 
 .faq-item.active .faq-answer p {
@@ -980,17 +991,17 @@ section {
   transform: translateY(0);
 }
 
-/* Плавный разворот стрелочки наверх */
+/* Стрелочка плавно разворачивается наверх */
 .faq-item.active .faq-icon { 
   transform: rotate(180deg); 
-  color: var(--primary-color);
 }
 
-/* Адаптивность для мобильных */
+/* Мобильный адаптив */
 @media (max-width: 768px) {
-  .faq-section { padding: 60px 15px; }
-  .faq-question { padding: 20px; font-size: 16px; }
-  .faq-answer p { padding: 20px; font-size: 14px; }
+  .faq-section { padding: 50px 15px; }
+  .faq-section h2 { font-size: 24px; }
+  .faq-question { padding: 16px 8px; font-size: 15px; }
+  .faq-answer p { padding: 0 8px 16px 8px; font-size: 13px; }
 }
 
 /* ==========================================================================
