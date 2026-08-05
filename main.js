@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
-  initMobileMenu();      // Инициализация мобильного бургер-меню
+  initMobileMenu();      // Инициализация мобильного бугер-меню
   initScrollEffects();   // Эффекты скролла (шапка и кнопка Наверх)
   initPromoSlider();     // Главный промо-баннер
   initPortfolioSlider(); // Слайдер портфолио
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /**
  * Вспомогательная функция для безопасного управления блокировкой скролла.
+ * Предотвращает баг, когда закрытие одного элемента разблокирует скролл для другого.
  */
 const updateScrollLock = () => {
   const isMenuOpen = document.querySelector('.nav-container.open');
@@ -51,7 +52,6 @@ function initMobileMenu() {
     });
   });
 }
-
 /**
  * Эффекты скролла страницы (Шапка сайта и кнопка "Наверх")
  */
@@ -80,7 +80,7 @@ function initPromoSlider() {
   const updatePromoSlider = () => {
     const slide = promoTrack.querySelector(".promo-slide");
     if (!slide) return;
-    const slideWidth = promoTrack.parentElement.clientWidth;
+    const slideWidth = slide.getBoundingClientRect().width;
     promoTrack.style.transform = `translateX(-${promoIndex * slideWidth}px)`;
   };
 
@@ -125,13 +125,10 @@ function initPortfolioSlider() {
   };
 
   const updateSliderPosition = () => {
-    const visibleCount = getVisibleSlidesCount();
-    const maxIndex = track.children.length - visibleCount;
+    const maxIndex = track.children.length - getVisibleSlidesCount();
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     if (currentIndex < 0) currentIndex = 0;
-    
     track.style.setProperty('--current-index', currentIndex);
-    track.style.setProperty('--visible-slides', visibleCount);
   };
 
   if (nextBtn) {
