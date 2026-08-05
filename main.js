@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoSlider();
   initReviewsSlider();
   initFaqAccordion();
-  initPortfolioSlider(); /* ИСПРАВЛЕНО: Устойчив к уменьшению масштаба страницы */
-  initLightbox();        /* Полноэкранный просмотр картинок */
+  initPortfolioSlider(); /* ФИНАЛ: Передача индекса в CSS-переменную */
+  initLightbox();        /* Полноэкранный просмотр фото */
 });
 
 /**
@@ -67,7 +67,7 @@ function initPromoSlider() {
 }
 
 /**
- * Изящная горизонтальная лента «Наши работы» (Идеально работает при любом масштабе)
+ * Изящная горизонтальная лента «Наши работы» (Управление индексом)
  */
 function initPortfolioSlider() {
   const track = document.getElementById("portfolio-track");
@@ -85,20 +85,13 @@ function initPortfolioSlider() {
   };
 
   const updateSliderPosition = () => {
-    const slide = track.querySelector(".portfolio-slide-item");
-    if (!slide) return;
-
-    // Считываем точные дробные пиксели кадра, чтобы масштаб не ломал математику
-    const slideWidth = slide.getBoundingClientRect().width;
-    const gap = parseFloat(window.getComputedStyle(track).gap) || 0; 
     const maxIndex = track.children.length - getVisibleSlidesCount();
 
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     if (currentIndex < 0) currentIndex = 0;
     
-    // Идеально точный сдвиг, устойчивый к Ctrl - и Ctrl +
-    const totalTranslate = currentIndex * (slideWidth + gap);
-    track.style.transform = `translateX(-${totalTranslate}px)`;
+    // Передаем чистый индекс в CSS. Браузер сам сделает идеальный сдвиг без багов округления
+    track.style.setProperty('--current-index', currentIndex);
   };
 
   if (nextBtn) {
@@ -120,7 +113,7 @@ function initPortfolioSlider() {
   }
 
   window.addEventListener("resize", updateSliderPosition);
-  setTimeout(updateSliderPosition, 100); 
+  updateSliderPosition();
 }
 
 /**

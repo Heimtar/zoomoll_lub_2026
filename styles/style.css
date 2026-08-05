@@ -523,7 +523,7 @@ h1, h2, h3, h4, button, a, input, textarea {
   100% { background-position: 600% 0%; }
 }
 /* ==========================================================================
-   ФИНАЛЬНЫЙ СЛАЙДЕР ПОРТФОЛИО (СТРОГО БЕЗ IMPORTANT)
+   УСТОЙЧИВЫЙ СЛАЙДЕР ПОРТФОЛИО (УПРАВЛЯЕТСЯ ЧЕРЕЗ CSS-ПЕРЕМЕННУЮ)
    ========================================================================== */
 .portfolio-section {
   padding: 80px 20px;
@@ -553,15 +553,17 @@ h1, h2, h3, h4, button, a, input, textarea {
   padding: 10px 0 25px 0; 
 }
 
-/* Бегущая дорожка для карточек */
+/* Бегущая дорожка для карточек — теперь сама считает сдвиг по сигналу из JS */
 .portfolio-track {
   display: flex;
   gap: 24px; /* Отступы между фото */
+  /* Формула берет индекс из JS и сдвигает ровно на ширину кадра с учетом отступа */
+  transform: translateX(calc(var(--current-index, 0) * -1 * (100% / 3 + 16px)));
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
 
-/* Карточка: свойства flex-grow, flex-shrink и flex-basis гарантируют стабильность размеров */
+/* Карточка: свойства flex гарантируют стабильность размеров при любом масштабе */
 .portfolio-slide-item {
   position: relative;
   flex: 0 0 calc(33.333% - 16px); 
@@ -676,6 +678,12 @@ h1, h2, h3, h4, button, a, input, textarea {
 
 /* Адаптивность для планшетов (по 2 карточки) */
 @media (max-width: 1024px) {
+  .portfolio-slider-container { padding: 0 55px; }
+  .port-prev { left: 2px; }
+  .port-next { right: 2px; }
+  .portfolio-track {
+    transform: translateX(calc(var(--current-index, 0) * -1 * (100% / 2 + 12px)));
+  }
   .portfolio-slide-item {
     flex: 0 0 calc(50% - 12px);
     width: calc(50% - 12px);
@@ -685,15 +693,18 @@ h1, h2, h3, h4, button, a, input, textarea {
 /* Исправленная мобильная адаптивность: возвращаем управление кнопкам */
 @media (max-width: 650px) {
   .portfolio-slider-container { 
-    padding: 0 45px; /* Оставляем аккуратные отступы для стрелочек по бокам */
+    padding: 0 45px; 
+  }
+  .portfolio-track {
+    transform: translateX(calc(var(--current-index, 0) * -1 * 100%));
   }
   .portfolio-slide-item {
-    flex: 0 0 100%; /* На телефонах карточка занимает всю ширину окна просмотра */
+    flex: 0 0 100%; 
     width: 100%;
   }
   .portfolio-arrow { 
-    display: flex; /* НЕ прячем стрелки на мобильных, они нам нужны! */
-    width: 40px;   /* Делаем их чуть компактнее для экранов телефонов */
+    display: flex; 
+    width: 40px;   
     height: 40px;
     font-size: 14px;
   }
@@ -701,17 +712,9 @@ h1, h2, h3, h4, button, a, input, textarea {
   .port-next { right: 0; }
   
   .portfolio-track-wrapper { 
-    overflow-x: hidden; /* ИСПРАВЛЕНО: Отключаем конфликтный мобильный скролл */
+    overflow-x: hidden; 
   }
 }
-
-/* Отрезок для планшетов (тоже оставляем стрелки рабочими) */
-@media (max-width: 1024px) {
-  .portfolio-slider-container { padding: 0 55px; }
-  .port-prev { left: 2px; }
-  .port-next { right: 2px; }
-}
-
 
 
 /* ==========================================================================
