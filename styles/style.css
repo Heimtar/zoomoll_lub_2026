@@ -871,10 +871,10 @@ section {
 }
 
 /* ==========================================================================
-   АККОРДЕОН ВОПРОСОВ (ЗОЛОТАЯ СЕРЕДИНА В СТИЛЕ APPLE)
+   АККОРДЕОН ВОПРОСОВ (СТИЛЬ APPLE С АНИМИРОВАННЫМ СИНТИ-ГРАДИЕНТОМ)
    ========================================================================== */
 .faq-section { 
-  padding: 65px 20px; /* Сбалансированные компактные отступы секции */
+  padding: 65px 20px; 
   background-color: var(--white); 
   text-align: center; 
 }
@@ -883,7 +883,7 @@ section {
   margin-bottom: 8px; 
   font-size: 30px; 
   font-weight: 800;
-  color: var(--text-dark);
+  color: #1e293b; /* Сделали заголовок мягким темно-графитовым */
   letter-spacing: -0.5px;
 }
 
@@ -899,6 +899,7 @@ section {
 
 /* Каждая строчка вопроса */
 .faq-item { 
+  position: relative; 
   background-color: transparent; 
   border-radius: 0; 
   border: none;
@@ -908,9 +909,27 @@ section {
   transition: background-color 0.2s ease;
 }
 
-/* Мягкая подсветка строки при наведении */
 .faq-item:hover {
   background-color: #f8fafc; 
+}
+
+/* 🌊 ЖИВАЯ ГРАДИЕНТНАЯ ПОЛОСКА (Растет из центра к краям и сжимается обратно) */
+.faq-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px; /* ИСПРАВЛЕНО: Сделали сочную выраженную толщину линии */
+  height: 100%;
+  background-image: linear-gradient(180deg, #1e40af 0%, #3b82f6 50%, #5baadc 100%); 
+  z-index: 3;
+  transform: scaleY(0); 
+  transform-origin: center center; 
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.faq-item.active::before {
+  transform: scaleY(1);
 }
 
 .faq-question { 
@@ -918,10 +937,10 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 18px 20px; /* ИСПРАВЛЕНО: Идеальная компактная высота + правильный отступ сбоку */
+  padding: 18px 20px 18px 24px; 
   background: none; 
   border: none; 
-  color: var(--text-dark); 
+  color: #334155; /* ИСПРАВЛЕНО: Благородный темно-серый антрацит вместо резкого черного */
   font-size: 16px; 
   font-weight: 700; 
   text-align: left; 
@@ -930,7 +949,7 @@ section {
 }
 
 .faq-item:hover .faq-question {
-  color: var(--text-dark);
+  color: #334155; /* Цвет остается неизменным при ховере */
 }
 
 /* Маленькая аккуратная стрелочка */
@@ -960,7 +979,7 @@ section {
 
 /* Текст ответа */
 .faq-answer p { 
-  padding: 0 20px 18px 20px; /* ИСПРАВЛЕНО: Текст аккуратно выровнен строго под вопросом */
+  padding: 0 20px 18px 24px; 
   color: #566a7f; 
   font-size: 14px; 
   line-height: 1.6;
@@ -971,16 +990,13 @@ section {
   transition: opacity 0.25s ease, transform 0.25s ease; 
 }
 
-/* ==========================================
-   СОСТОЯНИЕ ПРИ КЛИКЕ (ОТКРЫТО)
-   ========================================== */
+/* СОСТОЯНИЕ ПРИ КЛИКЕ (ОТКРЫТО) */
 .faq-item.active {
   background-color: #f8fafc; 
 }
 
-/* ИСПРАВЛЕНО: Текст зафиксирован, никаких прыжков и лишних смещений */
 .faq-item.active .faq-question {
-  color: var(--text-dark);
+  color: #334155; /* Текст открытого вопроса сохраняет мягкий антрацитовый цвет */
 }
 
 .faq-item.active .faq-answer { 
@@ -1001,8 +1017,8 @@ section {
 @media (max-width: 768px) {
   .faq-section { padding: 50px 15px; }
   .faq-section h2 { font-size: 24px; }
-  .faq-question { padding: 14px 16px; font-size: 15px; }
-  .faq-answer p { padding: 0 16px 14px 16px; font-size: 13px; }
+  .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; color: #334155; }
+  .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
 
 /* ==========================================================================
