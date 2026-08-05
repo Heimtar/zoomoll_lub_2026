@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
-  initMobileMenu();      // Инициализация мобильного бугер-меню
+  initMobileMenu();      // Инициализация мобильного бургер-меню
   initScrollEffects();   // Эффекты скролла (шапка и кнопка Наверх)
   initPromoSlider();     // Главный промо-баннер
   initPortfolioSlider(); // Слайдер портфолио
@@ -183,7 +183,6 @@ function initReviewsSlider() {
     index = index < maxIndex ? index + 1 : 0;
     updateReviewPosition();
   };
-
   const movePrev = () => {
     const maxIndex = track.children.length - getVisibleCount();
     index = index > 0 ? index - 1 : maxIndex;
