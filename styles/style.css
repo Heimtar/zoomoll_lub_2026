@@ -1082,29 +1082,6 @@ section {
 .lightbox-prev { left: 40px; }
 .lightbox-next { right: 40px; }
 
-.map-section {
-  width: 100%;
-  padding: 60px 0 0 0; 
-  background-color: var(--white);
-}
-
-.map-section .map-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.map-section .map-container iframe {
-  display: block;
-  width: 100%;
-  height: 450px;
-  border: none; /* Убирает стандартную рамку фрейма */
-}
-
-
-
-
 .footer {
   flex-shrink: 0;
   background-color: #0f172a; 
