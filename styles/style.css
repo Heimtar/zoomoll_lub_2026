@@ -538,19 +538,19 @@ h1, h2, h3, h4, button, a, input, textarea {
   margin-bottom: 48px;
 }
 
-/* Контейнер-обертка для позиционирования стрелок */
+/* Контейнер-обертка: ограничивает ширину всей галереи, чтобы фото не были огромными */
 .portfolio-slider-container {
   position: relative;
-  max-width: 1240px;
+  max-width: 1100px; /* Уменьшили, чтобы карточки стали аккуратного компактного размера */
   margin: 0 auto;
-  padding: 0 50px; /* Отступы по бокам для стрелок на ПК */
+  padding: 0; 
 }
 
-/* Окно просмотра: прячет все карточки, которые выходят за рамки экрана */
+/* Окно просмотра: строго держит структуру */
 .portfolio-track-wrapper {
   overflow: hidden;
   width: 100%;
-  padding: 10px 0 25px 0; /* Нижний отступ для красивой тени */
+  padding: 10px 0 25px 0; 
 }
 
 /* Горизонтальная живая линия с карточками */
@@ -573,6 +573,38 @@ h1, h2, h3, h4, button, a, input, textarea {
   aspect-ratio: 4 / 4; /* Идеальные одинаковые пропорции */
   background-color: #f8fafc;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+
+/* Элегантные стрелки управления: выносим их ЗА пределы картинок */
+.portfolio-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--white);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+/* Сдвигаем стрелки влево и вправо от галереи */
+.port-prev { left: -70px; }
+.port-next { right: -70px; }
+
+/* На экранах чуть меньше (ноутбуки) прячем стрелки внутрь, чтобы они не улетали за экран */
+@media (max-width: 1260px) {
+  .portfolio-slider-container { padding: 0 60px; }
+  .port-prev { left: 5px; }
+  .port-next { right: 5px; }
 }
 
 .portfolio-slide-item img {

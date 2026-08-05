@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoSlider();
   initReviewsSlider();
   initFaqAccordion();
-  initPortfolioSlider(); /* НОВАЯ ФУНКЦИЯ: Интеллектуальное листание ленты работ */
-  initLightbox();        /* ОБНОВЛЕННАЯ ФУНКЦИЯ: Полноэкранный слайдер */
+  initPortfolioSlider(); /* ИСПРАВЛЕНО: Точный математический расчет шага */
+  initLightbox();        /* Полноэкранный просмотр фото */
 });
 
 /**
@@ -67,17 +67,16 @@ function initPromoSlider() {
 }
 
 /**
- * Изящная горизонтальная лента «Наши работы»
+ * Изящная горизонтальная лента «Наши работы» с точным шагом прокрутки
  */
 function initPortfolioSlider() {
   const track = document.getElementById("portfolio-track");
   const prevBtn = document.querySelector(".port-prev");
   const nextBtn = document.querySelector(".port-next");
-  if (!track) return;
+  if (!track || track.children.length === 0) return;
 
   let currentIndex = 0;
 
-  // Рассчитываем, сколько карточек помещается в окне просмотра
   const getVisibleSlidesCount = () => {
     const width = window.innerWidth;
     if (width <= 650) return 1;
@@ -85,27 +84,29 @@ function initPortfolioSlider() {
     return 3;
   };
 
-  // Получаем точную ширину одной карточки с учетом зазора (gap)
   const getSlideWidth = () => {
     const slide = track.querySelector(".portfolio-slide-item");
     if (!slide) return 0;
-    const style = window.getComputedStyle(track);
-    const gap = parseFloat(style.gap) || 0;
-    return slide.getBoundingClientRect().width + gap;
+    return slide.getBoundingClientRect().width;
   };
 
   const updateSliderPosition = () => {
+    const slideWidth = getSlideWidth();
+    const gap = parseFloat(window.getComputedStyle(track).gap) || 0; 
     const maxIndex = track.children.length - getVisibleSlidesCount();
+
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     if (currentIndex < 0) currentIndex = 0;
     
-    track.style.transform = `translateX(-${currentIndex * getSlideWidth()}px)`;
+    // Математический расчет смещения с учетом зазоров между карточками
+    const totalTranslate = currentIndex * (slideWidth + gap);
+    track.style.transform = `translateX(-${totalTranslate}px)`;
   };
 
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
       const maxIndex = track.children.length - getVisibleSlidesCount();
-      currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0; // Зацикливание вперед
+      currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0; 
       updateSliderPosition();
     });
   }
@@ -113,12 +114,13 @@ function initPortfolioSlider() {
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
       const maxIndex = track.children.length - getVisibleSlidesCount();
-      currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex; // Зацикливание назад
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex; 
       updateSliderPosition();
     });
   }
 
   window.addEventListener("resize", updateSliderPosition);
+  setTimeout(updateSliderPosition, 100); 
 }
 
 /**
@@ -181,7 +183,6 @@ function initFaqAccordion() {
  * Интерактивный Lightbox-слайдер с перелистыванием стрелками
  */
 function initLightbox() {
-  // Находим картинки внутри нашей обновленной структуры
   const images = document.querySelectorAll('.portfolio-track .portfolio-slide-item img');
   if (images.length === 0) return;
 
