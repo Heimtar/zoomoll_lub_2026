@@ -275,15 +275,14 @@
 <section id="contacts" class="map-section" aria-label="Схема проезда">
     <div class="map-container">
         <!-- Надежный виджет Яндекс.Карт по текстовому адресу студии -->
-        <iframe src="https://yandex.ru" 
-                width="100%" 
-                height="100%" 
-                frameborder="0" 
-                allowfullscreen="true" 
-                style="display: block; border: none;">
-        </iframe>
+        <div style="position:relative;overflow:hidden;border-radius:10px;width:100%;height:450px;">
+            <a href="https://yandex.ru" style="color:#eee;font-size:12px;position:absolute;top:0px;left:0px;opacity:0;">Зоомолл</a>
+            <a href="https://yandex.ru" style="color:#eee;font-size:12px;position:absolute;top:14px;left:0px;opacity:0;">Зоосалон, зоопарикмахерская в Архангельске</a>
+            <iframe src="https://yandex.ru" width="100%" height="100%" frameborder="0" allowfullscreen="true" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+        </div>
     </div>
 </section>
+
 
 
 <footer class="footer">
