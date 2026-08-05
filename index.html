@@ -383,7 +383,7 @@
 <section class="map-section" aria-label="Схема проезда">
     <div class="map-container" style="position: relative; overflow: hidden; width: 560px; height: 400px; border: 1px solid #e2e8f0; box-sizing: border-box;">
         
-        <!-- ОФИЦИАЛЬНЫЙ РАЗРЕШЕННЫЙ ОКОННЫЙ СЕРВИС ЯНДЕКСА (НЕ БЛОКИРУЕТСЯ БРАУЗЕРОМ) -->
+        <!-- ТА САМАЯ РАБОЧАЯ ССЫЛКА ИЗ ПЕРВЫХ ШАГОВ (НЕ БЛОКИРУЕТСЯ) -->
         <iframe src="https://yandex.ru" 
                 width="100%" 
                 height="100%" 
@@ -393,12 +393,16 @@
         </iframe>
         
     </div>
-</section>
+</section> <!-- Исправлено: закрывается строго один раз, футер больше не провалится внутрь -->
 
-<!-- 8. ПОДВАЛ САЙТА -->
-<footer id="contacts" class="footer">
-    <p>© 2026 Зоомолл. Архангельск, Московский просп., 6, корп. 3</p>
-    <p>Телефон: <a href="tel:+79600000307">+7 (960) 000-03-07</a></p>
+<!-- 8. ПОДВАЛ САЙТА (Красивая синяя лента по центру) -->
+<footer id="contacts" class="footer" style="background-color: #0f172a; padding: 45px 20px; text-align: center; box-sizing: border-box; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 0; margin-bottom: 0;">
+    <p style="margin: 0 0 10px 0; color: #ffffff; font-size: 16px; font-weight: 500; text-align: center;">
+        © 2026 Зоомолл. Архангельск, Московский просп., 6, корп. 3
+    </p>
+    <p style="margin: 0; color: #ffffff; font-size: 16px; font-weight: 500; text-align: center;">
+        Телефон: <a href="tel:+79600000307" style="color: #3b82f6; text-decoration: none; font-weight: 600;">+7 (960) 000-03-07</a>
+    </p>
 </footer>
 
 <a href="#" id="to-top-btn" class="to-top-button" title="Наверх">
