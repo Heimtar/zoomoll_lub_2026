@@ -982,92 +982,94 @@ section {
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
 /* ==========================================================================
-   ИНТЕРАКТИВНЫЕ ЛАПКИ (ФИНАЛЬНЫЙ ИДЕАЛЬНЫЙ ВАРИАНТ С ЭФФЕКТОМ ШАГОВ)
+   ИНТЕРАКТИВНЫЕ ЛАПКИ (ФИНАЛЬНАЯ КОРРЕКЦИЯ КООРДИНАТ ПО СКРИНШОТУ)
    ========================================================================== */
 
 .faq-section {
   position: relative;
   overflow: hidden;
+  /* Добавляем комфортный отступ сверху, чтобы карточки предыдущей секции не прилипали */
+  padding-top: 80px; 
 }
 
 /* Контейнеры для групп лапок */
 .paw-group {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 150px;
+  /* Жёстко привязываем к верху секции, чтобы лапки не падали к подвалу */
+  top: 90px;
+  width: 120px;
   height: 240px;
   pointer-events: none;
   z-index: 1;
 }
 
 .paw-group-left {
-  left: 35px;
+  left: 45px;
 }
 
 .paw-group-right {
-  right: 35px;
+  right: 45px;
 }
 
-/* Базовый стиль для каждой лапки: изначально они скрыты */
+/* Базовый стиль для каждой лапки */
 .paw-item {
   position: absolute;
-  width: 38px;
-  height: 38px;
+  width: 28px; /* Чуть уменьшили размер, чтобы они выглядели аккуратнее, как на макете */
+  height: 28px;
   fill: var(--primary-color);
   opacity: 0; 
-  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.05));
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.04));
 }
 
-/* --- РАССТАНОВКА ПО МАКЕТУ И ЗАДЕРЖКА АНИМАЦИИ ДЛЯ ЭФФЕКТА ШАГОВ --- */
+/* --- ИДЕАЛЬНАЯ РАССТАНОВКА ШАГОВ --- */
 
-/* Левая дорожка (Питомец идёт снизу вверх) */
+/* Левая дорожка (Шаги снизу вверх) */
 .paw-1 { 
-  top: 175px; left: 25px; transform: rotate(-25deg) scale(0.75); 
+  top: 160px; left: 10px; transform: rotate(-25deg) scale(0.8); 
   animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 0s; /* Проявляется первой */
+  animation-delay: 0s; 
 }
 .paw-2 { 
-  top: 95px; left: 65px; transform: rotate(10deg) scale(0.9); 
+  top: 90px; left: 45px; transform: rotate(10deg) scale(0.95); 
   animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 0.3s; /* Делает второй шаг */
+  animation-delay: 0.3s; 
 }
 .paw-3 { 
-  top: 15px; left: 15px; transform: rotate(-15deg) scale(1.2); 
+  top: 20px; left: 5px; transform: rotate(-15deg) scale(1.1); 
   animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 0.6s; /* Делает третий шаг */
+  animation-delay: 0.6s; 
 }
 
-/* Правая дорожка (Питомец идёт сверху вниз) */
+/* Правая дорожка (Шаги сверху вниз) */
 .paw-4 { 
-  top: 15px; right: 15px; transform: rotate(20deg) scale(1.15); 
+  top: 20px; right: 5px; transform: rotate(20deg) scale(1.1); 
   animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 1.2s; /* Начинает идти с правой стороны */
+  animation-delay: 1.2s; 
 }
 .paw-5 { 
-  top: 90px; right: 70px; transform: rotate(-10deg) scale(0.85); 
+  top: 90px; right: 45px; transform: rotate(-10deg) scale(0.95); 
   animation: paw-single-step 5s ease-in-out infinite;
   animation-delay: 1.5s; 
 }
 .paw-6 { 
-  top: 170px; right: 20px; transform: rotate(35deg) scale(1.0); 
+  top: 160px; right: 10px; transform: rotate(35deg) scale(0.8); 
   animation: paw-single-step 5s ease-in-out infinite;
   animation-delay: 1.8s; 
 }
 
-/* Идеальная анимация одиночного шага */
+/* Анимация одиночного шага */
 @keyframes paw-single-step {
   0% {
     opacity: 0;
   }
   10% {
-    opacity: 1; /* Лапка мягко наступает на бумагу */
+    opacity: 1; 
   }
   70% {
-    opacity: 1; /* След застывает, пока пользователь читает текст */
+    opacity: 1; 
   }
   85% {
-    opacity: 0; /* Дорожка шагов аккуратно растворяется */
+    opacity: 0; 
   }
   100% {
     opacity: 0;
