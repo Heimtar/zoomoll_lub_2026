@@ -897,6 +897,7 @@ section {
   gap: 16px;
 }
 
+/* ОБНОВЛЕННЫЙ КОНТЕЙНЕР ДЛЯ СТРЕЛОЧКИ */
 .faq-icon { 
   display: flex;
   align-items: center;
@@ -906,12 +907,29 @@ section {
   background: none;
   border: none;
   border-radius: 0;
-  color: #94a3b8; 
-  font-size: 11px; 
-  font-weight: 700;
   box-shadow: none;
+  position: relative; /* Чтобы спозиционировать галочку внутри */
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
+
+/* РИСУЕМ ТОНКУЮ ИЗЯЩНУЮ ГАЛОЧКУ ЧЕРЕЗ CSS */
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid #94a3b8; /* Красивый стальной цвет */
+  border-bottom: 2px solid #94a3b8;
+  /* Сгибаем линии так, чтобы они смотрели ровно вниз */
+  transform: translateY(-2px) rotate(45deg); 
+  transition: border-color 0.3s ease;
+}
+
+/* При наведении на вопрос галочка становится чуть контрастнее */
+.faq-item:hover .faq-icon::after {
+  border-color: #475569;
+}
+
 .faq-answer { 
   max-height: 0; 
   background-color: transparent; 
@@ -930,6 +948,7 @@ section {
   transform: translateY(-4px);
   transition: opacity 0.25s ease, transform 0.25s ease; 
 }
+
 .faq-item.active {
   background-color: #f8fafc; 
 }
@@ -938,8 +957,13 @@ section {
   color: #334155; 
 }
 
+/* ПОДСВЕЧИВАЕМ ГАЛОЧКУ СИНИМ ПРИ ОТКРЫТИИ */
+.faq-item.active .faq-icon::after {
+  border-color: #3b82f6; /* Фирменный синий цвет вашей градиентной полоски */
+}
+
 .faq-item.active .faq-answer { 
-  max-height: 1000px; /* Запас для любого объема текста на мобильном */
+  max-height: 1000px; 
 }
 
 .faq-item.active .faq-answer p {
@@ -947,6 +971,7 @@ section {
   transform: translateY(0);
 }
 
+/* ВАШ СТАРЫЙ ПОВОРОТ ИДЕАЛЬНО СРАБОТАЕТ НА ГАЛОЧКЕ */
 .faq-item.active .faq-icon { 
   transform: rotate(180deg); 
 }
