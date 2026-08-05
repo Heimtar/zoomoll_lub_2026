@@ -981,41 +981,42 @@ section {
   .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; color: #334155; }
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
-/* --- КОРРЕКЦИЯ КООРДИНАТ ДЛЯ НОВОГО СИЛУЭТА ЛАПОК --- */
+/* --- СТАБИЛЬНАЯ АНИМАЦИЯ ОЖИВШИХ ЛАПОК --- */
 
-.paw-1 { 
-  top: 410px; 
-  margin-left: -530px; /* Вернули ближе к центру */
-  width: 58px;   
-  height: 58px;
+.animated-paw {
+  fill: #475569;
+  opacity: 0; /* Изначально они скрыты, пока не начнется шаг */
+  pointer-events: none;
+  animation: paw-walk-up-perfect 7s ease-in-out infinite;
 }
 
-.paw-2 { 
-  top: 270px; 
-  margin-left: -490px; /* Вернули ближе к центру */
-  width: 68px;   
-  height: 68px;
+@keyframes paw-walk-up-perfect {
+  0% {
+    opacity: 0;
+    margin-top: 15px; /* Эффект того, что лапа опускается сверху-вниз на лист */
+  }
+  8% {
+    opacity: 0.85; /* Лапка плотно наступила */
+    margin-top: 0;
+  }
+  75% {
+    opacity: 0.85; /* Вся дорожка следов держится на экране */
+    margin-top: 0;
+  }
+  92% {
+    opacity: 0; /* Медленно и плавно тает, как песок */
+    margin-top: -5px;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
-.paw-3 { 
-  top: 130px;  
-  margin-left: -390px; /* Идеально встала у заголовка */
-  width: 60px;   
-  height: 60px;
-}
-
-.paw-4 { 
-  top: 120px;  
-  margin-left: 310px; /* Сместили левее к заголовку, как на схеме */
-  width: 68px;   
-  height: 68px;
-}
-
-.paw-5 { 
-  top: 280px; 
-  margin-left: 490px; /* Отодвинули шире вправо к краю страницы */
-  width: 58px;   
-  height: 58px;
+/* Скрываем декор на средних и мобильных экранах */
+@media (max-width: 1250px) {
+  .animated-paw {
+    display: none;
+  }
 }
 
 /* ==========================================================================
