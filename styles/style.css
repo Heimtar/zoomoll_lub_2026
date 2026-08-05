@@ -644,7 +644,7 @@ section {
   text-align: left;
 }
 
-/* Стрелки навигации */
+/* ОБНОВЛЕНО: Минималистичные круглые стрелки навигации с воздухом */
 .portfolio-arrow { 
   position: absolute; 
   top: 50%; 
@@ -652,32 +652,38 @@ section {
   display: flex; 
   align-items: center; 
   justify-content: center; 
-  width: 48px; 
-  height: 48px; 
+  width: 52px; 
+  height: 52px; 
   background-color: var(--white); 
   border: 1px solid rgba(15, 23, 42, 0.08); 
   border-radius: 50%; 
-  font-size: 16px; 
-  color: #64748b;
+  color: #64748b; 
   cursor: pointer; 
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04); 
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05); 
   z-index: 10; 
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* ИСПРАВЛЕНО: Интерактивный ховер и микро-движение стрелок */
+/* Выравнивание иконки строго по центру кнопки */
+.portfolio-arrow svg {
+  display: block;
+}
+
 .portfolio-arrow:hover { 
   background-color: var(--primary-color); 
   color: var(--white); 
   border-color: var(--primary-color);
-  box-shadow: 0 8px 20px rgba(91, 170, 220, 0.3);
+  box-shadow: 0 10px 22px rgba(91, 170, 220, 0.35);
 }
 
-.port-prev { left: -55px; }
-.port-next { right: -55px; }
+/* Раздвинули стрелки вовне, чтобы дать картинкам воздух */
+.port-prev { left: -65px; }
+.port-next { right: -65px; }
 
-.port-prev:hover { transform: translateY(-50%) translateX(-3px); }
-.port-next:hover { transform: translateY(-50%) translateX(3px); }
+/* Интерактивный микро-шаг стрелок в сторону движения при наведении */
+.port-prev:hover { transform: translateY(-50%) translateX(-4px); }
+.port-next:hover { transform: translateY(-50%) translateX(4px); }
+
 
 
 /* ==========================================================================
