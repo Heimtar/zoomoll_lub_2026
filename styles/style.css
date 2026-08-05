@@ -1259,3 +1259,57 @@ section {
   .portfolio-arrow { display: none; }
   .dikidi-btn { width: 100%; padding: 14px 30px; font-size: 16px; }
 }
+.map-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06);
+  border: 1px solid #cbd5e1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.map-link-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(91, 170, 220, 0.15);
+  border-color: var(--primary-color);
+}
+
+.map-card-content {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.map-card-content svg {
+  color: var(--primary-color);
+  margin-bottom: 16px;
+}
+
+.map-card-content h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.map-card-content p {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.map-btn-fake {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(91, 170, 220, 0.3);
+}
