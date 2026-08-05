@@ -42,6 +42,7 @@
         </div>
     </div>
 </header>
+
 <main>
     <!-- 2. ПРОМО-КАРУСЕЛЬ -->
     <section class="promo-carousel-section" aria-label="Промо-баннеры студии">
@@ -73,6 +74,7 @@
             </div>
         </div>
     </section>
+
     <!-- 3. СЕКЦИЯ УСЛУГ -->
     <section id="services" class="services">
         <div class="services-container">
@@ -92,106 +94,122 @@
                     <p class="service-desc">Мытье, сушка, стрижка по стандарту породы, чистка ушей и подстригание когтей.</p>
                     <span class="service-price">от 1 900 ₽</span>
                 </div>
-
+                
                 <div class="service-card">
                     <div class="service-icon-wrap">
                         <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            <path d="M9 12l2 2 4-4"></path>
+                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                            <path d="M12 6v6l4 2"></path>
                         </svg>
                     </div>
-                    <h3 class="service-title">Гигиена</h3>
-                    <p class="service-desc">Удаление колтунов, выстригание шерсти между подушечками лап, уход за ушками и глазками.</p>
-                    <span class="service-price">от 1 200 ₽</span>
+                    <h3 class="service-title">Экспресс-линька</h3>
+                    <p class="service-desc">Глубокое вычесывание специальными инструментами для удаления отмершего подшерстка.</p>
+                    <span class="service-price">от 1 500 ₽</span>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon-wrap">
                         <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="service-title">Экспресс-линька</h3>
-                    <p class="service-desc">Тщательное вычесывание отмершего подшерстка специальными инструментами. Меньше шерсти в доме!</p>
-                    <span class="service-price">от 1 700 ₽</span>
+                    <h3 class="service-title">Гигиенический уход</h3>
+                    <p class="service-desc">Мытье профессиональной косметикой, сушка компрессором, обработка лап, ушей и когтей.</p>
+                    <span class="service-price">от 1 200 ₽</span>
                 </div>
             </div>
 
             <div class="dikidi-cta-block">
-                <p class="dikidi-text">
-                    Популярные процедуры для ваших питомцев. Стоимость зависит от породы и размера пушистика. Полный актуальный прайс и онлайн-запись доступны в DIKIDI.
-                </p>
-                <a href="https://dikidi.net" class="dikidi-btn" target="_blank" rel="noopener noreferrer">
-                    <span>Записаться</span>
-                </a>
+                <p class="dikidi-text">Выберите удобное время онлайн через сервис Dikidi. Это займет не больше минуты!</p>
+                <button class="dikidi-btn" onclick="window.open('https://dikidi.net', '_blank')">Онлайн-запись</button>
             </div>
         </div>
     </section>
-    <!-- 4. ГАЛЕРЕЯ РАБОТ -->
+    <!-- 4. СЕКЦИЯ ПОРТФОЛИО (НАШИ РАБОТЫ) -->
     <section id="portfolio" class="portfolio-section">
         <h2 class="section-title">Наши работы</h2>
-        <p class="portfolio-subtitle">Примеры стрижек и ухода от наших мастеров.</p>
-
+        <p class="portfolio-subtitle">Посмотрите, какими красивыми и ухоженными становятся питомцы после наших процедур</p>
+        
         <div class="portfolio-slider-container">
-            <button class="portfolio-arrow port-prev" aria-label="Назад">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <button class="portfolio-arrow port-prev" aria-label="Предыдущее фото">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
-            <button class="portfolio-arrow port-next" aria-label="Вперед">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-
+            
             <div class="portfolio-track-wrapper">
                 <div class="portfolio-track" id="portfolio-track">
                     <div class="portfolio-slide-item">
-                        <img src="img/works/1XXXL.webp" alt="Груминг йоркширского терьера">
-                        <div class="portfolio-slide-overlay"><h4>Йоркширский терьер</h4><p>Комплексный уход</p></div>
+                        <img src="img/work1.jpg" alt="Стрижка шпица в салоне Зоомолл">
+                        <div class="portfolio-slide-overlay">
+                            <h4>Померанец Эля</h4>
+                            <p>Комплексный уход + контурная стрижка</p>
+                        </div>
                     </div>
                     <div class="portfolio-slide-item">
-                        <img src="img/works/13XXXL.webp" alt="Экспресс-линька сиамской кошки">
-                        <div class="portfolio-slide-overlay"><h4>Сиамская кошка</h4><p>Экспресс-линька кошек</p></div>
+                        <img src="img/work2.jpg" alt="Груминг йорка в салоне Зоомолл">
+                        <div class="portfolio-slide-overlay">
+                            <h4>Йорк Рокси</h4>
+                            <p>Гигиеническая стрижка и уход</p>
+                        </div>
                     </div>
                     <div class="portfolio-slide-item">
-                        <img src="img/works/3XXXL.webp" alt="Груминг померанского шпица">
-                        <div class="portfolio-slide-overlay"><h4>Померанский шпиц</h4><p>Комплексный уход</p></div>
-                    </div>
-                    <div class="portfolio-slide-item">
-                        <img src="img/works/11XXXL.webp" alt="Экспресс-линька сибирской хаски">
-                        <div class="portfolio-slide-overlay"><h4>Сибирский хаски</h4><p>Экспресс-линька</p></div>
-                    </div>
-                    <div class="portfolio-slide-item">
-                        <img src="img/works/4XXXL.webp" alt="Экспресс-линька черного шпица">
-                        <div class="portfolio-slide-overlay"><h4>Померанский шпиц</h4><p>Экспресс-линька</p></div>
-                    </div>
-                    <div class="portfolio-slide-item">
-                        <img src="img/works/7XXXL.webp" alt="Груминг шпица пати-колор">
-                        <div class="portfolio-slide-overlay"><h4>Шпиц пати-колор</h4><p>Комплексный уход</p></div>
-                    </div>
-                    <div class="portfolio-slide-item">
-                        <img src="img/works/2XXXL.webp" alt="Экспресс-линька шотландской вислоухой кошки">
-                        <div class="portfolio-slide-overlay"><h4>Шотландская вислоухая</h4><p>Экспресс-линька кошек</p></div>
-                    </div>
-                    <div class="portfolio-slide-item">
-                        <img src="img/works/5XXXL.webp" alt="Груминг бевого шпица">
-                        <div class="portfolio-slide-overlay"><h4>Немецкий шпиц</h4><p>Комплексный уход</p></div>
-                    </div>
-                    <div class="portfolio-slide-item">
-                        <img src="img/works/12XXXL.webp" alt="Гигиенический уход за биглем">
-                        <div class="portfolio-slide-overlay"><h4>Бигль</h4><p>Гигиена</p></div>
-                    </div>
-                    <div class="portfolio-slide-item">
-                        <img src="img/works/6XXXL.webp" alt="Стрижка вест-хайленд-уайт-терьера">
-                        <div class="portfolio-slide-overlay"><h4>Вест-хайленд-уайт-терьер</h4><p>Комплексный уход</p></div>
-                    </div>
-                    <div class="portfolio-slide-item">
-                        <img src="img/works/10XXXL.webp" alt="Породный груминг йоркширского терьера">
-                        <div class="portfolio-slide-overlay"><h4>Йоркширский терьер</h4><p>Комплексный уход</p></div>
-                    </div>
-                    <div class="portfolio-slide-item">
-                        <img src="img/works/8XXXL.webp" alt="Экспресс-линька метиса">
-                        <div class="portfolio-slide-overlay"><h4>Метис</h4><p>Экспресс-линька</p></div>
+                        <img src="img/work3.jpg" alt="Вычесывание мейн-куна в салоне Зоомолл">
+                        <div class="portfolio-slide-overlay">
+                            <h4>Мейн-кун Макс</h4>
+                            <p>Экспресс-линька кота</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            <button class="portfolio-arrow port-next" aria-label="Следующее фото">❯</button>
+        </div>
+    </section>
+
+    <!-- 5. ОТЗЫВЫ -->
+    <section id="reviews" class="reviews-section">
+        <h2>Отзывы наших клиентов</h2>
+        <p class="section-subtitle">Что говорят владельцы о нашей студии груминга</p>
+        
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn" aria-label="Предыдущий отзыв">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            
+            <div class="carousel-track-wrapper">
+                <div class="carousel-track" id="carousel-track">
+                    <div class="review-card">
+                        <div class="review-header"><span class="review-author">Александра Ф.</span><span class="review-stars">★★★★★</span></div>
+                        <p class="review-text">«Отличный салон, ходим с кошечкой уже 4 год. Девчонки любят свою работу. Рекомендую 👍»</p>
+                        <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header"><span class="review-author">Олеся Л.</span><span class="review-stars">★★★★★</span></div>
+                        <p class="review-text">«Хорошее место! И девушки - профессионалы своего дела! Не страшно доверить самое дорогое 🙏»</p>
+                        <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header"><span class="review-author">Натали М.</span><span class="review-stars">★★★★★</span></div>
+                        <p class="review-text">«Не первый раз обращаемся в Зоомолл. Нам очень нравится как подстригают, быстро и красиво.»</p>
+                        <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header"><span class="review-author">Людмила Х.</span><span class="review-stars">★★★★★</span></div>
+                        <p class="review-text">«Нам очень понравилось. И оказанная услуга, и отношение. Спасибо, обязательно вернёмся ещё.»</p>
+                        <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header"><span class="review-author">Бабич Л.</span><span class="review-stars">★★★★★</span></div>
+                        <p class="review-text">«Ходим уже 3 раз и все в лучшем виде! Приятная атмосфера, работают добрые люди. Шпиц Эля.»</p>
+                        <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header"><span class="review-author">Ольга Ц.</span><span class="review-stars">★★★★★</span></div>
+                        <p class="review-text">«Ходим с йорком и мейнкуном. Большое спасибо грумеру Яне за Рокси🌸»</p>
+                        <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next-btn" aria-label="Следующий отзыв">❯</button>
         </div>
     </section>
     <!-- 6. FAQ (АККОРДЕОН) -->
@@ -222,71 +240,26 @@
                     <span class="faq-icon">▼</span>
                 </button>
                 <div class="faq-answer">
-                    <p>В среднем — каждые 4–6 недель для длинношерстных пород (йорки, шпицы, мальтезе) для поддержания формы и предотвращения колтунов. Для глачкошерстных собак экспресс-линьку достаточно делать раз в 2–3 месяца.</p>
+                    <p>В среднем — каждые 4–6 недель для длинношерстных пород (йорки, шпицы, мальтезе) для поддержания формы и предотвращения колтунов. Для гладкошерстных собак экспресс-линьку достаточно делать раз в 2–3 месяца.</p>
                 </div>
             </div>
         </div>
     </section>
 </main>
-<!-- 5. ОТЗЫВЫ -->
-<section id="reviews" class="reviews-section">
-    <h2>Отзывы наших клиентов</h2>
-    <p class="section-subtitle">What owners say about our grooming studio</p>
-    
-    <div class="carousel-container">
-        <button class="carousel-btn prev-btn" aria-label="Предыдущий отзыв">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-        
-        <div class="carousel-track-wrapper">
-            <div class="carousel-track" id="carousel-track">
-                <div class="review-card">
-                    <div class="review-header"><span class="review-author">Александра Ф.</span><span class="review-stars">★★★★★</span></div>
-                    <p class="review-text">«Отличный салон, ходим с кошечкой уже 4 год. Девчонки любят свою работу. Рекомендую 👍»</p>
-                    <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
-                </div>
-                <div class="review-card">
-                    <div class="review-header"><span class="review-author">Олеся Л.</span><span class="review-stars">★★★★★</span></div>
-                    <p class="review-text">«Хорошее место! И девушки - профессионалы своего дела! Не страшно доверить самое дорогое 🙏»</p>
-                    <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
-                </div>
-                <div class="review-card">
-                    <div class="review-header"><span class="review-author">Натали М.</span><span class="review-stars">★★★★★</span></div>
-                    <p class="review-text">«Не первый раз обращаемся в Зоомолл. Нам очень нравится как подстригают, быстро и красиво.»</p>
-                    <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
-                </div>
-                <div class="review-card">
-                    <div class="review-header"><span class="review-author">Людмила Х.</span><span class="review-stars">★★★★★</span></div>
-                    <p class="review-text">«Нам очень понравилось. И оказанная услуга, и отношение. Спасибо, обязательно вернёмся ещё.»</p>
-                    <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
-                </div>
-                <div class="review-card">
-                    <div class="review-header"><span class="review-author">Бабич Л.</span><span class="review-stars">★★★★★</span></div>
-                    <p class="review-text">«Ходим уже 3 раз и все в лучшем виде! Приятная атмосфера, работают добрые люди. Шпиц Эля.»</p>
-                    <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
-                </div>
-                <div class="review-card">
-                    <div class="review-header"><span class="review-author">Ольга Ц.</span><span class="review-stars">★★★★★</span></div>
-                    <p class="review-text">«Ходим с йорком и мейнкуном. Большое спасибо грумеру Яне за Рокси🌸»</p>
-                    <a href="https://yandex.ru" class="yandex-link" target="_blank" rel="noopener noreferrer">Яндекс Карты →</a>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-btn next-btn" aria-label="Следующий отзыв">❯</button>
-    </div>
-</section>
+
 <!-- 7. ПОДВАЛ САЙТА -->
 <footer class="footer" id="contacts">
     <p>© 2026 Зоомолл. Архангельск, Московский просп., 6, корп. 3</p>
     <p>Телефон: <a href="tel:+79600000307">+7 (960) 000-03-07</a></p>
 </footer>
 
+<!-- Кнопка "Наверх" -->
 <a href="#" id="to-top-btn" class="to-top-button" title="Наверх">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
 </a>
 
-<script src="main.js"></script>
+<script src="scripts/main.js"></script>
 </body>
 </html>
