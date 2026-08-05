@@ -1060,7 +1060,7 @@ section {
   border: none;
 }
 /* ==========================================================================
-   КНОПКА НАВЕРХ (ОБЪЕМНАЯ ГЛЯНЦЕВАЯ КНОПКА С ВНУТРЕННИМ БЛИКОМ)
+   КНОПКА НАВЕРХ (ОБЪЕМНЫЙ ГЛЯНЕЦ + ВЕКТОРНАЯ SVG-СТРЕЛОЧКА)
    ========================================================================== */
 .to-top-button { 
   position: fixed; 
@@ -1069,12 +1069,12 @@ section {
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  width: 52px; /* Чуть-чуть увеличили для лучшей пропорции */      
+  width: 52px;       
   height: 52px; 
-  /* ИСПРАВЛЕНО: Мягкий градиент для придания физического объема */
+  /* Объемный градиент */
   background: linear-gradient(135deg, #71bee8 0%, var(--primary-color) 100%); 
   border-radius: 50%; 
-  /* ИСПРАВЛЕНО: Внутренний белый блик сверху + глубокая парящая внешняя тень */
+  /* Внутренний глянцевый блик + мягкая глубокая тень */
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 
               0 10px 25px -5px rgba(15, 23, 42, 0.15), 
               0 8px 16px -6px rgba(15, 23, 42, 0.1); 
@@ -1087,31 +1087,27 @@ section {
   cursor: pointer;
 }
 
-/* Белоснежная стрелочка без черных обводок */
-.to-top-button svg,
-.to-top-button img { 
-  width: 24px;       
-  height: 24px; 
+/* Настройки для нашей новой тонкой SVG-иконки */
+.to-top-button svg { 
+  width: 22px; /* Идеальный размер стрелочки внутри круга */      
+  height: 22px; 
   display: block;
-  margin: 0 auto;
-  color: var(--white); 
+  color: var(--white); /* Красим стрелочку в белый цвет */
   fill: none;               
-  stroke: var(--white); 
-  stroke-width: 2.5px;
-  /* Легкая тень под самой стрелочкой для создания глубины внутри круга */
+  stroke: var(--white); /* Контур строго белый */
+  stroke-width: 2.5px; /* Изящная толщина линии */
   filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.15));
 }
 
-/* Интерактивный ховер с усилением объема */
+/* Ховер с пружинистым подскоком */
 .to-top-button:hover {
-  /* При наведении кнопка становится чуть сочнее */
   background: linear-gradient(135deg, #7ec6ee 0%, var(--primary-hover) 100%);
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5), 
               0 15px 30px -5px rgba(67, 146, 196, 0.35);
-  transform: translateY(-3px); /* Мягкий подскок вверх */
+  transform: translateY(-3px); 
 }
 
-/* Класс для отображения при скролле */
+/* Класс для проявления кнопки при скролле */
 .to-top-button.show { 
   opacity: 1; 
   visibility: visible; 
@@ -1126,10 +1122,9 @@ section {
     width: 46px;
     height: 46px;
   }
-  .to-top-button svg,
-  .to-top-button img {
-    width: 20px;
-    height: 20px;
+  .to-top-button svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
