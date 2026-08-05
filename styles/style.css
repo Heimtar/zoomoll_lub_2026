@@ -867,13 +867,14 @@ section {
   padding: 65px 20px; 
   background-color: var(--white); 
   text-align: center; 
+  position: relative; /* Связываем координаты для бегающих лапок */
 }
 
 .faq-section h2 { 
   margin-bottom: 8px; 
   font-size: 30px; 
   font-weight: 800;
-  color: #1e293b; /* Сделали заголовок мягким темно-графитовым */
+  color: #1e293b; 
   letter-spacing: -0.5px;
 }
 
@@ -885,9 +886,10 @@ section {
   flex-direction: column;
   gap: 0; 
   border-top: 1px solid #e2e8f0; 
+  position: relative;
+  z-index: 5; 
 }
 
-/* Каждая строчка вопроса */
 .faq-item { 
   position: relative; 
   background-color: transparent; 
@@ -903,13 +905,12 @@ section {
   background-color: #f8fafc; 
 }
 
-/* 🌊 ЖИВАЯ ГРАДИЕНТНАЯ ПОЛОСКА (Растет из центра к краям и сжимается обратно) */
 .faq-item::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 6px; /* ИСПРАВЛЕНО: Сделали сочную выраженную толщину линии */
+  width: 6px; 
   height: 100%;
   background-image: linear-gradient(180deg, #1e40af 0%, #3b82f6 50%, #5baadc 100%); 
   z-index: 3;
@@ -930,7 +931,7 @@ section {
   padding: 18px 20px 18px 24px; 
   background: none; 
   border: none; 
-  color: #334155; /* ИСПРАВЛЕНО: Благородный темно-серый антрацит вместо резкого черного */
+  color: #334155; 
   font-size: 16px; 
   font-weight: 700; 
   text-align: left; 
@@ -939,10 +940,9 @@ section {
 }
 
 .faq-item:hover .faq-question {
-  color: #334155; /* Цвет остается неизменным при ховере */
+  color: #334155; 
 }
 
-/* Маленькая аккуратная стрелочка */
 .faq-icon { 
   display: flex;
   align-items: center;
@@ -959,7 +959,6 @@ section {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
-/* Контейнер ответа */
 .faq-answer { 
   max-height: 0; 
   background-color: transparent; 
@@ -967,7 +966,6 @@ section {
   transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
-/* Текст ответа */
 .faq-answer p { 
   padding: 0 20px 18px 24px; 
   color: #566a7f; 
@@ -980,13 +978,12 @@ section {
   transition: opacity 0.25s ease, transform 0.25s ease; 
 }
 
-/* СОСТОЯНИЕ ПРИ КЛИКЕ (ОТКРЫТО) */
 .faq-item.active {
   background-color: #f8fafc; 
 }
 
 .faq-item.active .faq-question {
-  color: #334155; /* Текст открытого вопроса сохраняет мягкий антрацитовый цвет */
+  color: #334155; 
 }
 
 .faq-item.active .faq-answer { 
@@ -998,17 +995,80 @@ section {
   transform: translateY(0);
 }
 
-/* Стрелочка плавно разворачивается наверх */
 .faq-item.active .faq-icon { 
   transform: rotate(180deg); 
 }
 
-/* Мобильный адаптив */
 @media (max-width: 768px) {
   .faq-section { padding: 50px 15px; }
   .faq-section h2 { font-size: 24px; }
   .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; color: #334155; }
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
+}
+
+/* ==========================================================================
+   ЧИСТЫЕ СТИЛИ: БЕГАЮЩИЕ ЛАПКИ ПО БОКАМ (БЕЗ !IMPORTANT)
+   ========================================================================== */
+.faq-section::before,
+.faq-section::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 150px;
+  height: 200px;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Левая стайка (Цепочка из 3 лапок) */
+.faq-section::before {
+  left: 40px;
+  background-image: 
+    url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="%235baadc"><path d="M12 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm-4.5-4c-.83 0-1.5-.67-1.5-1.5S6.67 7 7.5 7 9 7.67 9 8.5 8.33 10 7.5 10zm9 0c-.83 0-1.5-.67-1.5-1.5S15.67 7 16.5 7s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-11 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" filter="drop-shadow(0 2px 3px rgba(15,23,42,0.1))"/></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="%235baadc"><path d="M12 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm-4.5-4c-.83 0-1.5-.67-1.5-1.5S6.67 7 7.5 7 9 7.67 9 8.5 8.33 10 7.5 10zm9 0c-.83 0-1.5-.67-1.5-1.5S15.67 7 16.5 7s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-11 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" filter="drop-shadow(0 2px 3px rgba(15,23,42,0.1))"/></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="%235baadc"><path d="M12 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm-4.5-4c-.83 0-1.5-.67-1.5-1.5S6.67 7 7.5 7 9 7.67 9 8.5 8.33 10 7.5 10zm9 0c-.83 0-1.5-.67-1.5-1.5S15.67 7 16.5 7s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-11 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" filter="drop-shadow(0 2px 3px rgba(15,23,42,0.1))"/></svg>');
+  background-position: 10px 10px, 60px 70px, 20px 130px; 
+  animation: clean-paws-left 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+/* Правая стайка (Цепочка из 3 лапок) */
+.faq-section::after {
+  right: 40px;
+  background-image: 
+    url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="%235baadc"><path d="M12 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm-4.5-4c-.83 0-1.5-.67-1.5-1.5S6.67 7 7.5 7 9 7.67 9 8.5 8.33 10 7.5 10zm9 0c-.83 0-1.5-.67-1.5-1.5S15.67 7 16.5 7s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-11 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" filter="drop-shadow(0 2px 3px rgba(15,23,42,0.1))"/></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="%235baadc"><path d="M12 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm-4.5-4c-.83 0-1.5-.67-1.5-1.5S6.67 7 7.5 7 9 7.67 9 8.5 8.33 10 7.5 10zm9 0c-.83 0-1.5-.67-1.5-1.5S15.67 7 16.5 7s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-11 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" filter="drop-shadow(0 2px 3px rgba(15,23,42,0.1))"/></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="%235baadc"><path d="M12 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm-4.5-4c-.83 0-1.5-.67-1.5-1.5S6.67 7 7.5 7 9 7.67 9 8.5 8.33 10 7.5 10zm9 0c-.83 0-1.5-.67-1.5-1.5S15.67 7 16.5 7s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-11 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" filter="drop-shadow(0 2px 3px rgba(15,23,42,0.1))"/></svg>');
+  background-position: 90px 10px, 35px 65px, 85px 135px;
+  animation: clean-paws-right 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  animation-delay: 0.4s; /* Легкая задержка для естественности шагов */
+}
+
+/* Изящная анимация проявления следов */
+@keyframes clean-paws-left {
+  0% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(-50%) scale(0.96); }
+  15% { opacity: 1; clip-path: inset(65% 0 0 0); }
+  35% { clip-path: inset(30% 0 0 0); }
+  55% { clip-path: inset(0 0 0 0); opacity: 1; transform: translateY(-50%) scale(1); }
+  75% { opacity: 1; }
+  90% { opacity: 0; transform: translateY(-48%) scale(0.98); }
+  100% { opacity: 0; }
+}
+
+@keyframes clean-paws-right {
+  0% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(-50%) scale(0.96); }
+  15% { opacity: 1; clip-path: inset(0 0 65% 0); }
+  35% { clip-path: inset(0 0 30% 0); }
+  55% { clip-path: inset(0 0 0 0); opacity: 1; transform: translateY(-50%) scale(1); }
+  75% { opacity: 1; }
+  90% { opacity: 0; transform: translateY(-48%) scale(0.98); }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 1250px) {
+  .faq-section::before, .faq-section::after { display: none; }
 }
 
 /* ==========================================================================
