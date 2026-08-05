@@ -861,48 +861,48 @@ section {
 }
 
 /* ==========================================================================
-   АККОРДЕОН ВОПРОСОВ (КОМПАКТНЫЙ ПРЕМИУМ СТИЛЬ)
+   АККОРДЕОН ВОПРОСОВ (КОМПАКТНЫЙ СТИЛЬ БЕЗ СМЕНЫ ЦВЕТА)
    ========================================================================== */
 .faq-section { 
-  padding: 65px 20px; /* Уменьшили отступы всей секции сверху и снизу */
+  padding: 65px 20px; /* Уменьшенные отступы секции */
   background-color: var(--white); 
   text-align: center; 
 }
 
 .faq-section h2 { 
   margin-bottom: 8px; 
-  font-size: 30px; /* Сделали заголовок чуть компактнее */
+  font-size: 30px; /* Утонченный компактный размер */
   font-weight: 800;
   color: var(--text-dark);
   letter-spacing: -0.5px;
 }
 
 .faq-container { 
-  max-width: 780px; /* Слегка сузили контейнер для лучшей читаемости */
+  max-width: 780px; /* Аккуратная собранная ширина */
   margin: 35px auto 0; 
   text-align: left; 
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Прижали карточки друг к другу поплотнее */
+  gap: 12px; /* Карточки плотнее друг к другу */
 }
 
 /* Компактные объемные карточки */
 .faq-item { 
   position: relative;
   background-color: #f8fafc; 
-  border-radius: 12px; /* Чуть уменьшили скругление для строгости */
+  border-radius: 12px; 
   overflow: hidden; 
   box-shadow: inset 0 1px 0 0 var(--white), 0 6px 16px -10px rgba(15, 23, 42, 0.06);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Тонкая и аккуратная градиентная линия */
+/* Изящная тонкая градиентная линия */
 .faq-item::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px; /* Сделали линию тоньше и изящнее */
+  width: 4px; 
   height: 100%;
   background-image: linear-gradient(180deg, #1e40af 0%, #3b82f6 50%, #5baadc 100%); 
   z-index: 2;
@@ -918,29 +918,29 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 16px 24px 16px 28px; /* Уменьшили высоту: плашки станут заметно тоньше */
+  padding: 16px 24px 16px 28px; /* Плашки стали значительно тоньше */
   background: none; 
   border: none; 
-  color: var(--text-dark); 
-  font-size: 16px; /* Снизили размер шрифта вопроса до аккуратного стандарта */
+  color: var(--text-dark); /* ИСПРАВЛЕНО: Цвет всегда стабильный темный */
+  font-size: 16px; 
   font-weight: 700; 
   text-align: left; 
   cursor: pointer; 
   gap: 16px;
-  transition: color 0.3s ease;
 }
 
+/* ИСПРАВЛЕНО: Никакой смены цвета текста вопроса при наведении */
 .faq-item:hover .faq-question {
-  color: var(--primary-hover);
+  color: var(--text-dark);
 }
 
-/* Изящный маленький маркер */
+/* Маленький аккуратный маркер */
 .faq-icon { 
   display: flex;
   align-items: center;
   justify-content: center;
   color: #94a3b8; 
-  font-size: 11px; /* Сделали стрелочку меньше */
+  font-size: 11px; 
   font-weight: 700;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease; 
 }
@@ -959,9 +959,9 @@ section {
 
 /* Текст ответа */
 .faq-answer p { 
-  padding: 16px 24px 16px 28px; /* Сжали внутренние отступы ответа */
+  padding: 16px 24px 16px 28px; /* Аккуратные сжатые отступы текста */
   color: #566a7f; 
-  font-size: 14px; /* Шрифт ответа сделали аккуратным и не громоздким */
+  font-size: 14px; 
   line-height: 1.6;
   font-weight: 500;
   border-top: 1px dashed #e2e8f0; 
@@ -976,12 +976,13 @@ section {
   box-shadow: inset 0 1px 0 0 var(--white), 0 12px 25px -12px rgba(15, 23, 42, 0.08);
 }
 
+/* ИСПРАВЛЕНО: Текст открытого вопроса сохраняет свой исходный цвет */
 .faq-item.active .faq-question {
-  color: var(--primary-color);
+  color: var(--text-dark);
 }
 
 .faq-item.active .faq-answer { 
-  max-height: 250px; /* Уменьшили лимит высоты под аккуратный текст */
+  max-height: 250px; 
 }
 
 .faq-item.active .faq-answer p {
@@ -989,12 +990,13 @@ section {
   transform: translateY(0);
 }
 
+/* Плавный разворот стрелочки наверх */
 .faq-item.active .faq-icon { 
   transform: rotate(180deg); 
   color: var(--primary-color);
 }
 
-/* Мобильная адаптивность */
+/* Мобильный адаптив */
 @media (max-width: 768px) {
   .faq-section { padding: 50px 15px; }
   .faq-section h2 { font-size: 24px; }
