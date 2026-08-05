@@ -381,13 +381,14 @@
 </section>
 <!-- 7. КАРТА ПРОЕЗДА -->
 <section class="map-section" aria-label="Схема проезда" style="width: 100%; overflow: hidden;">
-    <!-- Задана четкая высота и ширина, чтобы карта раскрылась во весь экран -->
+    <!-- Жестко фиксируем ширину и высоту контейнера, чтобы карта раскрылась во весь экран -->
     <div class="map-container" style="position: relative; width: 100%; height: 450px; box-sizing: border-box;">
         
-        <!-- Официальный виджет Яндекса с безопасным протоколом https -->
+        <!-- Ссылки Яндекса из твоего сообщения -->
         <a href="https://yandex.ru" style="color:#eee;font-size:12px;position:absolute;top:0px;z-index:0;opacity:0;">Зоомолл</a>
         <a href="https://yandex.ru" style="color:#eee;font-size:12px;position:absolute;top:14px;z-index:0;opacity:0;">Зоосалон, зоопарикмахерская в Архангельске</a>
         
+        <!-- ТВОЯ ССЫЛКА ИЗ СООБЩЕНИЯ: Вставлена точь-в-точь внутрь iframe -->
         <iframe src="https://yandex.ru" 
                 width="100%" 
                 height="100%" 
@@ -405,7 +406,6 @@
 </footer>
 
 <a href="#" id="to-top-btn" class="to-top-button" title="Наверх">
-    <!-- ИСПРАВЛЕНО: Заменен безопасный адрес xmlns для иконки стрелочки -->
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="https://w3.org">
         <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
@@ -414,3 +414,4 @@
 <script src="main.js"></script>
 </body>
 </html>
+
