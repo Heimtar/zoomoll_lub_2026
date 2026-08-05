@@ -982,7 +982,7 @@ section {
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
 /* ==========================================================================
-   ИНТЕРАКТИВНЫЕ ЛАПКИ (ХУДОЖЕСТВЕННАЯ РОССЫПЬ ПО МАКЕТУ)
+   ИНТЕРАКТИВНЫЕ ЛАПКИ (ХУДОЖЕСТВЕННАЯ РОССЫПЬ НА ЧИСТОМ CSS)
    ========================================================================== */
 
 .faq-section {
@@ -994,38 +994,56 @@ section {
 .faq-section::after {
   content: '';
   position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 180px;  
-  height: 240px; 
-  background-size: 100% 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;  /* Ширина под разброс лапок по горизонтали */
+  height: 250px; /* Высота под дорожку шагов */
+  background-size: 36px 36px; /* Строгий фиксированный размер одной лапки, как в рабочем коде */
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 1;
-  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.04));
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.06));
 }
 
-/* Левая художественная стайка (Лапки разного размера с наклоном) */
+/* Левая художественная стайка (3 лапки со смещением координат) */
 .faq-section::before {
   left: 30px;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMjQwIi fillPSIjNWJhYWRjIj4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAsIDMwKSByb3RhdGUoLTE1KSBzY2FsZSgxLjMpIj4KPHBhdGggZD0iTTEyIDE0Yy0xLjY2IDAtMy0xLjM0-My0zczEuMzQtMyAzLTMgMyAxLjM0IDMgMy0xLjM0IDMtMyAzem0tNC41LTRjLS44MyAwLTEuNS0uNjctMS41LTEuNVM2LjY3IDcgNy41IDcgOSA3LjY3IDkgOC41IDguMzMgMTAgNy41IDEwem05IDBjLS44MyAwLTEuNS0uNjctMS41LTEuNVMxNS46NyA3IDE2LjUgN3MxLjUuNjcgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6bS0xMSA1LjVjLS44MyAwLTEuNS0uNjctMS41LTEuNXMuNjctMS41IDEuNS0xLjUgMS41LjY3IDEuNSAxLjUtLjY3IDEuNS0xLjUgMS41em0xMyAwYy0.ODMgMC0xLjUtLjY3-%MS41LTEuNXMuNjctMS41IDEuNS0xLjUgMS41LjY3IDEuNSAxLjUtLjY3IDEuNS0xLjUgMS41eiIvPgo8L2c+CjxnIHRyYW5zZm9ybT0idHJhbnNmb3J0PXJlZHVjZSh0cmFuc2xhdGUoMTAwLCAxMTApIHJvdGF0ZSgxMCkgc2NhbGUoMC45KSkiPgo8cGF0aCBkPSJNMTIgMTRjLTEuNjYgMC0zLTEuMzQtMy0zczEuMzQtMyAzLTMgMyAxLjM0IDMgMy0xLjM0IDMtMyAzem0tNC41LTRjLS44MyAwLTEuNS0uNjctMS41LTEuNVM2LjY3IDcgNy41IDcgOSA3LjY3IDkgOC41IDguMzMgMTAgNy41IDEwem05IDBjLS44MyAwLTEuNS0uNjctMS41LTEuNVMxNS46NyA3IDE2LjUgN3MxLjUuNjcgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6bS0xMSA1LjVjLS44MyAwLTEuNS0uNjctMS41LTEuNXMuNjctMS41IDEuNS0xLjUgMS41LjY3IDEuNSAxLjUtLjY3IDEuNS0xLjUgMS41em0xMyAwYy0.ODMgMC0xLjUtLjY3LTEuNS0xLjVzLjY3LTEuNSAxLjUtMS41IDEuNS4Y3QgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6Ii8+CjwvZz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAsIDE3MCkgcm90YXRlKC0yNSkgc2NhbGUoMC43KSI+CjxwYXRoIGQ9Ik0xMiAxMGMtMS42NiAwLTMtMS4zNC0zLTNzMS4zNC0zIDMtMyAzIDEuMzQgMyAzLTEuMzQgMy0zIDN6bS00LjUtNGMtLjgzIDAtMS41LS42Ny0xLjUtMS41UzYuNjcgNyA3LjUgNyA5IDcuNjcgOSA4LjUgOC4zMyAxMCA3LjUgMTB6bTkgMGMtLjgzIDAtMS41LS42Ny0xLjUtMS41UzE1LjY3IDcgMTYuNSA3czEuNS42NyAxLjUxLjUtLjY3IDEuNS0xLjUgMS41em0tMTEgNS41Yy0.ODMgMC0xLjUtLjY3LTEuNS0xLjVzLjY3LTEuNSAxLjUtMS41IDEuNS4Y3QgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6bTEzIDBjLS44MyAwLTEuNS0uNjctMS41LTEuNXMuNjctMS41IDEuNS0xLjUgMS41LjY3IDEuNSAxLjUtLjY3IDEuNS0xLjUgMS41eiIvPgo8L2c+Cjwvc3ZnPg==");
-  animation: paper-paws-fade 6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  /* Дублируем одну и ту же стопроцентно рабочую лапку три раза через запятую */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%235baadc'%3E%3Cpath d='M12 10a3 3 0 1 1-3 3 3 3 0 0 1 3-3zm-5.5.5a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm11 0a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm-8-5.5a2 2 0 1 1-1.8 1.8A2 2 0 0 1 9.5 5zm5 0a2 2 0 1 1-1.8 1.8 2 2 0 0 1 1.8-1.8z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%235baadc'%3E%3Cpath d='M12 10a3 3 0 1 1-3 3 3 3 0 0 1 3-3zm-5.5.5a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm11 0a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm-8-5.5a2 2 0 1 1-1.8 1.8A2 2 0 0 1 9.5 5zm5 0a2 2 0 1 1-1.8 1.8 2 2 0 0 1 1.8-1.8z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%235baadc'%3E%3Cpath d='M12 10a3 3 0 1 1-3 3 3 3 0 0 1 3-3zm-5.5.5a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm11 0a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm-8-5.5a2 2 0 1 1-1.8 1.8A2 2 0 0 1 9.5 5zm5 0a2 2 0 1 1-1.8 1.8 2 2 0 0 1 1.8-1.8z'/%3E%3C/svg%3E");
+  /* Раскидываем их по контейнеру: X Y для каждой лапки соответственно */
+  background-position: 10px 20px, 70px 100px, 20px 180px;
+  animation: paper-paws-left-fade 6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 }
 
-/* Правая художественная стайка (Зеркальный хаотичный разброс) */
+/* Правая художественная стайка (Зеркальное смещение координат) */
 .faq-section::after {
   right: 30px;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMjQwIiBmaWxsPSIjNWJhYWRjIj4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAwLCAyMCkgcm90YXRlKDIwKSBzY2FsZSgxLjIpIj4KPHBhdGggZD0iTTEyIDE0Yy0xLjY2IDAtMy0xLjM0-My0zczEuMzQtMyAzLTMgMyAxLjM0IDMgMy0xLjM0IDMtMyAzem0tNC41LTRjLS44MyAwLTEuNS0uNjctMS41LTEuNVM2LjY3IDcgNy41IDcgOSA3LjY3IDkgOC41IDguMzMgMTAgNy41IDEwem05IDBjLS44MyAwLTEuNS0uNjctMS41LTEuNVMxNS46NyA3IDE2LjUgN3MxLjUuNjcgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6bS0xMSA1LjVjLS44MyAwLTEuNS0uNjctMS41LTEuNXMuNjctMS41IDEuNS0xLjUgMS41LjY3IDEuNSAxLjUtLjY3IDEuNS0xLjUgMS41em0xMyAwYy0.ODMgMC0xLjUtLjY3LTEuNS0xLjVzLjY3LTEuNSAxLjUtMS41IDEuNS4Y3QgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6Ii8+CjwvZz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAsIDk1KSByb3RhdGUoLTEwKSBzY2FsZSgwLjgpIj4KPHBhdGggZD0iTTEyIDE0Yy0xLjY2IDAtMy0xLjM0-My0zczEuMzQtMyAzLTMgMyAxLjM0IDMgMy0xLjM0IDMtMyAzem0tNC41LTRjLS44MyAwLTEuNS0uNjctMS41LTEuNVM2LjY3IDcgNy41IDcgOSA3LjY3IDkgOC41IDguMzMgMTAgNy41IDEwem05IDBjLS44MyAwLTEuNS0uNjctMS41LTEuNVMxNS46NyA3IDE2LjUgN3MxLjUuNjcgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6bS0xMSA1LjVjLS44MyAwLTEuNS0uNjctMS41LTEuNXMuNjctMS41IDEuNS0xLjUgMS41LjY3IDEuNSAxLjUtLjY3IDEuNS0xLjUgMS41em0xMyAwYy0.ODMgMC0xLjUtLjY3LTEuNS0xLjVzLjY3LTEuNSAxLjUtMS41IDEuNS4Y3QgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6Ii8+CjwvZz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOTAsIDE2MCkgcm90YXRlKDM1KSBzY2FsZSgxLjApIj4KPHBhdGggZD0iTTEyIDE0Yy0xLjY2IDAtMy0xLjM0-My0zczEuMzQtMyAzLTMgMyAxLjM0IDMgMy0xLjM0IDMtMyAzem0tNC41LTRjLS44MyAwLTEuNS0uNjctMS41LTEuNVM2LjY3IDcgNy41IDcgOSA3LjY3IDkgOC41IDguMzMgMTAgNy41IDEwem05IDBjLS44MyAwLTEuNS0uNjctMS41LTEuNVMxNS46NyA3IDE2LjUgN3MxLjUuNjcgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6bS0xMSA1LjVjLS44MyAwLTEuNS0uNjctMS41LTEuNXMuNjctMS41IDEuNS0xLjUgMS41LjY3IDEuNSAxLjUtLjY3IDEuNS0xLjUgMS41em0xMyAwYy0.ODMgMC0xLjUtLjY3LTEuNS0xLjVzLjY3LTEuNSAxLjUtMS41IDEuNS4Y3QgMS41IDEuNS0uNjcgMS41LTEuNSAxLjV6Ii8+CjwvZz4KPC9zdmc+");
-  animation: paper-paws-fade 6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-  animation-delay: 0.8s; 
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%235baadc'%3E%3Cpath d='M12 10a3 3 0 1 1-3 3 3 3 0 0 1 3-3zm-5.5.5a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm11 0a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm-8-5.5a2 2 0 1 1-1.8 1.8A2 2 0 0 1 9.5 5zm5 0a2 2 0 1 1-1.8 1.8 2 2 0 0 1 1.8-1.8z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%235baadc'%3E%3Cpath d='M12 10a3 3 0 1 1-3 3 3 3 0 0 1 3-3zm-5.5.5a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm11 0a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm-8-5.5a2 2 0 1 1-1.8 1.8A2 2 0 0 1 9.5 5zm5 0a2 2 0 1 1-1.8 1.8 2 2 0 0 1 1.8-1.8z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24" fill='%235baadc'%3E%3Cpath d='M12 10a3 3 0 1 1-3 3 3 3 0 0 1 3-3zm-5.5.5a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm11 0a2 2 0 1 1-1.5 2 2 0 0 1 1.5-2zm-8-5.5a2 2 0 1 1-1.8 1.8A2 2 0 0 1 9.5 5zm5 0a2 2 0 1 1-1.8 1.8 2 2 0 0 1 1.8-1.8z'/%3E%3C/svg%3E");
+  background-position: 90px 20px, 30px 110px, 80px 180px;
+  animation: paper-paws-right-fade 6s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  animation-delay: 0.5s;
 }
 
-@keyframes paper-paws-fade {
-  0% { opacity: 0; }
-  20% { opacity: 1; }
-  75% { opacity: 1; }
-  95% { opacity: 0; }
+/* Мягкое проявление стайки */
+@keyframes paper-paws-left-fade {
+  0% { opacity: 0; transform: translateY(-48%) scale(0.97); }
+  15% { opacity: 1; transform: translateY(-50%) scale(1); }
+  80% { opacity: 1; transform: translateY(-50%) scale(1); }
+  95% { opacity: 0; transform: translateY(-52%) scale(0.98); }
+  100% { opacity: 0; }
+}
+
+@keyframes paper-paws-right-fade {
+  0% { opacity: 0; transform: translateY(-52%) scale(0.97); }
+  15% { opacity: 1; transform: translateY(-50%) scale(1); }
+  80% { opacity: 1; transform: translateY(-50%) scale(1); }
+  95% { opacity: 0; transform: translateY(-48%) scale(0.98); }
   100% { opacity: 0; }
 }
 
