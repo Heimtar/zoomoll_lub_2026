@@ -512,22 +512,24 @@ section {
   100% { background-position: 600% 0%; } 
 }
 /* ==========================================================================
-   ПОРТФОЛИО (БЕЗУПРЕЧНОЕ КАДРИРОВАНИЕ)
+   ПОРТФОЛИО (ПРЕМИАЛЬНЫЙ КОНТРАСТНЫЙ СТИЛЬ)
    ========================================================================== */
 .portfolio-section { 
-  padding: 60px 20px; 
-  background-color: var(--white); 
+  padding: 70px 20px; 
+  background-color: #f8fafc; /* Мягкий фон, на котором заиграют белые карточки */
   text-align: center; 
   overflow: hidden; 
 }
 
 .portfolio-section .section-title { 
-  margin-bottom: 10px; 
+  margin-bottom: 12px; 
   font-size: 34px; 
+  font-weight: 800;
+  color: var(--text-dark);
 }
 
 .portfolio-subtitle { 
-  margin-bottom: 40px; 
+  margin-bottom: 45px; 
   color: #64748b; 
   font-size: 16px; 
 }
@@ -541,35 +543,38 @@ section {
 .portfolio-track-wrapper { 
   overflow: hidden; 
   width: 100%; 
-  padding: 10px 0; 
+  padding: 15px 0; /* Пространство для теней при парении карточек */
 }
 
 .portfolio-track {
   display: flex; 
   gap: 24px; 
   transform: translateX(calc(var(--current-index, 0) * -1 * (100% / 3 + 16px))); 
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
   will-change: transform;
 }
 
+/* Карточки как дорогие белые плитки */
 .portfolio-slide-item { 
   position: relative; 
   flex: 0 0 calc(33.333% - 16px); 
   width: calc(33.333% - 16px); 
-  border-radius: 20px; 
+  border-radius: 24px; 
   overflow: hidden; 
   background-color: var(--white);
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05); 
+  /* Объемная мягкая тень */
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 16px -6px rgba(15, 23, 42, 0.03); 
   border: 1px solid rgba(15, 23, 42, 0.04);
   display: flex;
   flex-direction: column;
   height: auto; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
+/* Эффект глубокого парения при наведении */
 .portfolio-slide-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 30px 45px -10px rgba(15, 23, 42, 0.12);
 }
 
 .portfolio-slide-item img { 
@@ -577,78 +582,75 @@ section {
   height: auto;
   aspect-ratio: 4 / 3; 
   object-fit: cover; 
-  object-position: center center; /* Базовый центр для всей галереи */
-  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
-  transition: transform 0.5s ease; 
+  border-bottom: 1px solid rgba(15, 23, 42, 0.03);
+  filter: saturate(0.96);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease; 
 }
 
 .portfolio-slide-item:hover img { 
-  transform: scale(1.03); 
+  transform: scale(1.04); 
+  filter: saturate(1.08);
 }
 
-/* 🎯 ИНДИВИДУАЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ КАЖДОГО ПИТОМЦА */
-
-/* 1. Йоркширский терьер — поднимаем фокус к мордочке */
+/* 🎯 ВАШЕ ИНДИВИДУАЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ (БЕЗ ИЗМЕНЕНИЙ) */
 .portfolio-track .portfolio-slide-item:nth-child(1) img { object-position: center 75%; }
-
-/* 2. Сиамская кошка — центрируем по вертикали */
 .portfolio-track .portfolio-slide-item:nth-child(2) img { object-position: center 36%; }
-
-/* 3. Померанский шпиц (рыжий) — открываем ушки и глазки */
 .portfolio-track .portfolio-slide-item:nth-child(3) img { object-position: center 55%; }
-
-/* 4. Сибирский хаски — центрируем по пояс */
 .portfolio-track .portfolio-slide-item:nth-child(4) img { object-position: center 30%; }
-
-/* 5. Померанский шпиц (черный) — фокус на мордочке */
 .portfolio-track .portfolio-slide-item:nth-child(5) img { object-position: center 35%; }
-
-/* 6. Шпиц пати-колор — выравниваем положение */
 .portfolio-track .portfolio-slide-item:nth-child(6) img { object-position: center 20%; }
-
-/* 7. Шотландская вислоухая — кошка крупным планом, чуть опускаем */
 .portfolio-track .portfolio-slide-item:nth-child(7) img { object-position: center 40%; }
-
-/* 8. Немецкий шпиц (белый) — кадрируем по центру */
 .portfolio-track .portfolio-slide-item:nth-child(8) img { object-position: center 15%; }
-
-/* 9. Бигль — центрируем собаку на петле */
 .portfolio-track .portfolio-slide-item:nth-child(9) img { object-position: center 60%; }
-
-/* 10. Вест-хайленд — центрируем круглую голову */
 .portfolio-track .portfolio-slide-item:nth-child(10) img { object-position: center 20%; }
-
-/* 11. Йорк с юбочкой — фокус на всей стойке */
 .portfolio-track .portfolio-slide-item:nth-child(11) img { object-position: center 45%; }
-
-/* 12. Метис — центрируем пушистую собаку на столе */
 .portfolio-track .portfolio-slide-item:nth-child(12) img { object-position: center 20%; }
 
-
+/* Обновленная текстовая плашка */
 .portfolio-slide-overlay {
   position: relative; 
   width: 100%;
-  padding: 16px 20px; 
+  padding: 20px 22px; 
   background: var(--white);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .portfolio-slide-overlay h4 { 
-  color: var(--text-color); 
-  font-size: 17px; 
+  color: var(--text-dark); 
+  font-size: 18px; 
   font-weight: 700;
   text-align: left;
+  transition: color 0.3s ease;
 }
 
+.portfolio-slide-item:hover .portfolio-slide-overlay h4 {
+  color: var(--primary-color);
+}
+
+/* Стильные бейджи вместо скучного текста */
 .portfolio-slide-overlay p { 
-  color: #64748b; 
-  font-size: 14px; 
-  font-weight: 500;
-  text-align: left;
+  display: inline-flex;
+  padding: 4px 12px;
+  background-color: #f0f7ff; 
+  color: #0284c7; 
+  font-size: 11px; 
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-radius: 100px;
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.portfolio-slide-item:hover .portfolio-slide-overlay p {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Минималистичные стрелки навигации */
 .portfolio-arrow { 
   position: absolute; 
   top: 50%; 
@@ -656,25 +658,29 @@ section {
   display: flex; 
   align-items: center; 
   justify-content: center; 
-  width: 50px; 
-  height: 50px; 
+  width: 48px; 
+  height: 48px; 
   background-color: var(--white); 
-  border: 1px solid rgba(15, 23, 42, 0.12); 
+  border: 1px solid rgba(15, 23, 42, 0.08); 
   border-radius: 50%; 
-  font-size: 18px; 
+  font-size: 16px; 
+  color: #64748b;
   cursor: pointer; 
-  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08); 
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04); 
   z-index: 10; 
-  transition: background-color 0.3s ease, color 0.3s ease; 
+  transition: all 0.3s ease;
 }
 
 .portfolio-arrow:hover { 
   background-color: var(--primary-color); 
   color: var(--white); 
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 20px rgba(91, 170, 220, 0.3);
 }
 
-.port-prev { left: -60px; }
-.port-next { right: -60px; }
+.port-prev { left: -55px; }
+.port-next { right: -55px; }
+
 
 /* ==========================================================================
    ОТЗЫВЫ
