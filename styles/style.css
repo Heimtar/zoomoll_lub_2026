@@ -981,38 +981,30 @@ section {
   .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; color: #334155; }
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
-/* --- СТАБИЛЬНАЯ АНИМАЦИЯ ОЖИВШИХ ЛАПОК --- */
+/* ==========================================================================
+   ДЕКОРАТИВНЫЕ ЛАПКИ (ЧИСТЫЙ СТАТИЧНЫЙ ВАРИАНТ)
+   ========================================================================== */
 
+.faq-section {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 80px 0;
+}
+
+/* Базовый стиль для всех пяти лапок */
 .animated-paw {
-  fill: #475569;
-  opacity: 0; /* Изначально они скрыты, пока не начнется шаг */
+  position: absolute;
+  display: block;
+  margin: 0;
+  padding: 0;
+  fill: #475569; /* Тот самый благородный графитовый цвет */
+  opacity: 0.85; /* Мягкая, приятная глазу видимость */
   pointer-events: none;
-  animation: paw-walk-up-perfect 7s ease-in-out infinite;
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.04));
 }
 
-@keyframes paw-walk-up-perfect {
-  0% {
-    opacity: 0;
-    margin-top: 15px; /* Эффект того, что лапа опускается сверху-вниз на лист */
-  }
-  8% {
-    opacity: 0.85; /* Лапка плотно наступила */
-    margin-top: 0;
-  }
-  75% {
-    opacity: 0.85; /* Вся дорожка следов держится на экране */
-    margin-top: 0;
-  }
-  92% {
-    opacity: 0; /* Медленно и плавно тает, как песок */
-    margin-top: -5px;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-/* Скрываем декор на средних и мобильных экранах */
+/* Скрываем декор на средних мониторах, планшетах и мобилках, чтобы не мешать тексту */
 @media (max-width: 1250px) {
   .animated-paw {
     display: none;
