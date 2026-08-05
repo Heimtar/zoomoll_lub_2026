@@ -112,6 +112,7 @@ section {
   display: flex;
   align-items: center;
   gap: 40px;
+  margin-right: auto; 
 }
 
 .site-header .nav {
