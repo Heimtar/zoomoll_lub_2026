@@ -786,7 +786,7 @@ section {
 .prev-btn { margin-right: 15px; }
 .next-btn { margin-left: 15px; }
 /* ==========================================================================
-   АККОРДЕОН ВОПРОСОВ (НЕОНОВЫЙ RGB-СПЛИТ)
+   АККОРДЕОН ВОПРОСОВ (БЛАГОРОДНЫЙ СИНЙ ГРАДИЕНТ — СТАТИКА)
    ========================================================================== */
 .faq-section { 
   padding: 85px 20px; 
@@ -811,50 +811,33 @@ section {
   gap: 18px; 
 }
 
-/* Карточки с подготовленным местом под неоновый маркер */
+/* Объемные карточки вопросов */
 .faq-item { 
   position: relative;
   background-color: #f8fafc; 
   border-radius: 16px; 
   overflow: hidden; 
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 🌈 ЖИВОЙ RGB-МАРКЕР (Выезжает слева и бесконечно переливается) */
+/* 🌊 ИСПРАВЛЕНО: Заметный, сочный СТАТИЧНЫЙ синий градиент слева (без анимаций) */
 .faq-item::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 6px; /* Ширина цветной линии */
+  width: 6px; /* Заметная толщина линии */
   height: 100%;
-  /* Наш фирменный RGB-градиент с кнопки записи */
-  background-image: linear-gradient(180deg, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f); 
-  background-size: 100% 600%; 
-  transform: translateX(-6px); /* Изначально прячем маркер левее карточки */
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Красивый мягкий переход синих оттенков сверху вниз */
+  background-image: linear-gradient(180deg, #1e40af 0%, #3b82f6 50%, #5baadc 100%); 
   z-index: 2;
 }
 
-/* Запускаем движение градиента только при ховере или когда блок открыт */
-.faq-item:hover::before,
-.faq-item.active::before {
-  transform: translateX(0); /* Маркер плавно выезжает вбок */
-  animation: faq-rgb-movement 8s linear infinite; /* Плавное переливание цветов */
-}
-
-/* Анимация движения неоновых цветов */
-@keyframes faq-rgb-movement { 
-  0% { background-position: 0% 0%; } 
-  100% { background-position: 0% 600%; } 
-}
-
-/* Эффекты всей карточки при наведении */
+/* Легкий отклик всей карточки при наведении мыши */
 .faq-item:hover {
   background-color: #f5f9fc; 
   box-shadow: 0 12px 24px -10px rgba(15, 23, 42, 0.06);
-  transform: translateY(-1px);
 }
 
 .faq-question { 
@@ -862,7 +845,7 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 24px 28px 24px 34px; /* Чуть увеличили отступ слева, чтобы текст не лип к маркеру */
+  padding: 24px 28px 24px 34px; /* Отступ слева, чтобы текст не лип к маркеру */
   background: none; 
   border: none; 
   color: var(--text-dark); 
@@ -884,10 +867,10 @@ section {
 }
 
 .faq-item:hover .faq-icon {
-  color: #7928ca; /* Подсвечиваем стрелочку фиолетовым из градиента */
+  color: var(--primary-color);
 }
 
-/* Контейнер ответа с чистым белым контрастным фоном */
+/* Контейнер ответа с чистым белым фоном */
 .faq-answer { 
   max-height: 0; 
   background-color: var(--white); 
@@ -895,7 +878,7 @@ section {
   transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
-/* Текст ответа отделен аккуратным разделителем */
+/* Текст ответа отделен аккуратной пунктирной линией */
 .faq-answer p { 
   padding: 24px 28px 24px 34px; 
   color: #566a7f; 
@@ -904,13 +887,11 @@ section {
   font-weight: 500;
   border-top: 1px dashed #e2e8f0; 
   opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s; 
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease; 
 }
 
-/* ==========================================================================
-   СОСТОЯНИЕ ПРИ КЛИКЕ (АКТИВНОЕ)
-   ========================================================================== */
+/* СОСТОЯНИЕ ПРИ КЛИКЕ (ОТКРЫТО) */
 .faq-item.active {
   background-color: #f1f7fc;
   box-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.08);
@@ -925,13 +906,13 @@ section {
   transform: translateY(0);
 }
 
-/* Изящный разворот стрелочки */
+/* Плавный разворот стрелочки наверх */
 .faq-item.active .faq-icon { 
   transform: rotate(180deg); 
-  color: #7928ca;
+  color: var(--primary-color);
 }
 
-/* Мобильная адаптация */
+/* Адаптивность для мобильных */
 @media (max-width: 768px) {
   .faq-section { padding: 60px 15px; }
   .faq-question { padding: 20px 20px 20px 25px; font-size: 16px; }
