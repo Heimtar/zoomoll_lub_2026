@@ -136,17 +136,23 @@
         </div>
     </section>
 
-    <!-- 4. ГАЛЕРЕЯ РАБОТ -->
+        <!-- 4. ГАЛЕРЕЯ РАБОТ -->
     <section id="portfolio" class="portfolio-section">
         <h2 class="section-title">Наши работы</h2>
         <p class="portfolio-subtitle">Примеры стрижек и ухода от наших мастеров.</p>
 
         <div class="portfolio-slider-container">
-            <button class="portfolio-arrow port-prev" aria-label="Назад">❮</button>
-            <button class="portfolio-arrow port-next" aria-label="Вперед">❯</button>
+            <!-- ИСПРАВЛЕНО: Текстовые символы заменены на изящные SVG-стрелки -->
+            <button class="portfolio-arrow port-prev" aria-label="Назад">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button class="portfolio-arrow port-next" aria-label="Вперед">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
 
             <div class="portfolio-track-wrapper">
                 <div class="portfolio-track" id="portfolio-track">
+
 
                     <!-- Карточка 1 -->
                     <div class="portfolio-slide-item">
