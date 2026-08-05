@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();      // Инициализация мобильного бургер-меню
   initScrollEffects();   // Эффекты скролла (шапка и кнопка Наверх)
   initPromoSlider();     // Главный промо-баннер
+  initPortfolioSlider(); // Слайдер портфолио
   initReviewsSlider();   // Карусель отзывов
   initFaqAccordion();    // Аккордеон вопросов FAQ
-  initPortfolioSlider(); // Слайдер портфолио
   initLightbox();        // Полноэкранный просмотр фото
 });
 
@@ -21,9 +21,10 @@ function initMobileMenu() {
   if (!menuToggle || !navContainer) return;
 
   const toggleMenu = () => {
-    menuToggle.classList.toggle('open');
+    const isOpen = menuToggle.classList.toggle('open');
     navContainer.classList.toggle('open');
     document.body.classList.toggle('lock-scroll');
+    menuToggle.setAttribute('aria-expanded', isOpen);
   };
 
   menuToggle.addEventListener('click', toggleMenu);
@@ -48,7 +49,7 @@ function initScrollEffects() {
     const currentScroll = window.scrollY;
     if (toTopButton) toTopButton.classList.toggle("show", currentScroll > 300);
     if (siteHeader) siteHeader.classList.toggle("shrunk", currentScroll > 50);
-  });
+  }, { passive: true });
 }
 
 /**
@@ -90,11 +91,10 @@ function initPromoSlider() {
   if (prevPromoBtn) prevPromoBtn.addEventListener("click", () => { handlePrevSlide(); restartAutoPlay(); });
 
   window.addEventListener("resize", updatePromoSlider);
-  window.addEventListener("load", updatePromoSlider);
   promoTimer = setInterval(handleNextSlide, 5000);
 }
 /**
- * Изящная горизонтальная лента «Наши работы»
+ * Лента «Наши работы»
  */
 function initPortfolioSlider() {
   const track = document.getElementById("portfolio-track");
@@ -178,12 +178,15 @@ function initReviewsSlider() {
   };
 
   const startAutoPlay = () => { 
-    if (window.innerWidth > 500) autoPlayTimer = setInterval(moveNext, 4000); 
+    if (window.innerWidth > 500) {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = setInterval(moveNext, 4000); 
+    }
   };
   const stopAutoPlay = () => { clearInterval(autoPlayTimer); };
 
-  if (nextBtn) nextBtn.addEventListener("click", () => { moveNext(); stopAutoPlay(); startAutoPlay(); });
-  if (prevBtn) prevBtn.addEventListener("click", () => { movePrev(); stopAutoPlay(); startAutoPlay(); });
+  if (nextBtn) nextBtn.addEventListener("click", () => { moveNext(); startAutoPlay(); });
+  if (prevBtn) prevBtn.addEventListener("click", () => { movePrev(); startAutoPlay(); });
 
   if (container) {
     container.addEventListener("mouseenter", stopAutoPlay);
@@ -193,6 +196,7 @@ function initReviewsSlider() {
   window.addEventListener("resize", () => {
     index = 0;
     track.style.transform = `translateX(0px)`;
+    startAutoPlay();
   });
   
   startAutoPlay();
@@ -224,10 +228,12 @@ function initLightbox() {
   if (!lightboxOverlay) {
     lightboxOverlay = document.createElement('div');
     lightboxOverlay.id = 'lightbox-overlay';
+    
+    // Безопасное создание структуры DOM через innerHTML без пользовательского ввода
     lightboxOverlay.innerHTML = `
       <button class="lightbox-arrow lightbox-prev" aria-label="Предыдущее фото">❮</button>
       <div class="lightbox-content">
-        <span class="lightbox-close">&times;</span>
+        <button class="lightbox-close" aria-label="Закрыть">&times;</button>
         <img src="" alt="Большое фото питомца">
       </div>
       <button class="lightbox-arrow lightbox-next" aria-label="Следующее фото">❯</button>
@@ -257,7 +263,7 @@ function initLightbox() {
       e.preventDefault();
       updateLightboxImage(idx);
       lightboxOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('lock-scroll');
     });
   });
 
@@ -278,7 +284,7 @@ function initLightbox() {
 
   const closeLightbox = () => {
     lightboxOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('lock-scroll');
     lightboxImg.src = '';
   };
 
