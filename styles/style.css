@@ -972,9 +972,17 @@ section {
   .portfolio-track {
     transform: translateX(calc(var(--current-index, 0) * -1 * (100% / 2 + 12px)));
   }
+  
+  /* ИСПРАВЛЕНО: Задаем правильное поведение карточки на планшетах */
   .portfolio-slide-item {
     flex: 0 0 calc(50% - 12px);
     width: calc(50% - 12px);
+    height: min-content;
+  }
+  
+  .portfolio-slide-item img {
+    aspect-ratio: 4 / 3;
+    height: auto;
   }
   
   .review-card {
@@ -1139,9 +1147,17 @@ section {
   .portfolio-track {
     transform: translateX(calc(var(--current-index, 0) * -1 * 100%));
   }
+  
+  /* ИСПРАВЛЕНО: Поведение карточки на маленьких телефонах */
   .portfolio-slide-item {
     flex: 0 0 100%;
     width: 100%;
+    height: min-content;
+  }
+  
+  .portfolio-slide-item img {
+    aspect-ratio: 4 / 3;
+    height: auto;
   }
 
   .review-card {
