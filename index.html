@@ -380,23 +380,19 @@
     </div>
 </section>
 <!-- 7. КАРТА ПРОЕЗДА -->
-<section class="map-section" aria-label="Схема проезда" style="width: 100%; overflow: hidden;">
-    <!-- Жестко фиксируем ширину и высоту контейнера, чтобы карта раскрылась во весь экран -->
-    <div class="map-container" style="position: relative; width: 100%; height: 450px; box-sizing: border-box;">
+<section class="map-section" aria-label="Схема проезда">
+    <div style="position:relative; overflow:hidden;">
+        <a href="https://yandex.ru" style="color:#eee; font-size:12px; position:absolute; top:0px;">Зоомолл</a>
+        <a href="https://yandex.ru" style="color:#eee; font-size:12px; position:absolute; top:14px;">Зоосалон, зоопарикмахерская в Архангельске</a>
         
-        <!-- Ссылки Яндекса из твоего сообщения -->
-        <a href="https://yandex.ru" style="color:#eee;font-size:12px;position:absolute;top:0px;z-index:0;opacity:0;">Зоомолл</a>
-        <a href="https://yandex.ru" style="color:#eee;font-size:12px;position:absolute;top:14px;z-index:0;opacity:0;">Зоосалон, зоопарикмахерская в Архангельске</a>
-        
-        <!-- ТВОЯ ССЫЛКА ИЗ СООБЩЕНИЯ: Вставлена точь-в-точь внутрь iframe -->
+        <!-- ТВОЯ КАРТА: Вставлена точь-в-точь с исходными размерами из твоего сообщения -->
         <iframe src="https://yandex.ru" 
-                width="100%" 
-                height="100%" 
-                frameborder="0" 
+                width="560" 
+                height="400" 
+                frameborder="1" 
                 allowfullscreen="true" 
-                style="position:relative; display:block; border: 0;">
+                style="position:relative;">
         </iframe>
-        
     </div>
 </section>
 
