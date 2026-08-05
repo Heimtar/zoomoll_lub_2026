@@ -379,13 +379,23 @@
         <button class="carousel-btn next-btn" aria-label="Следующий отзыв">❯</button>
     </div>
 </section>
-
 <!-- 7. КАРТА ПРОЕЗДА -->
-<section class="map-section" aria-label="Схема проезда">
-    <div class="map-container">
-        <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer" title="Открыть интерактивную карту в новом окне">
-            <img src="img/map-placeholder.jpg" alt="Салон Зоомолл на карте Архангельска. Нажмите, чтобы открыть карту" loading="lazy" decoding="async">
-        </a>
+<section class="map-section" aria-label="Схема проезда" style="width: 100%; overflow: hidden;">
+    <!-- Задана четкая высота и ширина, чтобы карта раскрылась во весь экран -->
+    <div class="map-container" style="position: relative; width: 100%; height: 450px; box-sizing: border-box;">
+        
+        <!-- Официальный виджет Яндекса с безопасным протоколом https -->
+        <a href="https://yandex.ru" style="color:#eee;font-size:12px;position:absolute;top:0px;z-index:0;opacity:0;">Зоомолл</a>
+        <a href="https://yandex.ru" style="color:#eee;font-size:12px;position:absolute;top:14px;z-index:0;opacity:0;">Зоосалон, зоопарикмахерская в Архангельске</a>
+        
+        <iframe src="https://yandex.ru" 
+                width="100%" 
+                height="100%" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                style="position:relative; display:block; border: 0;">
+        </iframe>
+        
     </div>
 </section>
 
@@ -395,7 +405,8 @@
 </footer>
 
 <a href="#" id="to-top-btn" class="to-top-button" title="Наверх">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://w3.org">
+    <!-- ИСПРАВЛЕНО: Заменен безопасный адрес xmlns для иконки стрелочки -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="https://w3.org">
         <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
 </a>
