@@ -111,9 +111,11 @@ section {
 .nav-container {
   display: flex;
   align-items: center;
-  gap: 40px;
-  margin-right: auto; 
+  gap: 80px;
+  margin-left: auto; 
+  padding-right: 60px; 
 }
+
 
 .site-header .nav {
   display: flex;
