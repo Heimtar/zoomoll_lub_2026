@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoSlider();
   initReviewsSlider();
   initFaqAccordion();
-  initPortfolioLoader(); /* Кнопка Показать/Свернуть без инлайн-стилей */
-  initLightbox();        /* Современный Lightbox-слайдер со стрелками */
+  initPortfolioSlider(); /* НОВАЯ ФУНКЦИЯ: Интеллектуальное листание ленты работ */
+  initLightbox();        /* ОБНОВЛЕННАЯ ФУНКЦИЯ: Полноэкранный слайдер */
 });
 
 /**
@@ -67,6 +67,61 @@ function initPromoSlider() {
 }
 
 /**
+ * Изящная горизонтальная лента «Наши работы»
+ */
+function initPortfolioSlider() {
+  const track = document.getElementById("portfolio-track");
+  const prevBtn = document.querySelector(".port-prev");
+  const nextBtn = document.querySelector(".port-next");
+  if (!track) return;
+
+  let currentIndex = 0;
+
+  // Рассчитываем, сколько карточек помещается в окне просмотра
+  const getVisibleSlidesCount = () => {
+    const width = window.innerWidth;
+    if (width <= 650) return 1;
+    if (width <= 1024) return 2;
+    return 3;
+  };
+
+  // Получаем точную ширину одной карточки с учетом зазора (gap)
+  const getSlideWidth = () => {
+    const slide = track.querySelector(".portfolio-slide-item");
+    if (!slide) return 0;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 0;
+    return slide.getBoundingClientRect().width + gap;
+  };
+
+  const updateSliderPosition = () => {
+    const maxIndex = track.children.length - getVisibleSlidesCount();
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    if (currentIndex < 0) currentIndex = 0;
+    
+    track.style.transform = `translateX(-${currentIndex * getSlideWidth()}px)`;
+  };
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const maxIndex = track.children.length - getVisibleSlidesCount();
+      currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0; // Зацикливание вперед
+      updateSliderPosition();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      const maxIndex = track.children.length - getVisibleSlidesCount();
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex; // Зацикливание назад
+      updateSliderPosition();
+    });
+  }
+
+  window.addEventListener("resize", updateSliderPosition);
+}
+
+/**
  * Карусель отзывов клиентов
  */
 function initReviewsSlider() {
@@ -123,55 +178,29 @@ function initFaqAccordion() {
 }
 
 /**
- * Умная кнопка: Раскрытие галереи и сворачивание её обратно (БЕЗ ИНЛАЙН-СТИЛЕЙ)
- */
-function initPortfolioLoader() {
-  const loadMoreBtn = document.getElementById('load-more-btn');
-  const portfolioSection = document.getElementById('portfolio');
-  const masonryGrid = document.querySelector('.portfolio-masonry');
-  if (!loadMoreBtn || !masonryGrid) return;
-
-  loadMoreBtn.setAttribute('data-state', 'collapsed');
-
-  loadMoreBtn.addEventListener('click', () => {
-    const state = loadMoreBtn.getAttribute('data-state');
-
-    if (state === 'collapsed') {
-      masonryGrid.classList.add('is-expanded');
-      loadMoreBtn.textContent = 'Свернуть работы обратно';
-      loadMoreBtn.setAttribute('data-state', 'expanded');
-    } else {
-      masonryGrid.classList.remove('is-expanded');
-      loadMoreBtn.textContent = 'Показать ещё работы';
-      loadMoreBtn.setAttribute('data-state', 'collapsed');
-
-      if (portfolioSection) {
-        portfolioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  });
-}
-
-/**
  * Интерактивный Lightbox-слайдер с перелистыванием стрелками
  */
 function initLightbox() {
-  const images = document.querySelectorAll('.portfolio-masonry .masonry-item img');
+  // Находим картинки внутри нашей обновленной структуры
+  const images = document.querySelectorAll('.portfolio-track .portfolio-slide-item img');
   if (images.length === 0) return;
 
   let currentIndex = 0;
 
-  const lightbox = document.createElement('div');
-  lightbox.id = 'lightbox-overlay';
-  lightbox.innerHTML = `
-    <button class="lightbox-arrow lightbox-prev" aria-label="Предыдущее фото">❮</button>
-    <div class="lightbox-content">
-      <span class="lightbox-close">&times;</span>
-      <img src="" alt="Большое фото питомца">
-    </div>
-    <button class="lightbox-arrow lightbox-next" aria-label="Следующее фото">❯</button>
-  `;
-  document.body.appendChild(lightbox);
+  let lightbox = document.getElementById('lightbox-overlay');
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.id = 'lightbox-overlay';
+    lightbox.innerHTML = `
+      <button class="lightbox-arrow lightbox-prev" aria-label="Предыдущее фото">❮</button>
+      <div class="lightbox-content">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Большое фото питомца">
+      </div>
+      <button class="lightbox-arrow lightbox-next" aria-label="Следующее фото">❯</button>
+    `;
+    document.body.appendChild(lightbox);
+  }
 
   const lightboxImg = lightbox.querySelector('img');
   const closeBtn = lightbox.querySelector('.lightbox-close');

@@ -522,126 +522,178 @@ h1, h2, h3, h4, button, a, input, textarea {
   0% { background-position: 0% 0%; }
   100% { background-position: 600% 0%; }
 }
-
-
 /* ==========================================================================
-   НАШИ РАБОТЫ (СТАБИЛЬНАЯ СЕТКА GRID — КВАДРАТНЫЙ ФОРМАТ)
+   ОБНОВЛЕННЫЕ РАБОТЫ (ИЗЯЩНАЯ ГОРИЗОНТАЛЬНАЯ ГАЛЕРЕЯ-ЛЕНТА)
    ========================================================================== */
 .portfolio-section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
   background-color: var(--white);
+  overflow: hidden;
 }
 
 .portfolio-subtitle {
   font-size: 16px;
   color: #64748b;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
-/* Использовали жесткую сетку Grid с компактными отступами */
-.portfolio-masonry {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Строго 3 одинаковые колонки */
-  gap: 16px; /* Уменьшили зазоры между фото, чтобы сетка смотрелась монолитно */
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Идеальная квадратная карточка в стиле Instagram */
-.masonry-item {
+/* Контейнер-обертка для позиционирования стрелок */
+.portfolio-slider-container {
   position: relative;
-  background: #f8fafc;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 50px; /* Отступы по бокам для стрелок на ПК */
+}
+
+/* Окно просмотра: прячет все карточки, которые выходят за рамки экрана */
+.portfolio-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0 25px 0; /* Нижний отступ для красивой тени */
+}
+
+/* Горизонтальная живая линия с карточками */
+.portfolio-track {
+  display: flex;
+  gap: 24px; /* Много модного «воздуха» между работами */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Карточка в стиле дорогого портфолио */
+.portfolio-slide-item {
+  position: relative;
+  /* На ПК показываем ровно 3 полные карточки в окне просмотра */
+  min-width: calc(33.333% - 16px); 
+  flex-shrink: 0;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  aspect-ratio: 1 / 1; /* ИСПРАВЛЕНО: Теперь карточки стали аккуратными квадратами */
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  aspect-ratio: 4 / 4; /* Идеальные одинаковые пропорции */
+  background-color: #f8fafc;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
 }
 
-.masonry-item img {
+.portfolio-slide-item img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover; /* Фото аккуратно заполняет карточку без искажений */
-  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Скрытие карточек с 7 по 13 без использования !important */
-.portfolio-masonry .masonry-item.hidden-item {
-  display: none;
-}
-
-/* Анимация плавного появления */
-@keyframes masonryFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.portfolio-masonry.is-expanded .masonry-item.hidden-item {
-  display: block;
-  animation: masonryFadeIn 0.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
-}
-
-.masonry-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.12);
-}
-
-.masonry-item:hover img {
-  transform: scale(1.06);
-}
-
-.masonry-overlay {
+/* Изящный глубокий оверлей для текста — теперь полностью читается */
+.portfolio-slide-overlay {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
-  /* Уплотненный темный градиент для 100% читаемости текста */
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.5) 40%, transparent 80%);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 50%, transparent 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  text-align: center;
   padding: 30px 20px;
   box-sizing: border-box;
-  opacity: 0; 
-  transform: translateY(15px);
-  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 1, 0.3, 1);
+  opacity: 0; /* Проявляется только при наведении */
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 2;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
+/* Интерактивные ховер-эффекты */
+.portfolio-slide-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+}
 
-.masonry-item:hover .masonry-overlay {
+.portfolio-slide-item:hover img {
+  transform: scale(1.05); /* Легкое плавное увеличение */
+}
+
+.portfolio-slide-item:hover .portfolio-slide-overlay {
   opacity: 1;
   transform: translateY(0);
 }
 
-.masonry-overlay h4 {
+.portfolio-slide-overlay h4 {
   color: var(--white);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
 }
 
-.masonry-overlay p {
+.portfolio-slide-overlay p {
   color: #cbd5e1;
   font-size: 14px;
   margin: 0;
+  font-weight: 500;
 }
 
-/* Адаптивность для планшетов и мобильных телефонов */
-@media (max-width: 900px) {
-  .portfolio-masonry {
-    grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+/* Элегантные минималистичные стрелки по бокам секции */
+.portfolio-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--white);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 16px;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  z-index: 10;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.portfolio-arrow:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-color: var(--primary-color);
+  box-shadow: 0 6px 16px rgba(91, 170, 220, 0.3);
+}
+
+.portfolio-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.port-prev { left: 0; }
+.port-next { right: 0; }
+
+/* Адаптивность для средних и маленьких экранов */
+@media (max-width: 1024px) {
+  .portfolio-slide-item {
+    min-width: calc(50% - 12px); /* На планшетах показываем по 2 карточки в ряд */
   }
 }
 
-@media (max-width: 600px) {
-  .portfolio-masonry {
-    grid-template-columns: 1fr; /* 1 колонка на телефонах */
+@media (max-width: 650px) {
+  .portfolio-slider-container {
+    padding: 0; /* Убираем боковые отступы на телефонах */
+  }
+  .portfolio-slide-item {
+    min-width: 100%; /* На смартфонах карточка занимает весь экран */
+  }
+  .portfolio-arrow {
+    display: none; /* Прячем стрелки на мобильных — там будет удобный свайп пальцем */
+  }
+  .portfolio-track-wrapper {
+    overflow-x: auto; /* Включаем нативный свайп пальцем на мобильных */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .portfolio-slide-item {
+    scroll-snap-align: start;
   }
 }
 
