@@ -871,11 +871,11 @@ section {
 }
 
 /* ==========================================================================
-   АККОРДЕОН ВОПРОСОВ (СТИЛЬ APPLE НА ЧИСТО БЕЛОМ ФОНЕ)
+   АККОРДЕОН ВОПРОСОВ (ЗОЛОТАЯ СЕРЕДИНА В СТИЛЕ APPLE)
    ========================================================================== */
 .faq-section { 
-  padding: 75px 20px; 
-  background-color: var(--white); /* ИСПРАВЛЕНО: Возвращаем чисто белый фон */
+  padding: 65px 20px; /* Сбалансированные компактные отступы секции */
+  background-color: var(--white); 
   text-align: center; 
 }
 
@@ -905,12 +905,12 @@ section {
   border-bottom: 1px solid #e2e8f0; 
   overflow: hidden; 
   box-shadow: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
-/* Мягкая подсветка строки при наведении мышки */
+/* Мягкая подсветка строки при наведении */
 .faq-item:hover {
-  background-color: #f8fafc; /* Приятный нежно-серый налет при ховере */
+  background-color: #f8fafc; 
 }
 
 .faq-question { 
@@ -918,7 +918,7 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 20px 12px; 
+  padding: 18px 20px; /* ИСПРАВЛЕНО: Идеальная компактная высота + правильный отступ сбоку */
   background: none; 
   border: none; 
   color: var(--text-dark); 
@@ -960,7 +960,7 @@ section {
 
 /* Текст ответа */
 .faq-answer p { 
-  padding: 0 12px 20px 12px; 
+  padding: 0 20px 18px 20px; /* ИСПРАВЛЕНО: Текст аккуратно выровнен строго под вопросом */
   color: #566a7f; 
   font-size: 14px; 
   line-height: 1.6;
@@ -968,16 +968,17 @@ section {
   border-top: none; 
   opacity: 0;
   transform: translateY(-4px);
-  transition: opacity 0.3s ease, transform 0.3s ease; 
+  transition: opacity 0.25s ease, transform 0.25s ease; 
 }
 
 /* ==========================================
    СОСТОЯНИЕ ПРИ КЛИКЕ (ОТКРЫТО)
    ========================================== */
 .faq-item.active {
-  background-color: #f8fafc; /* При клике строка мягко тонируется под цвет ховера */
+  background-color: #f8fafc; 
 }
 
+/* ИСПРАВЛЕНО: Текст зафиксирован, никаких прыжков и лишних смещений */
 .faq-item.active .faq-question {
   color: var(--text-dark);
 }
@@ -1000,8 +1001,8 @@ section {
 @media (max-width: 768px) {
   .faq-section { padding: 50px 15px; }
   .faq-section h2 { font-size: 24px; }
-  .faq-question { padding: 16px 8px; font-size: 15px; }
-  .faq-answer p { padding: 0 8px 16px 8px; font-size: 13px; }
+  .faq-question { padding: 14px 16px; font-size: 15px; }
+  .faq-answer p { padding: 0 16px 14px 16px; font-size: 13px; }
 }
 
 /* ==========================================================================
