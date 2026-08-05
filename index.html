@@ -261,65 +261,79 @@
             </div>
         </div>
     </section>
-    <!-- 6. FAQ (АККОРДЕОН С ДОРОЖКОЙ СВЕРХУ) -->
-    <section id="faq" class="faq-section" style="position: relative; padding: 60px 0 100px 0; background-color: #ffffff; box-sizing: border-box;">
+
+           <!-- 6. FAQ (АККОРДЕОН) -->
+    <section id="faq" class="faq-section" style="position: relative; overflow: hidden; padding: 140px 0 100px 0;">
         
-        <!-- === ЦЕПОЧКА СЛЕДОВ НАД ЗАГОЛОВКОМ === -->
-        <div style="position: relative; max-width: 800px; margin: 0 auto 30px auto; height: 70px; pointer-events: none;">
-            <!-- След 1 (самый верхний и левый) -->
-            <svg viewBox="0 0 100 100" style="position: absolute; top: 0; left: 40%; width: 26px; height: 26px; fill: #475569; opacity: 0.12; transform: rotate(25deg);">
+        <!-- Лапка 1 — Смотрит пальцами вперед по дуге -->
+        <svg viewBox="0 0 100 100" class="animated-paw" style="position: absolute; top: 340px; left: 45%; margin-left: -630px; width: 58px; height: 58px; fill: #475569; opacity: 0.85; pointer-events: none; z-index: 1; filter: drop-shadow(0 2px 4px rgba(15,23,42,0.04));">
+            <g transform="rotate(35, 50, 50)">
                 <path d="M50 39.3c-14.7 0-25.5 11.4-31.5 25.4-4.8 11.2-1 25.3 11 25.3h41c12 0 15.8-14.1 11-25.3-6-14-16.8-25.4-31.5-25.4zM11.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6zm23.6-27.2c-6.8 0-12.4 8.5-12.4 18.9S28.4 37.8 35.2 37.8s12.4-8.5 12.4-18.9S42 0 35.2 0zm29.6 0c-6.8 0-12.4 8.5-12.4 18.9s5.6 18.9 12.4 18.9 12.4-8.5 12.4-18.9S71.6 0 64.8 0zm23.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6z"/>
-            </svg>
-            <!-- След 2 (чуть правее и ниже) -->
-            <svg viewBox="0 0 100 100" style="position: absolute; top: 20px; left: 45%; width: 26px; height: 26px; fill: #475569; opacity: 0.18; transform: rotate(35deg);">
-                <path d="M50 39.3c-14.7 0-25.5 11.4-31.5 25.4-4.8 11.2-1 25.3 11 25.3h41c12 0 15.8-14.1 11-25.3-6-14-16.8-25.4-31.5-25.4zM11.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6zm23.6-27.2c-6.8 0-12.4 8.5-12.4 18.9S28.4 37.8 35.2 37.8s12.4-8.5 12.4-18.9S42 0 35.2 0zm29.6 0c-6.8 0-12.4 8.5-12.4 18.9s5.6 18.9 12.4 18.9 12.4-8.5 12.4-18.9S71.6 0 64.8 0zm23.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6z"/>
-            </svg>
-            <!-- След 3 (ближе к центру над заголовком) -->
-            <svg viewBox="0 0 100 100" style="position: absolute; top: 40px; left: 49%; width: 26px; height: 26px; fill: #475569; opacity: 0.25; transform: rotate(20deg);">
-                <path d="M50 39.3c-14.7 0-25.5 11.4-31.5 25.4-4.8 11.2-1 25.3 11 25.3h41c12 0 15.8-14.1 11-25.3-6-14-16.8-25.4-31.5-25.4zM11.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6zm23.6-27.2c-6.8 0-12.4 8.5-12.4 18.9S28.4 37.8 35.2 37.8s12.4-8.5 12.4-18.9S42 0 35.2 0zm29.6 0c-6.8 0-12.4 8.5-12.4 18.9s5.6 18.9 12.4 18.9 12.4-8.5 12.4-18.9S71.6 0 64.8 0zm23.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6z"/>
-            </svg>
-        </div>
-
-        <h2 style="text-align: center; margin-bottom: 50px; font-size: 32px; font-weight: 700; color: #1e293b;">Частые вопросы</h2>
+            </g>
+        </svg>
         
-        <!-- Контейнер аккордеона (Линии выровнены строго по одной оси) -->
-        <div class="faq-container" style="max-width: 800px; width: 100%; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
-            
-            <!-- Вопрос 1 -->
-            <div class="faq-item" style="border-bottom: 1px solid #e2e8f0; padding: 10px 0; width: 100%; box-sizing: border-box;">
-                <button class="faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 10px 0; cursor: pointer;">
-                    <span style="font-weight: 600; font-size: 16px; color: #1e293b; text-align: left;">Можно ли присутствовать во время стрижки?</span>
-                    <span class="faq-icon" style="color: #64748b; font-size: 12px; margin-left: 15px;">▼</span>
+        <!-- Лапка 2 — Поворачивает пальцами круче к центру -->
+        <svg viewBox="0 0 100 100" class="animated-paw" style="position: absolute; top: 270px; left: 45%; margin-left: -490px; width: 64px; height: 64px; fill: #475569; opacity: 0.85; pointer-events: none; z-index: 1; filter: drop-shadow(0 2px 4px rgba(15,23,42,0.04));">
+            <g transform="rotate(55, 50, 50)">
+                <path d="M50 39.3c-14.7 0-25.5 11.4-31.5 25.4-4.8 11.2-1 25.3 11 25.3h41c12 0 15.8-14.1 11-25.3-6-14-16.8-25.4-31.5-25.4zM11.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6zm23.6-27.2c-6.8 0-12.4 8.5-12.4 18.9S28.4 37.8 35.2 37.8s12.4-8.5 12.4-18.9S42 0 35.2 0zm29.6 0c-6.8 0-12.4 8.5-12.4 18.9s5.6 18.9 12.4 18.9 12.4-8.5 12.4-18.9S71.6 0 64.8 0zm23.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6z"/>
+            </g>
+        </svg>
+        
+        <!-- Лапка 3 — Ложится горизонтально слева направо -->
+        <svg viewBox="0 0 100 100" class="animated-paw" style="position: absolute; top: 90px; left: 45%; margin-left: -220px; width: 60px; height: 60px; fill: #475569; opacity: 0.85; pointer-events: none; z-index: 1; filter: drop-shadow(0 2px 4px rgba(15,23,42,0.04));">
+            <g transform="rotate(85, 50, 50)">
+                <path d="M50 39.3c-14.7 0-25.5 11.4-31.5 25.4-4.8 11.2-1 25.3 11 25.3h41c12 0 15.8-14.1 11-25.3-6-14-16.8-25.4-31.5-25.4zM11.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6zm23.6-27.2c-6.8 0-12.4 8.5-12.4 18.9S28.4 37.8 35.2 37.8s12.4-8.5 12.4-18.9S42 0 35.2 0zm29.6 0c-6.8 0-12.4 8.5-12.4 18.9s5.6 18.9 12.4 18.9 12.4-8.5 12.4-18.9S71.6 0 64.8 0zm23.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6z"/>
+            </g>
+        </svg>
+        
+        <!-- Лапка 4 — ИСПРАВЛЕНО: Сместили левее ближе к заголовку и приподняли -->
+        <svg viewBox="0 0 100 100" class="animated-paw" style="position: absolute; top: 110px; left: 45%; margin-left: 360px; width: 68px; height: 68px; fill: #475569; opacity: 0.85; pointer-events: none; z-index: 1; filter: drop-shadow(0 2px 4px rgba(15,23,42,0.04));">
+            <g transform="rotate(125, 50, 50)">
+                <path d="M50 39.3c-14.7 0-25.5 11.4-31.5 25.4-4.8 11.2-1 25.3 11 25.3h41c12 0 15.8-14.1 11-25.3-6-14-16.8-25.4-31.5-25.4zM11.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6zm23.6-27.2c-6.8 0-12.4 8.5-12.4 18.9S28.4 37.8 35.2 37.8s12.4-8.5 12.4-18.9S42 0 35.2 0zm29.6 0c-6.8 0-12.4 8.5-12.4 18.9s5.6 18.9 12.4 18.9 12.4-8.5 12.4-18.9S71.6 0 64.8 0zm23.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6z"/>
+            </g>
+        </svg>
+        
+        <!-- Лапка 5 — ИСПРАВЛЕНО: Отодвинули шире к правому краю монитора и опустили -->
+        <svg viewBox="0 0 100 100" class="animated-paw" style="position: absolute; top: 290px; left: 50%; margin-left: 540px; width: 58px; height: 58px; fill: #475569; opacity: 0.85; pointer-events: none; z-index: 1; filter: drop-shadow(0 2px 4px rgba(15,23,42,0.04));">
+            <g transform="rotate(145, 50, 50)">
+                <path d="M50 39.3c-14.7 0-25.5 11.4-31.5 25.4-4.8 11.2-1 25.3 11 25.3h41c12 0 15.8-14.1 11-25.3-6-14-16.8-25.4-31.5-25.4zM11.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6zm23.6-27.2c-6.8 0-12.4 8.5-12.4 18.9S28.4 37.8 35.2 37.8s12.4-8.5 12.4-18.9S42 0 35.2 0zm29.6 0c-6.8 0-12.4 8.5-12.4 18.9s5.6 18.9 12.4 18.9 12.4-8.5 12.4-18.9S71.6 0 64.8 0zm23.6 27.2c-5.7 0-10.4 7-10.4 15.6s4.7 15.6 10.4 15.6 10.4-7 10.4-15.6-4.7-15.6-10.4-15.6z"/>
+            </g>
+        </svg>
+
+        <h2>Частые вопросы</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Можно ли присутствовать во время стрижки?</span>
+                    <span class="faq-icon">▼</span>
                 </button>
-                <div class="faq-answer" style="padding: 10px 0; width: 100%; box-sizing: border-box;">
-                    <p style="margin: 0; color: #475569; font-size: 15px; line-height: 1.6;">Обычно мы не рекомендуем этого делать. В присутствии хозяина питомцы часто ведут себя более беспокойно, пытаются вырваться и прыгнуть на ручки. Без владельца животное быстрее успокаивается и доверяет мастеру.</p>
+                <div class="faq-answer">
+                    <p>Обычно мы не рекомендуем этого делать. В присутствии хозяина питомцы часто ведут себя более беспокойно, пытаются вырваться и прыгнуть на ручки. Без владельца животное быстрее успокаивается и доверяет мастеру.</p>
                 </div>
             </div>
-
-            <!-- Вопрос 2 -->
-            <div class="faq-item" style="border-bottom: 1px solid #e2e8f0; padding: 10px 0; width: 100%; box-sizing: border-box;">
-                <button class="faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 10px 0; cursor: pointer;">
-                    <span style="font-weight: 600; font-size: 16px; color: #1e293b; text-align: left;">Что делать, если мой питомец агрессивный или очень пугливый?</span>
-                    <span class="faq-icon" style="color: #64748b; font-size: 12px; margin-left: 15px;">▼</span>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Что делать, если мой питомец агрессивный или очень пугливый?</span>
+                    <span class="faq-icon">▼</span>
                 </button>
-                <div class="faq-answer" style="padding: 10px 0; width: 100%; box-sizing: border-box;">
-                    <p style="margin: 0; color: #475569; font-size: 15px; line-height: 1.6;">Наши мастера умеют находить подход к разным характерам без применения жесткой силы и седации. Пожалуйста, предупредите нас об особенностях поведения при записи, чтобы мы заложили чуть больше времени на адаптацию.</p>
+                <div class="faq-answer">
+                    <p>Наши мастера умеют находить подход к разным характерам без применения жесткой силы и седации. Пожалуйста, предупредите нас об особенностях поведения при записи, чтобы мы заложили чуть больше времени на адаптацию.</p>
                 </div>
             </div>
-
-            <!-- Вопрос 3 -->
-            <div class="faq-item" style="border-bottom: 1px solid #e2e8f0; padding: 10px 0; width: 100%; box-sizing: border-box;">
-                <button class="faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 10px 0; cursor: pointer;">
-                    <span style="font-weight: 600; font-size: 16px; color: #1e293b; text-align: left;">Как часто нужно водить собаку на груминг?</span>
-                    <span class="faq-icon" style="color: #64748b; font-size: 12px; margin-left: 15px;">▼</span>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Как часто нужно водить собаку на груминг?</span>
+                    <span class="faq-icon">▼</span>
                 </button>
-                <div class="faq-answer" style="padding: 10px 0; width: 100%; box-sizing: border-box;">
-                    <p style="margin: 0; color: #475569; font-size: 15px; line-height: 1.6;">В среднем — каждые 4–6 недель для длинношерстных пород (йорки, шпицы, мальтезе) для поддержания формы и предотвращения колтунов. Для гладкошерстных собак экспресс-линьку достаточно делать раз в 2–3 месяца.</p>
+                <div class="faq-answer">
+                    <p>В среднем — каждые 4–6 недель для длинношерстных пород (йорки, шпицы, мальтезе) для поддержания формы и предотвращения колтунов. Для глачкошерстных собак экспресс-линьку достаточно делать раз в 2–3 месяца.</p>
                 </div>
             </div>
-
         </div>
     </section>
+</main>
+
+
 
 <!-- 5. ОТЗЫВЫ -->
 <section id="reviews" class="reviews-section">
