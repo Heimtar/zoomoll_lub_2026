@@ -512,7 +512,7 @@ section {
   100% { background-position: 600% 0%; } 
 }
 /* ==========================================================================
-   ПОРТФОЛИО
+   ПОРТФОЛИО (МИНИМАЛИСТИЧНЫЙ СТИЛЬ)
    ========================================================================== */
 .portfolio-section { 
   padding: 60px 20px; 
@@ -552,61 +552,65 @@ section {
   will-change: transform;
 }
 
+/* Карточки теперь не квадратные, а прямоугольные, чтобы снизу поместился текст */
 .portfolio-slide-item { 
   position: relative; 
   flex: 0 0 calc(33.333% - 16px); 
   width: calc(33.333% - 16px); 
   border-radius: 20px; 
   overflow: hidden; 
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06); 
-  aspect-ratio: 1 / 1; 
-  transition: transform 0.4s ease, box-shadow 0.4s ease; 
+  background-color: var(--white);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05); 
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
+.portfolio-slide-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+}
+
+/* Ограничиваем область картинки сверху */
 .portfolio-slide-item img { 
   width: 100%; 
-  height: 100%; 
+  height: 260px; /* Фиксированная высота для фото, остальное под текст */
   object-fit: cover; 
-  transition: transform 0.6s ease; 
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  transition: transform 0.5s ease; 
 }
 
 .portfolio-slide-item:hover img { 
-  transform: scale(1.05); 
+  transform: scale(1.03); 
 }
 
+/* Белая аккуратная текстовая плашка снизу, которая видна ВСЕГДА */
 .portfolio-slide-overlay {
-  position: absolute; 
-  left: 0; 
-  bottom: 0; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: flex-end; 
-  width: 100%; 
-  height: 100%; 
-  padding: 20px; 
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 100%); 
-  opacity: 0; 
-  transform: translateY(10px); 
-  transition: opacity 0.3s ease, transform 0.3s ease; 
-  pointer-events: none;
-}
-
-.portfolio-slide-item:hover .portfolio-slide-overlay { 
-  opacity: 1; 
-  transform: translateY(0); 
+  position: relative; 
+  width: 100%;
+  padding: 16px 20px; 
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .portfolio-slide-overlay h4 { 
-  margin-bottom: 4px; 
-  color: var(--white); 
-  font-size: 18px; 
+  color: var(--text-color); 
+  font-size: 17px; 
+  font-weight: 700;
+  text-align: left;
 }
 
 .portfolio-slide-overlay p { 
-  color: #cbd5e1; 
+  color: #64748b; 
   font-size: 14px; 
+  font-weight: 500;
+  text-align: left;
 }
 
+/* Стрелки навигации */
 .portfolio-arrow { 
   position: absolute; 
   top: 50%; 
@@ -633,6 +637,7 @@ section {
 
 .port-prev { left: -60px; }
 .port-next { right: -60px; }
+
 /* ==========================================================================
    ОТЗЫВЫ
    ========================================================================== */
