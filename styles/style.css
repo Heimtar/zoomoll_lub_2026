@@ -982,103 +982,48 @@ section {
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
 /* ==========================================================================
-   ИНТЕРАКТИВНЫЕ ЛАПКИ (ФИНАЛЬНАЯ КОРРЕКЦИЯ КООРДИНАТ ПО СКРИНШОТУ)
+   ИНТЕРАКТИВНЫЕ ЛАПКИ (БЕЗОШИБОЧНАЯ АНИМАЦИЯ)
    ========================================================================== */
 
 .faq-section {
   position: relative;
   overflow: hidden;
-  /* Добавляем комфортный отступ сверху, чтобы карточки предыдущей секции не прилипали */
-  padding-top: 80px; 
+  padding-top: 100px;
 }
 
-/* Контейнеры для групп лапок */
-.paw-group {
+/* Базовый класс для всех лапок */
+.custom-faq-paw {
   position: absolute;
-  /* Жёстко привязываем к верху секции, чтобы лапки не падали к подвалу */
-  top: 90px;
-  width: 120px;
-  height: 240px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.paw-group-left {
-  left: 45px;
-}
-
-.paw-group-right {
-  right: 45px;
-}
-
-/* Базовый стиль для каждой лапки */
-.paw-item {
-  position: absolute;
-  width: 28px; /* Чуть уменьшили размер, чтобы они выглядели аккуратнее, как на макете */
-  height: 28px;
   fill: var(--primary-color);
   opacity: 0; 
-  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.04));
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 2px 5px rgba(15, 23, 42, 0.05));
+  animation: paw-single-step 5s ease-in-out infinite;
 }
 
-/* --- ИДЕАЛЬНАЯ РАССТАНОВКА ШАГОВ --- */
-
-/* Левая дорожка (Шаги снизу вверх) */
-.paw-1 { 
-  top: 160px; left: 10px; transform: rotate(-25deg) scale(0.8); 
-  animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 0s; 
-}
-.paw-2 { 
-  top: 90px; left: 45px; transform: rotate(10deg) scale(0.95); 
-  animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 0.3s; 
-}
-.paw-3 { 
-  top: 20px; left: 5px; transform: rotate(-15deg) scale(1.1); 
-  animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 0.6s; 
-}
-
-/* Правая дорожка (Шаги сверху вниз) */
-.paw-4 { 
-  top: 20px; right: 5px; transform: rotate(20deg) scale(1.1); 
-  animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 1.2s; 
-}
-.paw-5 { 
-  top: 90px; right: 45px; transform: rotate(-10deg) scale(0.95); 
-  animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 1.5s; 
-}
-.paw-6 { 
-  top: 160px; right: 10px; transform: rotate(35deg) scale(0.8); 
-  animation: paw-single-step 5s ease-in-out infinite;
-  animation-delay: 1.8s; 
-}
-
-/* Анимация одиночного шага */
+/* Стабильная покадровая анимация шагов */
 @keyframes paw-single-step {
   0% {
     opacity: 0;
   }
-  10% {
-    opacity: 1; 
+  12% {
+    opacity: 1; /* Лапка плавно проявляется */
   }
   70% {
-    opacity: 1; 
+    opacity: 1; /* След застывает на листе */
   }
   85% {
-    opacity: 0; 
+    opacity: 0; /* Мягко растворяется */
   }
   100% {
     opacity: 0;
   }
 }
 
-/* Скрываем декор на средних и мобильных экранах */
+/* Скрываем декор на планшетах и мобильных */
 @media (max-width: 1250px) {
-  .paw-group {
+  .custom-faq-paw {
     display: none;
   }
 }
