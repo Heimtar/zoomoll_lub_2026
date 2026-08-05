@@ -831,7 +831,7 @@ section {
 .next-btn:hover { transform: translateY(-50%) translateX(4px); }
 
 .faq-section { 
-  padding: 65px 20px; 
+  padding: 70px 20px; 
   background-color: var(--white); 
   text-align: center; 
   position: relative; 
@@ -839,22 +839,28 @@ section {
 
 .faq-section h2 { 
   margin-bottom: 8px; 
-  font-size: 30px; 
+  font-size: 32px; 
   font-weight: 800;
-  color: #1e293b; 
+  color: #0f172a; 
   letter-spacing: -0.5px;
 }
 
 .faq-container { 
-  max-width: 780px; 
-  margin: 35px auto 0; 
+  max-width: 750px; 
+  margin: 40px auto 0; 
   text-align: left; 
   display: flex;
   flex-direction: column;
   gap: 0; 
-  border-top: 1px solid #e2e8f0; 
+  border-top: 1px dashed #cbd5e1; /* Красивая пунктирная линия сверху */
   position: relative;
   z-index: 5; 
+
+  /* СИЛУЭТ КОСТОЧКИ НА ФОНЕ */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 512 512'%3E%3Cpath fill='%233b82f6' d='M464 256c0-35.3-28.7-64-64-64c-11.2 0-21.7 2.9-30.8 8L142.8 33.1c-14-7.9-31.7-6.2-43.9 4.3L37.4 90.2c-12.1 10.4-16.1 27.2-9.8 41.9L64.2 216c-13.6 12.1-22.2 29.8-22.2 49.6c0 31.9 23.3 58.4 53.7 63.3L63.3 400.3c-6.3 14.7-2.3 31.5 9.8 41.9l61.5 52.8c12.2 10.5 29.9 12.2 43.9 4.3L443.5 329c11.6 6.5 25.1 10.2 39.4 9c31.1-2.7 55-29.2 53.1-60.4c-1.2-19.4-11.2-36-26-46.3c10.4-11.6 16.9-26.9 16.9-43.7c0-2.3-.1-4.6-.4-6.9l-22.4 22.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l22.4-22.4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center center; 
+  background-size: 320px; 
 }
 
 .faq-item { 
@@ -862,28 +868,25 @@ section {
   background-color: transparent; 
   border-radius: 0; 
   border: none;
-  border-bottom: 1px solid #e2e8f0; 
+  border-bottom: 1px dashed #cbd5e1; /* Пунктирные разделители строк */
   overflow: hidden; 
   box-shadow: none;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.25s ease;
 }
 
-.faq-item:hover {
-  background-color: #f8fafc; 
-}
-
+/* Цветная полоска-маркер слева при открытии */
 .faq-item::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 6px; 
+  width: 4px; 
   height: 100%;
   background-image: linear-gradient(180deg, #1e40af 0%, #3b82f6 50%, #5baadc 100%); 
   z-index: 3;
   transform: scaleY(0); 
   transform-origin: center center; 
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
 .faq-item.active::before {
@@ -895,32 +898,41 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 18px 20px 18px 24px; 
+  padding: 24px 10px 24px 16px; 
   background: none; 
   border: none; 
-  color: #334155; 
+  color: #1e293b; 
   font-size: 16px; 
   font-weight: 700; 
   text-align: left; 
   cursor: pointer; 
   gap: 16px;
+  transition: color 0.25s ease;
 }
 
+/* КРУГЛАЯ ПОДЛОЖКА ДЛЯ ЛАПКИ */
 .faq-icon { 
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  background: none;
+  min-width: 34px;
+  height: 34px;
+  background-color: #f1f5f9; /* Исходный нежный цвет кружка */
   border: none;
-  border-radius: 0;
-  color: #94a3b8; 
-  font-size: 11px; 
-  font-weight: 700;
-  box-shadow: none;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+  border-radius: 50%;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); 
 }
+
+/* Стилизация SVG-лапки внутри кружка */
+.faq-icon svg {
+  transition: transform 0.35s ease;
+}
+
+.faq-icon .paw-path {
+  fill: #64748b; /* Серый цвет лапки по умолчанию */
+  transition: fill 0.35s ease;
+}
+
 .faq-answer { 
   max-height: 0; 
   background-color: transparent; 
@@ -929,27 +941,28 @@ section {
 }
 
 .faq-answer p { 
-  padding: 0 20px 18px 24px; 
-  color: #566a7f; 
-  font-size: 14px; 
-  line-height: 1.6;
+  padding: 0 10px 24px 16px; 
+  color: #475569; 
+  font-size: 14.5px; 
+  line-height: 1.7; 
   font-weight: 500;
   border-top: none; 
   opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity 0.25s ease, transform 0.25s ease; 
+  transform: translateY(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease; 
 }
 
+/* СОСТОЯНИЕ КОГДА ВОПРОС ОТКРЫТ */
 .faq-item.active {
   background-color: #f8fafc; 
 }
 
 .faq-item.active .faq-question {
-  color: #334155; 
+  color: #1e40af; /* Текст вопроса становится синим */
 }
 
 .faq-item.active .faq-answer { 
-  max-height: 1000px; /* Запас для любого объема текста на мобильном */
+  max-height: 1000px; 
 }
 
 .faq-item.active .faq-answer p {
@@ -957,8 +970,18 @@ section {
   transform: translateY(0);
 }
 
+/* Поведение элементов иконки при активации */
 .faq-item.active .faq-icon { 
-  transform: rotate(180deg); 
+  background-color: #1e40af; /* Кружок становится синим */
+  transform: rotate(0deg) !important; /* Отменяем переворот кружка вверх ногами из старого JS */
+}
+
+.faq-item.active .faq-icon .paw-path {
+  fill: #ffffff; /* Лапка перекрашивается в белый цвет */
+}
+
+.faq-item.active .faq-icon svg {
+  transform: scale(1.1); /* Лапка слегка увеличивается */
 }
 
 #lightbox-overlay {
