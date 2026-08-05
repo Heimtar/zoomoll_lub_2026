@@ -512,7 +512,7 @@ section {
   100% { background-position: 600% 0%; } 
 }
 /* ==========================================================================
-   ПОРТФОЛИО (ИСПРАВЛЕННЫЙ СТИЛЬ)
+   ПОРТФОЛИО (ФИНАЛЬНЫЙ СТИЛЬ С ФИКСОМ ПРОПОРЦИЙ)
    ========================================================================== */
 .portfolio-section { 
   padding: 60px 20px; 
@@ -563,7 +563,7 @@ section {
   border: 1px solid rgba(15, 23, 42, 0.04);
   display: flex;
   flex-direction: column;
-  height: min-content;
+  height: auto; 
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
@@ -574,9 +574,10 @@ section {
 
 .portfolio-slide-item img { 
   width: 100%; 
+  height: auto;
   aspect-ratio: 4 / 3; 
   object-fit: cover; 
-  object-position: center center;
+  object-position: center 20%; 
   border-bottom: 1px solid rgba(15, 23, 42, 0.04);
   transition: transform 0.5s ease; 
 }
@@ -593,6 +594,9 @@ section {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
 .portfolio-slide-overlay h4 { 
