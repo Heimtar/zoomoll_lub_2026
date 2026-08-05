@@ -33,7 +33,7 @@
             </nav>
             <div class="header-phone">
                 <a href="tel:+79600000307" class="phone-link">
-                    <svg class="phone-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="phone-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
                         <line x1="12" y1="18" x2="12.01" y2="18"></line>
                     </svg>
@@ -45,29 +45,29 @@
 </header>
 
 <main>
-    <!-- 2. ПРОМО-КАРУСЕЛЬ (ТВОИ ОРИГИНАЛЬНЫЕ БАННЕРЫ) -->
-    <section class="promo-carousel-section">
+    <!-- 2. ПРОМО-КАРУСЕЛЬ -->
+    <section class="promo-carousel-section" aria-label="Акционные предложения">
         <div class="promo-container">
             <button class="promo-btn prev-promo" aria-label="Предыдущий слайд">❮</button>
             <button class="promo-btn next-promo" aria-label="Следующий слайд">❯</button>
 
             <div class="promo-track" id="promo-track">
                 <div class="promo-slide slide-mops">
-                    <img src="img/mops.jpg" alt="Стрижка собаки в салоне Зоомол">
+                    <img src="img/mops.jpg" alt="Стрижка собаки в салоне Зоомолл">
                     <div class="new-clean-banner-box box-mops">
                         <h3>Профессиональный уход без стресса</h3>
                     </div>
                 </div>
 
                 <div class="promo-slide slide-bath-dog">
-                    <img src="img/bath-dog.jpg" alt="Мытье собаки в салоне Зоомол">
+                    <img src="img/bath-dog.jpg" alt="Мытье собаки в салоне Зоомолл">
                     <div class="new-clean-banner-box box-bath-dog">
                         <h3>Смываем грязь — оставляем радость!</h3>
                     </div>
                 </div>
                 
                 <div class="promo-slide slide-cat">
-                    <img src="img/fluffy-cat.jpg" alt="Вычесывание кота в салоне Зоомол">
+                    <img src="img/fluffy-cat.jpg" alt="Вычесывание кота в салоне Зоомолл">
                     <div class="new-clean-banner-box box-cat">
                         <h3>Комфорт питомца и чистота в вашем доме</h3>
                     </div>
@@ -84,7 +84,7 @@
                 <!-- Карточка 1: Комплекс -->
                 <div class="service-card">
                     <div class="service-icon-wrap">
-                        <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <circle cx="6" cy="6" r="3"></circle>
                             <circle cx="6" cy="18" r="3"></circle>
                             <line x1="9.8" y1="8.2" x2="21" y2="19"></line>
@@ -99,7 +99,7 @@
                 <!-- Карточка 2: Гигиена -->
                 <div class="service-card">
                     <div class="service-icon-wrap">
-                        <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                             <path d="M9 12l2 2 4-4"></path>
                         </svg>
@@ -112,7 +112,7 @@
                 <!-- Карточка 3: Линька -->
                 <div class="service-card">
                     <div class="service-icon-wrap">
-                        <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="modern-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
                         </svg>
                     </div>
@@ -125,14 +125,15 @@
             <!-- Блок призыва к действию DIKIDI -->
             <div class="dikidi-cta-block">
                 <p class="dikidi-text">
-                    Популярные процедуры для ваших питомцев. Стоимость зависит от породы и размера пушистика. Полный актуальный прайс и онлайн-запись доступны в DIKIDI.
+                    Популярные процедуры для ваших пицомцев. Стоимость зависит от породы и размера пушистика. Полный актуальный прайс и онлайн-запись доступны в DIKIDI.
                 </p>
-                <a href="https://dikidi.net" class="dikidi-btn" target="_blank" rel="noopener">
+                <a href="https://dikidi.net" class="dikidi-btn" target="_blank" rel="noopener noreferrer">
                     <span>Записаться</span>
                 </a>
             </div>
         </div>
     </section>
+
     <!-- 4. ГАЛЕРЕЯ РАБОТ -->
     <section id="portfolio" class="portfolio-section">
         <h2 class="section-title">Наши работы</h2>
@@ -145,7 +146,7 @@
             <div class="portfolio-track-wrapper">
                 <div class="portfolio-track" id="portfolio-track">
 
-                    <!-- Карточка 1 (Йорк, рисунок сзади) -->
+                    <!-- Карточка 1 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/1XXXL.webp" alt="Груминг йоркширского терьера">
                         <div class="portfolio-slide-overlay">
@@ -154,7 +155,7 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 2 (Кошка с горой пуха) -->
+                    <!-- Карточка 2 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/13XXXL.webp" alt="Экспресс-линька сиамской кошки">
                         <div class="portfolio-slide-overlay">
@@ -163,7 +164,7 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 3 (Круглый рыжий шпиц) -->
+                    <!-- Карточка 3 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/3XXXL.webp" alt="Груминг померанского шпица">
                         <div class="portfolio-slide-overlay">
@@ -172,7 +173,7 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 4 (Хаски на столе) -->
+                    <!-- Карточка 4 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/11XXXL.webp" alt="Экспресс-линька сибирской хаски">
                         <div class="portfolio-slide-overlay">
@@ -181,7 +182,7 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 5 (Черный пушистый шпиц) -->
+                    <!-- Карточка 5 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/4XXXL.webp" alt="Экспресс-линька черного шпица">
                         <div class="portfolio-slide-overlay">
@@ -190,7 +191,7 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 6 (Пятнистый черно-белый шпиц) -->
+                    <!-- Карточка 6 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/7XXXL.webp" alt="Груминг шпица пати-колор">
                         <div class="portfolio-slide-overlay">
@@ -199,7 +200,7 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 7 (Серая кошка со сложенными ушками) -->
+                    <!-- Карточка 7 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/2XXXL.webp" alt="Экспресс-линька шотландской вислоухой кошки">
                         <div class="portfolio-slide-overlay">
@@ -208,16 +209,16 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 8 (Белый пушистый шпиц) -->
+                    <!-- Карточка 8 -->
                     <div class="portfolio-slide-item">
-                        <img src="img/works/5XXXL.webp" alt="Груминг белого шпица">
+                        <img src="img/works/5XXXL.webp" alt="Груминг бевого шпица">
                         <div class="portfolio-slide-overlay">
                             <h4>Немецкий шпиц</h4>
                             <p>Комплексный уход</p>
                         </div>
                     </div>
 
-                    <!-- Карточка 9 (Бигль на петле) -->
+                    <!-- Карточка 9 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/12XXXL.webp" alt="Гигиенический уход за биглем">
                         <div class="portfolio-slide-overlay">
@@ -226,7 +227,7 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 10 (Белый терьер с круглой головой) -->
+                    <!-- Карточка 10 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/6XXXL.webp" alt="Стрижка вест-хайленд-уайт-терьера">
                         <div class="portfolio-slide-overlay">
@@ -235,7 +236,7 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 11 (Йорк с длинной юбочкой и хвостиком) -->
+                    <!-- Карточка 11 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/10XXXL.webp" alt="Породный груминг йоркширского терьера">
                         <div class="portfolio-slide-overlay">
@@ -244,7 +245,7 @@
                         </div>
                     </div>
 
-                    <!-- Карточка 12 (Серо-рыжая собака с пухом на столе) -->
+                    <!-- Карточка 12 -->
                     <div class="portfolio-slide-item">
                         <img src="img/works/8XXXL.webp" alt="Экспресс-линька метиса">
                         <div class="portfolio-slide-overlay">
@@ -272,15 +273,15 @@
                             <span class="review-stars">★★★★★</span>
                         </div>
                         <p class="review-text">«Отличный салон, ходим с кошечкой уже 4 год, приветливый персонал. Девчонки любят свою работу и питомцев. Рекомендую однозначно 👍»</p>
-                        <a href="https://yandex.ru" target="_blank" rel="noopener">Читать на Яндекс Картах →</a>
+                        <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer">Читать на Яндекс Картах →</a>
                     </div>
                     <div class="review-card">
                         <div class="review-header">
                             <span class="review-author">Олеся Литвинцева</span>
                             <span class="review-stars">★★★★★</span>
                         </div>
-                        <p class="review-text">«Ходетское место! И девушки - профессионалы своего дела! Не страшно доверить самое дорогое 🙏»</p>
-                        <a href="https://yandex.ru" target="_blank" rel="noopener">Читать на Яндекс Картах →</a>
+                        <p class="review-text">«Хорошее место! И девушки - профессионалы своего дела! Не страшно доверить самое дорогое 🙏»</p>
+                        <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer">Читать на Яндекс Картах →</a>
                     </div>
                     <div class="review-card">
                         <div class="review-header">
@@ -288,7 +289,7 @@
                             <span class="review-stars">★★★★★</span>
                         </div>
                         <p class="review-text">«Не первый раз уже обращаемся за подстрижкой в Зоомол. Нам очень нравится как подстригают , быстро и красиво. Всегда уточняют как стричь. Еще не раз обратимся туда.»</p>
-                        <a href="https://yandex.ru" target="_blank" rel="noopener">Читать на Яндекс Картах →</a>
+                        <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer">Читать на Яндекс Картах →</a>
                     </div>
                     <div class="review-card">
                         <div class="review-header">
@@ -296,7 +297,7 @@
                             <span class="review-stars">★★★★★</span>
                         </div>
                         <p class="review-text">«Нам очень понравилось. И оказанная услуга и отношение. Спасибо, мы обязательно вернёмся ещё.»</p>
-                        <a href="https://yandex.ru" target="_blank" rel="noopener">Читать на Яндекс Картах →</a>
+                        <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer">Читать на Яндекс Картах →</a>
                     </div>
                     <div class="review-card">
                         <div class="review-header">
@@ -304,7 +305,7 @@
                             <span class="review-stars">★★★★★</span>
                         </div>
                         <p class="review-text">«Ходим уже 3 раз и все в лучшем виде! Очень приятная и позитивная атмосфера, работают добрые и счастливые люди. Стригут отлично. Не сомневайтесь , попробуйте, вам понравится. Шпиц Эля.»</p>
-                        <a href="https://yandex.ru" target="_blank" rel="noopener">Читать на Яндекс Картах →</a>
+                        <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer">Читать на Яндекс Картах →</a>
                     </div>
                     <div class="review-card">
                         <div class="review-header">
@@ -312,7 +313,7 @@
                             <span class="review-stars">★★★★★</span>
                         </div>
                         <p class="review-text">«Ходим уже не первый раз на модельную стрижку с йорком. Так же посещали салон несколько раз с мейнкуном. Все очень нравится, доброжелательный персонал. Большое спасибо груммеру Яне за красотку Рокси🌸»</p>
-                        <a href="https://yandex.ru" target="_blank" rel="noopener">Читать на Яндекс Картах →</a>
+                        <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer">Читать на Яндекс Картах →</a>
                     </div>
                 </div>
             </div>
