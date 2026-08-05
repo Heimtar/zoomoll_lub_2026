@@ -786,30 +786,45 @@ section {
 .prev-btn { margin-right: 15px; }
 .next-btn { margin-left: 15px; }
 /* ==========================================================================
-   FAQ ACCORDION & FOOTER
+   АККОРДЕОН ВОПРОСОВ (СТИЛЬ КРЕАТИВНОЙ СТУДИИ — АСИММЕТРИЯ)
    ========================================================================== */
 .faq-section { 
-  padding: 60px 20px; 
+  padding: 85px 20px; 
   background-color: var(--white); 
   text-align: center; 
 }
 
 .faq-section h2 { 
-  margin-bottom: 40px; 
+  margin-bottom: 12px; 
   font-size: 34px; 
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
 }
 
 .faq-container { 
-  max-width: 800px; 
-  margin: 0 auto; 
+  max-width: 850px; 
+  margin: 45px auto 0; 
   text-align: left; 
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
 }
 
+/* Карточки с левой скрытой неоновой границей */
 .faq-item { 
-  margin-bottom: 15px; 
-  background-color: var(--bg-color); 
+  position: relative;
+  background-color: #f8fafc; 
   border-radius: 12px; 
   overflow: hidden; 
+  border-left: 0 solid var(--primary-color); /* Изначально граница скрыта */
+  transition: border-left-width 0.25s ease, background-color 0.3s ease;
+}
+
+/* При наведении выезжает стильный цветной маркер слева */
+.faq-item:hover {
+  background-color: #f1f7fc; 
+  border-left: 6px solid var(--primary-color); /* Выезжающий неоновый акцент */
 }
 
 .faq-question { 
@@ -817,84 +832,82 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 20px; 
+  padding: 24px 28px; 
   background: none; 
   border: none; 
-  color: var(--text-color); 
+  color: var(--text-dark); 
   font-size: 18px; 
-  font-weight: 600; 
+  font-weight: 700; 
   text-align: left; 
   cursor: pointer; 
+  gap: 20px;
 }
 
+/* Минималистичный маркер-уголок */
 .faq-icon { 
-  color: var(--primary-color); 
-  font-size: 22px; 
-  transition: transform 0.3s ease; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8; 
+  font-size: 14px; 
+  font-weight: 700;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease; 
 }
 
+.faq-item:hover .faq-icon {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+/* Контейнер ответа */
 .faq-answer { 
   max-height: 0; 
-  background-color: var(--white); 
+  background-color: transparent; 
   overflow: hidden; 
-  transition: max-height 0.3s ease-out; 
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
 .faq-answer p { 
-  padding: 20px; 
-  color: #555; 
+  padding: 0 28px 24px 28px; 
+  color: #566a7f; 
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s; 
+}
+
+/* ==========================================
+   СОСТОЯНИЕ ПРИ КЛИКЕ
+   ========================================== */
+.faq-item.active {
+  background-color: #f1f7fc;
+  border-left: 6px solid var(--primary-color); /* Закрепляем маркер у открытого вопроса */
 }
 
 .faq-item.active .faq-answer { 
-  max-height: 300px; 
+  max-height: 350px; 
 }
 
+.faq-item.active .faq-answer p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Уголок изящно разворачивается */
 .faq-item.active .faq-icon { 
-  transform: rotate(45deg); 
+  transform: rotate(180deg); 
+  color: var(--primary-color);
 }
 
-.footer { 
-  padding: 40px 20px; 
-  background-color: var(--text-color); 
-  color: var(--white); 
-  text-align: center; 
-  font-size: 14px; 
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .faq-section { padding: 60px 15px; }
+  .faq-question { padding: 20px; font-size: 16px; }
+  .faq-answer p { padding: 0 20px 20px 20px; font-size: 14px; }
 }
 
-.footer p { 
-  margin-bottom: 8px; 
-}
-
-.to-top-button { 
-  position: fixed; 
-  bottom: 30px; 
-  right: 30px; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  width: 50px; 
-  height: 50px; 
-  background-color: var(--primary-color); 
-  border-radius: 50%; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
-  z-index: 99; 
-  opacity: 0; 
-  visibility: hidden; 
-  transform: translateY(20px); 
-  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease; 
-}
-
-.to-top-button.show { 
-  opacity: 1; 
-  visibility: visible; 
-  transform: translateY(0); 
-}
-
-.to-top-button svg { 
-  width: 24px; 
-  height: 24px; 
-  color: var(--white); 
-}
 /* ==========================================================================
    ОКНО ПРОСМОТРА (LIGHTBOX)
    ========================================================================== */
