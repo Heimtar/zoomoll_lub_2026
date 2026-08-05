@@ -861,57 +861,56 @@ section {
 }
 
 /* ==========================================================================
-   АККОРДЕОН ВОПРОСОВ (СИНЙ ГРАДИЕНТ — СТРОГАЯ ПРЯМАЯ С ФИКСОМ УГЛОВ)
+   АККОРДЕОН ВОПРОСОВ (КОМПАКТНЫЙ ПРЕМИУМ СТИЛЬ)
    ========================================================================== */
 .faq-section { 
-  padding: 85px 20px; 
+  padding: 65px 20px; /* Уменьшили отступы всей секции сверху и снизу */
   background-color: var(--white); 
   text-align: center; 
 }
 
 .faq-section h2 { 
-  margin-bottom: 12px; 
-  font-size: 34px; 
+  margin-bottom: 8px; 
+  font-size: 30px; /* Сделали заголовок чуть компактнее */
   font-weight: 800;
   color: var(--text-dark);
   letter-spacing: -0.5px;
 }
 
 .faq-container { 
-  max-width: 850px; 
-  margin: 45px auto 0; 
+  max-width: 780px; /* Слегка сузили контейнер для лучшей читаемости */
+  margin: 35px auto 0; 
   text-align: left; 
   display: flex;
   flex-direction: column;
-  gap: 18px; 
+  gap: 12px; /* Прижали карточки друг к другу поплотнее */
 }
 
-/* Объемные карточки вопросов */
+/* Компактные объемные карточки */
 .faq-item { 
   position: relative;
   background-color: #f8fafc; 
-  border-radius: 16px; 
-  overflow: hidden; /* ИСПРАВЛЕНО: Срезает синие острые углы, которые вылезали наружу */
-  box-shadow: inset 0 1px 0 0 var(--white), 0 10px 25px -15px rgba(15, 23, 42, 0.08);
+  border-radius: 12px; /* Чуть уменьшили скругление для строгости */
+  overflow: hidden; 
+  box-shadow: inset 0 1px 0 0 var(--white), 0 6px 16px -10px rgba(15, 23, 42, 0.06);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Прямая градиентная линия */
+/* Тонкая и аккуратная градиентная линия */
 .faq-item::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 6px; 
+  width: 4px; /* Сделали линию тоньше и изящнее */
   height: 100%;
   background-image: linear-gradient(180deg, #1e40af 0%, #3b82f6 50%, #5baadc 100%); 
   z-index: 2;
 }
 
-/* Легкий отклик всей карточки при наведении мыши */
 .faq-item:hover {
   background-color: #f5f9fc; 
-  box-shadow: inset 0 1px 0 0 var(--white), 0 15px 30px -12px rgba(15, 23, 42, 0.12);
+  box-shadow: inset 0 1px 0 0 var(--white), 0 10px 20px -12px rgba(15, 23, 42, 0.1);
 }
 
 .faq-question { 
@@ -919,23 +918,29 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 24px 28px 24px 34px; 
+  padding: 16px 24px 16px 28px; /* Уменьшили высоту: плашки станут заметно тоньше */
   background: none; 
   border: none; 
   color: var(--text-dark); 
-  font-size: 18px; 
+  font-size: 16px; /* Снизили размер шрифта вопроса до аккуратного стандарта */
   font-weight: 700; 
   text-align: left; 
   cursor: pointer; 
-  gap: 20px;
+  gap: 16px;
+  transition: color 0.3s ease;
 }
 
+.faq-item:hover .faq-question {
+  color: var(--primary-hover);
+}
+
+/* Изящный маленький маркер */
 .faq-icon { 
   display: flex;
   align-items: center;
   justify-content: center;
   color: #94a3b8; 
-  font-size: 14px; 
+  font-size: 11px; /* Сделали стрелочку меньше */
   font-weight: 700;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease; 
 }
@@ -944,7 +949,7 @@ section {
   color: var(--primary-color);
 }
 
-/* Контейнер ответа с чистым белым фоном */
+/* Контейнер ответа */
 .faq-answer { 
   max-height: 0; 
   background-color: var(--white); 
@@ -952,12 +957,12 @@ section {
   transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
-/* Текст ответа отделен аккуратной пунктирной линией */
+/* Текст ответа */
 .faq-answer p { 
-  padding: 24px 28px 24px 34px; 
+  padding: 16px 24px 16px 28px; /* Сжали внутренние отступы ответа */
   color: #566a7f; 
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 14px; /* Шрифт ответа сделали аккуратным и не громоздким */
+  line-height: 1.6;
   font-weight: 500;
   border-top: 1px dashed #e2e8f0; 
   opacity: 0;
@@ -968,11 +973,15 @@ section {
 /* СОСТОЯНИЕ ПРИ КЛИКЕ (ОТКРЫТО) */
 .faq-item.active {
   background-color: #f1f7fc;
-  box-shadow: inset 0 1px 0 0 var(--white), 0 20px 40px -15px rgba(15, 23, 42, 0.1);
+  box-shadow: inset 0 1px 0 0 var(--white), 0 12px 25px -12px rgba(15, 23, 42, 0.08);
+}
+
+.faq-item.active .faq-question {
+  color: var(--primary-color);
 }
 
 .faq-item.active .faq-answer { 
-  max-height: 350px; 
+  max-height: 250px; /* Уменьшили лимит высоты под аккуратный текст */
 }
 
 .faq-item.active .faq-answer p {
@@ -980,17 +989,17 @@ section {
   transform: translateY(0);
 }
 
-/* Плавный разворот стрелочки наверх */
 .faq-item.active .faq-icon { 
   transform: rotate(180deg); 
   color: var(--primary-color);
 }
 
-/* Адаптивность для мобильных */
+/* Мобильная адаптивность */
 @media (max-width: 768px) {
-  .faq-section { padding: 60px 15px; }
-  .faq-question { padding: 20px; font-size: 16px; }
-  .faq-answer p { padding: 20px; font-size: 14px; }
+  .faq-section { padding: 50px 15px; }
+  .faq-section h2 { font-size: 24px; }
+  .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; }
+  .faq-answer p { padding: 14px 16px 14px 20px; font-size: 13px; }
 }
 
 /* ==========================================================================
