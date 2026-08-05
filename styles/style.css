@@ -981,56 +981,72 @@ section {
   .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; color: #334155; }
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
-/* --- КОРРЕКЦИЯ КООРДИНАТ И ГАБАРИТОВ ПОД ФИНАЛЬНЫЙ СТАТУС --- */
+/* ==========================================================================
+   ДЕКОРАТИВНЫЕ ЛАПКИ (ЧИСТЫЙ СТАТИЧНЫЙ ВАРИАНТ)
+   ========================================================================== */
 
-/* Круг 1: Самый низ слева — немного вернули к центру, чтобы не липла к краю монитора */
-.paw-1 { 
-  top: 400px; 
-  margin-left: -630px; /* Было -680px, аккуратно сместили ближе к контенту */
-  width: 58px;   
-  height: 58px;
-  animation: paw-walk-up-1 7s ease-in-out infinite;
-  animation-delay: 0s; 
+.faq-section {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 80px 0;
 }
 
-/* Круг 2: Средняя позиция слева — оставляем на идеальном месте */
+/* Базовый стиль статичной лапки */
+.static-paw, .custom-faq-paw {
+  position: absolute;
+  display: block;
+  margin: 0;
+  padding: 0;
+  fill: var(--primary-color);
+  opacity: 0.85; /* Сделали их постоянно видимыми и мягкими */
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.04));
+  left: 50%; 
+}
+
+/* --- ИДЕАЛЬНЫЕ ИТОГОВЫЕ МЕСТА И РАЗМЕРЫ ПО ТВОЕМУ МАКЕТУ --- */
+
+.paw-1 { 
+  top: 400px; 
+  margin-left: -630px; 
+  width: 58px;   
+  height: 58px;
+}
+
 .paw-2 { 
   top: 260px; 
   margin-left: -580px; 
   width: 68px;   
   height: 68px;
-  animation: paw-walk-up-2 7s ease-in-out infinite;
-  animation-delay: 0.4s; 
 }
 
-/* Круг 3: Выше слева, обнимает заголовок — оставляем */
 .paw-3 { 
   top: 130px;  
   margin-left: -420px; 
   width: 60px;   
   height: 60px;
-  animation: paw-walk-up-3 7s ease-in-out infinite;
-  animation-delay: 0.8s; 
 }
 
-/* Круг 4: Переход направо — сделали лапку крупнее для идеального визуального баланса */
 .paw-4 { 
   top: 120px;  
   margin-left: 360px; 
-  width: 68px;   /* Увеличили с 62px до 68px, как на схеме */
+  width: 68px;   
   height: 68px;
-  animation: paw-walk-up-4 7s ease-in-out infinite;
-  animation-delay: 1.2s; 
 }
 
-/* Круг 5: Справа внизу — сидит идеально по дуге */
 .paw-5 { 
   top: 290px; 
   margin-left: 550px; 
   width: 58px;   
   height: 58px;
-  animation: paw-walk-up-5 7s ease-in-out infinite;
-  animation-delay: 1.6s; 
+}
+
+/* Скрываем декор на средних и мобильных экранах */
+@media (max-width: 1250px) {
+  .static-paw, .custom-faq-paw {
+    display: none;
+  }
 }
 
 /* ==========================================================================
