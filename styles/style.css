@@ -981,129 +981,56 @@ section {
   .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; color: #334155; }
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
-/* ==========================================================================
-   ИНТЕРАКТИВНЫЕ ЛАПКИ (ЧИСТЫЕ КООРДИНАТЫ И МАСШТАБ СТРОГО ПО МАКЕТУ)
-   ========================================================================== */
+/* --- КОРРЕКЦИЯ КООРДИНАТ И ГАБАРИТОВ ПОД ФИНАЛЬНЫЙ СТАТУС --- */
 
-.faq-section {
-  position: relative;
-  overflow: hidden;
-  padding: 100px 0 80px 0;
-}
-
-/* Базовый стиль одиночной лапки */
-.paw-item {
-  position: absolute;
-  display: block;
-  margin: 0;
-  padding: 0;
-  fill: var(--primary-color);
-  opacity: 0; 
-  pointer-events: none;
-  z-index: 1;
-  filter: drop-shadow(0 2px 5px rgba(15, 23, 42, 0.05));
-  left: 50%; 
-}
-
-/* --- РАЗБРОС И ГАБАРИТЫ КАЖДОЙ ОДИНОЧНОЙ ЛАПКИ ПО СХЕМЕ --- */
-
-/* Круг 1: Самый низ слева, крупная лапка у края страницы */
+/* Круг 1: Самый низ слева — немного вернули к центру, чтобы не липла к краю монитора */
 .paw-1 { 
-  top: 360px; 
-  margin-left: -580px; 
+  top: 400px; 
+  margin-left: -630px; /* Было -680px, аккуратно сместили ближе к контенту */
   width: 58px;   
   height: 58px;
   animation: paw-walk-up-1 7s ease-in-out infinite;
   animation-delay: 0s; 
 }
 
-/* Круг 2: Выше по дуге, заметно крупнее остальных */
+/* Круг 2: Средняя позиция слева — оставляем на идеальном месте */
 .paw-2 { 
-  top: 240px; 
-  margin-left: -510px; 
+  top: 260px; 
+  margin-left: -580px; 
   width: 68px;   
   height: 68px;
   animation: paw-walk-up-2 7s ease-in-out infinite;
   animation-delay: 0.4s; 
 }
 
-/* Круг 3: Возле заголовка «Частые вопросы» слева */
+/* Круг 3: Выше слева, обнимает заголовок — оставляем */
 .paw-3 { 
-  top: 150px;  
-  margin-left: -390px; 
-  width: 56px;   
-  height: 56px;
+  top: 130px;  
+  margin-left: -420px; 
+  width: 60px;   
+  height: 60px;
   animation: paw-walk-up-3 7s ease-in-out infinite;
   animation-delay: 0.8s; 
 }
 
-/* Круг 4: Возле заголовка «Частые вопросы» справа */
+/* Круг 4: Переход направо — сделали лапку крупнее для идеального визуального баланса */
 .paw-4 { 
-  top: 140px;  
+  top: 120px;  
   margin-left: 360px; 
-  width: 58px;   
-  height: 58px;
+  width: 68px;   /* Увеличили с 62px до 68px, как на схеме */
+  height: 68px;
   animation: paw-walk-up-4 7s ease-in-out infinite;
   animation-delay: 1.2s; 
 }
 
-/* Круг 5: Справа внизу, уходит шире к краю страницы */
+/* Круг 5: Справа внизу — сидит идеально по дуге */
 .paw-5 { 
-  top: 260px; 
-  margin-left: 480px; 
-  width: 56px;   
-  height: 56px;
+  top: 290px; 
+  margin-left: 550px; 
+  width: 58px;   
+  height: 58px;
   animation: paw-walk-up-5 7s ease-in-out infinite;
   animation-delay: 1.6s; 
-}
-
-/* --- ИНДИВИДУАЛЬНЫЕ АНИМАЦИИ ШАГОВ (ДВИЖЕНИЕ БЕЗ СБОЕВ ТРАНСФОРМАЦИИ) --- */
-
-@keyframes paw-walk-up-1 {
-  0% { opacity: 0; top: 375px; }
-  8% { opacity: 1; top: 360px; }
-  75% { opacity: 1; top: 360px; }
-  92% { opacity: 0; top: 355px; }
-  100% { opacity: 0; }
-}
-
-@keyframes paw-walk-up-2 {
-  0% { opacity: 0; top: 255px; }
-  8% { opacity: 1; top: 240px; }
-  75% { opacity: 1; top: 240px; }
-  92% { opacity: 0; top: 235px; }
-  100% { opacity: 0; }
-}
-
-@keyframes paw-walk-up-3 {
-  0% { opacity: 0; top: 165px; }
-  8% { opacity: 1; top: 150px; }
-  75% { opacity: 1; top: 150px; }
-  92% { opacity: 0; top: 145px; }
-  100% { opacity: 0; }
-}
-
-@keyframes paw-walk-up-4 {
-  0% { opacity: 0; top: 155px; }
-  8% { opacity: 1; top: 140px; }
-  75% { opacity: 1; top: 140px; }
-  92% { opacity: 0; top: 135px; }
-  100% { opacity: 0; }
-}
-
-@keyframes paw-walk-up-5 {
-  0% { opacity: 0; top: 275px; }
-  8% { opacity: 1; top: 260px; }
-  75% { opacity: 1; top: 260px; }
-  92% { opacity: 0; top: 255px; }
-  100% { opacity: 0; }
-}
-
-/* Скрываем декор на средних и мобильных экранах */
-@media (max-width: 1250px) {
-  .paw-item {
-    display: none;
-  }
 }
 
 /* ==========================================================================
