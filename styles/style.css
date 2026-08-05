@@ -982,7 +982,7 @@ section {
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
 /* ==========================================================================
-   ИНТЕРАКТИВНЫЕ ЛАПКИ (ФИНАЛЬНЫЕ КОРРЕКТНЫЕ КООРДИНАТЫ И МАСШТАБ)
+   ИНТЕРАКТИВНЫЕ ЛАПКИ (ПООЧЕРЕДНЫЙ СПУРТ С 1 ПО 5 КРУГ ИЗ PAINT)
    ========================================================================== */
 
 .faq-section {
@@ -1001,79 +1001,79 @@ section {
   opacity: 0; 
   pointer-events: none;
   z-index: 1;
-  filter: drop-shadow(0 3px 6px rgba(15, 23, 42, 0.06));
-  left: 50%; /* Жесткая привязка к центру */
-  animation: paw-walk-up 7s ease-in-out infinite; 
+  filter: drop-shadow(0 2px 5px rgba(15, 23, 42, 0.05));
+  left: 50%; /* Центрируем точку отсчёта, чтобы вёрстка никогда не съезжала */
+  animation: paw-walk-up 7s ease-in-out infinite; /* Растянули цикл для долгого застывания всей дорожки */
 }
 
-/* --- ВЫРАВНИВАНИЕ И УВЕЛИЧЕНИЕ ПО СКРИНШОТУ --- */
+/* --- ПОШТУЧНЫЕ КЛАССЫ: КООРДИНАТЫ И РАЗМЕРЫ ПО ТВОИМ КРУГАМ --- */
 
-/* Круг 1: Самый низ слева, крупная лапка дальше к краю */
+/* Круг 1: Самый низ слева, средний размер */
 .paw-1 { 
-  top: 360px; 
-  margin-left: -580px; /* Раздвинули шире влево */
-  width: 54px;   
-  height: 54px;
+  top: 365px; 
+  margin-left: -530px; 
+  width: 44px;   
+  height: 44px;
   transform: rotate(-35deg); 
-  animation-delay: 0s; 
+  animation-delay: 0s; /* Начинает движение */
 }
 
-/* Круг 2: Средняя позиция слева, очень крупная лапка */
+/* Круг 2: Средняя позиция слева, крупная лапка */
 .paw-2 { 
-  top: 240px; 
-  margin-left: -520px; /* Сдвинули левее */
-  width: 64px;   
-  height: 64px;
+  top: 250px; 
+  margin-left: -480px; 
+  width: 52px;   
+  height: 52px;
   transform: rotate(-15deg); 
-  animation-delay: 0.4s; 
+  animation-delay: 0.4s; /* Появляется второй */
 }
 
-/* Круг 3: Выше слева, ближе к заголовку */
+/* Круг 3: Чуть выше и ближе к центру, средний размер */
 .paw-3 { 
-  top: 150px;  
-  margin-left: -400px; /* Встает аккуратно слева от заголовка */
-  width: 56px;   
-  height: 56px;
+  top: 170px;  
+  margin-left: -380px; 
+  width: 44px;   
+  height: 44px;
   transform: rotate(10deg); 
-  animation-delay: 0.8s; 
+  animation-delay: 0.8s; /* Появляется третьей */
 }
 
 /* Круг 4: Справа вверху, крупная лапка */
 .paw-4 { 
-  top: 130px;  
-  margin-left: 360px; /* Встает аккуратно справа от заголовка */
-  width: 60px;   
-  height: 60px;
+  top: 140px;  
+  margin-left: 310px; 
+  width: 50px;   
+  height: 50px;
   transform: rotate(25deg); 
-  animation-delay: 1.2s; 
+  animation-delay: 1.2s; /* Появляется четвертой */
 }
 
-/* Круг 5: Ниже справа, уходит к краю экрана */
+/* Круг 5: Правее и ниже, средний размер */
 .paw-5 { 
-  top: 260px; 
-  margin-left: 480px; /* Раздвинули шире вправо */
-  width: 54px;   
-  height: 54px;
+  top: 270px; 
+  margin-left: 410px; 
+  width: 44px;   
+  height: 44px;
   transform: rotate(45deg); 
-  animation-delay: 1.6s; 
+  animation-delay: 1.6s; /* Завершает цепочку шагов */
 }
 
-/* Анимация поочередных шагов */
+/* 🐾 ОПТИМИЗИРОВАННАЯ АНИМАЦИЯ: Лапка наступает, долго стоит на месте и медленно тает */
 @keyframes paw-walk-up {
   0% {
     opacity: 0;
-    margin-top: 15px; 
+    margin-top: 15px; /* Эффект толчка из глубины */
   }
   8% {
-    opacity: 1; 
+    opacity: 1; /* Мягко наступила на лист */
     margin-top: 0; 
   }
   75% {
-    opacity: 1; 
+    opacity: 1; /* Дорожка полностью собралась и держится на экране, пока человек читает */
     margin-top: 0; 
   }
   92% {
-    opacity: 0; 
+    opacity: 0; /* Медленно и плавно тает, как песок */
     margin-top: -5px; 
   }
   100% {
@@ -1081,12 +1081,13 @@ section {
   }
 }
 
-/* Скрываем декор на средних и мобильных экранах */
+/* Прячем декор на средних и мобильных экранах, чтобы не портить читаемость вопросов */
 @media (max-width: 1250px) {
   .paw-item {
     display: none;
   }
 }
+
 
 /* ==========================================================================
    ОКНО ПРОСМОТРА (LIGHTBOX)
