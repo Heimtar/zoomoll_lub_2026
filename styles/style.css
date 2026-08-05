@@ -21,7 +21,7 @@ body {
   -webkit-font-smoothing: antialiased; 
 }
 
-/* Фикс, чтобы контент не прокручивался под мобильным меню */
+/* Фикс, чтобы контент страницы не прокручивался под открытым мобильным меню */
 body.lock-scroll {
   overflow: hidden;
 }
@@ -32,7 +32,7 @@ h1, h2, h3, h4, button, a, input, textarea {
   text-decoration: none; 
 }
 
-/* Отступ сверху, чтобы фиксированная шапка не перекрывала заголовки секций при скролле */
+/* Отступ сверху, чтобы фиксированная шапка при клике на меню не перекрывала заголовки */
 section {
   scroll-margin-top: 90px;
 }
@@ -153,7 +153,7 @@ section {
 }
 
 .phone-link:hover {
-  background: #6faad0; 
+  background: #6baadc; 
   box-shadow: 0 6px 16px rgba(111, 170, 208, 0.3); 
   transform: translateY(-2px);
 }
@@ -173,52 +173,160 @@ section {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
-  height: 21px;
+  width: 28px;
+  height: 20px;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 102;
+  z-index: 105;
 }
 
 .menu-toggle span {
   width: 100%;
   height: 3px;
   background-color: var(--text-color);
-  border-radius: 10px;
-  transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.menu-toggle.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.menu-toggle.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
 .menu-toggle.open span:nth-child(2) { opacity: 0; }
-.menu-toggle.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 /* ==========================================================================
-   ПРОМО-КАРУСЕЛЬ (БАННЕРЫ)
+   ПРОМО-КАРУСЕЛЬ (ТВОИ ОРИГИНАЛЬНЫЕ БАННЕРЫ)
    ========================================================================== */
-.promo-carousel-section { padding: 0 20px; margin-bottom: 40px; margin-top: 20px; }
-.promo-container { width: 100%; max-width: 1200px; margin: 0 auto; overflow: hidden; border-radius: 16px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06); position: relative; }
+.promo-carousel-section { 
+  padding: 0 5%; 
+  margin-bottom: 30px; 
+}
+
+.promo-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
 .promo-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
 .promo-slide { min-width: 100%; width: 100%; position: relative; flex-shrink: 0; }
-.promo-slide img { width: 100%; height: 480px; object-fit: cover; display: block; }
+
+.promo-slide img {
+  width: 100%;
+  height: 480px; 
+  object-fit: cover; 
+  display: block;
+}
 
 .slide-mops img { object-position: center 22%; }
 .slide-cat img { object-position: center 65%; }
+.slide-bath-dog img { object-position: center center; }
 
 .promo-btn {
-  position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; background-color: rgba(255, 255, 255, 0.7); border: none; border-radius: 50%; color: #333; font-size: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.3s ease; 
+  position: absolute;       
+  top: 50%;                 
+  transform: translateY(-50%); 
+  width: 50px;              
+  height: 50px;             
+  background-color: rgba(255, 255, 255, 0.7); 
+  border: none;             
+  border-radius: 50%;       
+  color: #333;              
+  font-size: 24px;          
+  display: flex;            
+  align-items: center;
+  justify-content: center;  
+  cursor: pointer;          
+  z-index: 10;              
+  transition: all 0.3s ease; 
 }
+
 .prev-promo { left: 20px; }
 .next-promo { right: 20px; }
 .promo-btn:hover { background-color: rgba(255, 255, 255, 1); transform: translateY(-50%) scale(1.1); }
 
 .new-clean-banner-box {
-  position: absolute; z-index: 5; max-width: 540px; padding: 20px; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px); border-radius: 12px; left: 60px; top: 50%; transform: translateY(-50%); 
+  position: absolute;
+  z-index: 5;
+  max-width: 540px;            
+  padding: 0; 
+  background: transparent;     
+  border: none;                
+  box-shadow: none;            
+  left: 60px;                  
+  top: 50%;                    
+  transform: translateY(-50%); 
 }
-.new-clean-banner-box h3 { color: #ffffff; font-size: 32px; font-weight: 900; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.3); text-align: left; }
 
-.box-mops { left: 60px; top: 50%; transform: translateY(-50%); }
-.box-bath-dog { right: 60px; left: auto; top: 50%; transform: translateY(-50%); }
-.box-cat { left: 60px; top: 50%; transform: translateY(-50%); }
+.new-clean-banner-box h3 {
+  color: #ffffff;           
+  font-size: 32px;                     
+  font-weight: 900;                      
+  line-height: 1.2;         
+  letter-spacing: -0.5px;   
+  margin: 0 0 14px 0;          
+  padding: 0;    
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.7); 
+  text-align: left;            
+}
+
+.new-clean-banner-box p {
+  color: #ffffff;              
+  font-size: 16px;                       
+  font-weight: 700;                      
+  line-height: 1.45;        
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.7); 
+  text-align: left;            
+}
+
+.box-mops {
+  left: 220px;
+  top: 60px;             
+  bottom: auto;
+  right: auto;
+  transform: none;         
+}
+
+.box-bath-dog {
+  right: 60px;
+  left: auto;
+  top: 50%; 
+  bottom: auto;
+  transform: translateY(-50%);
+  text-align: center;         
+}
+
+.box-cat {
+  left: 60px;              
+  right: auto;             
+  top: 40px;               
+  bottom: auto;
+  transform: none;         
+  text-align: center;         
+  max-width: 620px;        
+}
+
+.box-cat p {
+  font-size: 13px;         
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.box-mops h3, .box-bath-dog h3, .box-cat h3 {
+  color: #ffffff;           
+  font-size: 32px;          
+  font-weight: 900;          
+  line-height: 1.2;         
+  letter-spacing: -0.5px;   
+  margin: 0; 
+  padding: 0;    
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.5); 
+  text-align: center;          
+}
 /* ==========================================================================
    СЕКЦИЯ УСЛУГ
    ========================================================================== */
@@ -298,7 +406,7 @@ section {
 .next-btn { margin-left: 15px; }
 
 /* ==========================================================================
-   FAQ ACCORDION, FOOTER И КНОПКА НАВЕРХ
+   FAQ ACCORDION & FOOTER
    ========================================================================== */
 .faq-section { padding: 60px 20px; text-align: center; background-color: var(--white); }
 .faq-section h2 { font-size: 34px; margin-bottom: 40px; }
@@ -318,26 +426,23 @@ section {
 .to-top-button.show { opacity: 1; visibility: visible; transform: translateY(0); }
 .to-top-button svg { width: 24px; height: 24px; color: var(--white); }
 /* ==========================================================================
-   ИНТЕРАКТИВНОЕ ОКНО LIGHTBOX (ПОЛНОЭКРАННЫЙ РЕЖИМ)
+   КРИТИЧЕСКАЯ АДАПТАЦИЯ (НОУТБУКИ И ПЛАНШЕТЫ)
    ========================================================================== */
-#lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(10, 15, 30, 0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-#lightbox-overlay.active { opacity: 1; pointer-events: auto; }
-.lightbox-content { position: relative; max-width: 75%; max-height: 80vh; transform: scale(0.95); transition: transform 0.3s ease; }
-#lightbox-overlay.active .lightbox-content { transform: scale(1); }
-.lightbox-content img { max-width: 100%; max-height: 80vh; border-radius: 20px; display: block; }
-.lightbox-close { position: absolute; top: -50px; right: 10px; color: rgba(255, 255, 255, 0.7); font-size: 46px; cursor: pointer; }
-.lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; font-size: 24px; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10000; }
-.lightbox-prev { left: 40px; }
-.lightbox-next { right: 40px; }
 
-/* ==========================================================================
-   КРИТИЧЕСКАЯ АДАПТАЦИЯ (ПЛАНШЕТЫ)
-   ========================================================================== */
+/* БРЕЙКПОИНТ: Ноутбуки и большие планшеты (до 1260px) */
+@media (max-width: 1260px) {
+  .portfolio-slider-container { padding: 0 60px; }
+  .port-prev { left: 5px; }
+  .port-next { right: 5px; }
+}
+
+/* БРЕЙКПОИНТ: Средние планшеты (до 1024px) */
 @media (max-width: 1024px) {
-  .port-prev { left: 10px; }
-  .port-next { right: 10px; }
+  .portfolio-slider-container { padding: 0 55px; }
+  .port-prev { left: 2px; }
+  .port-next { right: 2px; }
   
-  /* Слайдер портфолио перестраивается на 2 карточки */
+  /* Слайдер портфолио перестраивается строго на 2 карточки в ряд */
   .portfolio-track {
     transform: translateX(calc(var(--current-index, 0) * -1 * (100% / 2 + 12px)));
   }
@@ -346,43 +451,41 @@ section {
     width: calc(50% - 12px);
   }
   
-  /* Карусель отзывов перестраивается на 2 карточки */
+  /* Карусель отзывов перестраивается на 2 карточки в ряд */
   .review-card {
     min-width: calc(50% - 10px);
   }
 }
-/* ==========================================================================
-   КРИТИЧЕСКАЯ АДАПТАЦИЯ (ТЕЛЕФОНЫ И СМАРТФОНЫ)
-   ========================================================================== */
+/* БРЕЙКПОИНТ: Смартфоны и мобильные устройства (до 768px) */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: flex; /* Активируем кнопку бургера */
+    display: flex; /* Показываем бургер */
   }
 
-  /* Трансформируем навигацию в скрытую шторку */
+  /* Перестраиваем навигацию в аккуратную выезжающую панель */
   .nav-container {
     position: fixed;
     top: 0;
-    right: -100%; /* Убираем вправо за экран */
-    width: 280px;
+    right: -100%; /* Прячем шторку за правый край */
+    width: 290px;
     height: 100vh;
     background-color: var(--white);
     flex-direction: column;
     align-items: flex-start;
-    padding: 100px 30px;
-    gap: 30px;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
-    transition: right 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    padding: 100px 35px;
+    gap: 35px;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.08);
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 101;
   }
 
   .nav-container.open {
-    right: 0; /* Выкатываем шторку меню */
+    right: 0; /* Выкатываем меню при клике */
   }
 
   .site-header .nav {
     flex-direction: column;
-    gap: 24px;
+    gap: 26px;
     width: 100%;
   }
 
@@ -391,51 +494,48 @@ section {
     display: block;
   }
 
-  /* Промо-баннеры на мобильных */
+  /* Адаптируем твои оригинальные промо-баннеры под тач-экраны */
   .promo-slide img {
-    height: 340px;
+    height: 360px; /* Уменьшаем высоту картинок на телефонах */
   }
 
   .new-clean-banner-box {
-    left: 20px;
-    right: 20px;
-    max-width: none;
-    background: rgba(15, 23, 42, 0.6);
+    left: 20px !important;
+    right: 20px !important;
+    max-width: none !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
   }
 
   .new-clean-banner-box h3 {
-    font-size: 22px;
-    text-align: center;
+    font-size: 24px !important;
+    text-align: center !important;
   }
 
-  /* Масштабируем заголовки секций */
+  /* Масштабируем заголовки всех секций */
   .services .section-title, 
   .portfolio-section .section-title, 
   .reviews-section h2, 
   .faq-section h2 {
     font-size: 26px;
   }
-
-  /* Адаптив полноэкранного Lightbox */
-  .lightbox-content { max-width: 90%; }
-  .lightbox-arrow { width: 45px; height: 45px; font-size: 18px; }
-  .lightbox-prev { left: 15px; }
-  .lightbox-next { right: 15px; }
-  .lightbox-close { top: -45px; right: 0; }
 }
 
-/* ==========================================================================
-   МАЛЕНЬКИЕ СМАРТФОНЫ (до 500px)
-   ========================================================================== */
+/* БРЕЙКПОИНТ: Маленькие телефоны (до 500px) */
 @media (max-width: 500px) {
+  .portfolio-slider-container { padding: 0 45px; }
+  .port-prev { left: 0; }
+  .port-next { right: 0; }
+  .portfolio-track-wrapper { overflow-x: hidden; }
+
   .promo-slide img {
-    height: 260px;
+    height: 280px;
   }
   .new-clean-banner-box h3 {
-    font-size: 18px;
+    font-size: 18px !important;
   }
   
-  /* Портфолио перестраивается в 1 колонку */
+  /* Портфолио скроллится строго по 1 карточке */
   .portfolio-track {
     transform: translateX(calc(var(--current-index, 0) * -1 * 100%));
   }
@@ -444,12 +544,12 @@ section {
     width: 100%;
   }
 
-  /* Отзывы перестраиваются в 1 колонку */
+  /* Отзывы встают по 1 карточке в ряд */
   .review-card {
     min-width: 100%;
   }
   
-  /* Прячем стрелки слайдеров на мелких экранах ради контента */
+  /* На мелких экранах прячем стрелки, чтобы не перекрывали контент */
   .carousel-btn, .portfolio-arrow {
     display: none;
   }
@@ -457,6 +557,6 @@ section {
   .dikidi-btn {
     padding: 14px 30px;
     font-size: 16px;
-    width: 100%; /* Растягиваем кнопку на всю ширину */
+    width: 100%; /* Растягиваем кнопку на всю ширину экрана смартфона */
   }
 }
