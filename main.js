@@ -11,21 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Вспомогательная функция для безопасного управления блокировкой скролла.
- * Предотвращает баг, когда закрытие одного элемента разблокирует скролл для другого.
- */
-const updateScrollLock = () => {
-  const isMenuOpen = document.querySelector('.nav-container.open');
-  const isLightboxOpen = document.querySelector('#lightbox-overlay.active');
-  
-  if (isMenuOpen || isLightboxOpen) {
-    document.body.classList.add('lock-scroll');
-  } else {
-    document.body.classList.remove('lock-scroll');
-  }
-};
-
-/**
  * Мобильное бургер-меню
  */
 function initMobileMenu() {
@@ -36,10 +21,10 @@ function initMobileMenu() {
   if (!menuToggle || !navContainer) return;
 
   const toggleMenu = () => {
-    const isOpen = navContainer.classList.toggle('open');
-    menuToggle.classList.toggle('open', isOpen);
+    const isOpen = menuToggle.classList.toggle('open');
+    navContainer.classList.toggle('open');
+    document.body.classList.toggle('lock-scroll');
     menuToggle.setAttribute('aria-expanded', isOpen);
-    updateScrollLock();
   };
 
   menuToggle.addEventListener('click', toggleMenu);
@@ -52,6 +37,7 @@ function initMobileMenu() {
     });
   });
 }
+
 /**
  * Эффекты скролла страницы (Шапка сайта и кнопка "Наверх")
  */
@@ -119,8 +105,9 @@ function initPortfolioSlider() {
   let currentIndex = 0;
 
   const getVisibleSlidesCount = () => {
-    if (window.matchMedia("(max-width: 500px)").matches) return 1;
-    if (window.matchMedia("(max-width: 1024px)").matches) return 2;
+    const width = window.innerWidth;
+    if (width <= 500) return 1;
+    if (width <= 1024) return 2;
     return 3;
   };
 
@@ -166,31 +153,31 @@ function initReviewsSlider() {
   let autoPlayTimer = null; 
 
   const getVisibleCount = () => {
-    if (window.matchMedia("(max-width: 500px)").matches) return 1;
-    if (window.matchMedia("(max-width: 1024px)").matches) return 2;
+    const width = window.innerWidth;
+    if (width <= 500) return 1;
+    if (width <= 1024) return 2;
     return 3;
   };
 
-  const updateReviewPosition = () => {
-    const maxIndex = track.children.length - getVisibleCount();
-    if (index > maxIndex) index = maxIndex;
-    if (index < 0) index = 0;
-    track.style.setProperty('--current-review-index', index);
+  const getSlideWidth = () => {
+    const card = track.querySelector(".review-card"); 
+    return card ? card.getBoundingClientRect().width + 20 : 0; 
   };
 
   const moveNext = () => {
     const maxIndex = track.children.length - getVisibleCount(); 
     index = index < maxIndex ? index + 1 : 0;
-    updateReviewPosition();
+    track.style.transform = `translateX(-${index * getSlideWidth()}px)`;
   };
+
   const movePrev = () => {
     const maxIndex = track.children.length - getVisibleCount();
     index = index > 0 ? index - 1 : maxIndex;
-    updateReviewPosition();
+    track.style.transform = `translateX(-${index * getSlideWidth()}px)`;
   };
 
   const startAutoPlay = () => { 
-    if (!window.matchMedia("(max-width: 500px)").matches) {
+    if (window.innerWidth > 500) {
       clearInterval(autoPlayTimer);
       autoPlayTimer = setInterval(moveNext, 4000); 
     }
@@ -206,14 +193,13 @@ function initReviewsSlider() {
   }
   
   window.addEventListener("resize", () => {
-    updateReviewPosition();
+    index = 0;
+    track.style.transform = `translateX(0px)`;
     startAutoPlay();
   });
   
-  updateReviewPosition();
   startAutoPlay();
 }
-
 /**
  * Аккордеон часто задаваемых вопросов (FAQ)
  */
@@ -274,13 +260,13 @@ function initLightbox() {
       
       updateLightboxImage(index);
       lightboxOverlay.classList.add('active');
-      updateScrollLock();
+      document.body.classList.add('lock-scroll');
     });
   });
 
   const closeLightbox = () => {
     lightboxOverlay.classList.remove('active');
-    updateScrollLock();
+    document.body.classList.remove('lock-scroll');
   };
 
   closeBtn.addEventListener('click', closeLightbox);
