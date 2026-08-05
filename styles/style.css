@@ -786,7 +786,7 @@ section {
 .prev-btn { margin-right: 15px; }
 .next-btn { margin-left: 15px; }
 /* ==========================================================================
-   АККОРДЕОН ВОПРОСОВ (СТИЛЬ КРЕАТИВНОЙ СТУДИИ — АСИММЕТРИЯ)
+   АККОРДЕОН ВОПРОСОВ (НЕОНОВЫЙ RGB-СПЛИТ)
    ========================================================================== */
 .faq-section { 
   padding: 85px 20px; 
@@ -808,23 +808,53 @@ section {
   text-align: left; 
   display: flex;
   flex-direction: column;
-  gap: 16px; 
+  gap: 18px; 
 }
 
-/* Карточки с левой скрытой неоновой границей */
+/* Карточки с подготовленным местом под неоновый маркер */
 .faq-item { 
   position: relative;
   background-color: #f8fafc; 
-  border-radius: 12px; 
+  border-radius: 16px; 
   overflow: hidden; 
-  border-left: 0 solid var(--primary-color); /* Изначально граница скрыта */
-  transition: border-left-width 0.25s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* При наведении выезжает стильный цветной маркер слева */
+/* 🌈 ЖИВОЙ RGB-МАРКЕР (Выезжает слева и бесконечно переливается) */
+.faq-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px; /* Ширина цветной линии */
+  height: 100%;
+  /* Наш фирменный RGB-градиент с кнопки записи */
+  background-image: linear-gradient(180deg, #ff007f, #7928ca, #00dfd8, #0070f3, #ff007f); 
+  background-size: 100% 600%; 
+  transform: translateX(-6px); /* Изначально прячем маркер левее карточки */
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+/* Запускаем движение градиента только при ховере или когда блок открыт */
+.faq-item:hover::before,
+.faq-item.active::before {
+  transform: translateX(0); /* Маркер плавно выезжает вбок */
+  animation: faq-rgb-movement 8s linear infinite; /* Плавное переливание цветов */
+}
+
+/* Анимация движения неоновых цветов */
+@keyframes faq-rgb-movement { 
+  0% { background-position: 0% 0%; } 
+  100% { background-position: 0% 600%; } 
+}
+
+/* Эффекты всей карточки при наведении */
 .faq-item:hover {
-  background-color: #f1f7fc; 
-  border-left: 6px solid var(--primary-color); /* Выезжающий неоновый акцент */
+  background-color: #f5f9fc; 
+  box-shadow: 0 12px 24px -10px rgba(15, 23, 42, 0.06);
+  transform: translateY(-1px);
 }
 
 .faq-question { 
@@ -832,7 +862,7 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 24px 28px; 
+  padding: 24px 28px 24px 34px; /* Чуть увеличили отступ слева, чтобы текст не лип к маркеру */
   background: none; 
   border: none; 
   color: var(--text-dark); 
@@ -843,7 +873,6 @@ section {
   gap: 20px;
 }
 
-/* Минималистичный маркер-уголок */
 .faq-icon { 
   display: flex;
   align-items: center;
@@ -855,35 +884,36 @@ section {
 }
 
 .faq-item:hover .faq-icon {
-  color: var(--primary-color);
-  transform: scale(1.1);
+  color: #7928ca; /* Подсвечиваем стрелочку фиолетовым из градиента */
 }
 
-/* Контейнер ответа */
+/* Контейнер ответа с чистым белым контрастным фоном */
 .faq-answer { 
   max-height: 0; 
-  background-color: transparent; 
+  background-color: var(--white); 
   overflow: hidden; 
   transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
+/* Текст ответа отделен аккуратным разделителем */
 .faq-answer p { 
-  padding: 0 28px 24px 28px; 
+  padding: 24px 28px 24px 34px; 
   color: #566a7f; 
   font-size: 15px;
   line-height: 1.7;
   font-weight: 500;
+  border-top: 1px dashed #e2e8f0; 
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s; 
 }
 
-/* ==========================================
-   СОСТОЯНИЕ ПРИ КЛИКЕ
-   ========================================== */
+/* ==========================================================================
+   СОСТОЯНИЕ ПРИ КЛИКЕ (АКТИВНОЕ)
+   ========================================================================== */
 .faq-item.active {
   background-color: #f1f7fc;
-  border-left: 6px solid var(--primary-color); /* Закрепляем маркер у открытого вопроса */
+  box-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.08);
 }
 
 .faq-item.active .faq-answer { 
@@ -895,17 +925,17 @@ section {
   transform: translateY(0);
 }
 
-/* Уголок изящно разворачивается */
+/* Изящный разворот стрелочки */
 .faq-item.active .faq-icon { 
   transform: rotate(180deg); 
-  color: var(--primary-color);
+  color: #7928ca;
 }
 
-/* Адаптивность для мобильных */
+/* Мобильная адаптация */
 @media (max-width: 768px) {
   .faq-section { padding: 60px 15px; }
-  .faq-question { padding: 20px; font-size: 16px; }
-  .faq-answer p { padding: 0 20px 20px 20px; font-size: 14px; }
+  .faq-question { padding: 20px 20px 20px 25px; font-size: 16px; }
+  .faq-answer p { padding: 20px 20px 20px 25px; font-size: 14px; }
 }
 
 /* ==========================================================================
