@@ -263,19 +263,22 @@
     </section>
 
               <!-- 6. FAQ (КОМПАКТНЫЙ АККОРДЕОН С МОДНЫМ ФОНОМ) -->
-    <!-- ИСПРАВЛЕНО: Уменьшили padding с 140px до 80px, чтобы блок не был таким огромным -->
     <section id="faq" class="faq-section" style="position: relative; padding: 80px 0 90px 0; background-color: #ffffff; box-sizing: border-box; overflow: hidden;">
         
-        <!-- МЯГКАЯ ЖИВАЯ АБСТРАКЦИЯ НА ФОНЕ (ИСПРАВЛЕНО: Приподняли повыше, прямо под заголовок) -->
-        <div style="position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); width: 750px; height: 450px; pointer-events: none; z-index: 1; opacity: 0.04;">
-            <svg viewBox="0 0 200 200" xmlns="http://w3.org" style="width: 100%; height: 100%; fill: #475569;">
-                <path d="M44.7,-76.3C57.4,-69.1,66.8,-55.4,74.5,-40.8C82.1,-26.2,88,-10.7,86.9,4.4C85.8,19.5,77.7,34.2,68,46.5C58.3,58.8,47,68.7,33.7,74.7C20.5,80.7,5.2,82.8,-10.1,80.6C-25.4,78.3,-40.7,71.7,-53.4,61.9C-66.1,52.2,-76.3,39.3,-82.1,24.6C-87.9,9.8,-89.3,-6.9,-84.9,-22.2C-80.4,-37.5,-70.1,-51.4,-57.1,-58.8C-44.1,-66.1,-28.4,-67,-13.2,-71.5C2,-76.1,17.2,-84.3,32,-83.5C36.8,-83.2,40.8,-80.8,44.7,-76.3Z" transform="translate(100, 100)" />
-            </svg>
-        </div>
+        <!-- Заголовок секции (Фоновая капля теперь внутри него и зафиксирована в px) -->
+        <div style="text-align: center; margin-bottom: 45px; position: relative; width: 100%;">
+            
+            <!-- МЯГКАЯ ЖИВАЯ АБСТРАКЦИЯ — теперь она никогда не съедет при кликах! -->
+            <div style="position: absolute; top: 25px; left: 50%; transform: translate(-50%, -50%); width: 750px; height: 450px; pointer-events: none; z-index: 1; opacity: 0.04;">
+                <svg viewBox="0 0 200 200" xmlns="http://w3.org" style="width: 100%; height: 100%; fill: #475569;">
+                    <path d="M44.7,-76.3C57.4,-69.1,66.8,-55.4,74.5,-40.8C82.1,-26.2,88,-10.7,86.9,4.4C85.8,19.5,77.7,34.2,68,46.5C58.3,58.8,47,68.7,33.7,74.7C20.5,80.7,5.2,82.8,-10.1,80.6C-25.4,78.3,-40.7,71.7,-53.4,61.9C-66.1,52.2,-76.3,39.3,-82.1,24.6C-87.9,9.8,-89.3,-6.9,-84.9,-22.2C-80.4,-37.5,-70.1,-51.4,-57.1,-58.8C-44.1,-66.1,-28.4,-67,-13.2,-71.5C2,-76.1,17.2,-84.3,32,-83.5C36.8,-83.2,40.8,-80.8,44.7,-76.3Z" transform="translate(100, 100)" />
+                </svg>
+            </div>
 
-        <h2 style="text-align: center; margin-bottom: 45px; font-size: 32px; font-weight: 700; color: #1e293b; position: relative; z-index: 2; margin-top: 0;">Частые вопросы</h2>
+            <h2 style="margin: 0; font-size: 32px; font-weight: 700; color: #1e293b; position: relative; z-index: 2;">Частые вопросы</h2>
+        </div>
         
-        <!-- Контейнер аккордеона (ИСПРАВЛЕНО: Уменьшили max-width с 800px до 680px, чтобы сузить пространство) -->
+        <!-- Контейнер аккордеона -->
         <div class="faq-container" style="max-width: 680px; width: 100%; margin: 0 auto; padding: 0 20px; box-sizing: border-box; position: relative; z-index: 2;">
             
             <!-- Вопрос 1 -->
@@ -284,7 +287,8 @@
                     <span style="font-weight: 600; font-size: 16px; color: #1e293b; text-align: left; line-height: 1.4;">Можно ли присутствовать во время стрижки?</span>
                     <span class="faq-icon" style="color: #64748b; font-size: 11px; margin-left: 15px;">▼</span>
                 </button>
-                <div class="faq-answer" style="padding: 5px 0 12px 0; width: 100%; box-sizing: border-box;">
+                <!-- ИСПРАВЛЕНО: Добавлен padding-left: 20px, чтобы отодвинуть текст от синей полосы -->
+                <div class="faq-answer" style="padding: 5px 0 12px 20px; width: 100%; box-sizing: border-box;">
                     <p style="margin: 0; color: #475569; font-size: 15px; line-height: 1.6;">Обычно мы не рекомендуем этого делать. В присутствии хозяина питомцы часто ведут себя более беспокойно, пытаются вырваться и прыгнуть на ручки. Без владельца животное быстрее успокаивается и доверяет мастеру.</p>
                 </div>
             </div>
@@ -295,7 +299,8 @@
                     <span style="font-weight: 600; font-size: 16px; color: #1e293b; text-align: left; line-height: 1.4;">Что делать, если мой питомец агрессивный или очень пугливый?</span>
                     <span class="faq-icon" style="color: #64748b; font-size: 11px; margin-left: 15px;">▼</span>
                 </button>
-                <div class="faq-answer" style="padding: 5px 0 12px 0; width: 100%; box-sizing: border-box;">
+                <!-- ИСПРАВЛЕНО: Добавлен padding-left: 20px -->
+                <div class="faq-answer" style="padding: 5px 0 12px 20px; width: 100%; box-sizing: border-box;">
                     <p style="margin: 0; color: #475569; font-size: 15px; line-height: 1.6;">Наши мастера умеют находить подход к разным характерам без применения жесткой силы и седации. Пожалуйста, предупредите нас об особенностях поведения при записи, чтобы мы заложили чуть больше времени на адаптацию.</p>
                 </div>
             </div>
@@ -306,7 +311,8 @@
                     <span style="font-weight: 600; font-size: 16px; color: #1e293b; text-align: left; line-height: 1.4;">Как часто нужно водить собаку на груминг?</span>
                     <span class="faq-icon" style="color: #64748b; font-size: 11px; margin-left: 15px;">▼</span>
                 </button>
-                <div class="faq-answer" style="padding: 5px 0 12px 0; width: 100%; box-sizing: border-box;">
+                <!-- ИСПРАВЛЕНО: Добавлен padding-left: 20px -->
+                <div class="faq-answer" style="padding: 5px 0 12px 20px; width: 100%; box-sizing: border-box;">
                     <p style="margin: 0; color: #475569; font-size: 15px; line-height: 1.6;">В среднем — каждые 4–6 недель для длинношерстных пород (йорки, шпицы, мальтезе) для поддержания формы и предотвращения колтунов. Для глачкошерстных собак экспресс-линьку достаточно делать раз в 2–3 месяца.</p>
                 </div>
             </div>
