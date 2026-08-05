@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initPromoSlider();
   initReviewsSlider();
   initFaqAccordion();
-  initPortfolioSlider(); /* ИЗОЛИРОВАНО: Работает автономно */
-  initLightbox();        /* ИЗОЛИРОВАНО: Не мешает стрелкам слайдера */
+  initPortfolioSlider(); /* ИСПРАВЛЕНО: Устойчив к уменьшению масштаба страницы */
+  initLightbox();        /* Полноэкранный просмотр картинок */
 });
 
 /**
@@ -67,58 +67,60 @@ function initPromoSlider() {
 }
 
 /**
- * Изящная горизонтальная лента «Наши работы»
+ * Изящная горизонтальная лента «Наши работы» (Идеально работает при любом масштабе)
  */
 function initPortfolioSlider() {
-  const portfolioTrack = document.getElementById("portfolio-track");
-  const prevPortfolioBtn = document.querySelector(".port-prev");
-  const nextPortfolioBtn = document.querySelector(".port-next");
-  if (!portfolioTrack || portfolioTrack.children.length === 0) return;
+  const track = document.getElementById("portfolio-track");
+  const prevBtn = document.querySelector(".port-prev");
+  const nextBtn = document.querySelector(".port-next");
+  if (!track || track.children.length === 0) return;
 
-  let portfolioIndex = 0;
+  let currentIndex = 0;
 
-  const getVisibleCount = () => {
-    const w = window.innerWidth;
-    if (w <= 650) return 1;
-    if (w <= 1024) return 2;
+  const getVisibleSlidesCount = () => {
+    const width = window.innerWidth;
+    if (width <= 650) return 1;
+    if (width <= 1024) return 2;
     return 3;
   };
 
-  const updateSlider = () => {
-    const firstSlide = portfolioTrack.querySelector(".portfolio-slide-item");
-    if (!firstSlide) return;
+  const updateSliderPosition = () => {
+    const slide = track.querySelector(".portfolio-slide-item");
+    if (!slide) return;
 
-    const sWidth = firstSlide.getBoundingClientRect().width;
-    const sGap = parseFloat(window.getComputedStyle(portfolioTrack).gap) || 0; 
-    const maxIdx = portfolioTrack.children.length - getVisibleCount();
+    // Считываем точные дробные пиксели кадра, чтобы масштаб не ломал математику
+    const slideWidth = slide.getBoundingClientRect().width;
+    const gap = parseFloat(window.getComputedStyle(track).gap) || 0; 
+    const maxIndex = track.children.length - getVisibleSlidesCount();
 
-    if (portfolioIndex > maxIdx) portfolioIndex = maxIdx;
-    if (portfolioIndex < 0) portfolioIndex = 0;
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    if (currentIndex < 0) currentIndex = 0;
     
-    const translateValue = portfolioIndex * (sWidth + sGap);
-    portfolioTrack.style.transform = `translateX(-${translateValue}px)`;
+    // Идеально точный сдвиг, устойчивый к Ctrl - и Ctrl +
+    const totalTranslate = currentIndex * (slideWidth + gap);
+    track.style.transform = `translateX(-${totalTranslate}px)`;
   };
 
-  if (nextPortfolioBtn) {
-    nextPortfolioBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Защита от авто-открытия Lightbox
-      const maxIdx = portfolioTrack.children.length - getVisibleCount();
-      portfolioIndex = portfolioIndex < maxIdx ? portfolioIndex + 1 : 0; 
-      updateSlider();
+  if (nextBtn) {
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const maxIndex = track.children.length - getVisibleSlidesCount();
+      currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0; 
+      updateSliderPosition();
     });
   }
 
-  if (prevPortfolioBtn) {
-    prevPortfolioBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Защита от авто-открытия Lightbox
-      const maxIdx = portfolioTrack.children.length - getVisibleCount();
-      portfolioIndex = portfolioIndex > 0 ? portfolioIndex - 1 : maxIdx; 
-      updateSlider();
+  if (prevBtn) {
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const maxIndex = track.children.length - getVisibleSlidesCount();
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex; 
+      updateSliderPosition();
     });
   }
 
-  window.addEventListener("resize", updateSlider);
-  setTimeout(updateSlider, 100); 
+  window.addEventListener("resize", updateSliderPosition);
+  setTimeout(updateSliderPosition, 100); 
 }
 
 /**

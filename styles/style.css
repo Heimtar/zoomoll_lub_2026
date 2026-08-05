@@ -682,17 +682,36 @@ h1, h2, h3, h4, button, a, input, textarea {
   }
 }
 
-/* Адаптивность для мобильных телефонов (по 1 карточке) */
+/* Исправленная мобильная адаптивность: возвращаем управление кнопкам */
 @media (max-width: 650px) {
-  .portfolio-slider-container { padding: 0; }
+  .portfolio-slider-container { 
+    padding: 0 45px; /* Оставляем аккуратные отступы для стрелочек по бокам */
+  }
   .portfolio-slide-item {
-    flex: 0 0 100%;
+    flex: 0 0 100%; /* На телефонах карточка занимает всю ширину окна просмотра */
     width: 100%;
   }
-  .portfolio-arrow { display: none; }
-  .portfolio-track-wrapper { overflow-x: auto; scroll-snap-type: x mandatory; }
-  .portfolio-slide-item { scroll-snap-align: start; }
+  .portfolio-arrow { 
+    display: flex; /* НЕ прячем стрелки на мобильных, они нам нужны! */
+    width: 40px;   /* Делаем их чуть компактнее для экранов телефонов */
+    height: 40px;
+    font-size: 14px;
+  }
+  .port-prev { left: 0; }
+  .port-next { right: 0; }
+  
+  .portfolio-track-wrapper { 
+    overflow-x: hidden; /* ИСПРАВЛЕНО: Отключаем конфликтный мобильный скролл */
+  }
 }
+
+/* Отрезок для планшетов (тоже оставляем стрелки рабочими) */
+@media (max-width: 1024px) {
+  .portfolio-slider-container { padding: 0 55px; }
+  .port-prev { left: 2px; }
+  .port-next { right: 2px; }
+}
+
 
 
 /* ==========================================================================
