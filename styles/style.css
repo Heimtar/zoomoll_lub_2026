@@ -982,20 +982,20 @@ section {
   .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
 }
 /* ==========================================================================
-   ИНТЕРАКТИВНЫЕ ЛАПКИ (ТОЧНАЯ НАСТРОЙКА ВЫСОТЫ И РАЗМЕРОВ)
+   ИНТЕРАКТИВНЫЕ ЛАПКИ (ВЫРАВНИВАНИЕ СТРОГО ПО СКРИНШОТУ МАКЕТА)
    ========================================================================== */
 
 .faq-section {
   position: relative;
   overflow: hidden;
-  padding-top: 100px; /* Увеличили отступ сверху для воздуха */
+  padding-top: 100px;
 }
 
 /* Базовый стиль для одиночной лапки */
 .paw-item {
   position: absolute;
-  width: 44px;   /* Сделали лапки крупными и отчётливыми */
-  height: 44px;
+  width: 42px;   /* Крупный, отчетливый размер как на картинке */
+  height: 42px;
   fill: var(--primary-color);
   opacity: 0; 
   pointer-events: none;
@@ -1003,55 +1003,55 @@ section {
   filter: drop-shadow(0 2px 5px rgba(15, 23, 42, 0.05));
 }
 
-/* --- ТОЧНЫЕ КООРДИНАТЫ ШАГОВ (Высота настроена под вопросы) --- */
+/* --- ЛЕВАЯ ДОРОЖКА (Шагает снизу вверх, обнимая заголовок) --- */
 
-/* Левая дорожка (Шагает снизу вверх) */
 .paw-1 { 
-  top: 360px; /* Напротив третьего вопроса */
-  left: 45px; 
-  transform: rotate(-25deg) scale(0.85); 
+  top: 240px; /* Нижняя левая лапка на уровне 2-го вопроса */
+  left: 80px; 
+  transform: rotate(-25deg) scale(0.9); 
   animation: paw-single-step 5s ease-in-out infinite;
   animation-delay: 0s; 
 }
 .paw-2 { 
-  top: 260px; /* Напротив второго вопроса */
-  left: 100px; 
-  transform: rotate(10deg) scale(1.0); 
+  top: 150px; /* Средняя левая лапка между заголовком и 1-м вопросом */
+  left: 140px; 
+  transform: rotate(10deg) scale(1.1); 
   animation: paw-single-step 5s ease-in-out infinite;
   animation-delay: 0.3s; 
 }
 .paw-3 { 
-  top: 160px; /* Напротив первого вопроса */
-  left: 40px; 
-  transform: rotate(-15deg) scale(1.2); 
+  top: 60px;  /* Верхняя левая лапка строго на уровне заголовка */
+  left: 50px; 
+  transform: rotate(-15deg) scale(1.3); 
   animation: paw-single-step 5s ease-in-out infinite;
   animation-delay: 0.6s; 
 }
 
-/* Правая дорожка (Шагает сверху вниз) */
+/* --- ПРАВАЯ ДОРОЖКА (Зеркальный хаотичный разброс) --- */
+
 .paw-4 { 
-  top: 160px; /* Напротив первого вопроса */
-  right: 40px; 
-  transform: rotate(20deg) scale(1.2); 
+  top: 70px;  /* Верхняя правая лапка на уровне заголовка */
+  right: 60px; 
+  transform: rotate(20deg) scale(1.3); 
   animation: paw-single-step 5s ease-in-out infinite;
   animation-delay: 1.2s; 
 }
 .paw-5 { 
-  top: 260px; /* Напротив второго вопроса */
-  right: 100px; 
-  transform: rotate(-10deg) scale(1.0); 
+  top: 155px; /* Средняя правая лапка чуть выше 1-го вопроса */
+  right: 150px; 
+  transform: rotate(-10deg) scale(1.1); 
   animation: paw-single-step 5s ease-in-out infinite;
   animation-delay: 1.5s; 
 }
 .paw-6 { 
-  top: 360px; /* Напротив третьего вопроса */
-  right: 45px; 
-  transform: rotate(35deg) scale(0.85); 
+  top: 250px; /* Нижняя правая лапка на уровне 2-го вопроса */
+  right: 90px; 
+  transform: rotate(35deg) scale(0.9); 
   animation: paw-single-step 5s ease-in-out infinite;
   animation-delay: 1.8s; 
 }
 
-/* Плавная анимация шага (сохранили твою рабочую логику) */
+/* Твоя рабочая плавная анимация шага */
 @keyframes paw-single-step {
   0% {
     opacity: 0;
@@ -1070,7 +1070,7 @@ section {
   }
 }
 
-/* Спокойно скрываем на средних экранах и мобильных */
+/* Скрываем декор на средних экранах и мобильных */
 @media (max-width: 1250px) {
   .paw-item {
     display: none;
