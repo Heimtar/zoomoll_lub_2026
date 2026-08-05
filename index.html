@@ -45,29 +45,30 @@
 </header>
 
 <main>
-    <!-- 2. ПРОМО-КАРУСЕЛЬ -->
-    <section class="promo-carousel-section" aria-label="Акционные предложения">
+        <!-- 2. ПРОМО-КАРУСЕЛЬ -->
+    <section class="promo-carousel-section" aria-label="Промо-баннеры студии">
         <div class="promo-container">
             <button class="promo-btn prev-promo" aria-label="Предыдущий слайд">❮</button>
             <button class="promo-btn next-promo" aria-label="Следующий слайд">❯</button>
 
             <div class="promo-track" id="promo-track">
                 <div class="promo-slide slide-mops">
-                    <img src="img/mops.jpg" alt="Стрижка собаки в салоне Зоомолл">
+                    <!-- Самая первая картинка на странице — поднимаем приоритет -->
+                    <img src="img/mops.jpg" alt="Стрижка собаки в салоне Зоомолл" fetchpriority="high" decoding="async">
                     <div class="new-clean-banner-box box-mops">
                         <h3>Профессиональный уход без стресса</h3>
                     </div>
                 </div>
 
                 <div class="promo-slide slide-bath-dog">
-                    <img src="img/bath-dog.jpg" alt="Мытье собаки в салоне Зоомолл">
+                    <img src="img/bath-dog.jpg" alt="Мытье собаки в салоне Зоомолл" loading="lazy" decoding="async">
                     <div class="new-clean-banner-box box-bath-dog">
                         <h3>Смываем грязь — оставляем радость!</h3>
                     </div>
                 </div>
                 
                 <div class="promo-slide slide-cat">
-                    <img src="img/fluffy-cat.jpg" alt="Вычесывание кота в салоне Зоомолл">
+                    <img src="img/fluffy-cat.jpg" alt="Вычесывание кота в салоне Зоомолл" loading="lazy" decoding="async">
                     <div class="new-clean-banner-box box-cat">
                         <h3>Комфорт питомца и чистота в вашем доме</h3>
                     </div>
@@ -75,6 +76,7 @@
             </div>
         </div>
     </section>
+
     <!-- 3. СЕКЦИЯ УСЛУГ -->
     <section id="services" class="services">
         <div class="services-container">
