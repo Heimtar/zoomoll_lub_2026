@@ -786,30 +786,47 @@ section {
 .prev-btn { margin-right: 15px; }
 .next-btn { margin-left: 15px; }
 /* ==========================================================================
-   FAQ ACCORDION & FOOTER
+   АККОРДЕОН ВОПРОСОВ (ВОЗДУШНЫЕ ОБЛАЧКА)
    ========================================================================== */
 .faq-section { 
-  padding: 60px 20px; 
+  padding: 80px 20px; 
   background-color: var(--white); 
   text-align: center; 
 }
 
 .faq-section h2 { 
-  margin-bottom: 40px; 
+  margin-bottom: 12px; 
   font-size: 34px; 
+  font-weight: 800;
+  color: var(--text-dark);
 }
 
 .faq-container { 
-  max-width: 800px; 
-  margin: 0 auto; 
+  max-width: 850px; 
+  margin: 40px auto 0; 
   text-align: left; 
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Увеличили расстояние для эффекта раздельных облачков */
 }
 
+/* Карточка-облачко в закрытом состоянии */
 .faq-item { 
-  margin-bottom: 15px; 
-  background-color: var(--bg-color); 
-  border-radius: 12px; 
+  background-color: #f8fafc; 
+  border-radius: 100px; /* ИСПРАВЛЕНО: Сделали форму идеально овальной и мягкой */
+  border: 1px solid rgba(15, 23, 42, 0.03);
   overflow: hidden; 
+  /* Невесомая воздушная тень */
+  box-shadow: 0 10px 30px -15px rgba(15, 23, 42, 0.05);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background-color 0.4s ease;
+}
+
+/* Плавное покачивание облачка при наведении */
+.faq-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -20px rgba(91, 170, 220, 0.2);
+  border-color: rgba(91, 170, 220, 0.2);
+  background-color: #f0f7ff; /* Легкий голубоватый оттенок при наведении */
 }
 
 .faq-question { 
@@ -817,84 +834,90 @@ section {
   justify-content: space-between; 
   align-items: center; 
   width: 100%; 
-  padding: 20px; 
+  padding: 22px 36px; /* Больше отступов по бокам для овальной формы */
   background: none; 
   border: none; 
-  color: var(--text-color); 
+  color: var(--text-dark); 
   font-size: 18px; 
-  font-weight: 600; 
+  font-weight: 700; 
   text-align: left; 
   cursor: pointer; 
+  gap: 20px;
 }
 
 .faq-icon { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  background-color: var(--white);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-radius: 50%;
   color: var(--primary-color); 
-  font-size: 22px; 
-  transition: transform 0.3s ease; 
+  font-size: 12px; 
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease; 
+}
+
+.faq-item:hover .faq-icon {
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
 .faq-answer { 
   max-height: 0; 
   background-color: var(--white); 
   overflow: hidden; 
-  transition: max-height 0.3s ease-out; 
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
 .faq-answer p { 
-  padding: 20px; 
-  color: #555; 
+  padding: 24px 44px; /* Увеличили отступы для текста внутри */
+  color: #64748b; 
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 500;
+  border-top: 1px solid #f1f5f9; 
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s; 
+}
+
+/* ==========================================
+   СОСТОЯНИЕ ПРИ РАКРЫТИИ ОБЛАЧКА
+   ========================================== */
+.faq-item.active {
+  background-color: var(--white);
+  border-radius: 24px; /* ИСПРАВЛЕНО: При раскрытии плашка мягко превращается в прямоугольник с круглыми углами, чтобы текст не зажимался */
+  border-color: rgba(91, 170, 220, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(91, 170, 220, 0.12);
 }
 
 .faq-item.active .faq-answer { 
-  max-height: 300px; 
+  max-height: 350px; 
+}
+
+.faq-item.active .faq-answer p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .faq-item.active .faq-icon { 
-  transform: rotate(45deg); 
+  transform: rotate(180deg); 
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
-.footer { 
-  padding: 40px 20px; 
-  background-color: var(--text-color); 
-  color: var(--white); 
-  text-align: center; 
-  font-size: 14px; 
+/* Корректный сброс для мобильных, чтобы овалы не ломали текст */
+@media (max-width: 768px) {
+  .faq-section { padding: 60px 15px; }
+  .faq-item { border-radius: 20px; } /* На смартфонах сильные овалы неудобны */
+  .faq-item.active { border-radius: 20px; }
+  .faq-question { padding: 18px 20px; font-size: 16px; }
+  .faq-answer p { padding: 18px 20px; font-size: 14px; }
 }
 
-.footer p { 
-  margin-bottom: 8px; 
-}
-
-.to-top-button { 
-  position: fixed; 
-  bottom: 30px; 
-  right: 30px; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  width: 50px; 
-  height: 50px; 
-  background-color: var(--primary-color); 
-  border-radius: 50%; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
-  z-index: 99; 
-  opacity: 0; 
-  visibility: hidden; 
-  transform: translateY(20px); 
-  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease; 
-}
-
-.to-top-button.show { 
-  opacity: 1; 
-  visibility: visible; 
-  transform: translateY(0); 
-}
-
-.to-top-button svg { 
-  width: 24px; 
-  height: 24px; 
-  color: var(--white); 
-}
 /* ==========================================================================
    ОКНО ПРОСМОТРА (LIGHTBOX)
    ========================================================================== */
