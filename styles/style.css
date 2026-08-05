@@ -18,6 +18,12 @@
   box-sizing: border-box; 
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -29,9 +35,16 @@ body {
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   -webkit-font-smoothing: antialiased; 
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
 }
+
 body.lock-scroll {
   overflow: hidden;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 h1, h2, h3, h4, button, a, input, textarea {
@@ -48,10 +61,6 @@ section {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-/* ==========================================================================
-   ШАПКА САЙТА И НАВИГАЦИЯ
-   ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
@@ -106,6 +115,7 @@ section {
 .brand-group:hover .brand-name { 
   color: var(--primary-color); 
 }
+
 .nav-container {
   display: flex;
   align-items: center;
@@ -150,7 +160,6 @@ section {
   transform: scaleX(1); 
   transform-origin: left; 
 }
-
 .phone-link {
   display: inline-flex;
   align-items: center;
@@ -184,7 +193,6 @@ section {
   transform: scale(1.15) rotate(7deg); 
 }
 
-/* Сжатие шапки при скролле */
 .site-header.shrunk {
   background-color: var(--header-bg-shrunk); 
   box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06); 
@@ -203,7 +211,7 @@ section {
 .site-header.shrunk .brand-name { 
   font-size: 22px; 
 }
-/* Бургер-кнопка */
+
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -228,9 +236,6 @@ section {
 .menu-toggle.open span:nth-child(2) { opacity: 0; }
 .menu-toggle.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
-/* ==========================================================================
-   ПРОМО-КАРУСЕЛЬ
-   ========================================================================== */
 .promo-carousel-section { 
   padding: 0 5%; 
   margin-bottom: 30px; 
@@ -296,7 +301,6 @@ section {
   background-color: rgba(255, 255, 255, 1); 
   transform: translateY(-50%) scale(1.1); 
 }
-
 .new-clean-banner-box {
   position: absolute;
   top: 50%;                    
@@ -309,6 +313,7 @@ section {
   box-shadow: none;            
   z-index: 5;
 }
+
 .new-clean-banner-box h3 {
   margin: 0 0 14px 0;          
   padding: 0;    
@@ -379,9 +384,6 @@ section {
   text-align: center;          
 }
 
-/* ==========================================================================
-   СЕКЦИЯ УСЛУГ
-   ========================================================================= */
 .services { 
   padding: 60px 0; 
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
@@ -393,6 +395,7 @@ section {
   margin: 0 auto; 
   padding: 0 20px; 
 }
+
 .services .section-title { 
   margin-bottom: 40px; 
   color: var(--white); 
@@ -457,13 +460,13 @@ section {
   font-size: 14px; 
   line-height: 1.6; 
 }
+
 .service-price { 
   display: block; 
   color: #0284c7; 
   font-size: 22px; 
   font-weight: 800; 
 }
-
 .dikidi-cta-block { 
   max-width: 680px; 
   margin: 0 auto; 
@@ -508,9 +511,6 @@ section {
   100% { background-position: 600% 0%; } 
 }
 
-/* ==========================================================================
-   ПОРТФОЛИО (ФИНАЛЬНЫЙ СТИЛЬ — ИДЕАЛЬНЫЙ БАЛАНС)
-   ========================================================================== */
 .portfolio-section { 
   padding: 70px 20px; 
   background-color: #f8fafc; 
@@ -542,6 +542,7 @@ section {
   width: 100%; 
   padding: 15px 0; 
 }
+
 .portfolio-track {
   display: flex; 
   gap: 24px; 
@@ -580,7 +581,6 @@ section {
   filter: saturate(0.96);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease; 
 }
-
 .portfolio-slide-item:hover img { 
   transform: scale(1.04); 
   filter: saturate(1.08);
@@ -598,6 +598,7 @@ section {
 .portfolio-track .portfolio-slide-item:nth-child(10) img { object-position: center 20%; }
 .portfolio-track .portfolio-slide-item:nth-child(11) img { object-position: center 45%; }
 .portfolio-track .portfolio-slide-item:nth-child(12) img { object-position: center 20%; }
+
 .portfolio-slide-overlay {
   position: relative; 
   width: 100%;
@@ -668,10 +669,6 @@ section {
 
 .port-prev:hover { transform: translateY(-50%) translateX(-4px); }
 .port-next:hover { transform: translateY(-50%) translateX(4px); }
-
-/* ==========================================================================
-   КАРУСЕЛЬ ОТЗЫВОВ — КОМПАКТНЫЙ МИНИМАЛИЗМ С КАВЫЧКАМИ
-   ========================================================================== */
 .reviews-section { 
   padding: 65px 20px; 
   background-color: #f8fafc; 
@@ -700,6 +697,7 @@ section {
   max-width: 1100px; 
   margin: 0 auto; 
 }
+
 .carousel-track-wrapper { 
   overflow: hidden; 
   width: 100%; 
@@ -709,6 +707,7 @@ section {
 .carousel-track { 
   display: flex; 
   gap: 24px; 
+  transform: translateX(calc(var(--current-review-index, 0) * -1 * (100% / 3 + 16px)));
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
   will-change: transform;
 }
@@ -720,7 +719,8 @@ section {
   border-radius: 20px; 
   box-shadow: inset 0 1px 0 0 var(--white), 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 16px -6px rgba(15, 23, 42, 0.03); 
   border: 1px solid rgba(15, 23, 42, 0.04);
-  min-width: calc(33.333% - 16px); 
+  flex: 0 0 calc(33.333% - 16px);
+  width: calc(33.333% - 16px);
   text-align: left; 
   display: flex;
   flex-direction: column;
@@ -767,7 +767,6 @@ section {
   font-size: 13px;
   letter-spacing: 2px;
 }
-
 .review-text { 
   margin-bottom: 20px; 
   color: #475569; 
@@ -790,11 +789,11 @@ section {
   position: relative;
   z-index: 2;
 }
+
 .yandex-link:hover {
   color: var(--primary-color);
 }
 
-/* Круглые кнопки-стрелки с изящными SVG-иконками */
 .carousel-btn { 
   position: absolute;
   top: 50%;
@@ -825,21 +824,12 @@ section {
   box-shadow: 0 10px 22px rgba(91, 170, 220, 0.35);
 }
 
-/* Отодвинули стрелки вовне */
 .prev-btn { left: -65px; }
 .next-btn { right: -65px; }
 
 .prev-btn:hover { transform: translateY(-50%) translateX(-4px); }
 .next-btn:hover { transform: translateY(-50%) translateX(4px); }
 
-@media (max-width: 1024px) {
-  .review-card { min-width: calc(50% - 12px); }
-  .carousel-btn { display: none; }
-}
-
-/* ==========================================================================
-   АККОРДЕОН ВОПРОСОВ (СТИЛЬ APPLE С АНИМИРОВАННЫМ СИНТИ-ГРАДИЕНТОМ)
-   ========================================================================== */
 .faq-section { 
   padding: 65px 20px; 
   background-color: var(--white); 
@@ -915,9 +905,6 @@ section {
   cursor: pointer; 
   gap: 16px;
 }
-.faq-item:hover .faq-question {
-  color: #334155; 
-}
 
 .faq-icon { 
   display: flex;
@@ -934,7 +921,6 @@ section {
   box-shadow: none;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
 }
-
 .faq-answer { 
   max-height: 0; 
   background-color: transparent; 
@@ -963,7 +949,7 @@ section {
 }
 
 .faq-item.active .faq-answer { 
-  max-height: 250px; 
+  max-height: 1000px; /* Запас для любого объема текста на мобильном */
 }
 
 .faq-item.active .faq-answer p {
@@ -975,45 +961,6 @@ section {
   transform: rotate(180deg); 
 }
 
-@media (max-width: 768px) {
-  .faq-section { padding: 50px 15px; }
-  .faq-section h2 { font-size: 24px; }
-  .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; color: #334155; }
-  .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
-}
-/* ==========================================================================
-   ДЕКОРАТИВНЫЕ ЛАПКИ (СТАТИЧНЫЙ ФОНОВЫЙ ВАРИАНТ)
-   ========================================================================== */
-
-.faq-section {
-  position: relative;
-  overflow: hidden;
-  padding: 140px 0 100px 0;
-}
-
-.animated-paw {
-  position: absolute;
-  display: block;
-  margin: 0;
-  padding: 0;
-  fill: #475569;
-  opacity: 0.15; /* Мягкий фоновый цвет, который не перетягивает внимание */
-  pointer-events: none;
-  z-index: 1;
-  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.04));
-}
-
-/* На маленьких экранах убираем фоновые лапки, чтобы они не сужали контент */
-@media (max-width: 1250px) {
-  .animated-paw {
-    display: none;
-  }
-}
-
-
-/* ==========================================================================
-   ОКНО ПРОСМОТРА (LIGHTBOX)
-   ========================================================================== */
 #lightbox-overlay {
   position: fixed;
   top: 0; 
@@ -1060,9 +1007,6 @@ section {
   border: none;
 }
 
-/* ==========================================================================
-   КНОПКА НАВЕРХ (ФИРМЕННЫЙ ГОЛУБОЙ СТИЛЬ В ТОН ЗООМОЛЛ)
-   ========================================================================== */
 .to-top-button { 
   position: fixed; 
   bottom: 50px; 
@@ -1086,6 +1030,7 @@ section {
               background-color 0.25s ease, 
               box-shadow 0.25s ease; 
   cursor: pointer;
+  margin: 0;
 }
 
 .to-top-button svg { 
@@ -1105,33 +1050,11 @@ section {
   transform: translateY(-3px) scale(1.02); 
 }
 
-.to-top-button:hover svg {
-  color: var(--white);
-}
-
 .to-top-button.show { 
   opacity: 1; 
   visibility: visible; 
   transform: translateY(0) scale(1); 
 }
-/* Адаптивность для мобильных экранов */
-@media (max-width: 768px) {
-  .to-top-button {
-    bottom: 25px;
-    right: 20px;
-    width: 46px;
-    height: 46px;
-    background-color: var(--primary-color);
-  }
-  .to-top-button svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-/* ==========================================================================
-   СТРЕЛКИ ОКНА ПРОСМОТРА (LIGHTBOX ARROWS)
-   ========================================================================== */
 .lightbox-arrow {
   position: absolute; 
   top: 50%; 
@@ -1159,13 +1082,9 @@ section {
 .lightbox-prev { left: 40px; }
 .lightbox-next { right: 40px; }
 
-/* ==========================================================================
-   ИНТЕРАКТИВНАЯ КАРТА СТУДИИ (MAP СЕКЦИЯ)
-   ========================================================================== */
 .map-section {
   width: 100%;
-  padding: 60px 0; 
-  padding-bottom: 0; 
+  padding: 60px 0 0 0; 
   background-color: var(--white);
 }
 
@@ -1176,37 +1095,48 @@ section {
   padding: 0 20px;
 }
 
-.map-section .map-container a {
+.map-section .map-container iframe {
   display: block;
   width: 100%;
+  height: 450px;
   overflow: hidden;
   border-radius: 24px; 
   box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06);
 }
 
-.map-section .map-container img {
-  display: block;
+.footer {
+  flex-shrink: 0;
+  background-color: #0f172a; 
+  padding: 40px 20px;
+  margin-top: auto;
+  text-align: center;
   width: 100%;
-  height: 450px;
-  object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
-.map-section .map-container a:hover img {
-  transform: scale(1.015); 
+.footer p {
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
 }
-/* ==========================================================================
-   КРИТИЧЕСКАЯ АДАПТАЦИЯ (МЕДИА-ЗАПРОСЫ)
-   ========================================================================== */
 
-/* БРЕЙКПОИНТ: Ноутбуки и большие планшеты (до 1260px) */
+.footer p:last-child {
+  margin-bottom: 0; 
+}
+
+.footer a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+}
 @media (max-width: 1260px) {
   .portfolio-slider-container { padding: 0 60px; }
   .port-prev { left: 5px; }
   .port-next { right: 5px; }
 }
 
-/* БРЕЙКПОИНТ: Средние планшеты (до 1024px) */
 @media (max-width: 1024px) {
   .portfolio-slider-container { padding: 0 55px; }
   .port-prev { left: 2px; }
@@ -1219,24 +1149,22 @@ section {
   .portfolio-slide-item {
     flex: 0 0 calc(50% - 12px);
     width: calc(50% - 12px);
-    height: min-content;
   }
   
-  .portfolio-slide-item img {
-    aspect-ratio: 4 / 3;
-    height: auto;
+  .carousel-track {
+    transform: translateX(calc(var(--current-review-index, 0) * -1 * (100% / 2 + 12px)));
   }
   
   .review-card {
-    min-width: calc(50% - 10px);
+    flex: 0 0 calc(50% - 12px);
+    width: calc(50% - 12px);
   }
+  
+  .carousel-btn { display: none; }
 }
 
-/* БРЕЙКПОИНТ: Смартфоны и мобильные устройства (до 768px) */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex; 
-  }
+  .menu-toggle { display: flex; }
 
   .nav-container {
     position: fixed;
@@ -1254,29 +1182,17 @@ section {
     transition: right 0.4s var(--transition-smooth);
   }
 
-  .nav-container.open {
-    right: 0; 
-  }
+  .nav-container.open { right: 0; }
+  
   .site-header .nav {
     flex-direction: column;
     gap: 26px;
     width: 100%;
   }
 
-  .menu-link {
-    display: block;
-    font-size: 20px;
-  }
-
-  /* Адаптация промо-баннеров и скрытие вотермарков */
-  .promo-container {
-    height: 340px; 
-  }
-
-  .promo-slide {
-    height: 340px;
-    background-color: var(--banner-bg); 
-  }
+  .menu-link { display: block; font-size: 20px; }
+  .promo-container { height: 340px; }
+  .promo-slide { height: 340px; background-color: var(--banner-bg); }
 
   .promo-slide img {
     width: 100%;
@@ -1285,24 +1201,11 @@ section {
     object-position: center center;
   }
 
-  .promo-slide::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 30px; 
-    background-color: var(--banner-bg);
-    z-index: 3;
-  }
-
   .promo-slide .new-clean-banner-box {
     top: 50%;
     left: 20px;
     right: 20px;
     max-width: 85%;
-    padding: 0;
-    z-index: 5;
     transform: translateY(-50%);
   }
 
@@ -1316,190 +1219,43 @@ section {
     text-align: center;
   }
 
-  .promo-slide .new-clean-banner-box p {
-    font-size: 12px;
-    text-shadow: 0 1px 4px rgba(15, 23, 42, 0.9);
-    text-align: center;
-  }
+  .promo-slide .box-mops { top: 20px; left: 20px; transform: none; }
+  .promo-slide .box-mops h3 { text-align: left; }
+  .promo-slide .box-bath-dog { top: 50%; right: 20px; transform: translateY(-50%); }
+  .promo-slide .box-bath-dog h3 { text-align: right; }
+  .promo-slide .box-cat { top: 20px; left: 50%; max-width: 90%; transform: translateX(-50%); }
 
-  .promo-slide .box-mops {
-    top: 20px;
-    bottom: auto;
-    left: 20px;
-    right: auto;
-    transform: none;
-  }
-  
-  .promo-slide .box-mops h3 {
-    text-align: left;
-  }
-
-  .promo-slide .box-bath-dog {
-    top: 50%;
-    bottom: auto;
-    left: auto;
-    right: 20px;
-    transform: translateY(-50%);
-  }
-  
-  .promo-slide .box-bath-dog h3 {
-    text-align: right;
-  }
-
-  .promo-slide .box-cat {
-    top: 20px;
-    bottom: auto;
-    left: 50%;
-    right: auto;
-    max-width: 90%;
-    transform: translateX(-50%);
-  }
-
-  .promo-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.6);
-  }
-  
+  .promo-btn { width: 36px; height: 36px; font-size: 14px; }
   .prev-promo { left: 10px; }
   .next-promo { right: 10px; }
 
   .services .section-title, 
   .portfolio-section .section-title, 
   .reviews-section h2, 
-  .faq-section h2 {
-    font-size: 26px;
-  }
+  .faq-section h2 { font-size: 26px; }
+  
+  .faq-section { padding: 50px 15px; }
+  .faq-question { padding: 14px 16px 14px 20px; font-size: 15px; }
+  .faq-answer p { padding: 0 16px 14px 20px; font-size: 13px; }
+  
+  .to-top-button { bottom: 25px; right: 20px; width: 46px; height: 46px; }
+  .to-top-button svg { width: 18px; height: 18px; }
 }
-/* БРЕЙКПОИНТ: Маленькие телефоны (до 500px) */
+
 @media (max-width: 500px) {
   .portfolio-slider-container { padding: 0 45px; }
   .port-prev { left: 0; }
   .port-next { right: 0; }
-  .portfolio-track-wrapper { overflow-x: hidden; }
 
-  .promo-slide img {
-    height: 280px;
-  }
+  .promo-slide img { height: 280px; }
+  .promo-slide .new-clean-banner-box h3 { font-size: 18px; }
   
-  .promo-slide .new-clean-banner-box h3 {
-    font-size: 18px;
-  }
+  .portfolio-track { transform: translateX(calc(var(--current-index, 0) * -1 * 100%)); }
+  .portfolio-slide-item { flex: 0 0 100%; width: 100%; }
   
-  .portfolio-track {
-    transform: translateX(calc(var(--current-index, 0) * -1 * 100%));
-  }
+  .carousel-track { transform: translateX(calc(var(--current-review-index, 0) * -1 * 100%)); }
+  .review-card { flex: 0 0 100%; width: 100%; }
   
-  .portfolio-slide-item {
-    flex: 0 0 100%;
-    width: 100%;
-    height: min-content;
-  }
-  
-  .portfolio-slide-item img {
-    aspect-ratio: 4 / 3;
-    height: auto;
-  }
-
-  .review-card {
-    min-width: 100%;
-  }
-  
-  .carousel-btn, 
-  .portfolio-arrow {
-    display: none;
-  }
-
-  .dikidi-btn {
-    width: 100%; 
-    padding: 14px 30px;
-    font-size: 16px;
-  }
-}
-/* ==========================================================================
-   ВЫРАВНИВАНИЕ ПОДВАЛА ПО ЦЕНТРУ (ДЛЯ ЗООМОЛЛ)
-   ========================================================================== */
-
-/* Центрируем сам контейнер подвала */
-body .footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;    /* Центрирует элементы, если используется Flexbox */
-  justify-content: center;
-  text-align: center;     /* Центрирует обычный текст */
-  width: 100%;
-  box-sizing: border-box;
-  padding: 30px 20px;     /* Добавили немного воздуха сверху и снизу */
-}
-
-/* Центрируем строчки текста внутри подвала */
-body .footer p {
-  text-align: center;
-  margin: 0 0 8px 0;      /* Делает аккуратный отступ между адресом и телефоном */
-}
-
-/* Убираем отступ у последней строчки с телефоном, чтобы всё было симметрично */
-body .footer p:last-child {
-  margin-bottom: 0;
-}
-/* ==========================================================================
-   ПРИЖАТИЕ СИНЕЙ ЛЕНТЫ К ДНУ ЭКРАНА (ПРОФЕССИОНАЛЬНЫЙ МЕТОД)
-   ========================================================================== */
-
-/* 1. Превращаем страницу в структуру, которая всегда тянется на всю высоту */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-/* 2. Если на странице мало контента, этот селектор заставит 
-   главный блок растянуться, а футер — намертво упасть на самый пол */
-main {
-  flex: 1 0 auto;
-}
-
-/* 3. Стили самой синей ленты */
-.footer {
-  flex-shrink: 0;
-  background-color: #0f172a; /* Твой фирменный глубокий темно-синий */
-  padding: 40px 20px;
-  margin-bottom: 0;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.footer p {
-  margin: 0 0 10px 0;
-  padding: 0;
-  color: #ffffff;
-  font-size: 16px;
-}
-
-.footer p:last-child {
-  margin-bottom: 0; /* Обнуляем отступ у нижней строки с телефоном */
-}
-
-.footer a {
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* 4. ЗАЩИТА ОТ ВЫТАЛКИВАНИЯ КНОПКОЙ НАВЕРХ:
-   Убедись, что у твоей кнопки задано фиксированное (fixed) позиционирование. 
-   Тогда она выйдет из потока и перестанет создавать белую щель под футером! */
-.to-top-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 10;
-  margin: 0; /* Убираем любые маргины, которые могли расталкивать дно сайта */
+  .portfolio-arrow { display: none; }
+  .dikidi-btn { width: 100%; padding: 14px 30px; font-size: 16px; }
 }
