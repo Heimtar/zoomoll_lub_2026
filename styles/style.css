@@ -1059,6 +1059,71 @@ section {
   background: none;
   border: none;
 }
+/* ==========================================================================
+   КНОПКА НАВЕРХ (ЧИСТЫЕ СТИЛИ БЕЗ !IMPORTANT ДЛЯ ДЕСКТОПА И МОБИЛОК)
+   ========================================================================== */
+.to-top-button { 
+  position: fixed; 
+  bottom: 30px; 
+  right: 30px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  width: 50px;       /* Задаем фиксированный размер круглой кнопке */
+  height: 50px; 
+  background-color: var(--primary-color); 
+  border-radius: 50%; 
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15); 
+  z-index: 99; 
+  opacity: 0;        /* По умолчанию скрываем кнопку до скролла */
+  visibility: hidden; 
+  transform: translateY(20px); 
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
+  border: none;
+  cursor: pointer;
+}
+
+/* Укрощаем иконку внутри кнопки ровно в 24 пикселя */
+.to-top-button svg,
+.to-top-button img { 
+  width: 24px;       
+  height: 24px; 
+  display: block;
+  margin: 0 auto;
+  color: var(--white); 
+  fill: none;               
+  stroke: var(--white); /* Красим контур стрелки в белый цвет */
+  stroke-width: 2.5px;
+}
+
+/* Красивое подпрыгивание при наведении мыши */
+.to-top-button:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 8px 20px rgba(91, 170, 220, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Этот класс автоматически добавит JavaScript при прокрутке страницы */
+.to-top-button.show { 
+  opacity: 1; 
+  visibility: visible; 
+  transform: translateY(0); 
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .to-top-button {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+  .to-top-button svg,
+  .to-top-button img {
+    width: 20px;
+    height: 20px;
+  }
+}
 
 .lightbox-arrow {
   position: absolute; 
