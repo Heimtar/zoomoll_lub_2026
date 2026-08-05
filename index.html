@@ -266,40 +266,141 @@
             </div>
         </div>
     </section>
-    <!-- 6. FAQ (АККОРДЕОН) -->
-    <section id="faq" class="faq-section">
-        <h2>Частые вопросы</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Можно ли присутствовать во время стрижки?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Обычно мы не рекомендуем этого делать. В присутствии хозяина питомцы часто ведут себя более беспокойно, пытаются вырваться и прыгнуть на ручки. Без владельца животное быстрее успокаивается и доверяет мастеру.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Что делать, если мой питомец агрессивный или очень пугливый?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Наши мастера умеют находить подход к разным характерам без применения жесткой силы и седации. Пожалуйста, предупредите нас об особенностях поведения при записи, чтобы мы заложили чуть больше времени на адаптацию.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span>Как часто нужно водить собаку на груминг?</span>
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>В среднем — каждые 4–6 недель для длинношерстных пород (йорки, шпицы, мальтезе) для поддержания формы и предотвращения колтунов. Для гладкошерстных собак экспресс-линьку достаточно делать раз в 2–3 месяца.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+    
+    /* ==========================================================================
+   АККОРДЕОН ЧАСТЫХ ВОПРОСОВ (FAQ) — ПРЕМИУМ СТИЛЬ
+   ========================================================================== */
+.faq-section { 
+  padding: 80px 20px; 
+  background-color: var(--white); 
+  text-align: center; 
+}
+
+.faq-section h2 { 
+  margin-bottom: 12px; 
+  font-size: 34px; 
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.faq-container { 
+  max-width: 850px; 
+  margin: 40px auto 0; 
+  text-align: left; 
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Расстояние между плашками вопросов */
+}
+
+/* Объемные карточки вопросов */
+.faq-item { 
+  background-color: #f8fafc; /* Мягкий фирменный фон, как у секции портфолио */
+  border-radius: 16px; 
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  overflow: hidden; 
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Интерактивный подъем карточки при наведении мыши */
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06);
+  border-color: rgba(91, 170, 220, 0.2);
+}
+
+/* Кнопка-вопрос */
+.faq-question { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%; 
+  padding: 24px 28px; 
+  background: none; 
+  border: none; 
+  color: var(--text-dark); 
+  font-size: 18px; 
+  font-weight: 700; 
+  text-align: left; 
+  cursor: pointer; 
+  gap: 20px;
+}
+
+/* Круглая кнопка для стрелочки вместо блеклого плюсика */
+.faq-icon { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  background-color: var(--white);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 50%;
+  color: var(--primary-color); 
+  font-size: 13px; 
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* Подсветка кнопки-иконки при наведении на плашку */
+.faq-item:hover .faq-icon {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Контейнер ответа с плавной анимацией раскрытия */
+.faq-answer { 
+  max-height: 0; 
+  background-color: var(--white); 
+  overflow: hidden; 
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+/* Текст ответа плавно проявляется сверху вниз */
+.faq-answer p { 
+  padding: 24px 28px; 
+  color: #64748b; 
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 500;
+  border-top: 1px solid #f1f5f9; /* Тонкая серая линия-разделитель */
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s; /* Микрозадержка для красоты */
+}
+
+/* ==========================================
+   АКТИВНЫЕ СОСТОЯНИЯ (ПРИ КЛИКЕ)
+   ========================================== */
+.faq-item.active {
+  background-color: var(--white);
+  border-color: rgba(91, 170, 220, 0.3);
+  box-shadow: 0 12px 30px -10px rgba(91, 170, 220, 0.15);
+}
+
+.faq-item.active .faq-answer { 
+  max-height: 350px; /* Свободный лимит высоты для раскрытия */
+}
+
+.faq-item.active .faq-answer p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Стрелочка изящно переворачивается при раскрытии */
+.faq-item.active .faq-icon { 
+  transform: rotate(180deg); 
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Адаптивность для смартфонов */
+@media (max-width: 768px) {
+  .faq-section { padding: 60px 15px; }
+  .faq-question { padding: 20px; font-size: 16px; }
+  .faq-answer p { padding: 20px; font-size: 14px; }
+}
 
     <!-- 5. ОТЗЫВЫ -->
     <section id="reviews" class="reviews-section">
